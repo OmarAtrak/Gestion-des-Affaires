@@ -64,6 +64,8 @@ namespace GestionAffaire
             this.lesPartiesIntéresséesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.BoxNoteAjouter = new System.Windows.Forms.GroupBox();
+            this.txtDateNote = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTotalFraisNote = new System.Windows.Forms.TextBox();
             this.txtNumAff = new System.Windows.Forms.TextBox();
@@ -223,6 +225,8 @@ namespace GestionAffaire
             // BoxNoteAjouter
             // 
             this.BoxNoteAjouter.BackColor = System.Drawing.Color.LightGray;
+            this.BoxNoteAjouter.Controls.Add(this.txtDateNote);
+            this.BoxNoteAjouter.Controls.Add(this.label3);
             this.BoxNoteAjouter.Controls.Add(this.label2);
             this.BoxNoteAjouter.Controls.Add(this.txtTotalFraisNote);
             this.BoxNoteAjouter.Controls.Add(this.txtNumAff);
@@ -241,17 +245,37 @@ namespace GestionAffaire
             this.BoxNoteAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxNoteAjouter.Location = new System.Drawing.Point(12, 91);
             this.BoxNoteAjouter.Name = "BoxNoteAjouter";
-            this.BoxNoteAjouter.Size = new System.Drawing.Size(1346, 570);
+            this.BoxNoteAjouter.Size = new System.Drawing.Size(1346, 595);
             this.BoxNoteAjouter.TabIndex = 9;
             this.BoxNoteAjouter.TabStop = false;
             this.BoxNoteAjouter.Text = "Note des Frais :";
             this.BoxNoteAjouter.Visible = false;
             // 
+            // txtDateNote
+            // 
+            this.txtDateNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDateNote.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDateNote.Location = new System.Drawing.Point(410, 113);
+            this.txtDateNote.Name = "txtDateNote";
+            this.txtDateNote.Size = new System.Drawing.Size(418, 26);
+            this.txtDateNote.TabIndex = 19;
+            this.txtDateNote.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(348, 118);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 20);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "Date :";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(309, 122);
+            this.label2.Location = new System.Drawing.Point(309, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 20);
             this.label2.TabIndex = 36;
@@ -262,7 +286,7 @@ namespace GestionAffaire
             // 
             this.txtTotalFraisNote.BackColor = System.Drawing.SystemColors.Control;
             this.txtTotalFraisNote.Enabled = false;
-            this.txtTotalFraisNote.Location = new System.Drawing.Point(410, 116);
+            this.txtTotalFraisNote.Location = new System.Drawing.Point(410, 144);
             this.txtTotalFraisNote.Multiline = true;
             this.txtTotalFraisNote.Name = "txtTotalFraisNote";
             this.txtTotalFraisNote.Size = new System.Drawing.Size(418, 28);
@@ -352,7 +376,7 @@ namespace GestionAffaire
             this.BoxFrais.Controls.Add(this.label7);
             this.BoxFrais.Controls.Add(this.label8);
             this.BoxFrais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxFrais.Location = new System.Drawing.Point(215, 150);
+            this.BoxFrais.Location = new System.Drawing.Point(215, 182);
             this.BoxFrais.Name = "BoxFrais";
             this.BoxFrais.Size = new System.Drawing.Size(864, 195);
             this.BoxFrais.TabIndex = 26;
@@ -487,7 +511,7 @@ namespace GestionAffaire
             dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.listFraisNote.DefaultCellStyle = dataGridViewCellStyle24;
-            this.listFraisNote.Location = new System.Drawing.Point(128, 362);
+            this.listFraisNote.Location = new System.Drawing.Point(128, 394);
             this.listFraisNote.Name = "listFraisNote";
             this.listFraisNote.ReadOnly = true;
             dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -550,7 +574,7 @@ namespace GestionAffaire
             // 
             // DeleteButtonColumn
             // 
-            this.DeleteButtonColumn.HeaderText = "Supprimer";
+            this.DeleteButtonColumn.HeaderText = "";
             this.DeleteButtonColumn.Name = "DeleteButtonColumn";
             this.DeleteButtonColumn.ReadOnly = true;
             this.DeleteButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -608,7 +632,7 @@ namespace GestionAffaire
             // 
             this.btnActualiserNote.BackColor = System.Drawing.SystemColors.Control;
             this.btnActualiserNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualiserNote.Location = new System.Drawing.Point(635, 513);
+            this.btnActualiserNote.Location = new System.Drawing.Point(635, 545);
             this.btnActualiserNote.Name = "btnActualiserNote";
             this.btnActualiserNote.Size = new System.Drawing.Size(159, 38);
             this.btnActualiserNote.TabIndex = 13;
@@ -620,7 +644,7 @@ namespace GestionAffaire
             // 
             this.btnValiderNote.BackColor = System.Drawing.SystemColors.Control;
             this.btnValiderNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValiderNote.Location = new System.Drawing.Point(450, 513);
+            this.btnValiderNote.Location = new System.Drawing.Point(450, 545);
             this.btnValiderNote.Name = "btnValiderNote";
             this.btnValiderNote.Size = new System.Drawing.Size(159, 38);
             this.btnValiderNote.TabIndex = 2;
@@ -656,7 +680,7 @@ namespace GestionAffaire
             this.BoxAff.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxAff.Location = new System.Drawing.Point(12, 91);
             this.BoxAff.Name = "BoxAff";
-            this.BoxAff.Size = new System.Drawing.Size(1346, 545);
+            this.BoxAff.Size = new System.Drawing.Size(1346, 595);
             this.BoxAff.TabIndex = 17;
             this.BoxAff.TabStop = false;
             this.BoxAff.Text = "Affaires :";
@@ -852,7 +876,7 @@ namespace GestionAffaire
             this.BoxMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxMission.Location = new System.Drawing.Point(12, 91);
             this.BoxMission.Name = "BoxMission";
-            this.BoxMission.Size = new System.Drawing.Size(1346, 545);
+            this.BoxMission.Size = new System.Drawing.Size(1346, 595);
             this.BoxMission.TabIndex = 18;
             this.BoxMission.TabStop = false;
             this.BoxMission.Text = "Ordre de Mission :";
@@ -1110,7 +1134,7 @@ namespace GestionAffaire
             this.BoxPartiesInterecee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxPartiesInterecee.Location = new System.Drawing.Point(12, 91);
             this.BoxPartiesInterecee.Name = "BoxPartiesInterecee";
-            this.BoxPartiesInterecee.Size = new System.Drawing.Size(1346, 570);
+            this.BoxPartiesInterecee.Size = new System.Drawing.Size(1346, 595);
             this.BoxPartiesInterecee.TabIndex = 13;
             this.BoxPartiesInterecee.TabStop = false;
             this.BoxPartiesInterecee.Text = "Les Parties Intéressées :";
@@ -1391,7 +1415,7 @@ namespace GestionAffaire
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(1370, 673);
+            this.ClientSize = new System.Drawing.Size(1370, 698);
             this.Controls.Add(this.BoxPartiesInterecee);
             this.Controls.Add(this.BoxMission);
             this.Controls.Add(this.BoxAff);
@@ -1523,6 +1547,8 @@ namespace GestionAffaire
         public System.Windows.Forms.TextBox txtNumAff;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox txtTotalFraisNote;
+        private System.Windows.Forms.DateTimePicker txtDateNote;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn PieceComptable;

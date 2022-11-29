@@ -1793,6 +1793,8 @@ namespace GestionAffaire {
             
             private global::System.Data.DataColumn columntotalFrais;
             
+            private global::System.Data.DataColumn columndate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public NoteFraisDataTable() {
@@ -1852,6 +1854,14 @@ namespace GestionAffaire {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn dateColumn {
+                get {
+                    return this.columndate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1887,12 +1897,13 @@ namespace GestionAffaire {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NoteFraisRow AddNoteFraisRow(int Numero, string affaire, decimal totalFrais) {
+            public NoteFraisRow AddNoteFraisRow(int Numero, string affaire, decimal totalFrais, System.DateTime date) {
                 NoteFraisRow rowNoteFraisRow = ((NoteFraisRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Numero,
                         affaire,
-                        totalFrais};
+                        totalFrais,
+                        date};
                 rowNoteFraisRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNoteFraisRow);
                 return rowNoteFraisRow;
@@ -1925,6 +1936,7 @@ namespace GestionAffaire {
                 this.columnNumero = base.Columns["Numero"];
                 this.columnaffaire = base.Columns["affaire"];
                 this.columntotalFrais = base.Columns["totalFrais"];
+                this.columndate = base.Columns["date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1936,6 +1948,8 @@ namespace GestionAffaire {
                 base.Columns.Add(this.columnaffaire);
                 this.columntotalFrais = new global::System.Data.DataColumn("totalFrais", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalFrais);
+                this.columndate = new global::System.Data.DataColumn("date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnNumero}, true));
                 this.columnNumero.AllowDBNull = false;
@@ -3023,6 +3037,22 @@ namespace GestionAffaire {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableNoteFrais.dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'date\' in table \'NoteFrais\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNoteFrais.dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsaffaireNull() {
                 return this.IsNull(this.tableNoteFrais.affaireColumn);
             }
@@ -3043,6 +3073,18 @@ namespace GestionAffaire {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SettotalFraisNull() {
                 this[this.tableNoteFrais.totalFraisColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsdateNull() {
+                return this.IsNull(this.tableNoteFrais.dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetdateNull() {
+                this[this.tableNoteFrais.dateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5224,41 +5266,45 @@ SELECT numero, dateDebut, dateFin, lieuDepart, lieuArriver, affaire, respo, NbrJ
             tableMapping.ColumnMappings.Add("Numero", "Numero");
             tableMapping.ColumnMappings.Add("affaire", "affaire");
             tableMapping.ColumnMappings.Add("totalFrais", "totalFrais");
+            tableMapping.ColumnMappings.Add("date", "date");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[NoteFrais] WHERE (([Numero] = @Original_Numero) AND ((@IsNull_" +
-                "affaire = 1 AND [affaire] IS NULL) OR ([affaire] = @Original_affaire)) AND ((@Is" +
-                "Null_totalFrais = 1 AND [totalFrais] IS NULL) OR ([totalFrais] = @Original_total" +
-                "Frais)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [NoteFrais] WHERE (([Numero] = @Original_Numero) AND ((@IsNull_affaire = 1 AND [affaire] IS NULL) OR ([affaire] = @Original_affaire)) AND ((@IsNull_totalFrais = 1 AND [totalFrais] IS NULL) OR ([totalFrais] = @Original_totalFrais)) AND ((@IsNull_date = 1 AND [date] IS NULL) OR ([date] = @Original_date)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Numero", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Numero", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_affaire", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "affaire", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_affaire", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "affaire", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_totalFrais", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "totalFrais", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_totalFrais", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "totalFrais", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[NoteFrais] ([Numero], [affaire], [totalFrais]) VALUES (@Numero" +
-                ", @affaire, @totalFrais);\r\nSELECT Numero, affaire, totalFrais FROM NoteFrais WHE" +
-                "RE (Numero = @Numero)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [NoteFrais] ([Numero], [affaire], [totalFrais], [date]) VALUES (@Nume" +
+                "ro, @affaire, @totalFrais, @date);\r\nSELECT Numero, affaire, totalFrais, date FRO" +
+                "M NoteFrais WHERE (Numero = @Numero)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Numero", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Numero", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@affaire", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "affaire", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@totalFrais", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "totalFrais", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[NoteFrais] SET [Numero] = @Numero, [affaire] = @affaire, [totalFrais] = @totalFrais WHERE (([Numero] = @Original_Numero) AND ((@IsNull_affaire = 1 AND [affaire] IS NULL) OR ([affaire] = @Original_affaire)) AND ((@IsNull_totalFrais = 1 AND [totalFrais] IS NULL) OR ([totalFrais] = @Original_totalFrais)));
-SELECT Numero, affaire, totalFrais FROM NoteFrais WHERE (Numero = @Numero)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [NoteFrais] SET [Numero] = @Numero, [affaire] = @affaire, [totalFrais] = @totalFrais, [date] = @date WHERE (([Numero] = @Original_Numero) AND ((@IsNull_affaire = 1 AND [affaire] IS NULL) OR ([affaire] = @Original_affaire)) AND ((@IsNull_totalFrais = 1 AND [totalFrais] IS NULL) OR ([totalFrais] = @Original_totalFrais)) AND ((@IsNull_date = 1 AND [date] IS NULL) OR ([date] = @Original_date)));
+SELECT Numero, affaire, totalFrais, date FROM NoteFrais WHERE (Numero = @Numero)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Numero", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Numero", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@affaire", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "affaire", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@totalFrais", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "totalFrais", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Numero", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Numero", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_affaire", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "affaire", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_affaire", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "affaire", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_totalFrais", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "totalFrais", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_totalFrais", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "totalFrais", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5274,7 +5320,7 @@ SELECT Numero, affaire, totalFrais FROM NoteFrais WHERE (Numero = @Numero)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Numero, affaire, totalFrais FROM dbo.NoteFrais";
+            this._commandCollection[0].CommandText = "SELECT Numero, affaire, totalFrais, date FROM NoteFrais";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5335,7 +5381,7 @@ SELECT Numero, affaire, totalFrais FROM NoteFrais WHERE (Numero = @Numero)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Numero, string Original_affaire, global::System.Nullable<decimal> Original_totalFrais) {
+        public virtual int Delete(int Original_Numero, string Original_affaire, global::System.Nullable<decimal> Original_totalFrais, global::System.Nullable<global::System.DateTime> Original_date) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Numero));
             if ((Original_affaire == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -5352,6 +5398,14 @@ SELECT Numero, affaire, totalFrais FROM NoteFrais WHERE (Numero = @Numero)";
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((Original_date.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_date.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5373,7 +5427,7 @@ SELECT Numero, affaire, totalFrais FROM NoteFrais WHERE (Numero = @Numero)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Numero, string affaire, global::System.Nullable<decimal> totalFrais) {
+        public virtual int Insert(int Numero, string affaire, global::System.Nullable<decimal> totalFrais, global::System.Nullable<global::System.DateTime> date) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Numero));
             if ((affaire == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -5386,6 +5440,12 @@ SELECT Numero, affaire, totalFrais FROM NoteFrais WHERE (Numero = @Numero)";
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((date.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(date.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5407,7 +5467,7 @@ SELECT Numero, affaire, totalFrais FROM NoteFrais WHERE (Numero = @Numero)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Numero, string affaire, global::System.Nullable<decimal> totalFrais, int Original_Numero, string Original_affaire, global::System.Nullable<decimal> Original_totalFrais) {
+        public virtual int Update(int Numero, string affaire, global::System.Nullable<decimal> totalFrais, global::System.Nullable<global::System.DateTime> date, int Original_Numero, string Original_affaire, global::System.Nullable<decimal> Original_totalFrais, global::System.Nullable<global::System.DateTime> Original_date) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Numero));
             if ((affaire == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -5421,22 +5481,36 @@ SELECT Numero, affaire, totalFrais FROM NoteFrais WHERE (Numero = @Numero)";
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Numero));
-            if ((Original_affaire == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            if ((date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(date.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_affaire));
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Numero));
+            if ((Original_affaire == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_affaire));
             }
             if ((Original_totalFrais.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(Original_totalFrais.Value));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_totalFrais.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((Original_date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_date.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5458,8 +5532,8 @@ SELECT Numero, affaire, totalFrais FROM NoteFrais WHERE (Numero = @Numero)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string affaire, global::System.Nullable<decimal> totalFrais, int Original_Numero, string Original_affaire, global::System.Nullable<decimal> Original_totalFrais) {
-            return this.Update(Original_Numero, affaire, totalFrais, Original_Numero, Original_affaire, Original_totalFrais);
+        public virtual int Update(string affaire, global::System.Nullable<decimal> totalFrais, global::System.Nullable<global::System.DateTime> date, int Original_Numero, string Original_affaire, global::System.Nullable<decimal> Original_totalFrais, global::System.Nullable<global::System.DateTime> Original_date) {
+            return this.Update(Original_Numero, affaire, totalFrais, date, Original_Numero, Original_affaire, Original_totalFrais, Original_date);
         }
     }
     

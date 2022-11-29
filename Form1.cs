@@ -816,16 +816,19 @@ namespace GestionAffaire
                     {
                         if (txtRaisonSocialClient.Text != "")
                         {
-                            con.Open();
-                            cmd.CommandText = "delete Client where ICE='" + txtICEClient.Text + "'";
-                            cmd.ExecuteNonQuery();
-                            con.Close();
+                            if (MessageBox.Show("voulez-vous supprimer Client?", "Supprimer Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                con.Open();
+                                cmd.CommandText = "delete Client where ICE='" + txtICEClient.Text + "'";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
 
-                            MessageBox.Show("Suppression Avec Succès");
+                                MessageBox.Show("Suppression Avec Succès");
 
-                            txtICEClient.Text = txtRaisonSocialClient.Text = "";
-                            remplirListClient();
-                            RemplirIdClient();
+                                txtICEClient.Text = txtRaisonSocialClient.Text = "";
+                                remplirListClient();
+                                RemplirIdClient();
+                            }
                         }
                         else
                         {
@@ -850,14 +853,17 @@ namespace GestionAffaire
                     {
                         if (txtPrenomRespo.Text != "")
                         {
-                            con.Open();
-                            cmd.CommandText = "delete Responsable where nom='" + txtNomRespo.Text + "'";
-                            cmd.ExecuteNonQuery();
-                            con.Close();
+                            if (MessageBox.Show("voulez-vous supprimer Chargé d'affaire?", "Supprimer Chargé d'affaire", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                con.Open();
+                                cmd.CommandText = "delete Responsable where nom='" + txtNomRespo.Text + "'";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
 
-                            txtNomRespo.Text = txtPrenomRespo.Text = "";
-                            RemplirNomRespo();
-                            remplirListRespo();
+                                txtNomRespo.Text = txtPrenomRespo.Text = "";
+                                RemplirNomRespo();
+                                remplirListRespo();
+                            }
                         }
                         else
                         {
@@ -1012,24 +1018,27 @@ namespace GestionAffaire
             {
                 if (IsAffExists(cmbNumeroAff.Text) == true)
                 {
-                    con.Open();
-                    cmd.CommandText = "delete Affaires where Numero='" + cmbNumeroAff.Text + "'";
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                    if (MessageBox.Show("voulez-vous supprimer cette Affaire?", "Supprimer Affaire", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        con.Open();
+                        cmd.CommandText = "delete Affaires where Numero='" + cmbNumeroAff.Text + "'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
 
 
-                    //afficher message Succès
-                    MessageBox.Show("Suppression Avec Succès");
+                        //afficher message Succès
+                        MessageBox.Show("Suppression Avec Succès");
 
-                    //faire mis a jour
-                    RemplirNumeroAffaire();
-                    remplirListAffaire();
-                    RemplirNomRespo();
-                    RemplirIdClient();
+                        //faire mis a jour
+                        RemplirNumeroAffaire();
+                        remplirListAffaire();
+                        RemplirNomRespo();
+                        RemplirIdClient();
 
-                    cmbNumeroAff.Text = "";
+                        cmbNumeroAff.Text = "";
 
-                    con.Close();
+                        con.Close();
+                    }
                 }
                 else
                 {
@@ -1047,59 +1056,59 @@ namespace GestionAffaire
             {
                 if (IsAffExists(cmbNumeroAff.Text))
                 {
-                    DataSet ds = new DataSet();
-                    ds.Tables.Clear();
+                    //DataSet ds = new DataSet();
+                    //ds.Tables.Clear();
 
-                    con.Open();
-                    cmd.CommandText = "select * from Affaires where Numero='" + cmbNumeroAff.Text + "'";
-                    da.SelectCommand = cmd;
-                    da.Fill(ds, "Affaires");
+                    //con.Open();
+                    //cmd.CommandText = "select * from Affaires where Numero='" + cmbNumeroAff.Text + "'";
+                    //da.SelectCommand = cmd;
+                    //da.Fill(ds, "Affaires");
 
-                    cmd.Parameters.Clear();
+                    //cmd.Parameters.Clear();
 
-                    cmd.CommandText = "select * from NoteFrais where affaire='" + cmbNumeroAff.Text + "'";
-                    da.SelectCommand = cmd;
-                    da.Fill(ds, "NoteFrais");
+                    //cmd.CommandText = "select * from NoteFrais where affaire='" + cmbNumeroAff.Text + "'";
+                    //da.SelectCommand = cmd;
+                    //da.Fill(ds, "NoteFrais");
 
-                    cmd.Parameters.Clear();
+                    //cmd.Parameters.Clear();
 
-                    cmd.CommandText = "select noteFrais from Affaires where Numero='" + cmbNumeroAff.Text + "'";
+                    //cmd.CommandText = "select noteFrais from Affaires where Numero='" + cmbNumeroAff.Text + "'";
 
-                    int noteFrais = 0;
-                    if (cmd.ExecuteScalar().ToString() != "")
-                    {
-                        noteFrais = int.Parse(cmd.ExecuteScalar().ToString());
-                    }
+                    //int noteFrais = 0;
+                    //if (cmd.ExecuteScalar().ToString() != "")
+                    //{
+                    //    noteFrais = int.Parse(cmd.ExecuteScalar().ToString());
+                    //}
 
-                    cmd.Parameters.Clear();
+                    //cmd.Parameters.Clear();
 
-                    cmd.CommandText = "select * from Frais where noteFrais='" + noteFrais + "'";
-                    da.SelectCommand = cmd;
-                    da.Fill(ds, "Frais");
+                    //cmd.CommandText = "select * from Frais where noteFrais='" + noteFrais + "'";
+                    //da.SelectCommand = cmd;
+                    //da.Fill(ds, "Frais");
 
-                    cmd.Parameters.Clear();
+                    //cmd.Parameters.Clear();
 
-                    cmd.CommandText = "select * from Mission where affaire='" + cmbNumeroAff.Text + "'";
-                    da.SelectCommand = cmd;
-                    da.Fill(ds, "Mission");
+                    //cmd.CommandText = "select * from Mission where affaire='" + cmbNumeroAff.Text + "'";
+                    //da.SelectCommand = cmd;
+                    //da.Fill(ds, "Mission");
 
-                    con.Close();
+                    //con.Close();
 
 
 
-                    CrystalReport1 cr = new CrystalReport1();
-                    cr.Database.Tables["Affaires"].SetDataSource(ds.Tables[0]);
-                    cr.Database.Tables["NoteFrais"].SetDataSource(ds.Tables[1]);
-                    cr.Database.Tables["Frais"].SetDataSource(ds.Tables[2]);
-                    cr.Database.Tables["Mission"].SetDataSource(ds.Tables[3]);
+                    //CrystalReport1 cr = new CrystalReport1();
+                    //cr.Database.Tables["Affaires"].SetDataSource(ds.Tables[0]);
+                    //cr.Database.Tables["NoteFrais"].SetDataSource(ds.Tables[1]);
+                    //cr.Database.Tables["Frais"].SetDataSource(ds.Tables[2]);
+                    //cr.Database.Tables["Mission"].SetDataSource(ds.Tables[3]);
 
-                    Form2 f = new Form2();
-                    f.crystalReportViewer1.ReportSource = null;
-                    f.crystalReportViewer1.ReportSource = cr;
-                    f.crystalReportViewer1.Refresh();
+                    //Form2 f = new Form2();
+                    //f.crystalReportViewer1.ReportSource = null;
+                    //f.crystalReportViewer1.ReportSource = cr;
+                    //f.crystalReportViewer1.Refresh();
 
-                    f.Show();
-                    this.Hide();
+                    //f.Show();
+                    //this.Hide();
                 }
                 else
                     errorProvider1.SetError(cmbNumeroAff, "l'affaire n'est pas Existant");
@@ -1107,8 +1116,6 @@ namespace GestionAffaire
             else
                 errorProvider1.SetError(cmbNumeroAff, "chisir une Affaire");
         }
-
-
 
 
 
@@ -1135,7 +1142,6 @@ namespace GestionAffaire
             else
             {
                 txtFraisFrais.Enabled = true;
-                txtFraisFrais.Text = "0";
             }
         }
         private void cmbNumeroNote_SelectedIndexChanged(object sender, EventArgs e)
@@ -1198,17 +1204,19 @@ namespace GestionAffaire
                         if (cmbNumAffaireNote.Text != "")
                         {
                             con.Open();
-                            cmd.CommandText = "insert into NoteFrais(Numero,affaire) values('" +
+                            cmd.CommandText = "insert into NoteFrais(Numero,affaire,date) values('" +
                                                                             Convert.ToInt32(txtNumeroNote.Text) + "','" +
-                                                                            cmbNumAffaireNote.Text + "')";
+                                                                            cmbNumAffaireNote.Text + "','"+
+                                                                            Convert.ToDateTime(txtDateNote.Text)+"')";
                             cmd.ExecuteNonQuery();
                             con.Close();
                         }
                         else
                         {
                             con.Open();
-                            cmd.CommandText = "insert into NoteFrais(Numero) values('" +
-                                                                            Convert.ToInt32(txtNumeroNote.Text) + "')";
+                            cmd.CommandText = "insert into NoteFrais(Numero,date) values('" +
+                                                                            Convert.ToInt32(txtNumeroNote.Text) + "','"+
+                                                                            Convert.ToDateTime(txtDateNote.Text)+"')";
                             cmd.ExecuteNonQuery();
                             con.Close();
                         }
@@ -1237,6 +1245,7 @@ namespace GestionAffaire
                         RemplirNumeroAffaire();
                         remplirListAffaire();
                         txtDateFrais.Text = "";
+                        txtDateNote.Text = "";
                         txtFraisFrais.Text = "0";
 
                         remplirNumeroNote();
@@ -1282,6 +1291,7 @@ namespace GestionAffaire
                         RemplirNumeroAffaire();
                         remplirListAffaire();
                         txtDateFrais.Text = "";
+                        txtDateNote.Text = "";
                         txtFraisFrais.Text = "0";
 
                         txtNumAff.Text = txtTotalFraisNote.Text = "";
@@ -1449,7 +1459,7 @@ namespace GestionAffaire
 
                         listFraisNote.Rows.Clear();
 
-                        cmbNumeroNote.Text = cmbTypeFrais.Text = cmbPCFrais.Text = cmbNumAffaireNote.Text = txtDateFrais.Text = "";
+                        cmbNumeroNote.Text = cmbTypeFrais.Text = cmbPCFrais.Text = cmbNumAffaireNote.Text = txtDateNote.Text = txtDateFrais.Text = "";
                         txtFraisFrais.Text = (0.00).ToString();
 
                         txtTotalFraisNote.Text = txtNumAff.Text = "";
@@ -1481,6 +1491,7 @@ namespace GestionAffaire
 
             cmbNumeroNote.Text = "";
             txtDateFrais.Text = "";
+            txtDateNote.Text = "";
             txtFraisFrais.Text = "0";
 
 
@@ -1530,8 +1541,45 @@ namespace GestionAffaire
             else
                 errorProvider1.SetError(cmbNumeroNote, "chisir Numero de Note");
         }
-        
+        private void cmbNumeroNote_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt.Rows.Clear();
+            dt2.Rows.Clear();
 
+            errorProvider1.Dispose();
+            listFraisNote.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Numero,affaire,cast(totalFrais as varchar) as 'totalFrais',date from NoteFrais where Numero='" + int.Parse(cmbNumeroNote.Text) + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt2);
+
+            txtNumAff.Text = dt2.Rows[0][1].ToString();
+            txtTotalFraisNote.Text = (dt2.Rows[0][2].ToString());
+            txtDateNote.Text = (dt2.Rows[0][3].ToString());
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select numero as 'Numero',Type,PiecesComptables as 'Piece Comptable',convert(date,[date]) as [Date],cast(frais as varchar) from Frais where NoteFrais='" + int.Parse(cmbNumeroNote.Text) + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                listFraisNote.Rows.Add(dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString(), dt.Rows[i][3].ToString(), dt.Rows[i][4].ToString());
+                txtDateFrais.Text = dt.Rows[i][3].ToString();
+                listFraisNote.Rows[i].Cells[3].Value = txtDateFrais.Text;
+            }
+
+            remplirTypeNote();
+            remplirPCNote();
+            txtDateFrais.Text = "";
+            txtFraisFrais.Text = "0";
+        }
 
 
 
@@ -1689,20 +1737,23 @@ namespace GestionAffaire
             {
                 if (IsMissionExists(int.Parse(cmbNumeroMission.Text)))
                 {
-                    con.Open();
-                    cmd.CommandText = "delete Mission where numero='" + cmbNumeroMission.Text + "'";
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                    if (MessageBox.Show("voulez-vous supprimer Ordre de Mission?", "Supprimer Ordre de Mission", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        con.Open();
+                        cmd.CommandText = "delete Mission where numero='" + cmbNumeroMission.Text + "'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
 
-                    MessageBox.Show("Suppression Avec Succès");
+                        MessageBox.Show("Suppression Avec Succès");
 
-                    remplirNumeroMission();
-                    RemplirIdClient();
-                    RemplirNomRespo();
-                    RemplirNumeroAffaire();
-                    remplirListMission();
+                        remplirNumeroMission();
+                        RemplirIdClient();
+                        RemplirNomRespo();
+                        RemplirNumeroAffaire();
+                        remplirListMission();
 
-                    txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
+                        txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
+                    }
                 }
                 else
                 {
@@ -1726,7 +1777,6 @@ namespace GestionAffaire
 
 
 
-
         // frais
         private void rbValiderNote_CheckedChanged(object sender, EventArgs e)
         {
@@ -1744,6 +1794,8 @@ namespace GestionAffaire
                 txtTotalFraisNote.Visible = false;
                 btnSupprimerNoteFrais.Visible = false;
                 btnImrimerPdfNote.Visible = false;
+
+                txtDateNote.Enabled = true;
 
                 RemplirNumeroAffaire();
                 txtNumAff.Text = txtTotalFraisNote.Text = "";
@@ -1765,6 +1817,8 @@ namespace GestionAffaire
                 txtTotalFraisNote.Visible = true;
                 btnSupprimerNoteFrais.Visible = true;
                 btnImrimerPdfNote.Visible = true;
+
+                txtDateNote.Enabled = false;
 
                 remplirNumeroNote();
                 txtNumAff.Text = txtTotalFraisNote.Text = "";
@@ -1851,13 +1905,16 @@ namespace GestionAffaire
             {
                 if (listFraisNote.CurrentCell.Value == "Supprimer")
                 {
-                    int num = int.Parse(listFraisNote.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    con.Open();
-                    cmd.CommandText = "delete Frais where Numero='" + num + "' and noteFrais='" + int.Parse(cmbNumeroNote.Text) +"'";
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                    if (MessageBox.Show("voulez-vous supprimer Frais?", "Supprimer Frais", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        int num = int.Parse(listFraisNote.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        con.Open();
+                        cmd.CommandText = "delete Frais where Numero='" + num + "' and noteFrais='" + int.Parse(cmbNumeroNote.Text) +"'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
 
-                    listFraisNote.Rows.RemoveAt(e.RowIndex);
+                        listFraisNote.Rows.RemoveAt(e.RowIndex);
+                    }
                 }
             }
             else
@@ -1868,53 +1925,9 @@ namespace GestionAffaire
                 }
             }
         }
-        private void cmbNumeroNote_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            DataTable dt = new DataTable();
-            DataTable dt2 = new DataTable();
-            dt.Rows.Clear();
-            dt2.Rows.Clear();
-
-            errorProvider1.Dispose();
-            listFraisNote.Rows.Clear();
-
-            con.Open();
-            cmd.CommandText = "select Numero,affaire,cast(totalFrais as varchar) as 'totalFrais' from NoteFrais where Numero='" + int.Parse(cmbNumeroNote.Text) +"'";
-            da.SelectCommand = cmd;
-            da.Fill(dt2);
-
-            txtNumAff.Text = dt2.Rows[0][1].ToString();
-            txtTotalFraisNote.Text = (dt2.Rows[0][2].ToString());
-
-            cmd.Parameters.Clear();
-
-            cmd.CommandText = "select numero as 'Numero',Type,PiecesComptables as 'Piece Comptable',convert(date,[date]) as [Date],cast(frais as varchar) from Frais where NoteFrais='" + int.Parse(cmbNumeroNote.Text) +"'";
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-            con.Close();
-
-
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                listFraisNote.Rows.Add(dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString(), dt.Rows[i][3].ToString(), dt.Rows[i][4].ToString());
-                txtDateFrais.Text = dt.Rows[i][3].ToString();
-                listFraisNote.Rows[i].Cells[3].Value = txtDateFrais.Text;
-            }
-
-            remplirTypeNote();
-            remplirPCNote();
-            txtDateFrais.Text = "";
-            txtFraisFrais.Text = "0";
-        }
-        
-
         
         
-        
-        
-        
-        
-        
+
         
         
         private void button5_Click(object sender, EventArgs e)
@@ -1955,9 +1968,6 @@ namespace GestionAffaire
 
 
 
-
-
-
         private void btnSupprimerFrais_Click(object sender, EventArgs e){}
         private void button1_Click(object sender, EventArgs e){}
         private void cmbCinBeneRech_SelectedIndexChanged(object sender, EventArgs e){}
@@ -1986,6 +1996,6 @@ namespace GestionAffaire
         private void ListAff_CellContentClick(object sender, DataGridViewCellEventArgs e){}
         private void ListAff_CellClick(object sender, DataGridViewCellEventArgs e){}
         private void ListAff_CellContentClick_1(object sender, DataGridViewCellEventArgs e){}
-
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e){}
     }
 }
