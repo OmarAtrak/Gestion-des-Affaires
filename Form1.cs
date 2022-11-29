@@ -1056,59 +1056,59 @@ namespace GestionAffaire
             {
                 if (IsAffExists(cmbNumeroAff.Text))
                 {
-                    //DataSet ds = new DataSet();
-                    //ds.Tables.Clear();
+                    DataSet ds = new DataSet();
+                    ds.Tables.Clear();
 
-                    //con.Open();
-                    //cmd.CommandText = "select * from Affaires where Numero='" + cmbNumeroAff.Text + "'";
-                    //da.SelectCommand = cmd;
-                    //da.Fill(ds, "Affaires");
+                    con.Open();
+                    cmd.CommandText = "select * from Affaires where Numero='" + cmbNumeroAff.Text + "'";
+                    da.SelectCommand = cmd;
+                    da.Fill(ds, "Affaires");
 
-                    //cmd.Parameters.Clear();
+                    cmd.Parameters.Clear();
 
-                    //cmd.CommandText = "select * from NoteFrais where affaire='" + cmbNumeroAff.Text + "'";
-                    //da.SelectCommand = cmd;
-                    //da.Fill(ds, "NoteFrais");
+                    cmd.CommandText = "select * from NoteFrais where affaire='" + cmbNumeroAff.Text + "'";
+                    da.SelectCommand = cmd;
+                    da.Fill(ds, "NoteFrais");
 
-                    //cmd.Parameters.Clear();
+                    cmd.Parameters.Clear();
 
-                    //cmd.CommandText = "select noteFrais from Affaires where Numero='" + cmbNumeroAff.Text + "'";
+                    cmd.CommandText = "select noteFrais from Affaires where Numero='" + cmbNumeroAff.Text + "'";
 
-                    //int noteFrais = 0;
-                    //if (cmd.ExecuteScalar().ToString() != "")
-                    //{
-                    //    noteFrais = int.Parse(cmd.ExecuteScalar().ToString());
-                    //}
+                    int noteFrais = 0;
+                    if (cmd.ExecuteScalar().ToString() != "")
+                    {
+                        noteFrais = int.Parse(cmd.ExecuteScalar().ToString());
+                    }
 
-                    //cmd.Parameters.Clear();
+                    cmd.Parameters.Clear();
 
-                    //cmd.CommandText = "select * from Frais where noteFrais='" + noteFrais + "'";
-                    //da.SelectCommand = cmd;
-                    //da.Fill(ds, "Frais");
+                    cmd.CommandText = "select * from Frais where noteFrais='" + noteFrais + "'";
+                    da.SelectCommand = cmd;
+                    da.Fill(ds, "Frais");
 
-                    //cmd.Parameters.Clear();
+                    cmd.Parameters.Clear();
 
-                    //cmd.CommandText = "select * from Mission where affaire='" + cmbNumeroAff.Text + "'";
-                    //da.SelectCommand = cmd;
-                    //da.Fill(ds, "Mission");
+                    cmd.CommandText = "select * from Mission where affaire='" + cmbNumeroAff.Text + "'";
+                    da.SelectCommand = cmd;
+                    da.Fill(ds, "Mission");
 
-                    //con.Close();
+                    con.Close();
 
 
 
-                    //CrystalReport1 cr = new CrystalReport1();
-                    //cr.Database.Tables["Affaires"].SetDataSource(ds.Tables[0]);
-                    //cr.Database.Tables["NoteFrais"].SetDataSource(ds.Tables[1]);
-                    //cr.Database.Tables["Frais"].SetDataSource(ds.Tables[2]);
-                    //cr.Database.Tables["Mission"].SetDataSource(ds.Tables[3]);
+                    CrystalReport1 cr = new CrystalReport1();
+                    cr.Database.Tables["Affaires"].SetDataSource(ds.Tables[0]);
+                    cr.Database.Tables["NoteFrais"].SetDataSource(ds.Tables[1]);
+                    cr.Database.Tables["Frais"].SetDataSource(ds.Tables[2]);
+                    cr.Database.Tables["Mission"].SetDataSource(ds.Tables[3]);
 
-                    //Form2 f = new Form2();
-                    //f.crystalReportViewer1.ReportSource = null;
-                    //f.crystalReportViewer1.ReportSource = cr;
-                    //f.crystalReportViewer1.Refresh();
+                    Form2 f = new Form2();
+                    f.crystalReportViewer1.ReportSource = null;
+                    f.crystalReportViewer1.ReportSource = cr;
+                    f.crystalReportViewer1.Refresh();
 
-                    //f.Show();
-                    //this.Hide();
+                    f.Show();
+                    this.Hide();
                 }
                 else
                     errorProvider1.SetError(cmbNumeroAff, "l'affaire n'est pas Existant");

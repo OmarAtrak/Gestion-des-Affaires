@@ -27,7 +27,7 @@
     <ProductName>Gestion des Frais d%27affaire</ProductName>
     <PublisherName>Sothcom</PublisherName>
     <SuiteName>Sothcom</SuiteName>
-    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationRevision>22</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
