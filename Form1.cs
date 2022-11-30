@@ -23,6 +23,8 @@ namespace GestionAffaire
             InitializeComponent();
         }
 
+
+
         /************************************ le menu ************************************/
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -90,7 +92,6 @@ namespace GestionAffaire
 
 
         /************************************ les Methodes ************************************/
-
         // methode pour remplir les id et la liste des client
         public void RemplirIdClient()
         {
@@ -137,7 +138,6 @@ namespace GestionAffaire
             ListClient.DataSource = dt;
         }
 
-
         // methode pour remplir le nom et la liste de charge d'affaire
         public void RemplirNomRespo()
         {
@@ -146,6 +146,7 @@ namespace GestionAffaire
             txtNomRespo.Items.Clear();
             cmbResponsableAff.Items.Clear();
             cmbRespoMission.Items.Clear();
+            cmbRespoNote.Items.Clear();
 
             if (dt != null)
             {
@@ -163,6 +164,7 @@ namespace GestionAffaire
                 txtNomRespo.Items.Add(dt.Rows[i][0].ToString());
                 cmbResponsableAff.Items.Add(dt.Rows[i][0].ToString());
                 cmbRespoMission.Items.Add(dt.Rows[i][0].ToString());
+                cmbRespoNote.Items.Add(dt.Rows[i][0].ToString());
             }
 
             con.Close();
@@ -185,7 +187,6 @@ namespace GestionAffaire
             ListRespo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListRespo.DataSource = dt;
         }
-
 
         // methode pour remplir le numero et la liste d'affaire
         public void RemplirNumeroAffaire()
@@ -248,7 +249,6 @@ namespace GestionAffaire
             ListAff.DataSource = dt;
         }
 
-
         //methode pour remplir les numero et la liste des Frais de note
         public void remplirNumeroNote()
         {
@@ -307,7 +307,6 @@ namespace GestionAffaire
             //listFraisNote.DataSource = dt;
         }
 
-
         //methode pour remplir le Numeros et la liste des Missions
         public void remplirNumeroMission()
         {
@@ -352,7 +351,6 @@ namespace GestionAffaire
             ListMission.DataSource = dt;
         }
 
-
         //methode pour remplir Type de Note
         public void remplirTypeNote()
         {
@@ -390,7 +388,8 @@ namespace GestionAffaire
         }
 
 
-        //methode pour verifier si l'affaire est deja existant dans la base
+
+        //methode pour verifier si l'affaire est deja existe dans la base
         public Boolean IsAffExists(string affaire)
         {
             DataTable dt = new DataTable();
@@ -413,7 +412,7 @@ namespace GestionAffaire
             return isThere;
         }
 
-        //methode pour verifier si charge d'affaire est deja existant dans la base
+        //methode pour verifier si charge d'affaire est deja existe dans la base
         public Boolean IsRespoExists(string nom)
         {
             DataTable dt = new DataTable();
@@ -436,7 +435,7 @@ namespace GestionAffaire
             return isThere;
         }
 
-        //methode pour verifier si le client est deja existant dans la base
+        //methode pour verifier si le client est deja existe dans la base
         public Boolean IsClientExists(string cin)
         {
             DataTable dt = new DataTable();
@@ -458,8 +457,30 @@ namespace GestionAffaire
             }
             return isThere;
         }
+        public Boolean IsRaisonSocialeClientExists(string raisonSociale)
+        {
+            DataTable dt = new DataTable();
 
-        //methode pour verifier si la note des frais est deja existant dans la base
+            if (dt != null)
+            {
+                dt.Rows.Clear();
+            }
+
+            Boolean isThere = false;
+            con.Open();
+            cmd.CommandText = "select raisonSociale from Client where raisonSociale='" + raisonSociale + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count != 0)
+            {
+                isThere = true;
+            }
+            return isThere;
+        }
+
+
+        //methode pour verifier si la note des frais est deja existe dans la base
         public Boolean IsNoteExists(int numero)
         {
             DataTable dt = new DataTable();
@@ -482,7 +503,7 @@ namespace GestionAffaire
             return isThere;
         }
 
-        //methode pour verifier si la mission est deja existant dans la base
+        //methode pour verifier si la mission est deja existe dans la base
         public Boolean IsMissionExists(int numero)
         {
             DataTable dt = new DataTable();
@@ -505,7 +526,7 @@ namespace GestionAffaire
             return isThere;
         }
 
-        //methode pour verifier si le frais
+        //methode pour verifier si le frais est deja existe dans la base
         public Boolean IsFraisExists(int numeroFrais, int numeroNote)
         {
             DataTable dt = new DataTable();
@@ -558,7 +579,6 @@ namespace GestionAffaire
 
 
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
             RemplirNumeroAffaire();
@@ -575,7 +595,6 @@ namespace GestionAffaire
             remplirListRespo();
             NumeroNote();
         }
-
 
 
 
@@ -618,29 +637,34 @@ namespace GestionAffaire
             {
                 if (txtICEClient.Text != "")
                 {
-                    if (IsClientExists(txtICEClient.Text) == true)
+                    if (txtRaisonSocialClient.Text != "")
                     {
-                        errorProvider1.SetError(txtICEClient, "Client est déjà Existant");
-                    }
-                    else
-                    {
-                        if (txtICEClient.Text != "" && txtRaisonSocialClient.Text != "")
+                        if (IsClientExists(txtICEClient.Text) == true)
                         {
-                            con.Open();
-                            cmd.CommandText = "insert into Client values('" + txtICEClient.Text + "','" + txtRaisonSocialClient.Text + "')";
-                            cmd.ExecuteNonQuery();
-                            con.Close();
-
-                            MessageBox.Show("Client Ajouter Avec Succès");
-
-                            txtICEClient.Text = txtRaisonSocialClient.Text = "";
-                            remplirListClient();
-                            RemplirIdClient();
+                            errorProvider1.SetError(txtICEClient, "ICE de Client est déjà Existant");
                         }
                         else
                         {
-                            errorProvider1.SetError(txtRaisonSocialClient, "cette information est Obligatoir");
+                            if (IsRaisonSocialeClientExists(txtRaisonSocialClient.Text) == false)
+                            {
+                                con.Open();
+                                cmd.CommandText = "insert into Client values('" + txtICEClient.Text + "','" + txtRaisonSocialClient.Text + "')";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+
+                                MessageBox.Show("Client Ajouter Avec Succès");
+
+                                txtICEClient.Text = txtRaisonSocialClient.Text = "";
+                                remplirListClient();
+                                RemplirIdClient();
+                            }
+                            else
+                                errorProvider1.SetError(txtRaisonSocialClient, "Raison Sociale de Client est déjà Existant");
                         }
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(txtRaisonSocialClient, "cette information est Obligatoir");
                     }
                 }
                 else
@@ -880,7 +904,6 @@ namespace GestionAffaire
 
 
 
-
         // l'affaire
         private void cmbNumeroAff_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -978,6 +1001,10 @@ namespace GestionAffaire
                     if (cmbClientAff.Text != "" && cmbResponsableAff.Text != "")
                     {
                         con.Open();
+
+                        cmd.CommandText = "select ICE from Client where raisonSociale='" + cmbClientAff.Text + "'";
+                        string ICE = cmd.ExecuteScalar().ToString();
+
                         cmd.CommandText = "update Affaires set Client='" + cmbClientAff.Text + "',Responsable='" + cmbResponsableAff.Text + "' where Numero='" + cmbNumeroAff.Text + "'";
                         cmd.ExecuteNonQuery();
                         con.Close();
@@ -1146,50 +1173,7 @@ namespace GestionAffaire
         }
         private void cmbNumeroNote_SelectedIndexChanged(object sender, EventArgs e)
         {
-            errorProvider1.Dispose();
-
-            if (cmbNumeroNote.Text != "")
-            {
-                listFraisNote.Rows.Clear();
-
-                DataTable dt = new DataTable();
-                if (dt != null)
-                {
-                    dt.Rows.Clear();
-                }
-
-                
-                con.Open();
-                cmd.CommandText = "select numero,Type,PiecesComptables as 'Piece Comptable',frais as 'Frais',date as 'Date' from Frais where noteFrais='" + int.Parse(cmbNumeroNote.Text) + "'";
-                da.SelectCommand = cmd;
-                da.Fill(dt);
-                con.Close();
-
-                //for (int i = 0; i < dt.Rows.Count-1; i++)
-                //{
-                //    txtDateFrais.Text = dt.Rows[i][4].ToString();
-                //    listFraisNote.Rows[i].Cells[3].Value = txtDateFrais.Text;
-                //}
-                //txtDateFrais.Text = "";
-                //listFraisNote.DataSource = dt;
-
-                //MessageBox.Show();
-                Boolean isThere = false;
-                for (int i = 0; i < cmbTypeFrais.Items.Count; i++)
-                {
-                    if (dt.Rows[0][1].ToString() == cmbTypeFrais.Items[i].ToString())
-                    {
-                        isThere = true;
-                        break;
-                    }
-                }
-
-                if (!isThere)
-                {
-                    cmbTypeFrais.DropDownStyle = ComboBoxStyle.DropDown;
-                    cmbTypeFrais.Text = dt.Rows[0][1].ToString();
-                }
-            }
+            
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -1201,54 +1185,62 @@ namespace GestionAffaire
                 {
                     try
                     {
-                        if (cmbNumAffaireNote.Text != "")
+                        if (cmbRespoNote.Text != "")
                         {
+                            if (cmbNumAffaireNote.Text != "")
+                            {
+                                con.Open();
+                                cmd.CommandText = "insert into NoteFrais(Numero,affaire,date,respo) values('" +
+                                                                                Convert.ToInt32(txtNumeroNote.Text) + "','" +
+                                                                                cmbNumAffaireNote.Text + "','" +
+                                                                                Convert.ToDateTime(txtDateNote.Text) + "','" +
+                                                                                cmbRespoNote.Text + "')";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+                            }
+                            else
+                            {
+                                con.Open();
+                                cmd.CommandText = "insert into NoteFrais(Numero,date,respo) values('" +
+                                                                                Convert.ToInt32(txtNumeroNote.Text) + "','" +
+                                                                                Convert.ToDateTime(txtDateNote.Text) + "','" +
+                                                                                cmbRespoNote.Text + "')";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+                            }
+
+
                             con.Open();
-                            cmd.CommandText = "insert into NoteFrais(Numero,affaire,date) values('" +
-                                                                            Convert.ToInt32(txtNumeroNote.Text) + "','" +
-                                                                            cmbNumAffaireNote.Text + "','"+
-                                                                            Convert.ToDateTime(txtDateNote.Text)+"')";
-                            cmd.ExecuteNonQuery();
+                            for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
+                            {
+
+                                cmd.CommandText = "insert into Frais(numero,Type,PiecesComptables,date,frais,noteFrais) values('" +
+                                                                                                        int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) + "','" +
+                                                                                                        listFraisNote.Rows[i].Cells[1].Value.ToString() + "','" +
+                                                                                                        listFraisNote.Rows[i].Cells[2].Value.ToString() + "','" +
+                                                                                                        DateTime.Parse(listFraisNote.Rows[i].Cells[3].Value.ToString()) + "','" +
+                                                                                                        double.Parse(listFraisNote.Rows[i].Cells[4].Value.ToString()) + "','" +
+                                                                                                        txtNumeroNote.Text + "')";
+                                cmd.ExecuteNonQuery();
+                                cmd.Parameters.Clear();
+                            }
                             con.Close();
+
+                            listFraisNote.Rows.Clear();
+                            remplirTypeNote();
+                            remplirPCNote();
+                            RemplirNumeroAffaire();
+                            remplirListAffaire();
+                            RemplirNomRespo();
+                            NumeroNote();
+                            txtDateFrais.Text = "";
+                            txtDateNote.Text = "";
+                            txtFraisFrais.Text = "0";
+
+                            remplirNumeroNote();
                         }
                         else
-                        {
-                            con.Open();
-                            cmd.CommandText = "insert into NoteFrais(Numero,date) values('" +
-                                                                            Convert.ToInt32(txtNumeroNote.Text) + "','"+
-                                                                            Convert.ToDateTime(txtDateNote.Text)+"')";
-                            cmd.ExecuteNonQuery();
-                            con.Close();
-                        }
-
-
-                        con.Open();
-                        for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
-                        {
-
-                            cmd.CommandText = "insert into Frais(numero,Type,PiecesComptables,date,frais,noteFrais) values('" +
-                                                                                                    int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) + "','" +
-                                                                                                    listFraisNote.Rows[i].Cells[1].Value.ToString() + "','" +
-                                                                                                    listFraisNote.Rows[i].Cells[2].Value.ToString() + "','" +
-                                                                                                    DateTime.Parse(listFraisNote.Rows[i].Cells[3].Value.ToString()) + "','" +
-                                                                                                    double.Parse(listFraisNote.Rows[i].Cells[4].Value.ToString()) + "','" +
-                                                                                                    txtNumeroNote.Text + "')";
-                            cmd.ExecuteNonQuery();
-                            cmd.Parameters.Clear();
-                        }
-                        con.Close();
-
-                        listFraisNote.Rows.Clear();
-                        remplirTypeNote();
-                        remplirPCNote();
-                        NumeroNote();
-                        RemplirNumeroAffaire();
-                        remplirListAffaire();
-                        txtDateFrais.Text = "";
-                        txtDateNote.Text = "";
-                        txtFraisFrais.Text = "0";
-
-                        remplirNumeroNote();
+                            errorProvider1.SetError(cmbRespoNote,"cette information est Obligatoir");
                     }
                     catch (Exception ex)
                     {
@@ -1310,111 +1302,111 @@ namespace GestionAffaire
             }
             
         }
-        private void btnModifierNoteFrais_Click(object sender, EventArgs e)
-        {
-            errorProvider1.Dispose();
+        //private void btnModifierNoteFrais_Click(object sender, EventArgs e)
+        //{
+        //    errorProvider1.Dispose();
 
-            if (cmbNumeroNote.Text != "")
-            {
-                if (IsNoteExists(int.Parse(cmbNumeroNote.Text)) == true)
-                {
-                    if (cmbTypeFrais.Text != "")
-                    {
-                        if (cmbPCFrais.Text != "")
-                        {
-                            if (txtFraisFrais.Enabled == true)
-                            {
-                                if (txtFraisFrais.Text != "")
-                                {
-                                    con.Open();
-                                    if (cmbNumAffaireNote.Text != "")
-                                    {
-                                        cmd.CommandText = "update NoteFrais set Type='" + cmbTypeFrais.Text +
-                                                                 "',PiecesComptables='" + cmbPCFrais.Text +
-                                                                 "',affaire = '" + cmbNumAffaireNote.Text +
-                                                                 "',frais='" + double.Parse(txtFraisFrais.Text) +
-                                                                 "',date='" + Convert.ToDateTime(txtDateFrais.Value) +
-                                                                 "' where Numero='" + int.Parse(cmbNumeroNote.Text) + "'";
-                                    }
-                                    else
-                                    {
-                                        cmd.CommandText = "update NoteFrais set Type='" + cmbTypeFrais.Text +
-                                                                 "',PiecesComptables='" + cmbPCFrais.Text +
-                                                                 "',frais='" + double.Parse(txtFraisFrais.Text) +
-                                                                 "',date='" + Convert.ToDateTime(txtDateFrais.Value) +
-                                                                 "' where Numero='" + int.Parse(cmbNumeroNote.Text) + "')";
-                                    }
-                                    cmd.ExecuteNonQuery();
-                                    con.Close();
+        //    if (cmbNumeroNote.Text != "")
+        //    {
+        //        if (IsNoteExists(int.Parse(cmbNumeroNote.Text)) == true)
+        //        {
+        //            if (cmbTypeFrais.Text != "")
+        //            {
+        //                if (cmbPCFrais.Text != "")
+        //                {
+        //                    if (txtFraisFrais.Enabled == true)
+        //                    {
+        //                        if (txtFraisFrais.Text != "")
+        //                        {
+        //                            con.Open();
+        //                            if (cmbNumAffaireNote.Text != "")
+        //                            {
+        //                                cmd.CommandText = "update NoteFrais set Type='" + cmbTypeFrais.Text +
+        //                                                         "',PiecesComptables='" + cmbPCFrais.Text +
+        //                                                         "',affaire = '" + cmbNumAffaireNote.Text +
+        //                                                         "',frais='" + double.Parse(txtFraisFrais.Text) +
+        //                                                         "',date='" + Convert.ToDateTime(txtDateFrais.Value) +
+        //                                                         "' where Numero='" + int.Parse(cmbNumeroNote.Text) + "'";
+        //                            }
+        //                            else
+        //                            {
+        //                                cmd.CommandText = "update NoteFrais set Type='" + cmbTypeFrais.Text +
+        //                                                         "',PiecesComptables='" + cmbPCFrais.Text +
+        //                                                         "',frais='" + double.Parse(txtFraisFrais.Text) +
+        //                                                         "',date='" + Convert.ToDateTime(txtDateFrais.Value) +
+        //                                                         "' where Numero='" + int.Parse(cmbNumeroNote.Text) + "')";
+        //                            }
+        //                            cmd.ExecuteNonQuery();
+        //                            con.Close();
 
-                                    remplirListFraisNote();
-                                    remplirNumeroNote();
-                                    RemplirNumeroAffaire();
-                                    remplirListAffaire();
-                                    remplirTypeNote();
-                                    remplirPCNote();
+        //                            remplirListFraisNote();
+        //                            remplirNumeroNote();
+        //                            RemplirNumeroAffaire();
+        //                            remplirListAffaire();
+        //                            remplirTypeNote();
+        //                            remplirPCNote();
 
 
-                                    MessageBox.Show("Modification Avec Succès");
+        //                            MessageBox.Show("Modification Avec Succès");
 
-                                    cmbNumeroNote.Text = cmbTypeFrais.Text = cmbPCFrais.Text = cmbNumAffaireNote.Text = "";
-                                    txtFraisFrais.Text = (0.00).ToString();
+        //                            cmbNumeroNote.Text = cmbTypeFrais.Text = cmbPCFrais.Text = cmbNumAffaireNote.Text = "";
+        //                            txtFraisFrais.Text = (0.00).ToString();
 
-                                    errorProvider1.Dispose();
-                                }
-                                else
-                                {
-                                    errorProvider1.SetError(txtFraisFrais, "Saisir Frais Valide");
-                                }
-                            }
-                            else
-                            {
-                                con.Open();
-                                if (cmbNumAffaireNote.Text != "")
-                                {
-                                    cmd.CommandText = "insert into NoteFrais(Type,PiecesComptables,affaire,frais) values('" + cmbTypeFrais.Text + "','" +
-                                                                                    cmbPCFrais.Text + "','" +
-                                                                                    cmbNumAffaireNote.Text + "','" +
-                                                                                    double.Parse(txtFraisFrais.Text) + "')";
-                                }
-                                else
-                                {
-                                    cmd.CommandText = "insert into NoteFrais(Type,PiecesComptables,frais) values('" + cmbTypeFrais.Text + "','" +
-                                                                                    cmbPCFrais.Text + "','" +
-                                                                                    double.Parse(txtFraisFrais.Text) + "')";
-                                }
-                                cmd.ExecuteNonQuery();
-                                con.Close();
+        //                            errorProvider1.Dispose();
+        //                        }
+        //                        else
+        //                        {
+        //                            errorProvider1.SetError(txtFraisFrais, "Saisir Frais Valide");
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        con.Open();
+        //                        if (cmbNumAffaireNote.Text != "")
+        //                        {
+        //                            cmd.CommandText = "insert into NoteFrais(Type,PiecesComptables,affaire,frais) values('" + cmbTypeFrais.Text + "','" +
+        //                                                                            cmbPCFrais.Text + "','" +
+        //                                                                            cmbNumAffaireNote.Text + "','" +
+        //                                                                            double.Parse(txtFraisFrais.Text) + "')";
+        //                        }
+        //                        else
+        //                        {
+        //                            cmd.CommandText = "insert into NoteFrais(Type,PiecesComptables,frais) values('" + cmbTypeFrais.Text + "','" +
+        //                                                                            cmbPCFrais.Text + "','" +
+        //                                                                            double.Parse(txtFraisFrais.Text) + "')";
+        //                        }
+        //                        cmd.ExecuteNonQuery();
+        //                        con.Close();
 
-                                remplirListFraisNote();
-                                remplirNumeroNote();
-                                remplirTypeNote();
-                                remplirPCNote();
+        //                        remplirListFraisNote();
+        //                        remplirNumeroNote();
+        //                        remplirTypeNote();
+        //                        remplirPCNote();
 
-                                MessageBox.Show("Modification Avec Succès");
+        //                        MessageBox.Show("Modification Avec Succès");
 
-                                cmbTypeFrais.Text = cmbPCFrais.Text = cmbNumAffaireNote.Text = txtFraisFrais.Text = "";
+        //                        cmbTypeFrais.Text = cmbPCFrais.Text = cmbNumAffaireNote.Text = txtFraisFrais.Text = "";
 
-                                errorProvider1.Dispose();
-                            }
-                        }
-                        else
-                            errorProvider1.SetError(cmbPCFrais, "cette Information est Obligatoir");
-                    }
-                    else
-                        errorProvider1.SetError(cmbTypeFrais, "cette Information est Obligatoir");
-                }
-                else
-                {
-                    errorProvider1.SetError(cmbNumeroNote, "Note des Frais n'est pas Existant");
-                }
-            }
-            else
-            {
-                errorProvider1.SetError(cmbNumeroNote, "choisir Une Note");
-            }
-            cmbTypeFrais.DropDownStyle = ComboBoxStyle.DropDownList;
-        }
+        //                        errorProvider1.Dispose();
+        //                    }
+        //                }
+        //                else
+        //                    errorProvider1.SetError(cmbPCFrais, "cette Information est Obligatoir");
+        //            }
+        //            else
+        //                errorProvider1.SetError(cmbTypeFrais, "cette Information est Obligatoir");
+        //        }
+        //        else
+        //        {
+        //            errorProvider1.SetError(cmbNumeroNote, "Note des Frais n'est pas Existant");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        errorProvider1.SetError(cmbNumeroNote, "choisir Une Note");
+        //    }
+        //    cmbTypeFrais.DropDownStyle = ComboBoxStyle.DropDownList;
+        //}
         private void btnSupprimerNoteFrais_Click(object sender, EventArgs e)
         {
             errorProvider1.Dispose();
@@ -1552,13 +1544,14 @@ namespace GestionAffaire
             listFraisNote.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select Numero,affaire,cast(totalFrais as varchar) as 'totalFrais',date from NoteFrais where Numero='" + int.Parse(cmbNumeroNote.Text) + "'";
+            cmd.CommandText = "select Numero,affaire,cast(totalFrais as varchar) as 'totalFrais',date,respo from NoteFrais where Numero='" + int.Parse(cmbNumeroNote.Text) + "'";
             da.SelectCommand = cmd;
             da.Fill(dt2);
 
             txtNumAff.Text = dt2.Rows[0][1].ToString();
             txtTotalFraisNote.Text = (dt2.Rows[0][2].ToString());
             txtDateNote.Text = (dt2.Rows[0][3].ToString());
+            txtRespoNote.Text = dt2.Rows[0][4].ToString();
 
             cmd.Parameters.Clear();
 
@@ -1785,17 +1778,20 @@ namespace GestionAffaire
             if (rbValiderNote.Checked == true)
             {
                 listFraisNote.Rows.Clear();
-                rbModifierSupprimerNote.Checked = false;
-                cmbNumeroNote.Visible = false;
                 cmbNumAffaireNote.Visible = true;
                 txtNumeroNote.Visible = true;
+                txtDateNote.Enabled = true;
+                cmbRespoNote.Visible = true;
+
+                rbModifierSupprimerNote.Checked = false;
+                cmbNumeroNote.Visible = false;
                 txtNumAff.Visible = false;
                 label2.Visible = false;
                 txtTotalFraisNote.Visible = false;
                 btnSupprimerNoteFrais.Visible = false;
                 btnImrimerPdfNote.Visible = false;
+                
 
-                txtDateNote.Enabled = true;
 
                 RemplirNumeroAffaire();
                 txtNumAff.Text = txtTotalFraisNote.Text = "";
@@ -1810,9 +1806,11 @@ namespace GestionAffaire
                 listFraisNote.Rows.Clear();
                 rbValiderNote.Checked = false;
                 txtNumeroNote.Visible = false;
-                cmbNumeroNote.Visible = true;
                 cmbNumAffaireNote.Visible = false;
+                cmbRespoNote.Visible = false;
+                cmbNumeroNote.Visible = true;
                 txtNumAff.Visible = true;
+                txtRespoNote.Visible = true;
                 label2.Visible = true;
                 txtTotalFraisNote.Visible = true;
                 btnSupprimerNoteFrais.Visible = true;
@@ -1826,9 +1824,6 @@ namespace GestionAffaire
         }
         private void btnAjouterFrais_Click(object sender, EventArgs e)
         {
-            //FraisForm fraisForm = new FraisForm();
-            //fraisForm.Show();
-
             errorProvider1.Dispose();
             if (rbValiderNote.Checked == true)
             {
@@ -1903,7 +1898,7 @@ namespace GestionAffaire
 
             if (rbModifierSupprimerNote.Checked == true)
             {
-                if (listFraisNote.CurrentCell.Value == "Supprimer")
+                if (listFraisNote.CurrentCell.Value.ToString() == "Supprimer")
                 {
                     if (MessageBox.Show("voulez-vous supprimer Frais?", "Supprimer Frais", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
@@ -1919,16 +1914,14 @@ namespace GestionAffaire
             }
             else
             {
-                if (listFraisNote.CurrentCell.Value == "Supprimer")
+                if (listFraisNote.CurrentCell.Value.ToString() == "Supprimer")
                 {
                     listFraisNote.Rows.RemoveAt(e.RowIndex);
                 }
             }
         }
         
-        
 
-        
         
         private void button5_Click(object sender, EventArgs e)
         {
