@@ -842,6 +842,7 @@ namespace GestionAffaire
                         {
                             if (MessageBox.Show("voulez-vous supprimer Client?", "Supprimer Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
+                                
                                 con.Open();
                                 cmd.CommandText = "delete Client where ICE='" + txtICEClient.Text + "'";
                                 cmd.ExecuteNonQuery();
@@ -1119,6 +1120,23 @@ namespace GestionAffaire
                     da.SelectCommand = cmd;
                     da.Fill(ds, "Mission");
 
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "select Client from Affaires where Numero='" + cmbNumeroAff.Text + "'";
+
+                    string ice = "";
+                    if (cmd.ExecuteScalar().ToString() != "")
+                    {
+                        ice = cmd.ExecuteScalar().ToString();
+                    }
+
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "select * from Client where ICE='" + ice + "'";
+                    da.SelectCommand = cmd;
+                    da.Fill(ds, "Client");
+
+
                     con.Close();
 
 
@@ -1128,6 +1146,7 @@ namespace GestionAffaire
                     cr.Database.Tables["NoteFrais"].SetDataSource(ds.Tables[1]);
                     cr.Database.Tables["Frais"].SetDataSource(ds.Tables[2]);
                     cr.Database.Tables["Mission"].SetDataSource(ds.Tables[3]);
+                    cr.Database.Tables["Client"].SetDataSource(ds.Tables[4]);
 
                     Form2 f = new Form2();
                     f.crystalReportViewer1.ReportSource = null;
