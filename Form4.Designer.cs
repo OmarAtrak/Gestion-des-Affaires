@@ -29,6 +29,7 @@ namespace GestionAffaire
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.reteurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
@@ -76,8 +77,9 @@ namespace GestionAffaire
             this.ClientSize = new System.Drawing.Size(880, 499);
             this.Controls.Add(this.crystalReportViewer1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form4";
-            this.Text = "Les Informaion d\'Ordre de Mission";
+            this.Text = "Les Informaions d\'Ordre de Mission";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
