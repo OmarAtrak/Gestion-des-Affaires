@@ -32,6 +32,7 @@ namespace GestionAffaire
             BoxNoteAjouter.Visible = false;
             BoxMission.Visible = false;
             BoxPartiesInterecee.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
         }
         private void affaireToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -39,13 +40,7 @@ namespace GestionAffaire
             BoxAff.Visible = false;
             BoxMission.Visible = false;
             BoxPartiesInterecee.Visible = false;
-        }
-        private void missionToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-        }
-        private void beneficaireToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            BoxRecherchFraisdeNote.Visible = false;
         }
         private void rechercheToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -53,12 +48,7 @@ namespace GestionAffaire
             BoxAff.Visible = false;
             BoxMission.Visible = false;
             BoxPartiesInterecee.Visible = false;
-        }
-        private void beneficaireToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-        }
-        private void noteDeFraisToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
+            BoxRecherchFraisdeNote.Visible = false;
         }
         private void pToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -66,6 +56,7 @@ namespace GestionAffaire
             BoxPartiesInterecee.Visible = false;
             BoxNoteAjouter.Visible = false;
             BoxMission.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
         }
         private void missionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -73,6 +64,7 @@ namespace GestionAffaire
             BoxPartiesInterecee.Visible = false;
             BoxAff.Visible = false;
             BoxNoteAjouter.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
         }
         private void lesPartiesIntereceeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -80,10 +72,20 @@ namespace GestionAffaire
             BoxPartiesInterecee.Visible = false;
             BoxAff.Visible = false;
             BoxNoteAjouter.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
         }
         private void lesPartiesIntéresséesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BoxPartiesInterecee.Visible = true;
+            BoxMission.Visible = false;
+            BoxAff.Visible = false;
+            BoxNoteAjouter.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
+        }
+        private void rechercheDansLesFraisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BoxRecherchFraisdeNote.Visible = true;
+            BoxPartiesInterecee.Visible = false;
             BoxMission.Visible = false;
             BoxAff.Visible = false;
             BoxNoteAjouter.Visible = false;
@@ -355,6 +357,7 @@ namespace GestionAffaire
         public void remplirTypeNote()
         {
             cmbTypeFrais.Items.Clear();
+            cmbTypeFraisRecheNote.Items.Clear();
 
             cmbTypeFrais.Items.Add("Gazoil");
             cmbTypeFrais.Items.Add("Autoroute");
@@ -374,17 +377,56 @@ namespace GestionAffaire
             cmbTypeFrais.Items.Add("Divers");
             cmbTypeFrais.Items.Add("Redéfinir...");
 
-
+            cmbTypeFraisRecheNote.Items.Add("Gazoil");
+            cmbTypeFraisRecheNote.Items.Add("Autoroute");
+            cmbTypeFraisRecheNote.Items.Add("Gardiennage");
+            cmbTypeFraisRecheNote.Items.Add("Restaurant");
+            cmbTypeFraisRecheNote.Items.Add("Hotel");
+            cmbTypeFraisRecheNote.Items.Add("Achat de Matiere ou Fourniture");
+            cmbTypeFraisRecheNote.Items.Add("Produit et Frais des entretiens");
+            cmbTypeFraisRecheNote.Items.Add("Frais Postaux");
+            cmbTypeFraisRecheNote.Items.Add("Frais de Legalisation");
+            cmbTypeFraisRecheNote.Items.Add("Frais de Manutention");
+            cmbTypeFraisRecheNote.Items.Add("Indeminites de Deplacement");
+            cmbTypeFraisRecheNote.Items.Add("Frais de Transport");
+            cmbTypeFraisRecheNote.Items.Add("Frais de Deplacement Technicien(Controle de Gestion)");
+            cmbTypeFraisRecheNote.Items.Add("Frais de Deplacement Ingenieur(Controle de Gestion)");
+            cmbTypeFraisRecheNote.Items.Add("Frais de Kilometriques(Controle de Gestion)");
+            cmbTypeFraisRecheNote.Items.Add("Divers");
+            cmbTypeFraisRecheNote.Items.Add("Redéfinir...");
         }
         //methode pour remplir Pieces Comptable de Note
         public void remplirPCNote()
         {
             cmbPCFrais.Items.Clear();
+            cmbPCFraisRecheNote.Items.Clear();
 
             cmbPCFrais.Items.Add("Bon");
             cmbPCFrais.Items.Add("Facture");
             cmbPCFrais.Items.Add("Ticket");
             cmbPCFrais.Items.Add("Sans");
+
+            cmbPCFraisRecheNote.Items.Add("Bon");
+            cmbPCFraisRecheNote.Items.Add("Facture");
+            cmbPCFraisRecheNote.Items.Add("Ticket");
+            cmbPCFraisRecheNote.Items.Add("Sans");
+        }
+
+        //methode pour remplir la list des frais
+        public void remplirListFrais()
+        {
+            
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+
+            ListRechercheFraisNote.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ListRechercheFraisNote.DataSource = dt;
         }
 
 
@@ -686,6 +728,7 @@ namespace GestionAffaire
             RemplirNomRespo();
             remplirListRespo();
             NumeroNote();
+            remplirListFrais();
         }
 
 
@@ -1355,6 +1398,7 @@ namespace GestionAffaire
                             txtFraisFrais.Text = "0";
 
                             remplirNumeroNote();
+                            remplirListFrais();
                         }
                         else
                             errorProvider1.SetError(cmbRespoNote,"cette information est Obligatoir");
@@ -1406,6 +1450,7 @@ namespace GestionAffaire
                         txtNumAff.Text = txtTotalFraisNote.Text = "";
 
                         remplirNumeroNote();
+                        remplirListFrais();
                     }
                     catch (Exception ex)
                     {
@@ -1565,6 +1610,7 @@ namespace GestionAffaire
                         remplirPCNote();
                         remplirTypeNote();
                         NumeroNote();
+                        remplirListFrais();
 
                         listFraisNote.Rows.Clear();
 
@@ -2066,6 +2112,8 @@ namespace GestionAffaire
                         con.Close();
 
                         listFraisNote.Rows.RemoveAt(e.RowIndex);
+
+                        remplirListFrais();
                     }
                 }
             }
@@ -2077,9 +2125,67 @@ namespace GestionAffaire
                 }
             }
         }
-        
 
-        
+
+
+        // recherche les frais
+        private void btnRechercheFraisNote_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            if (cmbTypeFraisRecheNote.Text != "" && cmbPCFraisRecheNote.Text != "")
+            {
+                DataTable dt = new DataTable();
+                dt.Rows.Clear();
+
+                con.Open();
+                cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where Type='"+ cmbTypeFraisRecheNote.Text 
+                                                         +"' and PiecesComptables='"+ cmbPCFraisRecheNote.Text 
+                                                         +"' and date between '"
+                                                                + DateTime.Parse(txtDateDebutFraisRecheNote.Text) 
+                                                                +"' and '"
+                                                                + DateTime.Parse(txtDateFinFraisRecheNote.Text)
+                                                        +"' and frais between '"
+                                                                + double.Parse(txtMinFraisFraisRecheNote.Value.ToString())
+                                                                +"' and '"
+                                                                + double.Parse(txtMaxFraisFraisRecheNote.Value.ToString())+"'";
+                da.SelectCommand = cmd;
+                da.Fill(dt);
+                con.Close();
+
+                if (dt.Rows != null)
+                {
+                    ListRechercheFraisNote.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    ListRechercheFraisNote.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Il n'y a pas de frais");
+                }
+
+            }
+            else
+            {
+                if (cmbTypeFraisRecheNote.Text == "")
+                    errorProvider1.SetError(cmbTypeFraisRecheNote,"choisir Type de Frais");
+                if (cmbPCFraisRecheNote.Text == "")
+                    errorProvider1.SetError(cmbPCFraisRecheNote, "choisir Piece Comptable de Frais");
+            }
+        }
+        private void btnActualiserFraisNoteReche_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            remplirTypeNote();
+            remplirPCNote();
+            txtDateDebutFraisRecheNote.Text = txtDateFinFraisRecheNote.Text = "";
+            txtMinFraisFraisRecheNote.Value = txtMaxFraisFraisRecheNote.Value = 0;
+
+            remplirListFrais();
+        }
+
+
+
         private void button5_Click(object sender, EventArgs e)
         {
             errorProvider1.Dispose();
@@ -2147,7 +2253,10 @@ namespace GestionAffaire
         private void ListAff_CellClick(object sender, DataGridViewCellEventArgs e){}
         private void ListAff_CellContentClick_1(object sender, DataGridViewCellEventArgs e){}
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e){}
+        private void missionToolStripMenuItem2_Click(object sender, EventArgs e){}
+        private void beneficaireToolStripMenuItem_Click(object sender, EventArgs e){}
+        private void beneficaireToolStripMenuItem1_Click(object sender, EventArgs e){}
+        private void noteDeFraisToolStripMenuItem1_Click(object sender, EventArgs e){}
 
-        
     }
 }
