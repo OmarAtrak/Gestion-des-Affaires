@@ -1646,6 +1646,8 @@ namespace GestionAffaire
                     f.Show();
                     this.Hide();
                 }
+                else
+                    errorProvider1.SetError(cmbNumeroMission, "la Note n'est pas Existant");
             }
             else
                 errorProvider1.SetError(cmbNumeroNote, "chisir Numero de Note");
@@ -1884,6 +1886,44 @@ namespace GestionAffaire
 
             cmbNumeroMission.Text = txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
         }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            if (cmbNumeroMission.Text != "")
+            {
+                if (IsMissionExists(int.Parse(cmbNumeroMission.Text)))
+                {
+                    DataSet ds = new DataSet();
+                    ds.Tables.Clear();
+
+                    con.Open();
+
+                    cmd.CommandText = "select * from Mission where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
+                    da.SelectCommand = cmd;
+                    da.Fill(ds, "Mission");
+
+                    con.Close();
+
+
+
+                    CrystalReport3 cr = new CrystalReport3();
+                    cr.Database.Tables["Mission"].SetDataSource(ds.Tables[0]);
+
+                    Form4 f = new Form4();
+                    f.crystalReportViewer1.ReportSource = null;
+                    f.crystalReportViewer1.ReportSource = cr;
+                    f.crystalReportViewer1.Refresh();
+
+                    f.Show();
+                    this.Hide();
+                }
+                else
+                    errorProvider1.SetError(cmbNumeroMission, "l'ordre de Mission n'est pas Existant");
+            }
+            else
+                errorProvider1.SetError(cmbNumeroMission, "chisir Numero de Mission");
+        }
 
 
 
@@ -2107,5 +2147,7 @@ namespace GestionAffaire
         private void ListAff_CellClick(object sender, DataGridViewCellEventArgs e){}
         private void ListAff_CellContentClick_1(object sender, DataGridViewCellEventArgs e){}
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e){}
+
+        
     }
 }
