@@ -64,6 +64,9 @@ namespace GestionAffaire
             this.lesPartiesIntéresséesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.BoxNoteAjouter = new System.Windows.Forms.GroupBox();
+            this.cmbRespoNote = new System.Windows.Forms.ComboBox();
+            this.txtRespoNote = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtDateNote = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -152,9 +155,6 @@ namespace GestionAffaire
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button8 = new System.Windows.Forms.Button();
             this.btnValiderClient = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtRespoNote = new System.Windows.Forms.TextBox();
-            this.cmbRespoNote = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -256,6 +256,38 @@ namespace GestionAffaire
             this.BoxNoteAjouter.TabStop = false;
             this.BoxNoteAjouter.Text = "Note des Frais :";
             this.BoxNoteAjouter.Visible = false;
+            // 
+            // cmbRespoNote
+            // 
+            this.cmbRespoNote.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRespoNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRespoNote.FormattingEnabled = true;
+            this.cmbRespoNote.Location = new System.Drawing.Point(410, 104);
+            this.cmbRespoNote.Name = "cmbRespoNote";
+            this.cmbRespoNote.Size = new System.Drawing.Size(418, 28);
+            this.cmbRespoNote.TabIndex = 42;
+            // 
+            // txtRespoNote
+            // 
+            this.txtRespoNote.BackColor = System.Drawing.SystemColors.Control;
+            this.txtRespoNote.Enabled = false;
+            this.txtRespoNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRespoNote.Location = new System.Drawing.Point(410, 104);
+            this.txtRespoNote.Multiline = true;
+            this.txtRespoNote.Name = "txtRespoNote";
+            this.txtRespoNote.Size = new System.Drawing.Size(418, 29);
+            this.txtRespoNote.TabIndex = 40;
+            this.txtRespoNote.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(300, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 20);
+            this.label4.TabIndex = 39;
+            this.label4.Text = "Bénéficiaire :";
             // 
             // txtDateNote
             // 
@@ -1418,38 +1450,6 @@ namespace GestionAffaire
             this.btnValiderClient.Text = "Valider";
             this.btnValiderClient.UseVisualStyleBackColor = true;
             this.btnValiderClient.Click += new System.EventHandler(this.btnValiderClient_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(300, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 20);
-            this.label4.TabIndex = 39;
-            this.label4.Text = "Bénéficiaire :";
-            // 
-            // txtRespoNote
-            // 
-            this.txtRespoNote.BackColor = System.Drawing.SystemColors.Control;
-            this.txtRespoNote.Enabled = false;
-            this.txtRespoNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRespoNote.Location = new System.Drawing.Point(410, 104);
-            this.txtRespoNote.Multiline = true;
-            this.txtRespoNote.Name = "txtRespoNote";
-            this.txtRespoNote.Size = new System.Drawing.Size(418, 29);
-            this.txtRespoNote.TabIndex = 40;
-            this.txtRespoNote.Visible = false;
-            // 
-            // cmbRespoNote
-            // 
-            this.cmbRespoNote.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRespoNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbRespoNote.FormattingEnabled = true;
-            this.cmbRespoNote.Location = new System.Drawing.Point(410, 104);
-            this.cmbRespoNote.Name = "cmbRespoNote";
-            this.cmbRespoNote.Size = new System.Drawing.Size(418, 28);
-            this.cmbRespoNote.TabIndex = 42;
             // 
             // Form1
             // 

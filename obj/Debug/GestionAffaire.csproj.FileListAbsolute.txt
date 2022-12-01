@@ -80,3 +80,4 @@ C:\Users\OMAR\Desktop\Projects\GestionAffaire\obj\Debug\GestionAffaire.exe
 C:\Users\OMAR\Desktop\Projects\GestionAffaire\obj\Debug\GestionAffaire.pdb
 C:\Users\OMAR\Desktop\Projects\GestionAffaire\bin\Debug\System.Data.SqlClient.dll
 C:\Users\OMAR\Desktop\Projects\GestionAffaire\bin\Debug\System.Data.SqlClient.xml
+C:\Users\OMAR\Desktop\Projects\GestionAffaire\obj\Debug\GestionAffaire.Form4.resources

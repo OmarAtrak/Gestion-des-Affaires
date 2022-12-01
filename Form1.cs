@@ -577,6 +577,98 @@ namespace GestionAffaire
             return numeroNote;
         }
 
+        //methode pour verifier si le client a une affaire
+        public Boolean IsClientExistsInAffaire(string ICE)
+        {
+            DataTable dt = new DataTable();
+
+            if (dt != null)
+            {
+                dt.Rows.Clear();
+            }
+
+            Boolean isThere = false;
+            con.Open();
+            cmd.CommandText = "select Client from Affaires where Client='" + ICE + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count != 0)
+            {
+                isThere = true;
+            }
+            return isThere;
+        }
+
+        //methode pour verifier si le responsable a une affaire
+        public Boolean IsRespoExistsInAffaire(string nom)
+        {
+            DataTable dt = new DataTable();
+
+            if (dt != null)
+            {
+                dt.Rows.Clear();
+            }
+
+            Boolean isThere = false;
+            con.Open();
+            cmd.CommandText = "select Responsable from Affaires where Responsable='" + nom + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count != 0)
+            {
+                isThere = true;
+            }
+            return isThere;
+        }
+
+        //methode pour verifier si le Responsable a une ordre de mission
+        public Boolean IsRespoExistsInMission(string nom)
+        {
+            DataTable dt = new DataTable();
+
+            if (dt != null)
+            {
+                dt.Rows.Clear();
+            }
+
+            Boolean isThere = false;
+            con.Open();
+            cmd.CommandText = "select respo from Mission where respo='" + nom + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count != 0)
+            {
+                isThere = true;
+            }
+            return isThere;
+        }
+
+        //methode pour verifier si le Responsable a une Note
+        public Boolean IsRespoExistsInNote(string nom)
+        {
+            DataTable dt = new DataTable();
+
+            if (dt != null)
+            {
+                dt.Rows.Clear();
+            }
+
+            Boolean isThere = false;
+            con.Open();
+            cmd.CommandText = "select respo from NoteFrais where respo='" + nom + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count != 0)
+            {
+                isThere = true;
+            }
+            return isThere;
+        }
+
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -842,17 +934,23 @@ namespace GestionAffaire
                         {
                             if (MessageBox.Show("voulez-vous supprimer Client?", "Supprimer Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                
-                                con.Open();
-                                cmd.CommandText = "delete Client where ICE='" + txtICEClient.Text + "'";
-                                cmd.ExecuteNonQuery();
-                                con.Close();
+                                if (IsClientExistsInAffaire(txtICEClient.Text))
+                                {
+                                    MessageBox.Show("le Client a une ou plusieur Affaire ");
+                                }
+                                else
+                                {
+                                    con.Open();
+                                    cmd.CommandText = "delete Client where ICE='" + txtICEClient.Text + "'";
+                                    cmd.ExecuteNonQuery();
+                                    con.Close();
 
-                                MessageBox.Show("Suppression Avec Succès");
+                                    MessageBox.Show("Suppression Avec Succès");
 
-                                txtICEClient.Text = txtRaisonSocialClient.Text = "";
-                                remplirListClient();
-                                RemplirIdClient();
+                                    txtICEClient.Text = txtRaisonSocialClient.Text = "";
+                                    remplirListClient();
+                                    RemplirIdClient();
+                                }
                             }
                         }
                         else
