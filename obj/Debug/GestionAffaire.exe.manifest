@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="GestionAffaire.exe" version="1.0.0.30" publicKeyToken="0000000000000000" language="fr-FR" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="GestionAffaire.exe" version="1.0.0.31" publicKeyToken="0000000000000000" language="fr-FR" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="aqua_smooth_folder_documents.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -247,14 +247,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GestionAffaire.exe" size="760232">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GestionAffaire.exe" size="761256">
       <assemblyIdentity name="GestionAffaire" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ws7M8SFEwa4gfuhOHkm7KV8+EvAghg9sPCGM6zPpSbE=</dsig:DigestValue>
+        <dsig:DigestValue>Jru9/kvG7Hqmvl18tOHBFPf2OBBP0N5fYkcsAAeVlFc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -309,7 +309,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>knXAtk77oLMHK4i9sBlaRY3KFvey7MrcCufwBZbpvXQ=</dsig:DigestValue>
+      <dsig:DigestValue>whGwWmkD2NbqV9pEh8S1mq1xSxsd0VwwhOYO5K231pE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="DB_Affaire_log.ldf" size="8388608" writeableType="applicationData">
@@ -318,7 +318,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>lalE3TTG4/PljQSQ+s1KcAFYh3U+BoIV3WYvnv/rzfY=</dsig:DigestValue>
+      <dsig:DigestValue>RYtQ3OG22x02ZhM6M7+qCd1pH1Q6y51+PCIIkzIeCGI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="GestionAffaire.exe.config" size="423">

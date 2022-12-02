@@ -177,6 +177,8 @@ namespace GestionAffaire
             this.label5 = new System.Windows.Forms.Label();
             this.cmbPCFraisRecheNote = new System.Windows.Forms.ComboBox();
             this.cmbTypeFraisRecheNote = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtNbrPessonneMission = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -197,6 +199,7 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.ListRechercheFraisNote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaxFraisFraisRecheNote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMinFraisFraisRecheNote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNbrPessonneMission)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -930,6 +933,8 @@ namespace GestionAffaire
             // BoxMission
             // 
             this.BoxMission.BackColor = System.Drawing.Color.LightGray;
+            this.BoxMission.Controls.Add(this.txtNbrPessonneMission);
+            this.BoxMission.Controls.Add(this.label15);
             this.BoxMission.Controls.Add(this.button1);
             this.BoxMission.Controls.Add(this.btnValiderMission);
             this.BoxMission.Controls.Add(this.label38);
@@ -989,7 +994,7 @@ namespace GestionAffaire
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(149, 217);
+            this.label38.Location = new System.Drawing.Point(149, 214);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(100, 20);
             this.label38.TabIndex = 33;
@@ -998,7 +1003,7 @@ namespace GestionAffaire
             // txtLieuArriveMission
             // 
             this.txtLieuArriveMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLieuArriveMission.Location = new System.Drawing.Point(290, 214);
+            this.txtLieuArriveMission.Location = new System.Drawing.Point(290, 211);
             this.txtLieuArriveMission.Name = "txtLieuArriveMission";
             this.txtLieuArriveMission.Size = new System.Drawing.Size(418, 26);
             this.txtLieuArriveMission.TabIndex = 32;
@@ -1020,7 +1025,7 @@ namespace GestionAffaire
             this.txtDateFinMission.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateFinMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateFinMission.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDateFinMission.Location = new System.Drawing.Point(549, 129);
+            this.txtDateFinMission.Location = new System.Drawing.Point(549, 147);
             this.txtDateFinMission.Name = "txtDateFinMission";
             this.txtDateFinMission.Size = new System.Drawing.Size(159, 26);
             this.txtDateFinMission.TabIndex = 30;
@@ -1030,7 +1035,7 @@ namespace GestionAffaire
             this.txtDateDebutMission.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateDebutMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateDebutMission.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDateDebutMission.Location = new System.Drawing.Point(290, 129);
+            this.txtDateDebutMission.Location = new System.Drawing.Point(290, 147);
             this.txtDateDebutMission.Name = "txtDateDebutMission";
             this.txtDateDebutMission.Size = new System.Drawing.Size(159, 26);
             this.txtDateDebutMission.TabIndex = 29;
@@ -1073,7 +1078,7 @@ namespace GestionAffaire
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(482, 134);
+            this.label26.Location = new System.Drawing.Point(482, 152);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(26, 20);
             this.label26.TabIndex = 24;
@@ -1084,7 +1089,7 @@ namespace GestionAffaire
             this.cmbRespoMission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRespoMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRespoMission.FormattingEnabled = true;
-            this.cmbRespoMission.Location = new System.Drawing.Point(290, 90);
+            this.cmbRespoMission.Location = new System.Drawing.Point(290, 79);
             this.cmbRespoMission.Name = "cmbRespoMission";
             this.cmbRespoMission.Size = new System.Drawing.Size(418, 28);
             this.cmbRespoMission.TabIndex = 22;
@@ -1094,7 +1099,7 @@ namespace GestionAffaire
             this.cmbNumAffMission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNumAffMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbNumAffMission.FormattingEnabled = true;
-            this.cmbNumAffMission.Location = new System.Drawing.Point(290, 257);
+            this.cmbNumAffMission.Location = new System.Drawing.Point(290, 113);
             this.cmbNumAffMission.Name = "cmbNumAffMission";
             this.cmbNumAffMission.Size = new System.Drawing.Size(418, 28);
             this.cmbNumAffMission.TabIndex = 21;
@@ -1103,7 +1108,7 @@ namespace GestionAffaire
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(119, 93);
+            this.label27.Location = new System.Drawing.Point(119, 82);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(130, 20);
             this.label27.TabIndex = 20;
@@ -1113,7 +1118,7 @@ namespace GestionAffaire
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(149, 175);
+            this.label28.Location = new System.Drawing.Point(149, 182);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(100, 20);
             this.label28.TabIndex = 19;
@@ -1122,7 +1127,7 @@ namespace GestionAffaire
             // txtLieuDepartMission
             // 
             this.txtLieuDepartMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLieuDepartMission.Location = new System.Drawing.Point(290, 172);
+            this.txtLieuDepartMission.Location = new System.Drawing.Point(290, 179);
             this.txtLieuDepartMission.Name = "txtLieuDepartMission";
             this.txtLieuDepartMission.Size = new System.Drawing.Size(418, 26);
             this.txtLieuDepartMission.TabIndex = 18;
@@ -1131,7 +1136,7 @@ namespace GestionAffaire
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(214, 137);
+            this.label29.Location = new System.Drawing.Point(214, 155);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(35, 20);
             this.label29.TabIndex = 17;
@@ -1154,7 +1159,7 @@ namespace GestionAffaire
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(115, 260);
+            this.label30.Location = new System.Drawing.Point(115, 116);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(134, 20);
             this.label30.TabIndex = 15;
@@ -1700,6 +1705,29 @@ namespace GestionAffaire
             this.cmbTypeFraisRecheNote.Size = new System.Drawing.Size(415, 28);
             this.cmbTypeFraisRecheNote.TabIndex = 0;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(74, 245);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(175, 20);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "Nombre de Personnes :";
+            // 
+            // txtNbrPessonneMission
+            // 
+            this.txtNbrPessonneMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNbrPessonneMission.Location = new System.Drawing.Point(290, 243);
+            this.txtNbrPessonneMission.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.txtNbrPessonneMission.Name = "txtNbrPessonneMission";
+            this.txtNbrPessonneMission.Size = new System.Drawing.Size(418, 26);
+            this.txtNbrPessonneMission.TabIndex = 37;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1749,6 +1777,7 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.ListRechercheFraisNote)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaxFraisFraisRecheNote)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMinFraisFraisRecheNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNbrPessonneMission)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1871,6 +1900,8 @@ namespace GestionAffaire
         public System.Windows.Forms.DataGridView ListRechercheFraisNote;
         private System.Windows.Forms.Button btnActualiserFraisNoteReche;
         private System.Windows.Forms.Button btnRechercheFraisNote;
+        private System.Windows.Forms.NumericUpDown txtNbrPessonneMission;
+        private System.Windows.Forms.Label label15;
     }
 }
 

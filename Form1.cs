@@ -405,11 +405,13 @@ namespace GestionAffaire
             cmbPCFrais.Items.Add("Facture");
             cmbPCFrais.Items.Add("Ticket");
             cmbPCFrais.Items.Add("Sans");
+            cmbPCFrais.Items.Add("Redéfinir...");
 
             cmbPCFraisRecheNote.Items.Add("Bon");
             cmbPCFraisRecheNote.Items.Add("Facture");
             cmbPCFraisRecheNote.Items.Add("Ticket");
             cmbPCFraisRecheNote.Items.Add("Sans");
+            cmbPCFraisRecheNote.Items.Add("Redéfinir...");
         }
 
         //methode pour remplir la list des frais
@@ -1330,6 +1332,16 @@ namespace GestionAffaire
             {
                 txtFraisFrais.Enabled = true;
             }
+
+            if (cmbPCFrais.Text == "Redéfinir...")
+            {
+                cmbPCFrais.DropDownStyle = ComboBoxStyle.DropDown;
+                cmbPCFrais.Text = "";
+            }
+            else
+            {
+                cmbPCFrais.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
         }
         private void cmbNumeroNote_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1653,6 +1665,10 @@ namespace GestionAffaire
 
             remplirNumeroNote();
             txtNumAff.Text = txtTotalFraisNote.Text = "";
+
+            cmbTypeFrais.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPCFrais.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
         private void btnImrimerPdfNote_Click(object sender, EventArgs e)
         {
@@ -1751,26 +1767,35 @@ namespace GestionAffaire
             {
                 if (Convert.ToDateTime(txtDateFinMission.Text) >= Convert.ToDateTime(txtDateDebutMission.Text))
                 {
-                    con.Open();
-                    cmd.CommandText = "insert into Mission(dateDebut,dateFin,lieuDepart,lieuArriver,affaire,respo) values('" +
-                                                                            DateTime.Parse(txtDateDebutMission.Text) + "','" +
-                                                                            DateTime.Parse(txtDateFinMission.Text) + "','" +
-                                                                            txtLieuDepartMission.Text + "','" +
-                                                                            txtLieuArriveMission.Text + "','" +
-                                                                            cmbNumAffMission.Text + "','" +
-                                                                            cmbRespoMission.Text + "')";
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                    if (txtNbrPessonneMission.Value > 0)
+                    {
+                        con.Open();
+                        cmd.CommandText = "insert into Mission(dateDebut,dateFin,lieuDepart,lieuArriver,affaire,respo,nbrPersonne) values('" +
+                                                                                DateTime.Parse(txtDateDebutMission.Text) + "','" +
+                                                                                DateTime.Parse(txtDateFinMission.Text) + "','" +
+                                                                                txtLieuDepartMission.Text + "','" +
+                                                                                txtLieuArriveMission.Text + "','" +
+                                                                                cmbNumAffMission.Text + "','" +
+                                                                                cmbRespoMission.Text + "','" +
+                                                                                int.Parse(txtNbrPessonneMission.Value.ToString()) + "')";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
 
-                    MessageBox.Show("Ajouter Avec Succès");
+                        MessageBox.Show("Ajouter Avec Succès");
 
-                    remplirNumeroMission();
-                    remplirListMission();
-                    remplirNumeroMission();
-                    RemplirNumeroAffaire();
-                    RemplirNomRespo();
+                        remplirNumeroMission();
+                        remplirListMission();
+                        remplirNumeroMission();
+                        RemplirNumeroAffaire();
+                        RemplirNomRespo();
+                        txtNbrPessonneMission.Value = 0;
 
-                    cmbNumeroMission.Text = txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
+                        cmbNumeroMission.Text = txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(txtNbrPessonneMission, "Minimum Nombre de Personne est 1");
+                    }
                 }
                 else
                 {
@@ -1813,7 +1838,8 @@ namespace GestionAffaire
                                                                 "',lieuArriver='" + txtLieuArriveMission.Text +
                                                                 "',affaire='" + cmbNumAffMission.Text +
                                                                 "',respo='" + cmbRespoMission.Text +
-                                                                "' where numero='" + cmbNumeroMission.Text + "'";
+                                                                "',nbrPersonne='" + int.Parse(txtNbrPessonneMission.Value.ToString()) +
+                                                                "' where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
                             cmd.ExecuteNonQuery();
                             cmd.Parameters.Clear();
                             cmd.CommandText = "update Mission set NbrJour = DATEDIFF(DAY, dateDebut, dateFin)  + 1 where numero='" + cmbNumeroMission.Text + "'";
@@ -1826,6 +1852,7 @@ namespace GestionAffaire
                             remplirListMission();
                             RemplirNumeroAffaire();
                             RemplirNomRespo();
+                            txtNbrPessonneMission.Value = 0;
 
                             cmbNumeroMission.Text = txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
                         }
@@ -1898,7 +1925,7 @@ namespace GestionAffaire
                     if (MessageBox.Show("voulez-vous supprimer Ordre de Mission?", "Supprimer Ordre de Mission", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         con.Open();
-                        cmd.CommandText = "delete Mission where numero='" + cmbNumeroMission.Text + "'";
+                        cmd.CommandText = "delete Mission where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
                         cmd.ExecuteNonQuery();
                         con.Close();
 
@@ -2133,43 +2160,43 @@ namespace GestionAffaire
         {
             errorProvider1.Dispose();
 
-            if (cmbTypeFraisRecheNote.Text != "" && cmbPCFraisRecheNote.Text != "")
+            
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+
+            string query = "";
+            if (cmbTypeFraisRecheNote.Text != "")
             {
-                DataTable dt = new DataTable();
-                dt.Rows.Clear();
+                query = "Type = '" + cmbTypeFraisRecheNote.Text + "'";
+            }
+            if (cmbPCFraisRecheNote.Text != "")
+            {
+                query += "PiecesComptables='" + cmbPCFraisRecheNote.Text + "'";
+            }
+            cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where '" + query
+                                                        +"' and PiecesComptables='"+ cmbPCFraisRecheNote.Text 
+                                                        +"' and date between '"
+                                                            + DateTime.Parse(txtDateDebutFraisRecheNote.Text) 
+                                                            +"' and '"
+                                                            + DateTime.Parse(txtDateFinFraisRecheNote.Text)
+                                                    +"' and frais between '"
+                                                            + double.Parse(txtMinFraisFraisRecheNote.Value.ToString())
+                                                            +"' and '"
+                                                            + double.Parse(txtMaxFraisFraisRecheNote.Value.ToString())+"'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
 
-                con.Open();
-                cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where Type='"+ cmbTypeFraisRecheNote.Text 
-                                                         +"' and PiecesComptables='"+ cmbPCFraisRecheNote.Text 
-                                                         +"' and date between '"
-                                                                + DateTime.Parse(txtDateDebutFraisRecheNote.Text) 
-                                                                +"' and '"
-                                                                + DateTime.Parse(txtDateFinFraisRecheNote.Text)
-                                                        +"' and frais between '"
-                                                                + double.Parse(txtMinFraisFraisRecheNote.Value.ToString())
-                                                                +"' and '"
-                                                                + double.Parse(txtMaxFraisFraisRecheNote.Value.ToString())+"'";
-                da.SelectCommand = cmd;
-                da.Fill(dt);
-                con.Close();
-
-                if (dt.Rows != null)
-                {
-                    ListRechercheFraisNote.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    ListRechercheFraisNote.DataSource = dt;
-                }
-                else
-                {
-                    MessageBox.Show("Il n'y a pas de frais");
-                }
-
+            if (dt.Rows != null)
+            {
+                ListRechercheFraisNote.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                ListRechercheFraisNote.DataSource = dt;
             }
             else
             {
-                if (cmbTypeFraisRecheNote.Text == "")
-                    errorProvider1.SetError(cmbTypeFraisRecheNote,"choisir Type de Frais");
-                if (cmbPCFraisRecheNote.Text == "")
-                    errorProvider1.SetError(cmbPCFraisRecheNote, "choisir Piece Comptable de Frais");
+                MessageBox.Show("Il n'y a pas de frais");
             }
         }
         private void btnActualiserFraisNoteReche_Click(object sender, EventArgs e)
@@ -2182,6 +2209,10 @@ namespace GestionAffaire
             txtMinFraisFraisRecheNote.Value = txtMaxFraisFraisRecheNote.Value = 0;
 
             remplirListFrais();
+
+            cmbTypeFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPCFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
 
 
