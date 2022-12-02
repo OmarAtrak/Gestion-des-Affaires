@@ -33,6 +33,7 @@ namespace GestionAffaire
             BoxMission.Visible = false;
             BoxPartiesInterecee.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
         }
         private void affaireToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -41,6 +42,7 @@ namespace GestionAffaire
             BoxMission.Visible = false;
             BoxPartiesInterecee.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
         }
         private void rechercheToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -49,6 +51,7 @@ namespace GestionAffaire
             BoxMission.Visible = false;
             BoxPartiesInterecee.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
         }
         private void pToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -57,6 +60,7 @@ namespace GestionAffaire
             BoxNoteAjouter.Visible = false;
             BoxMission.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
         }
         private void missionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -65,6 +69,7 @@ namespace GestionAffaire
             BoxAff.Visible = false;
             BoxNoteAjouter.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
         }
         private void lesPartiesIntereceeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -73,6 +78,7 @@ namespace GestionAffaire
             BoxAff.Visible = false;
             BoxNoteAjouter.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
         }
         private void lesPartiesIntéresséesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -81,10 +87,21 @@ namespace GestionAffaire
             BoxAff.Visible = false;
             BoxNoteAjouter.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
         }
         private void rechercheDansLesFraisToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BoxRecherchFraisdeNote.Visible = true;
+            BoxPartiesInterecee.Visible = false;
+            BoxMission.Visible = false;
+            BoxAff.Visible = false;
+            BoxNoteAjouter.Visible = false;
+            BoxMissionReche.Visible = false;
+        }
+        private void rechercherToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BoxMissionReche.Visible = true;
+            BoxRecherchFraisdeNote.Visible = false;
             BoxPartiesInterecee.Visible = false;
             BoxMission.Visible = false;
             BoxAff.Visible = false;
@@ -149,6 +166,7 @@ namespace GestionAffaire
             cmbResponsableAff.Items.Clear();
             cmbRespoMission.Items.Clear();
             cmbRespoNote.Items.Clear();
+            cmbRespoMissionReche.Items.Clear();
 
             if (dt != null)
             {
@@ -161,12 +179,14 @@ namespace GestionAffaire
             da.SelectCommand = cmd;
             da.Fill(dt);
 
+            cmbRespoMissionReche.Items.Add("");
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 txtNomRespo.Items.Add(dt.Rows[i][0].ToString());
                 cmbResponsableAff.Items.Add(dt.Rows[i][0].ToString());
                 cmbRespoMission.Items.Add(dt.Rows[i][0].ToString());
                 cmbRespoNote.Items.Add(dt.Rows[i][0].ToString());
+                cmbRespoMissionReche.Items.Add(dt.Rows[i][0].ToString());
             }
 
             con.Close();
@@ -190,6 +210,43 @@ namespace GestionAffaire
             ListRespo.DataSource = dt;
         }
 
+        //methode pour remplir le nom et la list des employes
+        public void remplirNomEmploye()
+        {
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            txtNomPersonne.Items.Clear();
+
+            con.Open();
+            cmd.CommandText = "select nom from Personnel";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                txtNomPersonne.Items.Add(dt.Rows[i][0].ToString());
+                
+            }
+
+            con.Close();
+        }
+        public void remplirListEmploye()
+        {
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Nom, Prenom from Personnel";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            con.Close();
+
+            listPersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            listPersonnel.DataSource = dt;
+        }
+
         // methode pour remplir le numero et la liste d'affaire
         public void RemplirNumeroAffaire()
         {
@@ -202,8 +259,7 @@ namespace GestionAffaire
             cmbNumAffaireNote.Items.Clear();
             cmbNumAffMission.Items.Clear();
             cmbNumeroAff.Items.Clear();
-
-
+            cmbAffMissionReche.Items.Clear();
 
 
 
@@ -220,10 +276,12 @@ namespace GestionAffaire
             con.Close();
 
 
+            cmbAffMissionReche.Items.Add("");
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 cmbNumeroAff.Items.Add(dt.Rows[i][0].ToString());
                 cmbNumAffMission.Items.Add(dt.Rows[i][0].ToString());
+                cmbAffMissionReche.Items.Add(dt.Rows[i][0].ToString());
             }
 
             cmbNumAffaireNote.Items.Add("");
@@ -309,7 +367,7 @@ namespace GestionAffaire
             //listFraisNote.DataSource = dt;
         }
 
-        //methode pour remplir le Numeros et la liste des Missions
+        //methode pour remplir le Numero et la liste des Missions
         public void remplirNumeroMission()
         {
             DataTable dt = new DataTable();
@@ -343,14 +401,16 @@ namespace GestionAffaire
             }
 
             con.Open();
-            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',affaire as 'Affaire' from Mission";
+            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission";
             da.SelectCommand = cmd;
             da.Fill(dt);
 
             con.Close();
 
-            ListMission.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ListMissionReche.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListMission.DataSource = dt;
+            ListMission.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ListMissionReche.DataSource = dt;
         }
 
         //methode pour remplir Type de Note
@@ -713,6 +773,42 @@ namespace GestionAffaire
             return isThere;
         }
 
+        //methode pour verifier si le Responsable a une Note
+        public Boolean IsEmployeExists(string nom)
+        {
+            DataTable dt = new DataTable();
+
+            if (dt != null)
+            {
+                dt.Rows.Clear();
+            }
+
+            Boolean isThere = false;
+            con.Open();
+            cmd.CommandText = "select nom from Personnel where nom='" + nom + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count != 0)
+            {
+                isThere = true;
+            }
+            return isThere;
+        }
+
+
+        public int NomberFrais()
+        {
+            int n = 1;
+            for (int i = 0; i < listFraisNote.Rows.Count-1; i++)
+            {
+                if (int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) == i+1)
+                {
+                    n++;
+                }
+            }
+            return n;
+        }
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -731,6 +827,8 @@ namespace GestionAffaire
             remplirListRespo();
             NumeroNote();
             remplirListFrais();
+            remplirNomEmploye();
+            remplirListEmploye();
         }
 
 
@@ -743,6 +841,7 @@ namespace GestionAffaire
             if (radioButton2.Checked == true)
             {
                 radioButton3.Checked = false;
+                radioButton1.Checked = false;
 
                 BoxRespoAjouter.Visible = true;
             }
@@ -758,12 +857,29 @@ namespace GestionAffaire
             if (radioButton3.Checked == true)
             {
                 radioButton2.Checked = false;
+                radioButton1.Checked = false;
 
                 BoxClientAjouter.Visible = true;
             }
             else
             {
                 BoxClientAjouter.Visible = false;
+            }
+        }
+        private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            if (radioButton1.Checked == true)
+            {
+                radioButton2.Checked = false;
+                radioButton3.Checked = false;
+
+                BoxPersonnel.Visible = true;
+            }
+            else
+            {
+                BoxPersonnel.Visible = false;
             }
         }
         private void btnValiderClient_Click(object sender, EventArgs e)
@@ -834,7 +950,7 @@ namespace GestionAffaire
                         }
                         else
                         {
-                            errorProvider1.SetError(txtPrenomRespo, "les informations est Obligatoir");
+                            errorProvider1.SetError(txtPrenomRespo, "cette information est Obligatoir");
                         }
                     }
                 }
@@ -843,28 +959,40 @@ namespace GestionAffaire
                     errorProvider1.SetError(txtNomRespo, "cette information est Obligatoir");
                 }
             }
-        }
-        private void txtNomRespo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            errorProvider1.Dispose();
-
-            DataTable dt = new DataTable();
-            if (dt != null)
+            else if (radioButton1.Checked == true)
             {
-                dt.Rows.Clear();
+                if (txtNomPersonne.Text != "")
+                {
+                    if (IsEmployeExists(txtNomPersonne.Text) == true)
+                    {
+                        errorProvider1.SetError(txtNomPersonne, "Personne est déjà Existant");
+                    }
+                    else
+                    {
+                        if (txtPrenomPresonne.Text != "")
+                        {
+                            con.Open();
+                            cmd.CommandText = "insert into Personnel values('" + txtNomPersonne.Text + "','" + txtPrenomPresonne.Text + "')";
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+
+                            MessageBox.Show("Personne Ajouter Avec Succès");
+
+                            txtNomPersonne.Text = txtPrenomPresonne.Text = "";
+                            remplirNomEmploye();
+                            remplirListEmploye();
+                        }
+                        else
+                        {
+                            errorProvider1.SetError(txtPrenomPresonne, "cette Information est Obligatoir");
+                        }
+                    }
+                }
+                else
+                {
+                    errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoir");
+                }
             }
-
-            con.Open();
-            cmd.CommandText = "select Nom, Prenom from Responsable where nom='"+ txtNomRespo.Text +"'";
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-
-            con.Close();
-
-            ListRespo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            ListRespo.DataSource = dt;
-
-            txtPrenomRespo.Text = dt.Rows[0][1].ToString();
         }
         private void btnModifierCR_Click(object sender, EventArgs e)
         {
@@ -929,7 +1057,7 @@ namespace GestionAffaire
                         }
                         else
                         {
-                            errorProvider1.SetError(btnValiderClient, "les informations est Obligatoir");
+                            errorProvider1.SetError(txtPrenomRespo, "Prenom est Obligatoir");
                         }
                     }
                 }
@@ -938,8 +1066,61 @@ namespace GestionAffaire
                     errorProvider1.SetError(txtNomRespo, "cette information est Obligatoir");
                 }
             }
+            else if (radioButton1.Checked == true)
+            {
+                if (txtNomPersonne.Text != "")
+                {
+                    if (IsEmployeExists(txtNomPersonne.Text) == false)
+                    {
+                        errorProvider1.SetError(txtNomPersonne, "Personne n'est pas Existant");
+                    }
+                    else
+                    {
+                        if (txtPrenomPresonne.Text != "")
+                        {
+                            con.Open();
+                            cmd.CommandText = "update Personnel set prenom='" + txtPrenomPresonne.Text + "' where nom='" + txtNomPersonne.Text + "'";
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+
+                            MessageBox.Show("Modification Avec Succès");
+
+                            txtNomPersonne.Text = txtPrenomPresonne.Text = "";
+                            remplirNomEmploye();
+                            remplirListEmploye();
+                        }
+                        else
+                        {
+                            errorProvider1.SetError(txtPrenomPresonne, "Prenom est Obligatoir");
+                        }
+                    }
+                }
+                else
+                {
+                    errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoir");
+                }
+            }
         }
         private void txtICEClient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select ICE,raisonSociale as 'Raison Sociale' from Client where ICE='" + txtICEClient.Text + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            con.Close();
+
+            ListClient.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ListClient.DataSource = dt;
+
+            txtRaisonSocialClient.Text = dt.Rows[0][1].ToString();
+        }
+        private void txtNomRespo_SelectedIndexChanged(object sender, EventArgs e)
         {
             errorProvider1.Dispose();
 
@@ -950,16 +1131,35 @@ namespace GestionAffaire
             }
 
             con.Open();
-            cmd.CommandText = "select * from Client where ICE='" + txtICEClient.Text + "'";
+            cmd.CommandText = "select Nom, Prenom from Responsable where nom='"+ txtNomRespo.Text +"'";
             da.SelectCommand = cmd;
             da.Fill(dt);
 
             con.Close();
 
-            ListClient.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            ListClient.DataSource = dt;
+            ListRespo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ListRespo.DataSource = dt;
 
-            txtRaisonSocialClient.Text = dt.Rows[0][1].ToString();
+            txtPrenomRespo.Text = dt.Rows[0][1].ToString();
+        }
+        private void txtNomPersonne_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Nom, Prenom from Personnel where nom='" + txtNomPersonne.Text + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            con.Close();
+
+            listPersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            listPersonnel.DataSource = dt;
+
+            txtPrenomPresonne.Text = dt.Rows[0][1].ToString();
         }
         private void btnSupprimerCR_Click(object sender, EventArgs e)
         {
@@ -975,32 +1175,25 @@ namespace GestionAffaire
                     }
                     else
                     {
-                        if (txtRaisonSocialClient.Text != "")
+                        if (MessageBox.Show("voulez-vous supprimer Client?", "Supprimer Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            if (MessageBox.Show("voulez-vous supprimer Client?", "Supprimer Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            if (IsClientExistsInAffaire(txtICEClient.Text))
                             {
-                                if (IsClientExistsInAffaire(txtICEClient.Text))
-                                {
-                                    MessageBox.Show("le Client a une ou plusieur Affaire ");
-                                }
-                                else
-                                {
-                                    con.Open();
-                                    cmd.CommandText = "delete Client where ICE='" + txtICEClient.Text + "'";
-                                    cmd.ExecuteNonQuery();
-                                    con.Close();
-
-                                    MessageBox.Show("Suppression Avec Succès");
-
-                                    txtICEClient.Text = txtRaisonSocialClient.Text = "";
-                                    remplirListClient();
-                                    RemplirIdClient();
-                                }
+                                MessageBox.Show("le Client a une ou plusieur Affaire ");
                             }
-                        }
-                        else
-                        {
-                            errorProvider1.SetError(txtRaisonSocialClient, "cette information est Obligatoir");
+                            else
+                            {
+                                con.Open();
+                                cmd.CommandText = "delete Client where ICE='" + txtICEClient.Text + "'";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+
+                                MessageBox.Show("Suppression Avec Succès");
+
+                                txtICEClient.Text = txtRaisonSocialClient.Text = "";
+                                remplirListClient();
+                                RemplirIdClient();
+                            }
                         }
                     }
                 }
@@ -1019,29 +1212,50 @@ namespace GestionAffaire
                     }
                     else
                     {
-                        if (txtPrenomRespo.Text != "")
+                        if (MessageBox.Show("voulez-vous supprimer Chargé d'affaire?", "Supprimer Chargé d'affaire", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            if (MessageBox.Show("voulez-vous supprimer Chargé d'affaire?", "Supprimer Chargé d'affaire", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                            {
-                                con.Open();
-                                cmd.CommandText = "delete Responsable where nom='" + txtNomRespo.Text + "'";
-                                cmd.ExecuteNonQuery();
-                                con.Close();
+                            con.Open();
+                            cmd.CommandText = "delete Responsable where nom='" + txtNomRespo.Text + "'";
+                            cmd.ExecuteNonQuery();
+                            con.Close();
 
-                                txtNomRespo.Text = txtPrenomRespo.Text = "";
-                                RemplirNomRespo();
-                                remplirListRespo();
-                            }
-                        }
-                        else
-                        {
-                            errorProvider1.SetError(txtPrenomRespo, "les informations est Obligatoir");
+                            txtNomRespo.Text = txtPrenomRespo.Text = "";
+                            RemplirNomRespo();
+                            remplirListRespo();
                         }
                     }
                 }
                 else
                 {
                     errorProvider1.SetError(txtNomRespo, "cette information est Obligatoir");
+                }
+            }
+            else if (radioButton1.Checked == true)
+            {
+                if (txtNomPersonne.Text != "")
+                {
+                    if (IsEmployeExists(txtNomPersonne.Text) == false)
+                    {
+                        errorProvider1.SetError(txtNomPersonne, "Personne n'est pas Existant");
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("voulez-vous supprimer Chargé d'affaire?", "Supprimer Chargé d'affaire", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            con.Open();
+                            cmd.CommandText = "delete Personnel where nom='" + txtNomPersonne.Text + "'";
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+
+                            txtNomPersonne.Text = txtPrenomPresonne.Text = "";
+                            remplirNomEmploye();
+                            remplirListEmploye();
+                        }
+                    }
+                }
+                else
+                {
+                    errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoir");
                 }
             }
         }
@@ -1409,6 +1623,7 @@ namespace GestionAffaire
                             txtDateNote.Text = "";
                             txtFraisFrais.Text = "0";
 
+
                             remplirNumeroNote();
                             remplirListFrais();
                         }
@@ -1454,6 +1669,7 @@ namespace GestionAffaire
                         remplirPCNote();
                         NumeroNote();
                         RemplirNumeroAffaire();
+                        RemplirNomRespo();
                         remplirListAffaire();
                         txtDateFrais.Text = "";
                         txtDateNote.Text = "";
@@ -1761,8 +1977,7 @@ namespace GestionAffaire
         private void btnValiderMission_Click_1(object sender, EventArgs e)
         {
             errorProvider1.Dispose();
-
-            
+                        
             if (cmbRespoMission.Text != "" && txtDateDebutMission.Text != "" && txtDateFinMission.Text != "" && txtLieuDepartMission.Text != "" && txtLieuArriveMission.Text != "" && cmbNumAffMission.Text != "")
             {
                 if (Convert.ToDateTime(txtDateFinMission.Text) >= Convert.ToDateTime(txtDateDebutMission.Text))
@@ -1891,7 +2106,7 @@ namespace GestionAffaire
             }
 
             con.Open();
-            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',affaire as 'Affaire' from Mission where numero='" + cmbNumeroMission.Text + "'";
+            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where numero='" + cmbNumeroMission.Text + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -1993,6 +2208,134 @@ namespace GestionAffaire
                 errorProvider1.SetError(cmbNumeroMission, "chisir Numero de Mission");
         }
 
+        // recherche les missions
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+
+            if (DateTime.Parse(txtDateFinMissionReche.Value.ToString()) >= DateTime.Parse(txtDateDebutMissionReche.Value.ToString()))
+            {
+                if (cmbAffMissionReche.Text != "" && cmbRespoMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "" && txtLieuArriverMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
+                                                        + cmbRespoMissionReche.Text
+                                                        + "' and affaire='" + cmbAffMissionReche.Text
+                                                        + "' and lieuDebut='" + txtLieuDepartMissionReche.Text
+                                                        + "' and lieuArrivier='" + txtLieuArriverMissionReche.Text
+                                                        + "' and date between '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                            + "' and '"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "'";
+                }
+                else if (cmbAffMissionReche.Text != "" && cmbRespoMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
+                                                        + cmbRespoMissionReche.Text
+                                                        + "' and affaire='" + cmbAffMissionReche.Text
+                                                        + "' and lieuDebut='" + txtLieuDepartMissionReche.Text
+                                                        + "' and date between '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                            + "' and '"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "'";
+                }
+                else if (cmbAffMissionReche.Text != "" && cmbRespoMissionReche.Text != "" && txtLieuArriverMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
+                                                        + cmbRespoMissionReche.Text
+                                                        + "' and affaire='" + cmbAffMissionReche.Text
+                                                        + "' and lieuArrivier='" + txtLieuArriverMissionReche.Text
+                                                        + "' and date between '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                            + "' and '"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "'";
+                }
+                else if (cmbAffMissionReche.Text != "" && cmbRespoMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
+                                                        + cmbRespoMissionReche.Text
+                                                        + "' and affaire='" + cmbAffMissionReche.Text
+                                                        + "' and lieuDebut='" + txtLieuDepartMissionReche.Text
+                                                        + "' and date between '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                            + "' and '"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "'";
+                }
+                else if (cmbAffMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
+                                                        + cmbRespoMissionReche.Text
+                                                        + "' and affaire='" + cmbAffMissionReche.Text
+                                                        + "' and date between '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                            + "' and '"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "'";
+                }
+                else if (cmbAffMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
+                                                        + cmbRespoMissionReche.Text
+                                                        + "' and affaire='" + cmbAffMissionReche.Text
+                                                        + "' and date between '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                            + "' and '"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "'";
+                }
+                else if (cmbAffMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
+                                                        + cmbRespoMissionReche.Text
+                                                        + "' and affaire='" + cmbAffMissionReche.Text
+                                                        + "' and date between '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                            + "' and '"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "'";
+                }
+                
+                
+
+                da.SelectCommand = cmd;
+                da.Fill(dt);
+                con.Close();
+
+                if (dt.Rows != null)
+                {
+                    ListRechercheFraisNote.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    ListRechercheFraisNote.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Il n'y a pas de Frais entre cette Date");
+                }
+            }
+            else
+            {
+                errorProvider1.SetError(btnRechercheFraisNote, "Saisir une Date Valide");
+            }
+        }
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            RemplirNomRespo();
+            RemplirNumeroAffaire();
+            txtDateDebutMissionReche.Text = txtDateFinMissionReche.Text = txtLieuDepartMissionReche.Text = txtLieuArriverMissionReche.Text ="";
+            txtNbrPersonneMissionReche.Value = 1;
+        }
+        
+
 
 
         // frais
@@ -2056,7 +2399,7 @@ namespace GestionAffaire
                 {
                     if (double.Parse(txtFraisFrais.Text) >= 0)
                     {
-                        listFraisNote.Rows.Add(listFraisNote.Rows.Count.ToString() ,cmbTypeFrais.Text,cmbPCFrais.Text, txtDateFrais.Text, txtFraisFrais.Text);
+                        listFraisNote.Rows.Add(NomberFrais() ,cmbTypeFrais.Text,cmbPCFrais.Text, txtDateFrais.Text, txtFraisFrais.Text);
                     
                     
                         remplirTypeNote();
@@ -2148,8 +2491,6 @@ namespace GestionAffaire
             }
         }
 
-
-
         // recherche les frais
         private void btnRechercheFraisNote_Click(object sender, EventArgs e)
         {
@@ -2161,28 +2502,13 @@ namespace GestionAffaire
 
             con.Open();
 
-            string queryType = "";
-            string queryPC = "";
-
-            if (cmbTypeFraisRecheNote.Text != "")
+            if (DateTime.Parse(txtDateFinFraisRecheNote.Value.ToString()) >= DateTime.Parse(txtDateDebutFraisRecheNote.Value.ToString()))
             {
-                queryType = "Type = '" + cmbTypeFraisRecheNote.Text + "'";
-            }
-            if (cmbPCFraisRecheNote.Text != "")
-            {
-                queryPC = "PiecesComptables='" + cmbPCFraisRecheNote.Text + "'";
-            }
-
-
-
-            if (txtDateFinFraisRecheNote.Value >= txtDateDebutFraisRecheNote.Value)
-            {
-                con.Open();
-                if (queryType != "" && queryPC != "")
+                if (cmbTypeFraisRecheNote.Text != "" && cmbPCFraisRecheNote.Text != "")
                 {
-                    cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where '" 
-                                                        + queryType 
-                                                        + "' and '" + queryPC
+                    cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where Type='" 
+                                                        + cmbTypeFraisRecheNote.Text
+                                                        + "' and PiecesComptables='" + cmbPCFraisRecheNote.Text
                                                         + "' and date between '"
                                                             + DateTime.Parse(txtDateDebutFraisRecheNote.Text)
                                                             + "' and '"
@@ -2192,32 +2518,44 @@ namespace GestionAffaire
                                                             + "' and '"
                                                             + double.Parse(txtMaxFraisFraisRecheNote.Value.ToString()) + "'";
                 }
-                else if (queryType != "")
+                else if (cmbTypeFraisRecheNote.Text != "")
                 {
-                    cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where '"
-                                                        + queryType
+                    cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where Type='"
+                                                        + cmbTypeFraisRecheNote
                                                         + "' and date between '"
                                                             + DateTime.Parse(txtDateDebutFraisRecheNote.Text)
                                                             + "' and '"
                                                             + DateTime.Parse(txtDateFinFraisRecheNote.Text)
-                                                    + "' and frais between '"
+                                                        + "' and frais between '"
                                                             + double.Parse(txtMinFraisFraisRecheNote.Value.ToString())
                                                             + "' and '"
                                                             + double.Parse(txtMaxFraisFraisRecheNote.Value.ToString()) + "'";
                 }
-                else if (queryPC != "")
+                else if (cmbPCFraisRecheNote.Text != "")
                 {
-                    cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where '"
-                                                        + "' and '" + queryPC
+                    cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where PiecesComptables='"
+                                                        + cmbPCFraisRecheNote.Text
                                                         + "' and date between '"
                                                             + DateTime.Parse(txtDateDebutFraisRecheNote.Text)
                                                             + "' and '"
                                                             + DateTime.Parse(txtDateFinFraisRecheNote.Text)
-                                                    + "' and frais between '"
+                                                        + "' and frais between '"
                                                             + double.Parse(txtMinFraisFraisRecheNote.Value.ToString())
                                                             + "' and '"
                                                             + double.Parse(txtMaxFraisFraisRecheNote.Value.ToString()) + "'";
                 }
+                else
+                {
+                    cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where date between '"
+                                                            + DateTime.Parse(txtDateDebutFraisRecheNote.Text)
+                                                            + "' and '"
+                                                            + DateTime.Parse(txtDateFinFraisRecheNote.Text)
+                                                        + "' and frais between '"
+                                                            + double.Parse(txtMinFraisFraisRecheNote.Value.ToString())
+                                                            + "' and '"
+                                                            + double.Parse(txtMaxFraisFraisRecheNote.Value.ToString()) + "'";
+                }
+
                 da.SelectCommand = cmd;
                 da.Fill(dt);
                 con.Close();
@@ -2234,7 +2572,7 @@ namespace GestionAffaire
             }
             else
             {
-                errorProvider1.SetError(btnActualiserFraisNoteReche,"Saisir une Date Valide");
+                errorProvider1.SetError(btnRechercheFraisNote,"Saisir une Date Valide");
             }
         }
         private void btnActualiserFraisNoteReche_Click(object sender, EventArgs e)
@@ -2244,13 +2582,38 @@ namespace GestionAffaire
             remplirTypeNote();
             remplirPCNote();
             txtDateDebutFraisRecheNote.Text = txtDateFinFraisRecheNote.Text = "";
-            txtMinFraisFraisRecheNote.Value = txtMaxFraisFraisRecheNote.Value = 0;
+            txtMinFraisFraisRecheNote.Value = 0;
+            txtMaxFraisFraisRecheNote.Value = 10000;
 
             remplirListFrais();
 
             cmbTypeFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPCFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDownList;
 
+        }
+        private void cmbTypeFraisRecheNote_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTypeFraisRecheNote.Text == "Redéfinir...")
+            {
+                cmbTypeFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDown;
+                cmbTypeFraisRecheNote.Text = "";
+            }
+            else
+            {
+                cmbTypeFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+        }
+        private void cmbPCFraisRecheNote_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPCFraisRecheNote.Text == "Redéfinir...")
+            {
+                cmbPCFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDown;
+                cmbPCFraisRecheNote.Text = "";
+            }
+            else
+            {
+                cmbPCFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
         }
 
 
@@ -2284,11 +2647,15 @@ namespace GestionAffaire
         {
             errorProvider1.Dispose();
 
-            txtNomRespo.Text = txtPrenomRespo.Text = txtICEClient.Text = txtRaisonSocialClient.Text = "";
+            txtNomRespo.Text = txtPrenomRespo.Text = txtICEClient.Text = txtRaisonSocialClient.Text = txtNomPersonne.Text = txtPrenomPresonne.Text = "";
 
+            RemplirIdClient();
             remplirListClient();
             RemplirNomRespo();
             remplirListRespo();
+            remplirNomEmploye();
+            remplirListEmploye();
+
         }
 
 
