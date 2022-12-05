@@ -1388,7 +1388,7 @@ namespace GestionAffaire
             this.BoxClientAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxClientAjouter.Location = new System.Drawing.Point(304, 55);
             this.BoxClientAjouter.Name = "BoxClientAjouter";
-            this.BoxClientAjouter.Size = new System.Drawing.Size(540, 377);
+            this.BoxClientAjouter.Size = new System.Drawing.Size(540, 374);
             this.BoxClientAjouter.TabIndex = 25;
             this.BoxClientAjouter.TabStop = false;
             this.BoxClientAjouter.Text = "Client :";
@@ -1905,6 +1905,7 @@ namespace GestionAffaire
             this.BoxMissionReche.TabStop = false;
             this.BoxMissionReche.Text = "Rechercher Ordre de Missions:";
             this.BoxMissionReche.Visible = false;
+            this.BoxMissionReche.Enter += new System.EventHandler(this.BoxMissionReche_Enter);
             // 
             // txtLieuArriverMissionReche
             // 
@@ -2085,7 +2086,7 @@ namespace GestionAffaire
             // 
             this.cmbEmployeOrdre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeOrdre.FormattingEnabled = true;
-            this.cmbEmployeOrdre.Location = new System.Drawing.Point(126, 13);
+            this.cmbEmployeOrdre.Location = new System.Drawing.Point(118, 16);
             this.cmbEmployeOrdre.Name = "cmbEmployeOrdre";
             this.cmbEmployeOrdre.Size = new System.Drawing.Size(208, 28);
             this.cmbEmployeOrdre.TabIndex = 37;
@@ -2094,7 +2095,7 @@ namespace GestionAffaire
             // 
             this.listeEmployeOrdre.FormattingEnabled = true;
             this.listeEmployeOrdre.ItemHeight = 20;
-            this.listeEmployeOrdre.Location = new System.Drawing.Point(126, 51);
+            this.listeEmployeOrdre.Location = new System.Drawing.Point(118, 53);
             this.listeEmployeOrdre.Name = "listeEmployeOrdre";
             this.listeEmployeOrdre.Size = new System.Drawing.Size(418, 84);
             this.listeEmployeOrdre.TabIndex = 38;
@@ -2104,7 +2105,7 @@ namespace GestionAffaire
             this.button2.BackColor = System.Drawing.SystemColors.Control;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(351, 13);
+            this.button2.Location = new System.Drawing.Point(343, 16);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(88, 28);
             this.button2.TabIndex = 39;
@@ -2131,7 +2132,7 @@ namespace GestionAffaire
             // 
             this.button5.BackColor = System.Drawing.SystemColors.Control;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(445, 13);
+            this.button5.Location = new System.Drawing.Point(437, 16);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(99, 28);
             this.button5.TabIndex = 41;
