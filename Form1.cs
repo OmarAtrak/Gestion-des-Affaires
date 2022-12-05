@@ -217,6 +217,7 @@ namespace GestionAffaire
             dt.Rows.Clear();
 
             txtNomPersonne.Items.Clear();
+            cmbEmployeOrdre.Items.Clear();
 
             con.Open();
             cmd.CommandText = "select nom from Personnel";
@@ -226,6 +227,7 @@ namespace GestionAffaire
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 txtNomPersonne.Items.Add(dt.Rows[i][0].ToString());
+                cmbEmployeOrdre.Items.Add(dt.Rows[i][0].ToString());
                 
             }
 
@@ -829,6 +831,8 @@ namespace GestionAffaire
             remplirListFrais();
             remplirNomEmploye();
             remplirListEmploye();
+
+            
         }
 
 
@@ -1990,8 +1994,17 @@ namespace GestionAffaire
                                                                             txtLieuArriveMission.Text + "','" +
                                                                             cmbNumAffMission.Text + "','" +
                                                                             cmbRespoMission.Text + "','" +
-                                                                            int.Parse(txtNbrPessonneMission.Value.ToString()) + "')";
+                                                                            int.Parse(listeEmployeOrdre.Items.Count.ToString()) + "')";
                     cmd.ExecuteNonQuery();
+
+                    cmd.Parameters.Clear();
+
+                    for (int i = 0; i < listeEmployeOrdre.Items.Count; i++)
+                    {
+                        cmd.CommandText = "insert into DetailMission values((select top(1) numero from Mission order by numero desc) ,'" + listeEmployeOrdre.Items[i].ToString() + "')";
+                        cmd.ExecuteNonQuery();
+                    }
+
                     con.Close();
 
                     MessageBox.Show("Ajouter Avec Succès");
@@ -2001,7 +2014,7 @@ namespace GestionAffaire
                     remplirNumeroMission();
                     RemplirNumeroAffaire();
                     RemplirNomRespo();
-                    txtNbrPessonneMission.Value = 1;
+                    listeEmployeOrdre.Items.Clear();
 
                     cmbNumeroMission.Text = txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
                 }
@@ -2046,7 +2059,7 @@ namespace GestionAffaire
                                                                 "',lieuArriver='" + txtLieuArriveMission.Text +
                                                                 "',affaire='" + cmbNumAffMission.Text +
                                                                 "',respo='" + cmbRespoMission.Text +
-                                                                "',nbrPersonne='" + int.Parse(txtNbrPessonneMission.Value.ToString()) +
+                                                                "',nbrPersonne='" + int.Parse(listeEmployeOrdre.Items.Count.ToString()) +
                                                                 "' where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
                             cmd.ExecuteNonQuery();
                             cmd.Parameters.Clear();
@@ -2060,7 +2073,7 @@ namespace GestionAffaire
                             remplirListMission();
                             RemplirNumeroAffaire();
                             RemplirNomRespo();
-                            txtNbrPessonneMission.Value = 1;
+                            listeEmployeOrdre.Items.Clear();
 
                             cmbNumeroMission.Text = txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
                         }
@@ -2099,29 +2112,44 @@ namespace GestionAffaire
             errorProvider1.Dispose();
 
             DataTable dt = new DataTable();
+            DataTable dt2 = new DataTable();
 
-            if (dt != null)
-            {
-                dt.Rows.Clear();
-            }
+            dt.Rows.Clear();
+            dt2.Rows.Clear();
 
+            
             con.Open();
-            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where numero='" + cmbNumeroMission.Text + "'";
+            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select personnel from DetailMission where mission='" + int.Parse(cmbNumeroMission.Text) + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt2);
+
+
             con.Close();
+
+
 
             cmbRespoMission.Text = dt.Rows[0][1].ToString();
             txtDateDebutMission.Text = dt.Rows[0][2].ToString();
             txtDateFinMission.Text = dt.Rows[0][3].ToString();
             txtLieuDepartMission.Text = dt.Rows[0][5].ToString();
             txtLieuArriveMission.Text = dt.Rows[0][6].ToString();
-            cmbNumAffMission.Text = dt.Rows[0][7].ToString();
+            cmbNumAffMission.SelectedItem = dt.Rows[0][8].ToString();
 
 
 
             ListMission.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListMission.DataSource = dt;
+
+            for (int i = 0; i < dt2.Rows.Count; i++)
+            {
+                listeEmployeOrdre.Items.Add(dt2.Rows[i][0].ToString());
+            }
         }
         private void btnSupprimerMission_Click(object sender, EventArgs e)
         {
@@ -2144,7 +2172,7 @@ namespace GestionAffaire
                         RemplirNomRespo();
                         RemplirNumeroAffaire();
                         remplirListMission();
-                        txtNbrPessonneMission.Value = 1;
+                        listeEmployeOrdre.Items.Clear();
 
 
                         txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
@@ -2166,6 +2194,7 @@ namespace GestionAffaire
             remplirListMission();
             RemplirNumeroAffaire();
             RemplirNomRespo();
+            listeEmployeOrdre.Items.Clear();
 
             cmbNumeroMission.Text = txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
         }
@@ -2206,6 +2235,16 @@ namespace GestionAffaire
             }
             else
                 errorProvider1.SetError(cmbNumeroMission, "chisir Numero de Mission");
+        }
+        private void button2_Click_3(object sender, EventArgs e)
+        {
+            listeEmployeOrdre.Items.Add(cmbEmployeOrdre.Text);
+            cmbEmployeOrdre.Items.RemoveAt(cmbEmployeOrdre.SelectedIndex);
+        }
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            listeEmployeOrdre.Items.Clear();
+            remplirNomEmploye();
         }
 
         // recherche les missions
@@ -2332,7 +2371,7 @@ namespace GestionAffaire
             RemplirNomRespo();
             RemplirNumeroAffaire();
             txtDateDebutMissionReche.Text = txtDateFinMissionReche.Text = txtLieuDepartMissionReche.Text = txtLieuArriverMissionReche.Text ="";
-            txtNbrPersonneMissionReche.Value = 1;
+
         }
         
 
@@ -2521,7 +2560,7 @@ namespace GestionAffaire
                 else if (cmbTypeFraisRecheNote.Text != "")
                 {
                     cmd.CommandText = "select Numero,Type,PiecesComptables as 'Piece Comptable',Frais,Date,noteFrais as 'Note de Frais' from Frais where Type='"
-                                                        + cmbTypeFraisRecheNote
+                                                        + cmbTypeFraisRecheNote.Text
                                                         + "' and date between '"
                                                             + DateTime.Parse(txtDateDebutFraisRecheNote.Text)
                                                             + "' and '"
@@ -2694,5 +2733,6 @@ namespace GestionAffaire
         private void beneficaireToolStripMenuItem1_Click(object sender, EventArgs e){}
         private void noteDeFraisToolStripMenuItem1_Click(object sender, EventArgs e){}
 
+        
     }
 }

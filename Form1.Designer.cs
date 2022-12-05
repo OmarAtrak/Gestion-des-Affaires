@@ -46,6 +46,11 @@ namespace GestionAffaire
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -66,11 +71,6 @@ namespace GestionAffaire
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ajouterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,7 +132,6 @@ namespace GestionAffaire
             this.btnSupprimerAff = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.BoxMission = new System.Windows.Forms.GroupBox();
-            this.txtNbrPessonneMission = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnValiderMission = new System.Windows.Forms.Button();
@@ -155,6 +154,12 @@ namespace GestionAffaire
             this.label30 = new System.Windows.Forms.Label();
             this.ListMission = new System.Windows.Forms.DataGridView();
             this.BoxPartiesInterecee = new System.Windows.Forms.GroupBox();
+            this.BoxPersonnel = new System.Windows.Forms.GroupBox();
+            this.txtNomPersonne = new System.Windows.Forms.ComboBox();
+            this.listPersonnel = new System.Windows.Forms.DataGridView();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtPrenomPresonne = new System.Windows.Forms.TextBox();
             this.BoxClientAjouter = new System.Windows.Forms.GroupBox();
             this.txtICEClient = new System.Windows.Forms.ComboBox();
             this.ListClient = new System.Windows.Forms.DataGridView();
@@ -192,8 +197,6 @@ namespace GestionAffaire
             this.cmbPCFraisRecheNote = new System.Windows.Forms.ComboBox();
             this.cmbTypeFraisRecheNote = new System.Windows.Forms.ComboBox();
             this.BoxMissionReche = new System.Windows.Forms.GroupBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtNbrPersonneMissionReche = new System.Windows.Forms.NumericUpDown();
             this.txtLieuArriverMissionReche = new System.Windows.Forms.TextBox();
             this.txtLieuDepartMissionReche = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -209,12 +212,11 @@ namespace GestionAffaire
             this.label21 = new System.Windows.Forms.Label();
             this.cmbAffMissionReche = new System.Windows.Forms.ComboBox();
             this.cmbRespoMissionReche = new System.Windows.Forms.ComboBox();
-            this.BoxPersonnel = new System.Windows.Forms.GroupBox();
-            this.txtNomPersonne = new System.Windows.Forms.ComboBox();
-            this.listPersonnel = new System.Windows.Forms.DataGridView();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.txtPrenomPresonne = new System.Windows.Forms.TextBox();
+            this.cmbEmployeOrdre = new System.Windows.Forms.ComboBox();
+            this.listeEmployeOrdre = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -224,9 +226,10 @@ namespace GestionAffaire
             this.BoxAff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListAff)).BeginInit();
             this.BoxMission.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNbrPessonneMission)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListMission)).BeginInit();
             this.BoxPartiesInterecee.SuspendLayout();
+            this.BoxPersonnel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listPersonnel)).BeginInit();
             this.BoxClientAjouter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListClient)).BeginInit();
             this.BoxRespoAjouter.SuspendLayout();
@@ -237,10 +240,8 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.txtMaxFraisFraisRecheNote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMinFraisFraisRecheNote)).BeginInit();
             this.BoxMissionReche.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNbrPersonneMissionReche)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListMissionReche)).BeginInit();
-            this.BoxPersonnel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listPersonnel)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -984,8 +985,7 @@ namespace GestionAffaire
             // BoxMission
             // 
             this.BoxMission.BackColor = System.Drawing.Color.LightGray;
-            this.BoxMission.Controls.Add(this.txtNbrPessonneMission);
-            this.BoxMission.Controls.Add(this.label15);
+            this.BoxMission.Controls.Add(this.groupBox3);
             this.BoxMission.Controls.Add(this.button1);
             this.BoxMission.Controls.Add(this.btnValiderMission);
             this.BoxMission.Controls.Add(this.label38);
@@ -1006,7 +1006,7 @@ namespace GestionAffaire
             this.BoxMission.Controls.Add(this.btnModifierMission);
             this.BoxMission.Controls.Add(this.label30);
             this.BoxMission.Controls.Add(this.ListMission);
-            this.BoxMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxMission.Location = new System.Drawing.Point(12, 70);
             this.BoxMission.Name = "BoxMission";
             this.BoxMission.Size = new System.Drawing.Size(1346, 644);
@@ -1015,38 +1015,14 @@ namespace GestionAffaire
             this.BoxMission.Text = "Ordre de Mission :";
             this.BoxMission.Visible = false;
             // 
-            // txtNbrPessonneMission
-            // 
-            this.txtNbrPessonneMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNbrPessonneMission.Location = new System.Drawing.Point(290, 243);
-            this.txtNbrPessonneMission.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.txtNbrPessonneMission.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtNbrPessonneMission.Name = "txtNbrPessonneMission";
-            this.txtNbrPessonneMission.Size = new System.Drawing.Size(418, 26);
-            this.txtNbrPessonneMission.TabIndex = 37;
-            this.txtNbrPessonneMission.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(74, 245);
+            this.label15.Location = new System.Drawing.Point(14, 6);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(175, 20);
+            this.label15.Size = new System.Drawing.Size(0, 20);
             this.label15.TabIndex = 36;
-            this.label15.Text = "Nombre de Personnes :";
             // 
             // button1
             // 
@@ -1257,7 +1233,7 @@ namespace GestionAffaire
             this.ListMission.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1266,17 +1242,17 @@ namespace GestionAffaire
             this.ListMission.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ListMission.DefaultCellStyle = dataGridViewCellStyle28;
-            this.ListMission.Location = new System.Drawing.Point(6, 336);
+            this.ListMission.Location = new System.Drawing.Point(6, 393);
             this.ListMission.Name = "ListMission";
             dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1308,6 +1284,99 @@ namespace GestionAffaire
             this.BoxPartiesInterecee.Text = "Les Parties Intéressées :";
             this.BoxPartiesInterecee.Visible = false;
             this.BoxPartiesInterecee.Enter += new System.EventHandler(this.BoxClient_Enter);
+            // 
+            // BoxPersonnel
+            // 
+            this.BoxPersonnel.Controls.Add(this.txtNomPersonne);
+            this.BoxPersonnel.Controls.Add(this.listPersonnel);
+            this.BoxPersonnel.Controls.Add(this.label23);
+            this.BoxPersonnel.Controls.Add(this.label31);
+            this.BoxPersonnel.Controls.Add(this.txtPrenomPresonne);
+            this.BoxPersonnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxPersonnel.Location = new System.Drawing.Point(304, 55);
+            this.BoxPersonnel.Name = "BoxPersonnel";
+            this.BoxPersonnel.Size = new System.Drawing.Size(540, 374);
+            this.BoxPersonnel.TabIndex = 25;
+            this.BoxPersonnel.TabStop = false;
+            this.BoxPersonnel.Text = "Personnel :";
+            this.BoxPersonnel.Visible = false;
+            // 
+            // txtNomPersonne
+            // 
+            this.txtNomPersonne.FormattingEnabled = true;
+            this.txtNomPersonne.Location = new System.Drawing.Point(180, 50);
+            this.txtNomPersonne.Name = "txtNomPersonne";
+            this.txtNomPersonne.Size = new System.Drawing.Size(265, 28);
+            this.txtNomPersonne.TabIndex = 16;
+            this.txtNomPersonne.SelectedIndexChanged += new System.EventHandler(this.txtNomPersonne_SelectedIndexChanged);
+            // 
+            // listPersonnel
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listPersonnel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.listPersonnel.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listPersonnel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.listPersonnel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listPersonnel.DefaultCellStyle = dataGridViewCellStyle13;
+            this.listPersonnel.Location = new System.Drawing.Point(49, 189);
+            this.listPersonnel.Name = "listPersonnel";
+            this.listPersonnel.ReadOnly = true;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listPersonnel.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listPersonnel.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            this.listPersonnel.Size = new System.Drawing.Size(396, 156);
+            this.listPersonnel.TabIndex = 15;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(45, 53);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(50, 20);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "Nom :";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(45, 90);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(72, 20);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "Prenom :";
+            // 
+            // txtPrenomPresonne
+            // 
+            this.txtPrenomPresonne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrenomPresonne.Location = new System.Drawing.Point(180, 87);
+            this.txtPrenomPresonne.Name = "txtPrenomPresonne";
+            this.txtPrenomPresonne.Size = new System.Drawing.Size(265, 26);
+            this.txtPrenomPresonne.TabIndex = 13;
             // 
             // BoxClientAjouter
             // 
@@ -1813,8 +1882,6 @@ namespace GestionAffaire
             // BoxMissionReche
             // 
             this.BoxMissionReche.BackColor = System.Drawing.Color.LightGray;
-            this.BoxMissionReche.Controls.Add(this.label22);
-            this.BoxMissionReche.Controls.Add(this.txtNbrPersonneMissionReche);
             this.BoxMissionReche.Controls.Add(this.txtLieuArriverMissionReche);
             this.BoxMissionReche.Controls.Add(this.txtLieuDepartMissionReche);
             this.BoxMissionReche.Controls.Add(this.label17);
@@ -1838,39 +1905,6 @@ namespace GestionAffaire
             this.BoxMissionReche.TabStop = false;
             this.BoxMissionReche.Text = "Rechercher Ordre de Missions:";
             this.BoxMissionReche.Visible = false;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(9, 202);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(167, 20);
-            this.label22.TabIndex = 34;
-            this.label22.Text = "Nombre de Personne :";
-            // 
-            // txtNbrPersonneMissionReche
-            // 
-            this.txtNbrPersonneMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNbrPersonneMissionReche.Location = new System.Drawing.Point(185, 200);
-            this.txtNbrPersonneMissionReche.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.txtNbrPersonneMissionReche.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtNbrPersonneMissionReche.Name = "txtNbrPersonneMissionReche";
-            this.txtNbrPersonneMissionReche.Size = new System.Drawing.Size(415, 26);
-            this.txtNbrPersonneMissionReche.TabIndex = 33;
-            this.txtNbrPersonneMissionReche.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // txtLieuArriverMissionReche
             // 
@@ -2047,98 +2081,63 @@ namespace GestionAffaire
             this.cmbRespoMissionReche.Size = new System.Drawing.Size(415, 28);
             this.cmbRespoMissionReche.TabIndex = 0;
             // 
-            // BoxPersonnel
+            // cmbEmployeOrdre
             // 
-            this.BoxPersonnel.Controls.Add(this.txtNomPersonne);
-            this.BoxPersonnel.Controls.Add(this.listPersonnel);
-            this.BoxPersonnel.Controls.Add(this.label23);
-            this.BoxPersonnel.Controls.Add(this.label31);
-            this.BoxPersonnel.Controls.Add(this.txtPrenomPresonne);
-            this.BoxPersonnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxPersonnel.Location = new System.Drawing.Point(304, 55);
-            this.BoxPersonnel.Name = "BoxPersonnel";
-            this.BoxPersonnel.Size = new System.Drawing.Size(540, 374);
-            this.BoxPersonnel.TabIndex = 25;
-            this.BoxPersonnel.TabStop = false;
-            this.BoxPersonnel.Text = "Personnel :";
-            this.BoxPersonnel.Visible = false;
+            this.cmbEmployeOrdre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmployeOrdre.FormattingEnabled = true;
+            this.cmbEmployeOrdre.Location = new System.Drawing.Point(126, 13);
+            this.cmbEmployeOrdre.Name = "cmbEmployeOrdre";
+            this.cmbEmployeOrdre.Size = new System.Drawing.Size(208, 28);
+            this.cmbEmployeOrdre.TabIndex = 37;
             // 
-            // txtNomPersonne
+            // listeEmployeOrdre
             // 
-            this.txtNomPersonne.FormattingEnabled = true;
-            this.txtNomPersonne.Location = new System.Drawing.Point(180, 50);
-            this.txtNomPersonne.Name = "txtNomPersonne";
-            this.txtNomPersonne.Size = new System.Drawing.Size(265, 28);
-            this.txtNomPersonne.TabIndex = 16;
-            this.txtNomPersonne.SelectedIndexChanged += new System.EventHandler(this.txtNomPersonne_SelectedIndexChanged);
+            this.listeEmployeOrdre.FormattingEnabled = true;
+            this.listeEmployeOrdre.ItemHeight = 20;
+            this.listeEmployeOrdre.Location = new System.Drawing.Point(126, 51);
+            this.listeEmployeOrdre.Name = "listeEmployeOrdre";
+            this.listeEmployeOrdre.Size = new System.Drawing.Size(418, 84);
+            this.listeEmployeOrdre.TabIndex = 38;
             // 
-            // listPersonnel
+            // button2
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listPersonnel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
-            this.listPersonnel.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listPersonnel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.listPersonnel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listPersonnel.DefaultCellStyle = dataGridViewCellStyle13;
-            this.listPersonnel.Location = new System.Drawing.Point(49, 189);
-            this.listPersonnel.Name = "listPersonnel";
-            this.listPersonnel.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listPersonnel.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listPersonnel.RowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.listPersonnel.Size = new System.Drawing.Size(396, 156);
-            this.listPersonnel.TabIndex = 15;
+            this.button2.BackColor = System.Drawing.SystemColors.Control;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(351, 13);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 28);
+            this.button2.TabIndex = 39;
+            this.button2.Text = "Ajouter";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_3);
             // 
-            // label23
+            // groupBox3
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(45, 53);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(50, 20);
-            this.label23.TabIndex = 3;
-            this.label23.Text = "Nom :";
+            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.listeEmployeOrdre);
+            this.groupBox3.Controls.Add(this.cmbEmployeOrdre);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(172, 243);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(548, 143);
+            this.groupBox3.TabIndex = 40;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "l\'équipe :";
             // 
-            // label31
+            // button5
             // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(45, 90);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(72, 20);
-            this.label31.TabIndex = 0;
-            this.label31.Text = "Prenom :";
-            // 
-            // txtPrenomPresonne
-            // 
-            this.txtPrenomPresonne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrenomPresonne.Location = new System.Drawing.Point(180, 87);
-            this.txtPrenomPresonne.Name = "txtPrenomPresonne";
-            this.txtPrenomPresonne.Size = new System.Drawing.Size(265, 26);
-            this.txtPrenomPresonne.TabIndex = 13;
+            this.button5.BackColor = System.Drawing.SystemColors.Control;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(445, 13);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(99, 28);
+            this.button5.TabIndex = 41;
+            this.button5.Text = "Actualiser";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // Form1
             // 
@@ -2175,9 +2174,11 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.ListAff)).EndInit();
             this.BoxMission.ResumeLayout(false);
             this.BoxMission.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNbrPessonneMission)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListMission)).EndInit();
             this.BoxPartiesInterecee.ResumeLayout(false);
+            this.BoxPersonnel.ResumeLayout(false);
+            this.BoxPersonnel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listPersonnel)).EndInit();
             this.BoxClientAjouter.ResumeLayout(false);
             this.BoxClientAjouter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListClient)).EndInit();
@@ -2193,11 +2194,9 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.txtMinFraisFraisRecheNote)).EndInit();
             this.BoxMissionReche.ResumeLayout(false);
             this.BoxMissionReche.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNbrPersonneMissionReche)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListMissionReche)).EndInit();
-            this.BoxPersonnel.ResumeLayout(false);
-            this.BoxPersonnel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listPersonnel)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2320,7 +2319,6 @@ namespace GestionAffaire
         public System.Windows.Forms.DataGridView ListRechercheFraisNote;
         private System.Windows.Forms.Button btnActualiserFraisNoteReche;
         private System.Windows.Forms.Button btnRechercheFraisNote;
-        private System.Windows.Forms.NumericUpDown txtNbrPessonneMission;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox BoxMissionReche;
         private System.Windows.Forms.Button btnActualiserMissionReche;
@@ -2339,8 +2337,6 @@ namespace GestionAffaire
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtLieuArriverMissionReche;
         private System.Windows.Forms.TextBox txtLieuDepartMissionReche;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.NumericUpDown txtNbrPersonneMissionReche;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox BoxPersonnel;
         private System.Windows.Forms.ComboBox txtNomPersonne;
@@ -2348,6 +2344,11 @@ namespace GestionAffaire
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox txtPrenomPresonne;
+        private System.Windows.Forms.ListBox listeEmployeOrdre;
+        private System.Windows.Forms.ComboBox cmbEmployeOrdre;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button5;
     }
 }
 
