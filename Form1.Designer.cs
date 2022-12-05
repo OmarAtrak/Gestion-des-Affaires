@@ -339,7 +339,7 @@ namespace GestionAffaire
             this.BoxNoteAjouter.Controls.Add(this.btnActualiserNote);
             this.BoxNoteAjouter.Controls.Add(this.btnValiderNote);
             this.BoxNoteAjouter.Controls.Add(this.label9);
-            this.BoxNoteAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxNoteAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxNoteAjouter.Location = new System.Drawing.Point(12, 70);
             this.BoxNoteAjouter.Name = "BoxNoteAjouter";
             this.BoxNoteAjouter.Size = new System.Drawing.Size(1346, 644);
@@ -462,6 +462,7 @@ namespace GestionAffaire
             // 
             this.groupBox2.Controls.Add(this.rbModifierSupprimerNote);
             this.groupBox2.Controls.Add(this.rbValiderNote);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(6, 45);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(198, 158);
@@ -507,7 +508,7 @@ namespace GestionAffaire
             this.BoxFrais.Controls.Add(this.label6);
             this.BoxFrais.Controls.Add(this.label7);
             this.BoxFrais.Controls.Add(this.label8);
-            this.BoxFrais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxFrais.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxFrais.Location = new System.Drawing.Point(215, 206);
             this.BoxFrais.Name = "BoxFrais";
             this.BoxFrais.Size = new System.Drawing.Size(864, 190);
@@ -549,7 +550,7 @@ namespace GestionAffaire
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(116, 160);
+            this.label40.Location = new System.Drawing.Point(133, 160);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(52, 20);
             this.label40.TabIndex = 15;
@@ -586,7 +587,7 @@ namespace GestionAffaire
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(117, 45);
+            this.label6.Location = new System.Drawing.Point(134, 45);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 20);
             this.label6.TabIndex = 7;
@@ -596,7 +597,7 @@ namespace GestionAffaire
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(116, 121);
+            this.label7.Location = new System.Drawing.Point(133, 121);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 20);
             this.label7.TabIndex = 5;
@@ -606,7 +607,7 @@ namespace GestionAffaire
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(31, 83);
+            this.label8.Location = new System.Drawing.Point(48, 83);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(137, 20);
             this.label8.TabIndex = 3;
@@ -621,7 +622,7 @@ namespace GestionAffaire
             this.listFraisNote.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -637,7 +638,7 @@ namespace GestionAffaire
             this.DeleteButtonColumn});
             dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -648,7 +649,7 @@ namespace GestionAffaire
             this.listFraisNote.ReadOnly = true;
             dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -809,7 +810,7 @@ namespace GestionAffaire
             this.BoxAff.Controls.Add(this.cmbNumeroAff);
             this.BoxAff.Controls.Add(this.btnSupprimerAff);
             this.BoxAff.Controls.Add(this.label24);
-            this.BoxAff.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxAff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxAff.Location = new System.Drawing.Point(12, 70);
             this.BoxAff.Name = "BoxAff";
             this.BoxAff.Size = new System.Drawing.Size(1346, 644);
@@ -915,7 +916,7 @@ namespace GestionAffaire
             this.ListAff.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -924,7 +925,7 @@ namespace GestionAffaire
             this.ListAff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -935,7 +936,7 @@ namespace GestionAffaire
             this.ListAff.ReadOnly = true;
             dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1945,7 +1946,7 @@ namespace GestionAffaire
             // 
             // btnActualiserMissionReche
             // 
-            this.btnActualiserMissionReche.Location = new System.Drawing.Point(1151, 100);
+            this.btnActualiserMissionReche.Location = new System.Drawing.Point(1135, 108);
             this.btnActualiserMissionReche.Name = "btnActualiserMissionReche";
             this.btnActualiserMissionReche.Size = new System.Drawing.Size(170, 28);
             this.btnActualiserMissionReche.TabIndex = 28;
@@ -1955,7 +1956,7 @@ namespace GestionAffaire
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1151, 57);
+            this.button4.Location = new System.Drawing.Point(1135, 65);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(170, 28);
             this.button4.TabIndex = 27;

@@ -2115,6 +2115,7 @@ namespace GestionAffaire
                             remplirListMission();
                             RemplirNumeroAffaire();
                             RemplirNomRespo();
+                            remplirNomEmploye();
                             listeEmployeOrdre.Items.Clear();
 
                             cmbNumeroMission.Text = txtDateDebutMission.Text = txtDateFinMission.Text = txtLieuDepartMission.Text = txtLieuArriveMission.Text = "";
@@ -2188,6 +2189,7 @@ namespace GestionAffaire
             ListMission.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListMission.DataSource = dt;
 
+            listeEmployeOrdre.Items.Clear();
             for (int i = 0; i < dt2.Rows.Count; i++)
             {
                 listeEmployeOrdre.Items.Add(dt2.Rows[i][0].ToString());
@@ -2214,6 +2216,7 @@ namespace GestionAffaire
                         RemplirNomRespo();
                         RemplirNumeroAffaire();
                         remplirListMission();
+                        remplirNomEmploye();
                         listeEmployeOrdre.Items.Clear();
 
 
@@ -2322,8 +2325,8 @@ namespace GestionAffaire
             DataTable dt = new DataTable();
             dt.Rows.Clear();
 
-            con.Open();
 
+            con.Open();
             if (DateTime.Parse(txtDateFinMissionReche.Value.ToString()) >= DateTime.Parse(txtDateDebutMissionReche.Value.ToString()))
             {
                 if (cmbAffMissionReche.Text != "" && cmbRespoMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "" && txtLieuArriverMissionReche.Text != "")
@@ -2331,103 +2334,189 @@ namespace GestionAffaire
                     cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
                                                         + cmbRespoMissionReche.Text
                                                         + "' and affaire='" + cmbAffMissionReche.Text
-                                                        + "' and lieuDebut='" + txtLieuDepartMissionReche.Text
-                                                        + "' and lieuArrivier='" + txtLieuArriverMissionReche.Text
-                                                        + "' and date between '"
+                                                        + "' and lieuDepart='" + txtLieuDepartMissionReche.Text
+                                                        + "' and lieuArriver='" + txtLieuArriverMissionReche.Text
+                                                        + "' and (dateDebut>= '"
                                                             + DateTime.Parse(txtDateDebutMissionReche.Text)
-                                                            + "' and '"
+                                                        + "' and dateFin<='"
                                                             + DateTime.Parse(txtDateFinMissionReche.Text)
-                                                        + "'";
+                                                        + "')";
                 }
                 else if (cmbAffMissionReche.Text != "" && cmbRespoMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "")
                 {
                     cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
                                                         + cmbRespoMissionReche.Text
                                                         + "' and affaire='" + cmbAffMissionReche.Text
-                                                        + "' and lieuDebut='" + txtLieuDepartMissionReche.Text
-                                                        + "' and date between '"
+                                                        + "' and lieuDepart='" + txtLieuDepartMissionReche.Text
+                                                        + "' and (dateDebut>= '"
                                                             + DateTime.Parse(txtDateDebutMissionReche.Text)
-                                                            + "' and '"
+                                                        + "' and dateFin<='"
                                                             + DateTime.Parse(txtDateFinMissionReche.Text)
-                                                        + "'";
+                                                        + "')";
                 }
                 else if (cmbAffMissionReche.Text != "" && cmbRespoMissionReche.Text != "" && txtLieuArriverMissionReche.Text != "")
                 {
                     cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
                                                         + cmbRespoMissionReche.Text
                                                         + "' and affaire='" + cmbAffMissionReche.Text
-                                                        + "' and lieuArrivier='" + txtLieuArriverMissionReche.Text
-                                                        + "' and date between '"
+                                                        + "' and lieuArriver='" + txtLieuArriverMissionReche.Text
+                                                        + "' and (dateDebut>= '"
                                                             + DateTime.Parse(txtDateDebutMissionReche.Text)
-                                                            + "' and '"
+                                                        + "' and dateFin<='"
                                                             + DateTime.Parse(txtDateFinMissionReche.Text)
-                                                        + "'";
+                                                        + "')";
+                }
+                else if (cmbAffMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "" && txtLieuArriverMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where affaire='" 
+                                                        + cmbAffMissionReche.Text
+                                                        + "' and lieuDepart='" + txtLieuDepartMissionReche.Text
+                                                        + "' and lieuArriver='" + txtLieuArriverMissionReche.Text
+                                                        + "' and (dateDebut>= '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                        + "' and dateFin<='"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "')";
+                }
+                else if (cmbRespoMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "" && txtLieuArriverMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
+                                                        + cmbRespoMissionReche.Text
+                                                        + "' and lieuDepart='" + txtLieuDepartMissionReche.Text
+                                                        + "' and lieuArriver='" + txtLieuArriverMissionReche.Text
+                                                        + "' and (dateDebut>= '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                        + "' and dateFin<='"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "')";
                 }
                 else if (cmbAffMissionReche.Text != "" && cmbRespoMissionReche.Text != "")
                 {
-                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
-                                                        + cmbRespoMissionReche.Text
-                                                        + "' and affaire='" + cmbAffMissionReche.Text
-                                                        + "' and lieuDebut='" + txtLieuDepartMissionReche.Text
-                                                        + "' and date between '"
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where affaire='"
+                                                        + cmbAffMissionReche.Text
+                                                        + "' and respo='" + cmbRespoMissionReche.Text
+                                                        + "' and (dateDebut>= '"
                                                             + DateTime.Parse(txtDateDebutMissionReche.Text)
-                                                            + "' and '"
+                                                        + "' and dateFin<='"
                                                             + DateTime.Parse(txtDateFinMissionReche.Text)
-                                                        + "'";
+                                                        + "')";
                 }
                 else if (cmbAffMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "")
                 {
-                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
-                                                        + cmbRespoMissionReche.Text
-                                                        + "' and affaire='" + cmbAffMissionReche.Text
-                                                        + "' and date between '"
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where affaire='"
+                                                        + cmbAffMissionReche.Text
+                                                        + "' and lieuDepart='" + txtLieuDepartMissionReche.Text
+                                                        + "' and (dateDebut>= '"
                                                             + DateTime.Parse(txtDateDebutMissionReche.Text)
-                                                            + "' and '"
+                                                        + "' and dateFin<='"
                                                             + DateTime.Parse(txtDateFinMissionReche.Text)
-                                                        + "'";
+                                                        + "')";
                 }
-                else if (cmbAffMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "")
+                else if (cmbAffMissionReche.Text != "" && txtLieuArriverMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where affaire='"
+                                                        + cmbAffMissionReche.Text
+                                                        + "' and lieuArriver='" + txtLieuArriverMissionReche.Text
+                                                        + "' and (dateDebut>= '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                        + "' and dateFin<='"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "')";
+                }
+                else if (cmbRespoMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "")
                 {
                     cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
                                                         + cmbRespoMissionReche.Text
-                                                        + "' and affaire='" + cmbAffMissionReche.Text
-                                                        + "' and date between '"
+                                                        + "' and lieuDepart='" + txtLieuDepartMissionReche.Text
+                                                        + "' and (dateDebut>= '"
                                                             + DateTime.Parse(txtDateDebutMissionReche.Text)
-                                                            + "' and '"
+                                                        + "' and dateFin<='"
                                                             + DateTime.Parse(txtDateFinMissionReche.Text)
-                                                        + "'";
+                                                        + "')";
+                }
+                else if (cmbRespoMissionReche.Text != "" && txtLieuArriverMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
+                                                        + cmbRespoMissionReche.Text
+                                                        + "' and lieuArriver='" + txtLieuArriverMissionReche.Text
+                                                        + "' and (dateDebut>= '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                        + "' and dateFin<='"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "')";
+                }
+                else if (txtLieuDepartMissionReche.Text != "" && txtLieuArriverMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where lieuDepart='"
+                                                        + txtLieuDepartMissionReche.Text
+                                                        + "' and lieuArriver='" + txtLieuArriverMissionReche.Text
+                                                        + "' and (dateDebut>= '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                        + "' and dateFin<='"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "')";
                 }
                 else if (cmbAffMissionReche.Text != "")
                 {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where affaire='"
+                                                        + cmbAffMissionReche.Text
+                                                        + "' and (dateDebut>= '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                        + "' and dateFin<='"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "')";
+                }
+                else if (cmbRespoMissionReche.Text != "")
+                {
                     cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where respo='"
                                                         + cmbRespoMissionReche.Text
-                                                        + "' and affaire='" + cmbAffMissionReche.Text
-                                                        + "' and date between '"
+                                                        + "' and (dateDebut>= '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text).Date
+                                                        + "' and dateFin<='"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text).Date
+                                                        + "')";
+                }
+                else if (txtLieuDepartMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where lieuDepart='"
+                                                        + txtLieuDepartMissionReche.Text
+                                                        + "' and (dateDebut>= '"
                                                             + DateTime.Parse(txtDateDebutMissionReche.Text)
-                                                            + "' and '"
+                                                        + "' and dateFin<='"
                                                             + DateTime.Parse(txtDateFinMissionReche.Text)
-                                                        + "'";
+                                                        + "')";
+                }
+                else if (txtLieuArriverMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where lieuArriver='"
+                                                        + txtLieuArriverMissionReche.Text
+                                                        + "' and (dateDebut>= '"
+                                                            + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                        + "' and dateFin<='"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "')";
                 }
                 
-                
-
                 da.SelectCommand = cmd;
                 da.Fill(dt);
                 con.Close();
 
                 if (dt.Rows != null)
                 {
-                    ListRechercheFraisNote.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    ListRechercheFraisNote.DataSource = dt;
+                    ListMissionReche.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    ListMissionReche.DataSource = dt;
                 }
                 else
                 {
                     MessageBox.Show("Il n'y a pas de Frais entre cette Date");
                 }
+
+                if (cmbAffMissionReche.Text == "" && cmbRespoMissionReche.Text == "" && txtLieuDepartMissionReche.Text == "" && txtLieuArriverMissionReche.Text == "")
+                    remplirListMission();
             }
             else
             {
-                errorProvider1.SetError(btnRechercheFraisNote, "Saisir une Date Valide");
+                errorProvider1.SetError(button4, "Saisir une Date Valide");
             }
         }
         private void button2_Click_2(object sender, EventArgs e)
@@ -2436,6 +2525,7 @@ namespace GestionAffaire
 
             RemplirNomRespo();
             RemplirNumeroAffaire();
+            remplirListMission();
             txtDateDebutMissionReche.Text = txtDateFinMissionReche.Text = txtLieuDepartMissionReche.Text = txtLieuArriverMissionReche.Text ="";
 
         }
@@ -2629,7 +2719,7 @@ namespace GestionAffaire
                                                             + DateTime.Parse(txtDateDebutFraisRecheNote.Text)
                                                             + "' and '"
                                                             + DateTime.Parse(txtDateFinFraisRecheNote.Text)
-                                                    + "' and frais between '"
+                                                        + "' and frais between '"
                                                             + double.Parse(txtMinFraisFraisRecheNote.Value.ToString())
                                                             + "' and '"
                                                             + double.Parse(txtMaxFraisFraisRecheNote.Value.ToString()) + "'";
@@ -2688,7 +2778,7 @@ namespace GestionAffaire
             }
             else
             {
-                errorProvider1.SetError(btnRechercheFraisNote,"Saisir une Date Valide");
+                errorProvider1.SetError(btnRechercheFraisNote, "la Date Début il doit etre Supérieur ou égal Date Fin");
             }
         }
         private void btnActualiserFraisNoteReche_Click(object sender, EventArgs e)
