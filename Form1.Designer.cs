@@ -132,6 +132,11 @@ namespace GestionAffaire
             this.btnSupprimerAff = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.BoxMission = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.listeEmployeOrdre = new System.Windows.Forms.ListBox();
+            this.cmbEmployeOrdre = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnValiderMission = new System.Windows.Forms.Button();
@@ -212,11 +217,8 @@ namespace GestionAffaire
             this.label21 = new System.Windows.Forms.Label();
             this.cmbAffMissionReche = new System.Windows.Forms.ComboBox();
             this.cmbRespoMissionReche = new System.Windows.Forms.ComboBox();
-            this.cmbEmployeOrdre = new System.Windows.Forms.ComboBox();
-            this.listeEmployeOrdre = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtNbrJourAffaire = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -226,6 +228,7 @@ namespace GestionAffaire
             this.BoxAff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListAff)).BeginInit();
             this.BoxMission.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListMission)).BeginInit();
             this.BoxPartiesInterecee.SuspendLayout();
             this.BoxPersonnel.SuspendLayout();
@@ -241,7 +244,7 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.txtMinFraisFraisRecheNote)).BeginInit();
             this.BoxMissionReche.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListMissionReche)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNbrJourAffaire)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -798,6 +801,8 @@ namespace GestionAffaire
             // BoxAff
             // 
             this.BoxAff.BackColor = System.Drawing.Color.LightGray;
+            this.BoxAff.Controls.Add(this.txtNbrJourAffaire);
+            this.BoxAff.Controls.Add(this.label22);
             this.BoxAff.Controls.Add(this.btnValiderAff);
             this.BoxAff.Controls.Add(this.cmbResponsableAff);
             this.BoxAff.Controls.Add(this.label41);
@@ -1008,13 +1013,71 @@ namespace GestionAffaire
             this.BoxMission.Controls.Add(this.label30);
             this.BoxMission.Controls.Add(this.ListMission);
             this.BoxMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMission.Location = new System.Drawing.Point(12, 70);
+            this.BoxMission.Location = new System.Drawing.Point(955, 6);
             this.BoxMission.Name = "BoxMission";
             this.BoxMission.Size = new System.Drawing.Size(1346, 644);
             this.BoxMission.TabIndex = 18;
             this.BoxMission.TabStop = false;
             this.BoxMission.Text = "Ordre de Mission :";
             this.BoxMission.Visible = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.listeEmployeOrdre);
+            this.groupBox3.Controls.Add(this.cmbEmployeOrdre);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(172, 243);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(548, 143);
+            this.groupBox3.TabIndex = 40;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "l\'équipe :";
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.Control;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(437, 16);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(99, 28);
+            this.button5.TabIndex = 41;
+            this.button5.Text = "Actualiser";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.Control;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(343, 16);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 28);
+            this.button2.TabIndex = 39;
+            this.button2.Text = "Ajouter";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_3);
+            // 
+            // listeEmployeOrdre
+            // 
+            this.listeEmployeOrdre.FormattingEnabled = true;
+            this.listeEmployeOrdre.ItemHeight = 20;
+            this.listeEmployeOrdre.Location = new System.Drawing.Point(118, 53);
+            this.listeEmployeOrdre.Name = "listeEmployeOrdre";
+            this.listeEmployeOrdre.Size = new System.Drawing.Size(418, 84);
+            this.listeEmployeOrdre.TabIndex = 38;
+            // 
+            // cmbEmployeOrdre
+            // 
+            this.cmbEmployeOrdre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmployeOrdre.FormattingEnabled = true;
+            this.cmbEmployeOrdre.Location = new System.Drawing.Point(118, 16);
+            this.cmbEmployeOrdre.Name = "cmbEmployeOrdre";
+            this.cmbEmployeOrdre.Size = new System.Drawing.Size(208, 28);
+            this.cmbEmployeOrdre.TabIndex = 37;
             // 
             // label15
             // 
@@ -1277,7 +1340,7 @@ namespace GestionAffaire
             this.BoxPartiesInterecee.Controls.Add(this.button8);
             this.BoxPartiesInterecee.Controls.Add(this.btnValiderClient);
             this.BoxPartiesInterecee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxPartiesInterecee.Location = new System.Drawing.Point(12, 70);
+            this.BoxPartiesInterecee.Location = new System.Drawing.Point(977, 6);
             this.BoxPartiesInterecee.Name = "BoxPartiesInterecee";
             this.BoxPartiesInterecee.Size = new System.Drawing.Size(1346, 644);
             this.BoxPartiesInterecee.TabIndex = 13;
@@ -1680,7 +1743,7 @@ namespace GestionAffaire
             this.BoxRecherchFraisdeNote.Controls.Add(this.cmbPCFraisRecheNote);
             this.BoxRecherchFraisdeNote.Controls.Add(this.cmbTypeFraisRecheNote);
             this.BoxRecherchFraisdeNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxRecherchFraisdeNote.Location = new System.Drawing.Point(12, 70);
+            this.BoxRecherchFraisdeNote.Location = new System.Drawing.Point(1358, 12);
             this.BoxRecherchFraisdeNote.Name = "BoxRecherchFraisdeNote";
             this.BoxRecherchFraisdeNote.Size = new System.Drawing.Size(1346, 644);
             this.BoxRecherchFraisdeNote.TabIndex = 28;
@@ -1899,7 +1962,7 @@ namespace GestionAffaire
             this.BoxMissionReche.Controls.Add(this.cmbAffMissionReche);
             this.BoxMissionReche.Controls.Add(this.cmbRespoMissionReche);
             this.BoxMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMissionReche.Location = new System.Drawing.Point(12, 70);
+            this.BoxMissionReche.Location = new System.Drawing.Point(1212, 57);
             this.BoxMissionReche.Name = "BoxMissionReche";
             this.BoxMissionReche.Size = new System.Drawing.Size(1346, 644);
             this.BoxMissionReche.TabIndex = 29;
@@ -2083,63 +2146,38 @@ namespace GestionAffaire
             this.cmbRespoMissionReche.Size = new System.Drawing.Size(415, 28);
             this.cmbRespoMissionReche.TabIndex = 0;
             // 
-            // cmbEmployeOrdre
+            // label22
             // 
-            this.cmbEmployeOrdre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEmployeOrdre.FormattingEnabled = true;
-            this.cmbEmployeOrdre.Location = new System.Drawing.Point(118, 16);
-            this.cmbEmployeOrdre.Name = "cmbEmployeOrdre";
-            this.cmbEmployeOrdre.Size = new System.Drawing.Size(208, 28);
-            this.cmbEmployeOrdre.TabIndex = 37;
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(58, 177);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(191, 20);
+            this.label22.TabIndex = 14;
+            this.label22.Text = "Nombre de Jours Estimé :";
             // 
-            // listeEmployeOrdre
+            // txtNbrJourAffaire
             // 
-            this.listeEmployeOrdre.FormattingEnabled = true;
-            this.listeEmployeOrdre.ItemHeight = 20;
-            this.listeEmployeOrdre.Location = new System.Drawing.Point(118, 53);
-            this.listeEmployeOrdre.Name = "listeEmployeOrdre";
-            this.listeEmployeOrdre.Size = new System.Drawing.Size(418, 84);
-            this.listeEmployeOrdre.TabIndex = 38;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(343, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 28);
-            this.button2.TabIndex = 39;
-            this.button2.Text = "Ajouter";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_3);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.listeEmployeOrdre);
-            this.groupBox3.Controls.Add(this.cmbEmployeOrdre);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(172, 243);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(548, 143);
-            this.groupBox3.TabIndex = 40;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "l\'équipe :";
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.SystemColors.Control;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(437, 16);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(99, 28);
-            this.button5.TabIndex = 41;
-            this.button5.Text = "Actualiser";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            this.txtNbrJourAffaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNbrJourAffaire.Location = new System.Drawing.Point(290, 175);
+            this.txtNbrJourAffaire.Maximum = new decimal(new int[] {
+            276447232,
+            23283,
+            0,
+            0});
+            this.txtNbrJourAffaire.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtNbrJourAffaire.Name = "txtNbrJourAffaire";
+            this.txtNbrJourAffaire.Size = new System.Drawing.Size(418, 26);
+            this.txtNbrJourAffaire.TabIndex = 15;
+            this.txtNbrJourAffaire.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -2176,6 +2214,8 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.ListAff)).EndInit();
             this.BoxMission.ResumeLayout(false);
             this.BoxMission.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListMission)).EndInit();
             this.BoxPartiesInterecee.ResumeLayout(false);
             this.BoxPersonnel.ResumeLayout(false);
@@ -2197,8 +2237,7 @@ namespace GestionAffaire
             this.BoxMissionReche.ResumeLayout(false);
             this.BoxMissionReche.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListMissionReche)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNbrJourAffaire)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2351,6 +2390,8 @@ namespace GestionAffaire
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.NumericUpDown txtNbrJourAffaire;
+        private System.Windows.Forms.Label label22;
     }
 }
 

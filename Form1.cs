@@ -1331,28 +1331,42 @@ namespace GestionAffaire
                 {
                     if (cmbClientAff.Text != "" && cmbResponsableAff.Text != "")
                     {
-                        con.Open();
+                        if (txtNbrJourAffaire.Value.ToString() != null)
+                        {
+                            if (txtNbrJourAffaire.Value > 0)
+                            {
+                                con.Open();
 
-                        cmd.CommandText = "select ICE from Client where raisonSociale='"+ cmbClientAff.Text +"'";
-                        string ICE = cmd.ExecuteScalar().ToString();
+                                cmd.CommandText = "select ICE from Client where raisonSociale='" + cmbClientAff.Text + "'";
+                                string ICE = cmd.ExecuteScalar().ToString();
 
-                        cmd.Parameters.Clear();
+                                cmd.Parameters.Clear();
 
-                        cmd.CommandText = "insert into Affaires(Numero,Client,Responsable) values('" + cmbNumeroAff.Text + "','" + ICE + "','" + cmbResponsableAff.Text + "')";
-                        cmd.ExecuteNonQuery();
-                        con.Close();
+                                cmd.CommandText = "insert into Affaires(Numero,Client,Responsable,NbrJourEstimer) values('" 
+                                                            + cmbNumeroAff.Text + "','" 
+                                                            + ICE + "','" 
+                                                            + cmbResponsableAff.Text + "','"+
+                                                            int.Parse(txtNbrJourAffaire.Value.ToString()) +"')";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
 
-                        // afficher message d'inssertion
-                        MessageBox.Show("Affaire Ajouter Avec Succès");
+                                // afficher message d'inssertion
+                                MessageBox.Show("Affaire Ajouter Avec Succès");
 
-                        //vider la valeur de champ
-                        cmbNumeroAff.Text = "";
-                        RemplirIdClient();
-                        RemplirNomRespo();
+                                //vider la valeur de champ
+                                cmbNumeroAff.Text = "";
+                                RemplirIdClient();
+                                RemplirNomRespo();
 
-                        //faire le mis a jour
-                        remplirListAffaire();
-                        RemplirNumeroAffaire();
+                                //faire le mis a jour
+                                remplirListAffaire();
+                                RemplirNumeroAffaire();
+                            }
+                            else
+                                errorProvider1.SetError(txtNbrJourAffaire, "Saisir Nombre de jours Valide");
+                        }
+                        else
+                            errorProvider1.SetError(txtNbrJourAffaire,"cette Information est Obligatoir");
                     }
                     else
                     {
