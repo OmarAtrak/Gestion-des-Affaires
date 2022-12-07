@@ -2023,10 +2023,7 @@ namespace GestionAffaire
                         if (Convert.ToDateTime(txtDateFinMission.Text) >= Convert.ToDateTime(txtDateDebutMission.Text))
                         {
                             con.Open();
-
-                            cmd.CommandText = "select NbrJour from Mission where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
-                            int OldnbrJourMission = int.Parse(cmd.ExecuteScalar().ToString());
-
+                            
                             cmd.Parameters.Clear();
 
                             cmd.CommandText = "update Mission set dateDebut='" + DateTime.Parse(txtDateDebutMission.Text) +
@@ -2041,19 +2038,8 @@ namespace GestionAffaire
 
                             cmd.Parameters.Clear();
 
-                            cmd.CommandText = "select NbrJour from Mission where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
-                            int nbrJourMission = int.Parse(cmd.ExecuteScalar().ToString());
 
                             cmd.Parameters.Clear();
-
-
-                            //if (nbrJourMission != OldnbrJourMission)
-                            //{
-                            //    cmd.CommandText = "update Affaires set NbrJourEstimer=NbrJourEstimer-1 where Numero='" + cmbNumAffMission.Text + "'";
-                            //    cmd.ExecuteNonQuery();
-                            //}
-
-
                             con.Close();
 
 
@@ -2069,14 +2055,18 @@ namespace GestionAffaire
                                 }
                             }
 
-
-
                             MessageBox.Show("Modification Avec Succès");
 
-                            //if ((nbrJour - (int.Parse(diff.TotalDays.ToString())) - 1) < 0)
-                            //{
-                            //    MessageBox.Show("Nombre de Jours de Mission Dépasse le Nombre de Jours Estimé pour l'affaire", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            //}
+                            con.Open();
+                            cmd.CommandText = "select NbrJourEstimer from Affaires where Numero='" + cmbNumAffMission.Text + "'";
+                            int nbrJour = int.Parse(cmd.ExecuteScalar().ToString());
+                            con.Close();
+
+                            if (nbrJour < 0)
+                            {
+                                MessageBox.Show("Nombre de Jours de Mission Dépasse le Nombre de Jours Estimé pour l'affaire", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            
 
                             remplirNumeroMission();
                             remplirListMission();
