@@ -1301,7 +1301,6 @@ namespace GestionAffaire
             cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note des Frais',NbrJourEstimer as 'Nombre de Jours Estimé' from Affaires inner join Client on Affaires.Client=Client.ICE where Numero='" + cmbNumeroAff.Text + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
-
             con.Close();
 
             ListAff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -1309,7 +1308,6 @@ namespace GestionAffaire
 
             cmbClientAff.Text = dt.Rows[0][1].ToString();
             cmbResponsableAff.Text = dt.Rows[0][2].ToString();
-            txtNbrJourAffaire.Value = int.Parse(dt.Rows[0][3].ToString());
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -1939,12 +1937,10 @@ namespace GestionAffaire
                 if (Convert.ToDateTime(txtDateFinMission.Text) >= Convert.ToDateTime(txtDateDebutMission.Text))
                 {
                     con.Open();
-                    cmd.CommandText = "select NbrJourEstimer from Affaires where Numero='"+ cmbNumAffMission.Text +"'";
-                    int nbrJour = int.Parse(cmd.ExecuteScalar().ToString());
-
-                    cmd.Parameters.Clear();
-
-                    cmd.CommandText = "insert into Mission(dateDebut,dateFin,lieuDepart,lieuArriver,affaire,respo,nbrPersonne) values('" +
+                    
+                    if (listeEmployeOrdre.Items.Count > 0)
+                    {
+                        cmd.CommandText = "insert into Mission(dateDebut,dateFin,lieuDepart,lieuArriver,affaire,respo,nbrPersonne) values('" +
                                                                         DateTime.Parse(txtDateDebutMission.Text) + "','" +
                                                                         DateTime.Parse(txtDateFinMission.Text) + "','" +
                                                                         txtLieuDepartMission.Text + "','" +
@@ -1952,26 +1948,41 @@ namespace GestionAffaire
                                                                         cmbNumAffMission.Text + "','" +
                                                                         cmbRespoMission.Text + "','" +
                                                                         int.Parse(listeEmployeOrdre.Items.Count.ToString()) + "')";
+                    }
+                    else
+                    {
+                        cmd.CommandText = "insert into Mission(dateDebut,dateFin,lieuDepart,lieuArriver,affaire,respo,nbrPersonne) values('" +
+                                                                        DateTime.Parse(txtDateDebutMission.Text) + "','" +
+                                                                        DateTime.Parse(txtDateFinMission.Text) + "','" +
+                                                                        txtLieuDepartMission.Text + "','" +
+                                                                        txtLieuArriveMission.Text + "','" +
+                                                                        cmbNumAffMission.Text + "','" +
+                                                                        cmbRespoMission.Text + "',0)";
+                    }
+                    
                     cmd.ExecuteNonQuery();
 
                     cmd.Parameters.Clear();
 
-                    for (int i = 0; i < listeEmployeOrdre.Items.Count; i++)
+                    if (listeEmployeOrdre.Items.Count > 0)
                     {
-                        cmd.CommandText = "insert into DetailMission values((select top(1) numero from Mission order by numero desc) ,'" + listeEmployeOrdre.Items[i].ToString() + "')";
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
+                        for (int i = 0; i < listeEmployeOrdre.Items.Count; i++)
+                        {
+                            cmd.CommandText = "insert into DetailMission values((select top(1) numero from Mission order by numero desc) ,'" + listeEmployeOrdre.Items[i].ToString() + "')";
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                        }
                     }
+
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "select NbrJourEstimer from Affaires where Numero='" + cmbNumAffMission.Text + "'";
+                    int nbrJour = int.Parse(cmd.ExecuteScalar().ToString());
 
                     con.Close();
 
                     MessageBox.Show("Ajouter Avec Succès");
 
-                    DateTime df = txtDateFinMission.Value;
-                    DateTime dd = txtDateDebutMission.Value;
-                    TimeSpan diff = df - dd;
-
-                    if ((nbrJour - (int.Parse(diff.TotalDays.ToString())) - 1 ) < 0)
+                    if (nbrJour < 0)
                     {
                         MessageBox.Show("Nombre de Jours de Mission Dépasse le Nombre de Jours Estimé pour l'affaire", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);                    
                     }
@@ -2043,15 +2054,18 @@ namespace GestionAffaire
                             con.Close();
 
 
-                            for (int i = 0; i < listeEmployeOrdre.Items.Count; i++)
+                            if (listeEmployeOrdre.Items.Count > 0)
                             {
-                                if (IsEmployeExistsInMission(listeEmployeOrdre.Items[i].ToString(), int.Parse(cmbNumeroMission.Text)) == false)
+                                for (int i = 0; i < listeEmployeOrdre.Items.Count; i++)
                                 {
-                                    con.Open();
-                                    cmd.Parameters.Clear();
-                                    cmd.CommandText = "insert into DetailMission values('"+ int.Parse(cmbNumeroMission.Text) +"','"+ listeEmployeOrdre.Items[i].ToString() +"')";
-                                    cmd.ExecuteNonQuery();
-                                    con.Close();
+                                    if (IsEmployeExistsInMission(listeEmployeOrdre.Items[i].ToString(), int.Parse(cmbNumeroMission.Text)) == false)
+                                    {
+                                        con.Open();
+                                        cmd.Parameters.Clear();
+                                        cmd.CommandText = "insert into DetailMission values('" + int.Parse(cmbNumeroMission.Text) + "','" + listeEmployeOrdre.Items[i].ToString() + "')";
+                                        cmd.ExecuteNonQuery();
+                                        con.Close();
+                                    }
                                 }
                             }
 
@@ -2334,7 +2348,7 @@ namespace GestionAffaire
                 }
                 else if (cmbAffMissionReche.Text != "" && txtLieuDepartMissionReche.Text != "" && txtLieuArriverMissionReche.Text != "")
                 {
-                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where affaire='" 
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where affaire='"
                                                         + cmbAffMissionReche.Text
                                                         + "' and lieuDepart='" + txtLieuDepartMissionReche.Text
                                                         + "' and lieuArriver='" + txtLieuArriverMissionReche.Text
@@ -2462,7 +2476,17 @@ namespace GestionAffaire
                                                             + DateTime.Parse(txtDateFinMissionReche.Text)
                                                         + "')";
                 }
-                
+                else if (txtDateDebutMissionReche.Text != "" && txtDateFinMissionReche.Text != "")
+                {
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where dateDebut>='"
+                                                        + DateTime.Parse(txtDateDebutMissionReche.Text)
+                                                        + "' and dateFin<='"
+                                                            + DateTime.Parse(txtDateFinMissionReche.Text)
+                                                        + "'";
+                }
+                else
+                    remplirListMission();
+
                 da.SelectCommand = cmd;
                 da.Fill(dt);
                 con.Close();
@@ -2477,8 +2501,6 @@ namespace GestionAffaire
                     MessageBox.Show("Il n'y a pas de Frais entre cette Date");
                 }
 
-                if (cmbAffMissionReche.Text == "" && cmbRespoMissionReche.Text == "" && txtLieuDepartMissionReche.Text == "" && txtLieuArriverMissionReche.Text == "")
-                    remplirListMission();
             }
             else
             {
