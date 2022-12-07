@@ -1013,7 +1013,7 @@ namespace GestionAffaire
             this.BoxMission.Controls.Add(this.label30);
             this.BoxMission.Controls.Add(this.ListMission);
             this.BoxMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMission.Location = new System.Drawing.Point(955, 6);
+            this.BoxMission.Location = new System.Drawing.Point(12, 70);
             this.BoxMission.Name = "BoxMission";
             this.BoxMission.Size = new System.Drawing.Size(1346, 644);
             this.BoxMission.TabIndex = 18;
@@ -1340,7 +1340,7 @@ namespace GestionAffaire
             this.BoxPartiesInterecee.Controls.Add(this.button8);
             this.BoxPartiesInterecee.Controls.Add(this.btnValiderClient);
             this.BoxPartiesInterecee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxPartiesInterecee.Location = new System.Drawing.Point(977, 6);
+            this.BoxPartiesInterecee.Location = new System.Drawing.Point(12, 70);
             this.BoxPartiesInterecee.Name = "BoxPartiesInterecee";
             this.BoxPartiesInterecee.Size = new System.Drawing.Size(1346, 644);
             this.BoxPartiesInterecee.TabIndex = 13;
@@ -1743,7 +1743,7 @@ namespace GestionAffaire
             this.BoxRecherchFraisdeNote.Controls.Add(this.cmbPCFraisRecheNote);
             this.BoxRecherchFraisdeNote.Controls.Add(this.cmbTypeFraisRecheNote);
             this.BoxRecherchFraisdeNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxRecherchFraisdeNote.Location = new System.Drawing.Point(1358, 12);
+            this.BoxRecherchFraisdeNote.Location = new System.Drawing.Point(12, 70);
             this.BoxRecherchFraisdeNote.Name = "BoxRecherchFraisdeNote";
             this.BoxRecherchFraisdeNote.Size = new System.Drawing.Size(1346, 644);
             this.BoxRecherchFraisdeNote.TabIndex = 28;
@@ -1962,7 +1962,7 @@ namespace GestionAffaire
             this.BoxMissionReche.Controls.Add(this.cmbAffMissionReche);
             this.BoxMissionReche.Controls.Add(this.cmbRespoMissionReche);
             this.BoxMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMissionReche.Location = new System.Drawing.Point(1212, 57);
+            this.BoxMissionReche.Location = new System.Drawing.Point(12, 70);
             this.BoxMissionReche.Name = "BoxMissionReche";
             this.BoxMissionReche.Size = new System.Drawing.Size(1346, 644);
             this.BoxMissionReche.TabIndex = 29;
