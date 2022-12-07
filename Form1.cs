@@ -302,7 +302,7 @@ namespace GestionAffaire
             }
 
             con.Open();
-            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note des Frais',NbrJourEstimer as 'Nombre de Jours Estimé' from Affaires inner join Client on Affaires.Client=Client.ICE";
+            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note des Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -1298,7 +1298,7 @@ namespace GestionAffaire
             }
 
             con.Open();
-            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note des Frais',NbrJourEstimer as 'Nombre de Jours Estimé' from Affaires inner join Client on Affaires.Client=Client.ICE where Numero='" + cmbNumeroAff.Text + "'";
+            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note des Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE where Numero='" + cmbNumeroAff.Text + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -1308,6 +1308,7 @@ namespace GestionAffaire
 
             cmbClientAff.Text = dt.Rows[0][1].ToString();
             cmbResponsableAff.Text = dt.Rows[0][2].ToString();
+            txtNbrJourAffaire.Value = decimal.Parse(dt.Rows[0][4].ToString());
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -1975,7 +1976,7 @@ namespace GestionAffaire
                     }
 
                     cmd.Parameters.Clear();
-                    cmd.CommandText = "select NbrJourEstimer from Affaires where Numero='" + cmbNumAffMission.Text + "'";
+                    cmd.CommandText = "select NbrJourConsommer from Affaires where Numero='" + cmbNumAffMission.Text + "'";
                     int nbrJour = int.Parse(cmd.ExecuteScalar().ToString());
 
                     con.Close();
@@ -2034,9 +2035,7 @@ namespace GestionAffaire
                         if (Convert.ToDateTime(txtDateFinMission.Text) >= Convert.ToDateTime(txtDateDebutMission.Text))
                         {
                             con.Open();
-                            
                             cmd.Parameters.Clear();
-
                             cmd.CommandText = "update Mission set dateDebut='" + DateTime.Parse(txtDateDebutMission.Text) +
                                                             "',dateFin ='" + DateTime.Parse(txtDateFinMission.Text) +
                                                             "',lieuDepart='" + txtLieuDepartMission.Text +
@@ -2049,8 +2048,9 @@ namespace GestionAffaire
 
                             cmd.Parameters.Clear();
 
+                            cmd.CommandText = "update Affaires set NbrJourConsommer = NbrJourEstimer - abs((select SUM(NbrJour) from Mission where affaire='" + cmbNumAffMission.Text + "')) where Numero='" + cmbNumAffMission.Text + "'";
+                            cmd.ExecuteNonQuery();
 
-                            cmd.Parameters.Clear();
                             con.Close();
 
 
@@ -2072,7 +2072,7 @@ namespace GestionAffaire
                             MessageBox.Show("Modification Avec Succès");
 
                             con.Open();
-                            cmd.CommandText = "select NbrJourEstimer from Affaires where Numero='" + cmbNumAffMission.Text + "'";
+                            cmd.CommandText = "select NbrJourConsommer from Affaires where Numero='" + cmbNumAffMission.Text + "'";
                             int nbrJour = int.Parse(cmd.ExecuteScalar().ToString());
                             con.Close();
 
@@ -2179,7 +2179,7 @@ namespace GestionAffaire
                     {
                         con.Open();
 
-                        cmd.CommandText = "update Affaires set NbrJourEstimer = NbrJourEstimer + (select NbrJour from Mission where numero = '"+ int.Parse(cmbNumeroMission.Text) +"') where Numero = '"+ cmbNumAffMission.Text +"'";
+                        cmd.CommandText = "update Affaires set NbrJourConsommer = NbrJourConsommer + (select NbrJour from Mission where numero = '" + int.Parse(cmbNumeroMission.Text) +"') where Numero = '"+ cmbNumAffMission.Text +"'";
                         cmd.ExecuteNonQuery();
 
                         cmd.Parameters.Clear();

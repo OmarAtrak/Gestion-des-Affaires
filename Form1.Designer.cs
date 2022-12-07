@@ -119,6 +119,8 @@ namespace GestionAffaire
             this.btnValiderNote = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.BoxAff = new System.Windows.Forms.GroupBox();
+            this.txtNbrJourAffaire = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
             this.btnValiderAff = new System.Windows.Forms.Button();
             this.cmbResponsableAff = new System.Windows.Forms.ComboBox();
             this.label41 = new System.Windows.Forms.Label();
@@ -217,8 +219,6 @@ namespace GestionAffaire
             this.label21 = new System.Windows.Forms.Label();
             this.cmbAffMissionReche = new System.Windows.Forms.ComboBox();
             this.cmbRespoMissionReche = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtNbrJourAffaire = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -226,6 +226,7 @@ namespace GestionAffaire
             this.BoxFrais.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listFraisNote)).BeginInit();
             this.BoxAff.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNbrJourAffaire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListAff)).BeginInit();
             this.BoxMission.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -244,7 +245,6 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.txtMinFraisFraisRecheNote)).BeginInit();
             this.BoxMissionReche.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListMissionReche)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNbrJourAffaire)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -823,6 +823,39 @@ namespace GestionAffaire
             this.BoxAff.TabStop = false;
             this.BoxAff.Text = "Affaires :";
             // 
+            // txtNbrJourAffaire
+            // 
+            this.txtNbrJourAffaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNbrJourAffaire.Location = new System.Drawing.Point(290, 175);
+            this.txtNbrJourAffaire.Maximum = new decimal(new int[] {
+            276447232,
+            23283,
+            0,
+            0});
+            this.txtNbrJourAffaire.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtNbrJourAffaire.Name = "txtNbrJourAffaire";
+            this.txtNbrJourAffaire.Size = new System.Drawing.Size(418, 26);
+            this.txtNbrJourAffaire.TabIndex = 15;
+            this.txtNbrJourAffaire.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(58, 177);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(191, 20);
+            this.label22.TabIndex = 14;
+            this.label22.Text = "Nombre de Jours Estimé :";
+            // 
             // btnValiderAff
             // 
             this.btnValiderAff.BackColor = System.Drawing.SystemColors.Control;
@@ -950,7 +983,7 @@ namespace GestionAffaire
             dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListAff.RowsDefaultCellStyle = dataGridViewCellStyle35;
-            this.ListAff.Size = new System.Drawing.Size(877, 237);
+            this.ListAff.Size = new System.Drawing.Size(1067, 237);
             this.ListAff.TabIndex = 4;
             this.ListAff.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListAff_CellClick);
             this.ListAff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListAff_CellContentClick_1);
@@ -2146,39 +2179,6 @@ namespace GestionAffaire
             this.cmbRespoMissionReche.Size = new System.Drawing.Size(415, 28);
             this.cmbRespoMissionReche.TabIndex = 0;
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(58, 177);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(191, 20);
-            this.label22.TabIndex = 14;
-            this.label22.Text = "Nombre de Jours Estimé :";
-            // 
-            // txtNbrJourAffaire
-            // 
-            this.txtNbrJourAffaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNbrJourAffaire.Location = new System.Drawing.Point(290, 175);
-            this.txtNbrJourAffaire.Maximum = new decimal(new int[] {
-            276447232,
-            23283,
-            0,
-            0});
-            this.txtNbrJourAffaire.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtNbrJourAffaire.Name = "txtNbrJourAffaire";
-            this.txtNbrJourAffaire.Size = new System.Drawing.Size(418, 26);
-            this.txtNbrJourAffaire.TabIndex = 15;
-            this.txtNbrJourAffaire.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2211,6 +2211,7 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.listFraisNote)).EndInit();
             this.BoxAff.ResumeLayout(false);
             this.BoxAff.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNbrJourAffaire)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListAff)).EndInit();
             this.BoxMission.ResumeLayout(false);
             this.BoxMission.PerformLayout();
@@ -2237,7 +2238,6 @@ namespace GestionAffaire
             this.BoxMissionReche.ResumeLayout(false);
             this.BoxMissionReche.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListMissionReche)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNbrJourAffaire)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
