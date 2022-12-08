@@ -34,6 +34,7 @@ namespace GestionAffaire
             BoxPartiesInterecee.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
             BoxMissionReche.Visible = false;
+            BoxDisposition.Visible = false;
         }
         private void affaireToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -52,6 +53,7 @@ namespace GestionAffaire
             BoxPartiesInterecee.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
             BoxMissionReche.Visible = false;
+            BoxDisposition.Visible = false;
         }
         private void pToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -79,8 +81,19 @@ namespace GestionAffaire
             BoxNoteAjouter.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
             BoxMissionReche.Visible = false;
+            BoxDisposition.Visible = false;
         }
         private void lesPartiesIntéresséesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BoxDisposition.Visible = true;
+            BoxPartiesInterecee.Visible = false;
+            BoxMission.Visible = false;
+            BoxAff.Visible = false;
+            BoxNoteAjouter.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
+        }
+        private void lesPartiesIntéresséesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             BoxPartiesInterecee.Visible = true;
             BoxMission.Visible = false;
@@ -88,6 +101,7 @@ namespace GestionAffaire
             BoxNoteAjouter.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
             BoxMissionReche.Visible = false;
+            BoxDisposition.Visible = false;
         }
         private void rechercheDansLesFraisToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -493,6 +507,40 @@ namespace GestionAffaire
             ListRechercheFraisNote.DataSource = dt;
         }
 
+        //methode pour remplir le numero et la list des frais
+        public void remplirNumeroCompte()
+        {
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Numero from Compte";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+
+            txtNumeroCompte.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                txtNumeroCompte.Items.Add(dt.Rows[i][0].ToString());
+            }
+        }
+
+        public void remplirListCompte()
+        {
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Numero,banque as 'Banque Agence' from Compte";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+
+            ListComptes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ListComptes.DataSource = dt;
+        }
+
 
 
         //methode pour verifier si l'affaire est deja existe dans la base
@@ -843,6 +891,52 @@ namespace GestionAffaire
             return isThere;
         }
 
+        //methode pour verifier si le Compte est deja existe dans la base
+        public Boolean IsCompteExists(string num)
+        {
+            DataTable dt = new DataTable();
+
+            if (dt != null)
+            {
+                dt.Rows.Clear();
+            }
+
+            Boolean isThere = false;
+            con.Open();
+            cmd.CommandText = "select numero from Compte where numero='" + num + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count != 0)
+            {
+                isThere = true;
+            }
+            return isThere;
+        }
+
+        //methode pour verifier si la Banque est deja existe dans la base
+        public Boolean IsBanqueExists(string libelle)
+        {
+            DataTable dt = new DataTable();
+
+            if (dt != null)
+            {
+                dt.Rows.Clear();
+            }
+
+            Boolean isThere = false;
+            con.Open();
+            cmd.CommandText = "select libelle from Banque where libelle='" + libelle + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count != 0)
+            {
+                isThere = true;
+            }
+            return isThere;
+        }
+
 
 
         public void numeroFrais()
@@ -873,8 +967,9 @@ namespace GestionAffaire
             remplirListFrais();
             remplirNomEmploye();
             remplirListEmploye();
+            remplirNumeroCompte();
+            remplirListCompte();
 
-            //txtDateFinFraisRecheNote.Value = (DateTime.Now.Month DateTime.Parse("mm/dd/yy"));
         }
 
 
@@ -1065,6 +1160,44 @@ namespace GestionAffaire
                     errorProvider1.SetError(txtCinPersonne, "cette information est Obligatoir");
                 }
             }
+            else if (radioButton4.Checked == true)
+            {
+                if (txtNumeroCompte.Text != "")
+                {
+                    if (IsCompteExists(txtNumeroCompte.Text) == false)
+                    {
+                        if (txtBanque.Text != "")
+                        {
+                            if (IsBanqueExists(txtBanque.Text))
+                            {
+                                con.Open();
+                                cmd.CommandText = "insert into Compte values('" + txtNumeroCompte.Text + "','" + txtBanque.Text + "')";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+                            }
+                            else
+                            {
+                                con.Open();
+                                cmd.CommandText = "insert into Banque values('" + txtBanque.Text + "')";
+                                cmd.ExecuteNonQuery();
+                                cmd.Parameters.Clear();
+                                cmd.CommandText = "insert into Compte values('" + txtNumeroCompte.Text + "','" + txtBanque.Text + "')";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+                            }
+                            MessageBox.Show("Compte crée avec Succès");
+
+                            txtNumeroCompte.Text = txtBanque.Text = "";
+                            remplirNumeroCompte();
+                            remplirListCompte();
+                        }
+                    }
+                    else
+                        errorProvider1.SetError(txtNumeroCompte, "Compte est déjà Existant");
+                }
+                else
+                    errorProvider1.SetError(txtNumeroCompte, "cette Information est Obligatoir");
+            }
         }
         private void btnModifierCR_Click(object sender, EventArgs e)
         {
@@ -1182,6 +1315,48 @@ namespace GestionAffaire
                     errorProvider1.SetError(txtCinPersonne, "cette information est Obligatoir");
                 }
             }
+            else if (radioButton4.Checked == true)
+            {
+                if (txtNumeroCompte.Text != "")
+                {
+                    if (IsCompteExists(txtNumeroCompte.Text) == false)
+                        errorProvider1.SetError(txtNumeroCompte, "Compte n'est pas Existant");
+                    else
+                    {
+                        if (txtBanque.Text != "")
+                        {
+                            if (IsBanqueExists(txtBanque.Text))
+                            {
+                                con.Open();
+                                cmd.CommandText = "update Compte set banque='" + txtBanque.Text + "' where numero='" + txtNumeroCompte.Text + "'";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+                            }
+                            else
+                            {
+                                con.Open();
+                                cmd.CommandText = "insert into Banque values('" + txtBanque.Text + "')";
+                                cmd.ExecuteNonQuery();
+                                cmd.Parameters.Clear();
+                                cmd.CommandText = "update Compte set banque='" + txtBanque.Text + "' where numero='" + txtNumeroCompte.Text + "'";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+
+                                MessageBox.Show("Modification Avec Succès");
+
+                                txtNumeroCompte.Text = txtBanque.Text = "";
+                                remplirNumeroCompte();
+                                remplirListCompte();
+                            }
+                        }
+                        else
+                            errorProvider1.SetError(txtBanque, "cette Information est Obligatoir");
+                    }
+                }
+                else
+                    errorProvider1.SetError(txtNumeroCompte, "cette Information est Obligatoir");
+            }
+
         }
         private void txtICEClient_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1243,6 +1418,25 @@ namespace GestionAffaire
 
             txtCinPersonne.Text = dt.Rows[0][0].ToString();
             txtPrenomPresonne.Text = dt.Rows[0][2].ToString();
+        }
+        private void txtNumeroCompte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Numero,banque as 'Banque Agence' from Compte where numero='"+ txtNumeroCompte.Text +"'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+
+            ListComptes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ListComptes.DataSource = dt;
+
+            txtBanque.Text = dt.Rows[0][1].ToString();
+                        
         }
         private void btnSupprimerCR_Click(object sender, EventArgs e)
         {
@@ -1323,7 +1517,7 @@ namespace GestionAffaire
                     }
                     else
                     {
-                        if (MessageBox.Show("voulez-vous supprimer Chargé d'affaire?", "Supprimer Chargé d'affaire", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show("voulez-vous supprimer Personne?", "Supprimer Personne", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             con.Open();
                             cmd.CommandText = "delete Personnel where cin='" + txtCinPersonne.Text + "'";
@@ -1341,6 +1535,31 @@ namespace GestionAffaire
                     errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoir");
                 }
             }
+            else if (radioButton4.Checked == true)
+            {
+                if (txtNumeroCompte.Text != "")
+                {
+                    if (IsCompteExists(txtNumeroCompte.Text) == false)
+                        errorProvider1.SetError(txtNumeroCompte, "Compte n'est pas Existant");
+                    else
+                    {
+                        if (MessageBox.Show("voulez-vous supprimer Compte?", "Supprimer Compte", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            con.Open();
+                            cmd.CommandText = "delete Compte where numero='" + txtNumeroCompte.Text + "'";
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+
+                            txtNumeroCompte.Text = txtBanque.Text = "";
+                            remplirNumeroCompte();
+                            remplirListCompte();
+                        }
+                    }
+                }
+                else
+                    errorProvider1.SetError(txtNumeroCompte, "cette information est Obligatoir");
+            }
+
         }
 
 
@@ -2871,6 +3090,7 @@ namespace GestionAffaire
 
 
 
+        
         private void button5_Click(object sender, EventArgs e)
         {
             errorProvider1.Dispose();
@@ -2900,7 +3120,11 @@ namespace GestionAffaire
         {
             errorProvider1.Dispose();
 
-            txtNomRespo.Text = txtPrenomRespo.Text = txtICEClient.Text = txtRaisonSocialClient.Text = txtNomPersonne.Text = txtPrenomPresonne.Text = "";
+            txtNomRespo.Text = txtPrenomRespo.Text = "";
+            txtICEClient.Text = txtRaisonSocialClient.Text = "";
+            txtCinPersonne.Text = txtNomPersonne.Text = txtPrenomPresonne.Text = "";
+            txtNumeroCompte.Text = txtBanque.Text = "";
+            
 
             RemplirIdClient();
             remplirListClient();
@@ -2908,7 +3132,7 @@ namespace GestionAffaire
             remplirListRespo();
             remplirNomEmploye();
             remplirListEmploye();
-
+            remplirListCompte();
         }
 
 
