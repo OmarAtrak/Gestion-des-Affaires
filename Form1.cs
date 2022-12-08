@@ -239,7 +239,7 @@ namespace GestionAffaire
             dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select Nom, Prenom from Personnel";
+            cmd.CommandText = "select CIN, Nom, Prenom from Personnel";
             da.SelectCommand = cmd;
             da.Fill(dt);
 
@@ -302,7 +302,7 @@ namespace GestionAffaire
             }
 
             con.Open();
-            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note des Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE";
+            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note de Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -776,7 +776,7 @@ namespace GestionAffaire
         }
 
         //methode pour verifier si le Employe a une Note
-        public Boolean IsEmployeExists(string nom)
+        public Boolean IsEmployeCinExists(string cin)
         {
             DataTable dt = new DataTable();
 
@@ -787,7 +787,28 @@ namespace GestionAffaire
 
             Boolean isThere = false;
             con.Open();
-            cmd.CommandText = "select nom from Personnel where nom='" + nom + "'";
+            cmd.CommandText = "select cin from Personnel where cin='" + cin + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+            if (dt.Rows.Count != 0)
+            {
+                isThere = true;
+            }
+            return isThere;
+        }
+        public Boolean IsEmployeNomExists(string nom)
+        {
+            DataTable dt = new DataTable();
+
+            if (dt != null)
+            {
+                dt.Rows.Clear();
+            }
+
+            Boolean isThere = false;
+            con.Open();
+            cmd.CommandText = "select cin from Personnel where nom='" + nom + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -798,8 +819,9 @@ namespace GestionAffaire
             return isThere;
         }
 
+
         //methode pour verifier si le Employe dans une Ordre de Mission
-        public Boolean IsEmployeExistsInMission(string personne, int mission)
+        public Boolean IsEmployeExistsInMission(string cinPersonne, int mission)
         {
             DataTable dt = new DataTable();
 
@@ -810,7 +832,7 @@ namespace GestionAffaire
 
             Boolean isThere = false;
             con.Open();
-            cmd.CommandText = "select personnel from DetailMission where mission='" + mission + "' and personnel='"+ personne +"'";
+            cmd.CommandText = "select personnel from DetailMission where mission='" + mission + "' and personnel='"+ cinPersonne + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -866,12 +888,12 @@ namespace GestionAffaire
             {
                 radioButton3.Checked = false;
                 radioButton1.Checked = false;
+                radioButton4.Checked = false;
 
                 BoxRespoAjouter.Visible = true;
-            }
-            else
-            {
-                BoxRespoAjouter.Visible = false;
+                BoxClientAjouter.Visible = false;
+                BoxPersonnel.Visible = false;
+                BoxCompte.Visible = false;
             }
         }
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -882,12 +904,12 @@ namespace GestionAffaire
             {
                 radioButton2.Checked = false;
                 radioButton1.Checked = false;
+                radioButton4.Checked = false;
 
                 BoxClientAjouter.Visible = true;
-            }
-            else
-            {
-                BoxClientAjouter.Visible = false;
+                BoxRespoAjouter.Visible = false;
+                BoxPersonnel.Visible = false;
+                BoxCompte.Visible = false;
             }
         }
         private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
@@ -898,11 +920,27 @@ namespace GestionAffaire
             {
                 radioButton2.Checked = false;
                 radioButton3.Checked = false;
+                radioButton4.Checked = false;
 
                 BoxPersonnel.Visible = true;
+                BoxClientAjouter.Visible = false;
+                BoxRespoAjouter.Visible = false;
+                BoxCompte.Visible = false;
             }
-            else
+        }
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            if (radioButton4.Checked == true)
             {
+                radioButton2.Checked = false;
+                radioButton3.Checked = false;
+                radioButton1.Checked = false;
+
+                BoxCompte.Visible = true;
+                BoxClientAjouter.Visible = false;
+                BoxRespoAjouter.Visible = false;
                 BoxPersonnel.Visible = false;
             }
         }
@@ -985,36 +1023,46 @@ namespace GestionAffaire
             }
             else if (radioButton1.Checked == true)
             {
-                if (txtNomPersonne.Text != "")
+                if (txtCinPersonne.Text != "")
                 {
-                    if (IsEmployeExists(txtNomPersonne.Text) == true)
+                    if (IsEmployeCinExists(txtCinPersonne.Text) == true)
                     {
-                        errorProvider1.SetError(txtNomPersonne, "Personne est déjà Existant");
+                        errorProvider1.SetError(txtCinPersonne, "Personne est déjà Existant avec cette CIN");
                     }
                     else
                     {
-                        if (txtPrenomPresonne.Text != "")
+                        if (txtPrenomPresonne.Text != "" && txtNomPersonne.Text != "")
                         {
-                            con.Open();
-                            cmd.CommandText = "insert into Personnel values('" + txtNomPersonne.Text + "','" + txtPrenomPresonne.Text + "')";
-                            cmd.ExecuteNonQuery();
-                            con.Close();
+                            if (IsEmployeNomExists(txtNomPersonne.Text) == true)
+                            {
+                                errorProvider1.SetError(txtNomPersonne, "Personne est déjà Existant avec ce Nom");
+                            }
+                            else
+                            {
+                                con.Open();
+                                cmd.CommandText = "insert into Personnel values('" + txtCinPersonne.Text + "','" + txtNomPersonne.Text + "','" + txtPrenomPresonne.Text + "')";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
 
-                            MessageBox.Show("Personne Ajouter Avec Succès");
+                                MessageBox.Show("Personne Ajouter Avec Succès");
 
-                            txtNomPersonne.Text = txtPrenomPresonne.Text = "";
-                            remplirNomEmploye();
-                            remplirListEmploye();
+                                txtNomPersonne.Text = txtCinPersonne.Text = txtPrenomPresonne.Text = "";
+                                remplirNomEmploye();
+                                remplirListEmploye();
+                            }
                         }
                         else
                         {
-                            errorProvider1.SetError(txtPrenomPresonne, "cette Information est Obligatoir");
+                            if (txtCinPersonne.Text == "")
+                                errorProvider1.SetError(txtCinPersonne, "cette Information est Obligatoir");
+                            if (txtPrenomPresonne.Text == "")
+                                errorProvider1.SetError(txtPrenomPresonne, "cette Information est Obligatoir");
                         }
                     }
                 }
                 else
                 {
-                    errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtCinPersonne, "cette information est Obligatoir");
                 }
             }
         }
@@ -1092,36 +1140,46 @@ namespace GestionAffaire
             }
             else if (radioButton1.Checked == true)
             {
-                if (txtNomPersonne.Text != "")
+                if (txtCinPersonne.Text != "")
                 {
-                    if (IsEmployeExists(txtNomPersonne.Text) == false)
+                    if (IsEmployeCinExists(txtCinPersonne.Text) == true)
                     {
-                        errorProvider1.SetError(txtNomPersonne, "Personne n'est pas Existant");
+                        errorProvider1.SetError(txtCinPersonne, "Personne n'est pas Existant avec cette CIN");
                     }
                     else
                     {
-                        if (txtPrenomPresonne.Text != "")
+                        if (txtPrenomPresonne.Text != "" && txtNomPersonne.Text != "")
                         {
-                            con.Open();
-                            cmd.CommandText = "update Personnel set prenom='" + txtPrenomPresonne.Text + "' where nom='" + txtNomPersonne.Text + "'";
-                            cmd.ExecuteNonQuery();
-                            con.Close();
+                            if (IsEmployeNomExists(txtNomPersonne.Text) == false)
+                            {
+                                errorProvider1.SetError(txtNomPersonne, "Personne est déjà Existant avec ce Nom");
+                            }
+                            else
+                            {
+                                con.Open();
+                                cmd.CommandText = "update Personnel set nom='" + txtNomPersonne.Text + "', prenom='" + txtPrenomPresonne.Text + "' where cin='" + txtCinPersonne.Text + "'";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
 
-                            MessageBox.Show("Modification Avec Succès");
+                                MessageBox.Show("Modification Avec Succès");
 
-                            txtNomPersonne.Text = txtPrenomPresonne.Text = "";
-                            remplirNomEmploye();
-                            remplirListEmploye();
+                                txtNomPersonne.Text = txtCinPersonne.Text = txtPrenomPresonne.Text = "";
+                                remplirNomEmploye();
+                                remplirListEmploye();
+                            }
                         }
                         else
                         {
-                            errorProvider1.SetError(txtPrenomPresonne, "Prenom est Obligatoir");
+                            if (txtNomPersonne.Text == "")
+                                errorProvider1.SetError(txtNomPersonne, "cette Information est Obligatoir");
+                            if (txtPrenomPresonne.Text == "")
+                                errorProvider1.SetError(txtPrenomPresonne, "cette Information est Obligatoir");
                         }
                     }
                 }
                 else
                 {
-                    errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtCinPersonne, "cette information est Obligatoir");
                 }
             }
         }
@@ -1174,7 +1232,7 @@ namespace GestionAffaire
             dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select Nom, Prenom from Personnel where nom='" + txtNomPersonne.Text + "'";
+            cmd.CommandText = "select CIN, Nom, Prenom from Personnel where nom='" + txtNomPersonne.Text + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
 
@@ -1183,7 +1241,8 @@ namespace GestionAffaire
             listPersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             listPersonnel.DataSource = dt;
 
-            txtPrenomPresonne.Text = dt.Rows[0][1].ToString();
+            txtCinPersonne.Text = dt.Rows[0][0].ToString();
+            txtPrenomPresonne.Text = dt.Rows[0][2].ToString();
         }
         private void btnSupprimerCR_Click(object sender, EventArgs e)
         {
@@ -1256,9 +1315,9 @@ namespace GestionAffaire
             }
             else if (radioButton1.Checked == true)
             {
-                if (txtNomPersonne.Text != "")
+                if (txtCinPersonne.Text != "")
                 {
-                    if (IsEmployeExists(txtNomPersonne.Text) == false)
+                    if (IsEmployeCinExists(txtCinPersonne.Text) == false)
                     {
                         errorProvider1.SetError(txtNomPersonne, "Personne n'est pas Existant");
                     }
@@ -1267,11 +1326,11 @@ namespace GestionAffaire
                         if (MessageBox.Show("voulez-vous supprimer Chargé d'affaire?", "Supprimer Chargé d'affaire", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             con.Open();
-                            cmd.CommandText = "delete Personnel where nom='" + txtNomPersonne.Text + "'";
+                            cmd.CommandText = "delete Personnel where cin='" + txtCinPersonne.Text + "'";
                             cmd.ExecuteNonQuery();
                             con.Close();
 
-                            txtNomPersonne.Text = txtPrenomPresonne.Text = "";
+                            txtCinPersonne.Text = txtNomPersonne.Text = txtPrenomPresonne.Text = "";
                             remplirNomEmploye();
                             remplirListEmploye();
                         }
@@ -1298,7 +1357,7 @@ namespace GestionAffaire
             }
 
             con.Open();
-            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note des Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE where Numero='" + cmbNumeroAff.Text + "'";
+            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note de Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE where Numero='" + cmbNumeroAff.Text + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -2889,5 +2948,7 @@ namespace GestionAffaire
         private void noteDeFraisToolStripMenuItem1_Click(object sender, EventArgs e){}
         private void BoxMissionReche_Enter(object sender, EventArgs e){}
         private void cmbNumeroNote_SelectedIndexChanged(object sender, EventArgs e){}
+
+        
     }
 }
