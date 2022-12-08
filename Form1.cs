@@ -232,6 +232,7 @@ namespace GestionAffaire
 
             txtNomPersonne.Items.Clear();
             cmbEmployeOrdre.Items.Clear();
+            cmbPersonneDisposition.Items.Clear();
 
             con.Open();
             cmd.CommandText = "select nom from Personnel";
@@ -242,6 +243,7 @@ namespace GestionAffaire
             {
                 txtNomPersonne.Items.Add(dt.Rows[i][0].ToString());
                 cmbEmployeOrdre.Items.Add(dt.Rows[i][0].ToString());
+                cmbPersonneDisposition.Items.Add(dt.Rows[i][0].ToString());
                 
             }
 
@@ -490,7 +492,14 @@ namespace GestionAffaire
             cmbPCFraisRecheNote.Items.Add("Redéfinir...");
         }
 
-        //methode pour remplir la list des frais
+        //methode pour remplir le numero et la liste des frais
+        public void numeroFrais()
+        {
+            for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
+            {
+                listFraisNote.Rows[i].Cells[0].Value = (i + 1).ToString();
+            }
+        }
         public void remplirListFrais()
         {
             
@@ -513,19 +522,22 @@ namespace GestionAffaire
             DataTable dt = new DataTable();
             dt.Rows.Clear();
 
+            txtNumeroCompte.Items.Clear();
+            cmbCompteDisposition.Items.Clear();
+
+
             con.Open();
             cmd.CommandText = "select Numero from Compte";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
 
-            txtNumeroCompte.Items.Clear();
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 txtNumeroCompte.Items.Add(dt.Rows[i][0].ToString());
+                cmbCompteDisposition.Items.Add(dt.Rows[i][0].ToString());
             }
         }
-
         public void remplirListCompte()
         {
             DataTable dt = new DataTable();
@@ -540,6 +552,49 @@ namespace GestionAffaire
             ListComptes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListComptes.DataSource = dt;
         }
+
+        //methode pour remplir le numero et la liste de mise à disposition
+        public void remplirNumeroDisposition()
+        {
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            cmbNumeroDisposition.Items.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Numero from MiseDisposition";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                cmbNumeroDisposition.Items.Add(dt.Rows[i][0].ToString());
+            }
+        }
+        public void remplirListDisposition()
+        {
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Numero,personne as 'Bénéficiaire',cast(Montant as nvarchar) as 'Montant',compte as 'Compte Bancaire' from MiseDisposition";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            listDisposition.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            listDisposition.DataSource = dt;
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                cmd.Parameters.Clear();
+                cmd.CommandText = "select nom from Personnel where cin='" + dt.Rows[i][1].ToString() + "'";
+                listDisposition.Rows[i].Cells[1].Value = cmd.ExecuteScalar().ToString();
+            }
+            con.Close();
+
+        }
+
 
 
 
@@ -938,14 +993,7 @@ namespace GestionAffaire
         }
 
 
-
-        public void numeroFrais()
-        {
-            for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
-            {
-                listFraisNote.Rows[i].Cells[0].Value = (i + 1).ToString();
-            }
-        }
+        
 
 
 
@@ -969,7 +1017,8 @@ namespace GestionAffaire
             remplirListEmploye();
             remplirNumeroCompte();
             remplirListCompte();
-
+            remplirNumeroDisposition();
+            remplirListDisposition();
         }
 
 
@@ -3090,7 +3139,150 @@ namespace GestionAffaire
 
 
 
-        
+        // mise à disposition
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Numero,personne as 'Bénéficiaire',cast(Montant as nvarchar) as 'Montant',compte as 'Compte Bancaire' from MiseDisposition where numero='" + int.Parse(cmbNumeroDisposition.Text) +"'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            listDisposition.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            listDisposition.DataSource = dt;
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                cmd.Parameters.Clear();
+                cmd.CommandText = "select nom from Personnel where cin='" + dt.Rows[i][1].ToString() + "'";
+                listDisposition.Rows[i].Cells[1].Value = cmd.ExecuteScalar().ToString();
+            }
+            con.Close();
+
+
+            cmbPersonneDisposition.Text = dt.Rows[0][1].ToString();
+            txtMontantDisposition.Text = dt.Rows[0][2].ToString();
+            cmbCompteDisposition.Text = dt.Rows[0][3].ToString();
+        }
+        private void btnValiderDisposition_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            if (cmbPersonneDisposition.Text != "" && txtMontantDisposition.Text != "" && cmbCompteDisposition.Text != "")
+            {
+                con.Open();
+                cmd.CommandText = "select cin from Personnel where nom='"+ cmbPersonneDisposition.Text +"'";
+                string cinP = cmd.ExecuteScalar().ToString();
+
+                cmd.Parameters.Clear();
+
+                cmd.CommandText = "insert into MiseDisposition values('" + cinP + "','" + double.Parse(txtMontantDisposition.Text) + "','"+ cmbCompteDisposition.Text +"')";
+                cmd.ExecuteNonQuery();
+
+                cmd.Parameters.Clear();
+
+                cmd.CommandText = "select IDENT_CURRENT( 'MiseDisposition' )";
+                string num = cmd.ExecuteScalar().ToString();
+                con.Close();
+
+                MessageBox.Show("le Numero de Mise à Disposition: "+num, "Ajouter Avec Succès");
+
+                remplirNumeroDisposition();
+                remplirNomEmploye();
+                remplirNumeroCompte();
+                remplirListDisposition();
+                txtMontantDisposition.Text = "";
+            }
+            else
+            {
+                if (cmbPersonneDisposition.Text == "")
+                    errorProvider1.SetError(cmbPersonneDisposition,"cetrte Information est Obligatoir");
+                if (txtMontantDisposition.Text == "")
+                    errorProvider1.SetError(txtMontantDisposition, "cette Information est Obligatoir");
+                if (cmbCompteDisposition.Text == "")
+                    errorProvider1.SetError(cmbCompteDisposition, "cette Information est Obligatoir");
+            }
+        }
+        private void btnModifierDisposition_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            if (cmbNumeroDisposition.Text != "")
+            {
+                if (cmbPersonneDisposition.Text != "" && txtMontantDisposition.Text != "" && cmbCompteDisposition.Text != "")
+                {
+                    con.Open();
+                    cmd.CommandText = "select cin from Personnel where nom='" + cmbPersonneDisposition.Text + "'";
+                    string cinP = cmd.ExecuteScalar().ToString();
+
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "update MiseDisposition set Personne='" + cinP + "',montant='" + double.Parse(txtMontantDisposition.Text) + "',compte='" + cmbCompteDisposition.Text + "' where numero='"+ int.Parse(cmbNumeroDisposition.Text) +"'";
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                    MessageBox.Show("Modification Avec Succès");
+
+                    remplirNumeroDisposition();
+                    remplirNomEmploye();
+                    remplirNumeroCompte();
+                    remplirListDisposition();
+                    txtMontantDisposition.Text = "";
+                }
+                else
+                {
+                    if (cmbPersonneDisposition.Text == "")
+                        errorProvider1.SetError(cmbPersonneDisposition, "cette Information est Obligatoir");
+                    if (txtMontantDisposition.Text == "")
+                        errorProvider1.SetError(txtMontantDisposition, "cette Information est Obligatoir");
+                    if (cmbCompteDisposition.Text == "")
+                        errorProvider1.SetError(cmbCompteDisposition, "cette Information est Obligatoir");
+                }
+            }
+            else
+                errorProvider1.SetError(cmbNumeroDisposition,"cette Information est Obligatoir");
+        }
+        private void btnSupprimerDisposition_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            if (cmbNumeroDisposition.Text != "")
+            {
+                con.Open();
+                cmd.CommandText = "delete MiseDisposition where numero='" + int.Parse(cmbNumeroDisposition.Text) + "'";
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                MessageBox.Show("Suppression Avec Succès");
+
+                remplirNumeroDisposition();
+                remplirNomEmploye();
+                remplirNumeroCompte();
+                remplirListDisposition();
+                txtMontantDisposition.Text = "";
+                
+            }
+            else
+                errorProvider1.SetError(cmbNumeroDisposition, "cette Information est Obligatoir");
+        }
+        private void btnActualiserDisposition_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            remplirNumeroDisposition();
+            remplirNomEmploye();
+            remplirNumeroCompte();
+            remplirListDisposition();
+            txtMontantDisposition.Text = "";
+        }
+
+
+
+
         private void button5_Click(object sender, EventArgs e)
         {
             errorProvider1.Dispose();

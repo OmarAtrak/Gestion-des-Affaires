@@ -46,6 +46,11 @@ namespace GestionAffaire
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -71,11 +76,6 @@ namespace GestionAffaire
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -89,6 +89,7 @@ namespace GestionAffaire
             this.lesPartiesIntereceeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rechercherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lesPartiesIntéresséesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lesPartiesIntéresséesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.BoxNoteAjouter = new System.Windows.Forms.GroupBox();
             this.cmbRespoNote = new System.Windows.Forms.ComboBox();
@@ -171,7 +172,15 @@ namespace GestionAffaire
             this.label30 = new System.Windows.Forms.Label();
             this.ListMission = new System.Windows.Forms.DataGridView();
             this.BoxPartiesInterecee = new System.Windows.Forms.GroupBox();
+            this.BoxCompte = new System.Windows.Forms.GroupBox();
+            this.txtNumeroCompte = new System.Windows.Forms.ComboBox();
+            this.ListComptes = new System.Windows.Forms.DataGridView();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.txtBanque = new System.Windows.Forms.TextBox();
             this.BoxPersonnel = new System.Windows.Forms.GroupBox();
+            this.txtCinPersonne = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.txtNomPersonne = new System.Windows.Forms.ComboBox();
             this.listPersonnel = new System.Windows.Forms.DataGridView();
             this.label23 = new System.Windows.Forms.Label();
@@ -192,6 +201,7 @@ namespace GestionAffaire
             this.label36 = new System.Windows.Forms.Label();
             this.txtPrenomRespo = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -229,29 +239,20 @@ namespace GestionAffaire
             this.label21 = new System.Windows.Forms.Label();
             this.cmbAffMissionReche = new System.Windows.Forms.ComboBox();
             this.cmbRespoMissionReche = new System.Windows.Forms.ComboBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.txtCinPersonne = new System.Windows.Forms.TextBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.BoxCompte = new System.Windows.Forms.GroupBox();
-            this.txtNumeroCompte = new System.Windows.Forms.ComboBox();
-            this.ListComptes = new System.Windows.Forms.DataGridView();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.txtBanque = new System.Windows.Forms.TextBox();
-            this.lesPartiesIntéresséesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.BoxDisposition = new System.Windows.Forms.GroupBox();
-            this.txtNumeroDisposition = new System.Windows.Forms.TextBox();
+            this.cmbNumeroDisposition = new System.Windows.Forms.ComboBox();
+            this.btnSupprimerDisposition = new System.Windows.Forms.Button();
+            this.cmbCompteDisposition = new System.Windows.Forms.ComboBox();
+            this.txtMontantDisposition = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.btnModifierDisposition = new System.Windows.Forms.Button();
             this.btnValiderDisposition = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.listDisposition = new System.Windows.Forms.DataGridView();
             this.label46 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.cmbPersonneDisposition = new System.Windows.Forms.ComboBox();
-            this.txtMontantDisposition = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.btnSupprimerDisposition = new System.Windows.Forms.Button();
+            this.btnActualiserDisposition = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -265,6 +266,8 @@ namespace GestionAffaire
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListMission)).BeginInit();
             this.BoxPartiesInterecee.SuspendLayout();
+            this.BoxCompte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListComptes)).BeginInit();
             this.BoxPersonnel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listPersonnel)).BeginInit();
             this.BoxClientAjouter.SuspendLayout();
@@ -278,10 +281,8 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.txtMinFraisFraisRecheNote)).BeginInit();
             this.BoxMissionReche.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListMissionReche)).BeginInit();
-            this.BoxCompte.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ListComptes)).BeginInit();
             this.BoxDisposition.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listDisposition)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -352,6 +353,14 @@ namespace GestionAffaire
             this.lesPartiesIntéresséesToolStripMenuItem.Size = new System.Drawing.Size(205, 34);
             this.lesPartiesIntéresséesToolStripMenuItem.Text = "Mise à Disposition";
             this.lesPartiesIntéresséesToolStripMenuItem.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem_Click);
+            // 
+            // lesPartiesIntéresséesToolStripMenuItem1
+            // 
+            this.lesPartiesIntéresséesToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lesPartiesIntéresséesToolStripMenuItem1.Name = "lesPartiesIntéresséesToolStripMenuItem1";
+            this.lesPartiesIntéresséesToolStripMenuItem1.Size = new System.Drawing.Size(241, 34);
+            this.lesPartiesIntéresséesToolStripMenuItem1.Text = "Les Parties Intéressées";
+            this.lesPartiesIntéresséesToolStripMenuItem1.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem1_Click);
             // 
             // errorProvider1
             // 
@@ -1421,6 +1430,99 @@ namespace GestionAffaire
             this.BoxPartiesInterecee.Visible = false;
             this.BoxPartiesInterecee.Enter += new System.EventHandler(this.BoxClient_Enter);
             // 
+            // BoxCompte
+            // 
+            this.BoxCompte.Controls.Add(this.txtNumeroCompte);
+            this.BoxCompte.Controls.Add(this.ListComptes);
+            this.BoxCompte.Controls.Add(this.label42);
+            this.BoxCompte.Controls.Add(this.label43);
+            this.BoxCompte.Controls.Add(this.txtBanque);
+            this.BoxCompte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxCompte.Location = new System.Drawing.Point(304, 55);
+            this.BoxCompte.Name = "BoxCompte";
+            this.BoxCompte.Size = new System.Drawing.Size(540, 374);
+            this.BoxCompte.TabIndex = 26;
+            this.BoxCompte.TabStop = false;
+            this.BoxCompte.Text = "Compte :";
+            this.BoxCompte.Visible = false;
+            // 
+            // txtNumeroCompte
+            // 
+            this.txtNumeroCompte.FormattingEnabled = true;
+            this.txtNumeroCompte.Location = new System.Drawing.Point(182, 58);
+            this.txtNumeroCompte.Name = "txtNumeroCompte";
+            this.txtNumeroCompte.Size = new System.Drawing.Size(265, 28);
+            this.txtNumeroCompte.TabIndex = 16;
+            this.txtNumeroCompte.SelectedIndexChanged += new System.EventHandler(this.txtNumeroCompte_SelectedIndexChanged);
+            // 
+            // ListComptes
+            // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListComptes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            this.ListComptes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListComptes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.ListComptes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListComptes.DefaultCellStyle = dataGridViewCellStyle18;
+            this.ListComptes.Location = new System.Drawing.Point(49, 189);
+            this.ListComptes.Name = "ListComptes";
+            this.ListComptes.ReadOnly = true;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListComptes.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListComptes.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            this.ListComptes.Size = new System.Drawing.Size(396, 156);
+            this.ListComptes.TabIndex = 15;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(47, 61);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(73, 20);
+            this.label42.TabIndex = 3;
+            this.label42.Text = "Numero :";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(47, 98);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(132, 20);
+            this.label43.TabIndex = 0;
+            this.label43.Text = "Banque Agence :";
+            // 
+            // txtBanque
+            // 
+            this.txtBanque.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBanque.Location = new System.Drawing.Point(182, 95);
+            this.txtBanque.Name = "txtBanque";
+            this.txtBanque.Size = new System.Drawing.Size(265, 26);
+            this.txtBanque.TabIndex = 13;
+            // 
             // BoxPersonnel
             // 
             this.BoxPersonnel.Controls.Add(this.txtCinPersonne);
@@ -1438,6 +1540,24 @@ namespace GestionAffaire
             this.BoxPersonnel.TabStop = false;
             this.BoxPersonnel.Text = "Personnel :";
             this.BoxPersonnel.Visible = false;
+            // 
+            // txtCinPersonne
+            // 
+            this.txtCinPersonne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCinPersonne.Location = new System.Drawing.Point(182, 54);
+            this.txtCinPersonne.Name = "txtCinPersonne";
+            this.txtCinPersonne.Size = new System.Drawing.Size(265, 26);
+            this.txtCinPersonne.TabIndex = 18;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(47, 57);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(44, 20);
+            this.label33.TabIndex = 17;
+            this.label33.Text = "CIN :";
             // 
             // txtNomPersonne
             // 
@@ -1738,6 +1858,18 @@ namespace GestionAffaire
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Type de Partie :";
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton4.Location = new System.Drawing.Point(3, 132);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(83, 24);
+            this.radioButton4.TabIndex = 32;
+            this.radioButton4.Text = "Compte";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -2221,149 +2353,19 @@ namespace GestionAffaire
             this.cmbRespoMissionReche.Size = new System.Drawing.Size(415, 28);
             this.cmbRespoMissionReche.TabIndex = 0;
             // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(47, 57);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(44, 20);
-            this.label33.TabIndex = 17;
-            this.label33.Text = "CIN :";
-            // 
-            // txtCinPersonne
-            // 
-            this.txtCinPersonne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCinPersonne.Location = new System.Drawing.Point(182, 54);
-            this.txtCinPersonne.Name = "txtCinPersonne";
-            this.txtCinPersonne.Size = new System.Drawing.Size(265, 26);
-            this.txtCinPersonne.TabIndex = 18;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(3, 132);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(83, 24);
-            this.radioButton4.TabIndex = 32;
-            this.radioButton4.Text = "Compte";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
-            // BoxCompte
-            // 
-            this.BoxCompte.Controls.Add(this.txtNumeroCompte);
-            this.BoxCompte.Controls.Add(this.ListComptes);
-            this.BoxCompte.Controls.Add(this.label42);
-            this.BoxCompte.Controls.Add(this.label43);
-            this.BoxCompte.Controls.Add(this.txtBanque);
-            this.BoxCompte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxCompte.Location = new System.Drawing.Point(304, 55);
-            this.BoxCompte.Name = "BoxCompte";
-            this.BoxCompte.Size = new System.Drawing.Size(540, 374);
-            this.BoxCompte.TabIndex = 26;
-            this.BoxCompte.TabStop = false;
-            this.BoxCompte.Text = "Compte :";
-            this.BoxCompte.Visible = false;
-            // 
-            // txtNumeroCompte
-            // 
-            this.txtNumeroCompte.FormattingEnabled = true;
-            this.txtNumeroCompte.Location = new System.Drawing.Point(182, 58);
-            this.txtNumeroCompte.Name = "txtNumeroCompte";
-            this.txtNumeroCompte.Size = new System.Drawing.Size(265, 28);
-            this.txtNumeroCompte.TabIndex = 16;
-            this.txtNumeroCompte.SelectedIndexChanged += new System.EventHandler(this.txtNumeroCompte_SelectedIndexChanged);
-            // 
-            // ListComptes
-            // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListComptes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.ListComptes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListComptes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.ListComptes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ListComptes.DefaultCellStyle = dataGridViewCellStyle18;
-            this.ListComptes.Location = new System.Drawing.Point(49, 189);
-            this.ListComptes.Name = "ListComptes";
-            this.ListComptes.ReadOnly = true;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListComptes.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListComptes.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.ListComptes.Size = new System.Drawing.Size(396, 156);
-            this.ListComptes.TabIndex = 15;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(47, 61);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(73, 20);
-            this.label42.TabIndex = 3;
-            this.label42.Text = "Numero :";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(47, 98);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(132, 20);
-            this.label43.TabIndex = 0;
-            this.label43.Text = "Banque Agence :";
-            // 
-            // txtBanque
-            // 
-            this.txtBanque.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBanque.Location = new System.Drawing.Point(182, 95);
-            this.txtBanque.Name = "txtBanque";
-            this.txtBanque.Size = new System.Drawing.Size(265, 26);
-            this.txtBanque.TabIndex = 13;
-            // 
-            // lesPartiesIntéresséesToolStripMenuItem1
-            // 
-            this.lesPartiesIntéresséesToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lesPartiesIntéresséesToolStripMenuItem1.Name = "lesPartiesIntéresséesToolStripMenuItem1";
-            this.lesPartiesIntéresséesToolStripMenuItem1.Size = new System.Drawing.Size(241, 34);
-            this.lesPartiesIntéresséesToolStripMenuItem1.Text = "Les Parties Intéressées";
-            this.lesPartiesIntéresséesToolStripMenuItem1.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem1_Click);
-            // 
             // BoxDisposition
             // 
             this.BoxDisposition.BackColor = System.Drawing.Color.LightGray;
+            this.BoxDisposition.Controls.Add(this.btnActualiserDisposition);
+            this.BoxDisposition.Controls.Add(this.cmbNumeroDisposition);
             this.BoxDisposition.Controls.Add(this.btnSupprimerDisposition);
-            this.BoxDisposition.Controls.Add(this.comboBox2);
+            this.BoxDisposition.Controls.Add(this.cmbCompteDisposition);
             this.BoxDisposition.Controls.Add(this.txtMontantDisposition);
-            this.BoxDisposition.Controls.Add(this.txtNumeroDisposition);
             this.BoxDisposition.Controls.Add(this.label39);
             this.BoxDisposition.Controls.Add(this.label44);
             this.BoxDisposition.Controls.Add(this.btnModifierDisposition);
             this.BoxDisposition.Controls.Add(this.btnValiderDisposition);
-            this.BoxDisposition.Controls.Add(this.dataGridView1);
+            this.BoxDisposition.Controls.Add(this.listDisposition);
             this.BoxDisposition.Controls.Add(this.label46);
             this.BoxDisposition.Controls.Add(this.label48);
             this.BoxDisposition.Controls.Add(this.cmbPersonneDisposition);
@@ -2376,14 +2378,44 @@ namespace GestionAffaire
             this.BoxDisposition.Text = "Mise à Disposition :";
             this.BoxDisposition.Visible = false;
             // 
-            // txtNumeroDisposition
+            // cmbNumeroDisposition
             // 
-            this.txtNumeroDisposition.Enabled = false;
-            this.txtNumeroDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroDisposition.Location = new System.Drawing.Point(185, 69);
-            this.txtNumeroDisposition.Name = "txtNumeroDisposition";
-            this.txtNumeroDisposition.Size = new System.Drawing.Size(415, 26);
-            this.txtNumeroDisposition.TabIndex = 32;
+            this.cmbNumeroDisposition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNumeroDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbNumeroDisposition.FormattingEnabled = true;
+            this.cmbNumeroDisposition.Location = new System.Drawing.Point(185, 68);
+            this.cmbNumeroDisposition.Name = "cmbNumeroDisposition";
+            this.cmbNumeroDisposition.Size = new System.Drawing.Size(415, 28);
+            this.cmbNumeroDisposition.TabIndex = 36;
+            this.cmbNumeroDisposition.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // btnSupprimerDisposition
+            // 
+            this.btnSupprimerDisposition.Location = new System.Drawing.Point(789, 150);
+            this.btnSupprimerDisposition.Name = "btnSupprimerDisposition";
+            this.btnSupprimerDisposition.Size = new System.Drawing.Size(215, 37);
+            this.btnSupprimerDisposition.TabIndex = 35;
+            this.btnSupprimerDisposition.Text = "Supprimer";
+            this.btnSupprimerDisposition.UseVisualStyleBackColor = true;
+            this.btnSupprimerDisposition.Click += new System.EventHandler(this.btnSupprimerDisposition_Click);
+            // 
+            // cmbCompteDisposition
+            // 
+            this.cmbCompteDisposition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCompteDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCompteDisposition.FormattingEnabled = true;
+            this.cmbCompteDisposition.Location = new System.Drawing.Point(185, 203);
+            this.cmbCompteDisposition.Name = "cmbCompteDisposition";
+            this.cmbCompteDisposition.Size = new System.Drawing.Size(415, 28);
+            this.cmbCompteDisposition.TabIndex = 34;
+            // 
+            // txtMontantDisposition
+            // 
+            this.txtMontantDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMontantDisposition.Location = new System.Drawing.Point(185, 159);
+            this.txtMontantDisposition.Name = "txtMontantDisposition";
+            this.txtMontantDisposition.Size = new System.Drawing.Size(415, 26);
+            this.txtMontantDisposition.TabIndex = 33;
             // 
             // label39
             // 
@@ -2413,6 +2445,7 @@ namespace GestionAffaire
             this.btnModifierDisposition.TabIndex = 28;
             this.btnModifierDisposition.Text = "Modifier";
             this.btnModifierDisposition.UseVisualStyleBackColor = true;
+            this.btnModifierDisposition.Click += new System.EventHandler(this.btnModifierDisposition_Click);
             // 
             // btnValiderDisposition
             // 
@@ -2422,14 +2455,15 @@ namespace GestionAffaire
             this.btnValiderDisposition.TabIndex = 27;
             this.btnValiderDisposition.Text = "Valider";
             this.btnValiderDisposition.UseVisualStyleBackColor = true;
+            this.btnValiderDisposition.Click += new System.EventHandler(this.btnValiderDisposition_Click);
             // 
-            // dataGridView1
+            // listDisposition
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.listDisposition.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.listDisposition.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.listDisposition.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2437,8 +2471,8 @@ namespace GestionAffaire
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listDisposition.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.listDisposition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2446,10 +2480,10 @@ namespace GestionAffaire
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Location = new System.Drawing.Point(43, 264);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
+            this.listDisposition.DefaultCellStyle = dataGridViewCellStyle3;
+            this.listDisposition.Location = new System.Drawing.Point(43, 264);
+            this.listDisposition.Name = "listDisposition";
+            this.listDisposition.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2457,12 +2491,12 @@ namespace GestionAffaire
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.listDisposition.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.Size = new System.Drawing.Size(1262, 287);
-            this.dataGridView1.TabIndex = 26;
+            this.listDisposition.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.listDisposition.Size = new System.Drawing.Size(1262, 287);
+            this.listDisposition.TabIndex = 26;
             // 
             // label46
             // 
@@ -2494,32 +2528,15 @@ namespace GestionAffaire
             this.cmbPersonneDisposition.Size = new System.Drawing.Size(415, 28);
             this.cmbPersonneDisposition.TabIndex = 0;
             // 
-            // txtMontantDisposition
+            // btnActualiserDisposition
             // 
-            this.txtMontantDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMontantDisposition.Location = new System.Drawing.Point(185, 159);
-            this.txtMontantDisposition.Name = "txtMontantDisposition";
-            this.txtMontantDisposition.Size = new System.Drawing.Size(415, 26);
-            this.txtMontantDisposition.TabIndex = 33;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(185, 203);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(415, 28);
-            this.comboBox2.TabIndex = 34;
-            // 
-            // btnSupprimerDisposition
-            // 
-            this.btnSupprimerDisposition.Location = new System.Drawing.Point(789, 150);
-            this.btnSupprimerDisposition.Name = "btnSupprimerDisposition";
-            this.btnSupprimerDisposition.Size = new System.Drawing.Size(215, 37);
-            this.btnSupprimerDisposition.TabIndex = 35;
-            this.btnSupprimerDisposition.Text = "Supprimer";
-            this.btnSupprimerDisposition.UseVisualStyleBackColor = true;
+            this.btnActualiserDisposition.Location = new System.Drawing.Point(789, 194);
+            this.btnActualiserDisposition.Name = "btnActualiserDisposition";
+            this.btnActualiserDisposition.Size = new System.Drawing.Size(215, 37);
+            this.btnActualiserDisposition.TabIndex = 37;
+            this.btnActualiserDisposition.Text = "Actualiser";
+            this.btnActualiserDisposition.UseVisualStyleBackColor = true;
+            this.btnActualiserDisposition.Click += new System.EventHandler(this.btnActualiserDisposition_Click);
             // 
             // Form1
             // 
@@ -2562,6 +2579,9 @@ namespace GestionAffaire
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListMission)).EndInit();
             this.BoxPartiesInterecee.ResumeLayout(false);
+            this.BoxCompte.ResumeLayout(false);
+            this.BoxCompte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListComptes)).EndInit();
             this.BoxPersonnel.ResumeLayout(false);
             this.BoxPersonnel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listPersonnel)).EndInit();
@@ -2581,12 +2601,9 @@ namespace GestionAffaire
             this.BoxMissionReche.ResumeLayout(false);
             this.BoxMissionReche.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListMissionReche)).EndInit();
-            this.BoxCompte.ResumeLayout(false);
-            this.BoxCompte.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ListComptes)).EndInit();
             this.BoxDisposition.ResumeLayout(false);
             this.BoxDisposition.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listDisposition)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2753,17 +2770,18 @@ namespace GestionAffaire
         private System.Windows.Forms.ToolStripMenuItem lesPartiesIntéresséesToolStripMenuItem1;
         private System.Windows.Forms.GroupBox BoxDisposition;
         private System.Windows.Forms.Button btnSupprimerDisposition;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbCompteDisposition;
         private System.Windows.Forms.TextBox txtMontantDisposition;
-        private System.Windows.Forms.TextBox txtNumeroDisposition;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Button btnModifierDisposition;
         private System.Windows.Forms.Button btnValiderDisposition;
-        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView listDisposition;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.ComboBox cmbPersonneDisposition;
+        private System.Windows.Forms.ComboBox cmbNumeroDisposition;
+        private System.Windows.Forms.Button btnActualiserDisposition;
     }
 }
 
