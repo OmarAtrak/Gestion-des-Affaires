@@ -145,6 +145,12 @@
     <Compile Include="FraisForm.Designer.cs">
       <DependentUpon>FraisForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mise_a_Desposition_Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mise_a_Desposition_Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CrystalReport1.rpt">
@@ -173,6 +179,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FraisForm.resx">
       <DependentUpon>FraisForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mise_a_Desposition_Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Mise_a_Desposition_Report.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

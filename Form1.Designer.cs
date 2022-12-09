@@ -255,6 +255,7 @@ namespace GestionAffaire
             this.label46 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.cmbPersonneDisposition = new System.Windows.Forms.ComboBox();
+            this.brnImprimerDisposition = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -2379,6 +2380,7 @@ namespace GestionAffaire
             // BoxDisposition
             // 
             this.BoxDisposition.BackColor = System.Drawing.Color.LightGray;
+            this.BoxDisposition.Controls.Add(this.brnImprimerDisposition);
             this.BoxDisposition.Controls.Add(this.btnActualiserDisposition);
             this.BoxDisposition.Controls.Add(this.cmbNumeroDisposition);
             this.BoxDisposition.Controls.Add(this.btnSupprimerDisposition);
@@ -2403,7 +2405,7 @@ namespace GestionAffaire
             // 
             // btnActualiserDisposition
             // 
-            this.btnActualiserDisposition.Location = new System.Drawing.Point(789, 194);
+            this.btnActualiserDisposition.Location = new System.Drawing.Point(789, 220);
             this.btnActualiserDisposition.Name = "btnActualiserDisposition";
             this.btnActualiserDisposition.Size = new System.Drawing.Size(215, 37);
             this.btnActualiserDisposition.TabIndex = 37;
@@ -2424,7 +2426,7 @@ namespace GestionAffaire
             // 
             // btnSupprimerDisposition
             // 
-            this.btnSupprimerDisposition.Location = new System.Drawing.Point(789, 150);
+            this.btnSupprimerDisposition.Location = new System.Drawing.Point(789, 176);
             this.btnSupprimerDisposition.Name = "btnSupprimerDisposition";
             this.btnSupprimerDisposition.Size = new System.Drawing.Size(215, 37);
             this.btnSupprimerDisposition.TabIndex = 35;
@@ -2472,7 +2474,7 @@ namespace GestionAffaire
             // 
             // btnModifierDisposition
             // 
-            this.btnModifierDisposition.Location = new System.Drawing.Point(789, 108);
+            this.btnModifierDisposition.Location = new System.Drawing.Point(789, 134);
             this.btnModifierDisposition.Name = "btnModifierDisposition";
             this.btnModifierDisposition.Size = new System.Drawing.Size(215, 37);
             this.btnModifierDisposition.TabIndex = 28;
@@ -2482,7 +2484,7 @@ namespace GestionAffaire
             // 
             // btnValiderDisposition
             // 
-            this.btnValiderDisposition.Location = new System.Drawing.Point(789, 65);
+            this.btnValiderDisposition.Location = new System.Drawing.Point(789, 91);
             this.btnValiderDisposition.Name = "btnValiderDisposition";
             this.btnValiderDisposition.Size = new System.Drawing.Size(215, 37);
             this.btnValiderDisposition.TabIndex = 27;
@@ -2561,6 +2563,16 @@ namespace GestionAffaire
             this.cmbPersonneDisposition.Name = "cmbPersonneDisposition";
             this.cmbPersonneDisposition.Size = new System.Drawing.Size(415, 28);
             this.cmbPersonneDisposition.TabIndex = 0;
+            // 
+            // brnImprimerDisposition
+            // 
+            this.brnImprimerDisposition.Location = new System.Drawing.Point(789, 51);
+            this.brnImprimerDisposition.Name = "brnImprimerDisposition";
+            this.brnImprimerDisposition.Size = new System.Drawing.Size(215, 37);
+            this.brnImprimerDisposition.TabIndex = 38;
+            this.brnImprimerDisposition.Text = "Plus Informations";
+            this.brnImprimerDisposition.UseVisualStyleBackColor = true;
+            this.brnImprimerDisposition.Click += new System.EventHandler(this.brnImprimerDisposition_Click);
             // 
             // Form1
             // 
@@ -2808,6 +2820,7 @@ namespace GestionAffaire
         private System.Windows.Forms.Button btnActualiserDisposition;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox txtBanque;
+        private System.Windows.Forms.Button brnImprimerDisposition;
     }
 }
 
