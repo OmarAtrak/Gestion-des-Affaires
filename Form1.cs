@@ -544,7 +544,7 @@ namespace GestionAffaire
             dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select Numero,banque as 'Banque Agence' from Compte";
+            cmd.CommandText = "select Numero,AgenceBanque as 'Agence',Banque from Compte";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -994,9 +994,6 @@ namespace GestionAffaire
 
 
         
-
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
             RemplirNumeroAffaire();
@@ -1123,12 +1120,12 @@ namespace GestionAffaire
                     }
                     else
                     {
-                        errorProvider1.SetError(txtRaisonSocialClient, "cette information est Obligatoir");
+                        errorProvider1.SetError(txtRaisonSocialClient, "cette information est Obligatoire");
                     }
                 }
                 else
                 {
-                    errorProvider1.SetError(txtICEClient, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtICEClient, "cette information est Obligatoire");
                 }
             }
             else if (radioButton2.Checked == true)
@@ -1156,13 +1153,13 @@ namespace GestionAffaire
                         }
                         else
                         {
-                            errorProvider1.SetError(txtPrenomRespo, "cette information est Obligatoir");
+                            errorProvider1.SetError(txtPrenomRespo, "cette information est Obligatoire");
                         }
                     }
                 }
                 else
                 {
-                    errorProvider1.SetError(txtNomRespo, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtNomRespo, "cette information est Obligatoire");
                 }
             }
             else if (radioButton1.Checked == true)
@@ -1198,15 +1195,15 @@ namespace GestionAffaire
                         else
                         {
                             if (txtCinPersonne.Text == "")
-                                errorProvider1.SetError(txtCinPersonne, "cette Information est Obligatoir");
+                                errorProvider1.SetError(txtCinPersonne, "cette Information est Obligatoire");
                             if (txtPrenomPresonne.Text == "")
-                                errorProvider1.SetError(txtPrenomPresonne, "cette Information est Obligatoir");
+                                errorProvider1.SetError(txtPrenomPresonne, "cette Information est Obligatoire");
                         }
                     }
                 }
                 else
                 {
-                    errorProvider1.SetError(txtCinPersonne, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtCinPersonne, "cette information est Obligatoire");
                 }
             }
             else if (radioButton4.Checked == true)
@@ -1215,37 +1212,42 @@ namespace GestionAffaire
                 {
                     if (IsCompteExists(txtNumeroCompte.Text) == false)
                     {
-                        if (txtBanque.Text != "")
+                        if (txtAgenceBanque.Text != "")
                         {
-                            if (IsBanqueExists(txtBanque.Text))
+                            if (txtBanque.Text != "")
                             {
-                                con.Open();
-                                cmd.CommandText = "insert into Compte values('" + txtNumeroCompte.Text + "','" + txtBanque.Text + "')";
-                                cmd.ExecuteNonQuery();
-                                con.Close();
-                            }
-                            else
-                            {
-                                con.Open();
-                                cmd.CommandText = "insert into Banque values('" + txtBanque.Text + "')";
-                                cmd.ExecuteNonQuery();
-                                cmd.Parameters.Clear();
-                                cmd.CommandText = "insert into Compte values('" + txtNumeroCompte.Text + "','" + txtBanque.Text + "')";
-                                cmd.ExecuteNonQuery();
-                                con.Close();
-                            }
-                            MessageBox.Show("Compte crée avec Succès");
+                                if (IsBanqueExists(txtBanque.Text))
+                                {
+                                    con.Open();
+                                    cmd.CommandText = "insert into Compte values('" + txtNumeroCompte.Text + "','" + txtAgenceBanque.Text + "','"+ txtBanque +"')";
+                                    cmd.ExecuteNonQuery();
+                                    con.Close();
+                                }
+                                else
+                                {
+                                    con.Open();
+                                    cmd.CommandText = "insert into Banque values('" + txtBanque.Text + "')";
+                                    cmd.ExecuteNonQuery();
+                                    cmd.Parameters.Clear();
+                                    cmd.CommandText = "insert into Compte values('" + txtNumeroCompte.Text + "','" + txtAgenceBanque.Text + "','"+ txtBanque.Text +"')";
+                                    cmd.ExecuteNonQuery();
+                                    con.Close();
+                                }
+                                MessageBox.Show("Compte crée avec Succès");
 
-                            txtNumeroCompte.Text = txtBanque.Text = "";
-                            remplirNumeroCompte();
-                            remplirListCompte();
+                                txtNumeroCompte.Text = txtAgenceBanque.Text = txtBanque.Text = "";
+                                remplirNumeroCompte();
+                                remplirListCompte();
+                            }
                         }
+                        else
+                            errorProvider1.SetError(txtAgenceBanque,"cette Inforamtion est Obligatoire");
                     }
                     else
                         errorProvider1.SetError(txtNumeroCompte, "Compte est déjà Existant");
                 }
                 else
-                    errorProvider1.SetError(txtNumeroCompte, "cette Information est Obligatoir");
+                    errorProvider1.SetError(txtNumeroCompte, "cette Information est Obligatoire");
             }
         }
         private void btnModifierCR_Click(object sender, EventArgs e)
@@ -1277,13 +1279,13 @@ namespace GestionAffaire
                         }
                         else
                         {
-                            errorProvider1.SetError(txtRaisonSocialClient, "cette information est Obligatoir");
+                            errorProvider1.SetError(txtRaisonSocialClient, "cette information est Obligatoire");
                         }
                     }
                 }
                 else
                 {
-                    errorProvider1.SetError(txtICEClient, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtICEClient, "cette information est Obligatoire");
                 }
             }
             else if (radioButton2.Checked == true)
@@ -1311,13 +1313,13 @@ namespace GestionAffaire
                         }
                         else
                         {
-                            errorProvider1.SetError(txtPrenomRespo, "Prenom est Obligatoir");
+                            errorProvider1.SetError(txtPrenomRespo, "Prenom est Obligatoire");
                         }
                     }
                 }
                 else
                 {
-                    errorProvider1.SetError(txtNomRespo, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtNomRespo, "cette information est Obligatoire");
                 }
             }
             else if (radioButton1.Checked == true)
@@ -1353,15 +1355,15 @@ namespace GestionAffaire
                         else
                         {
                             if (txtNomPersonne.Text == "")
-                                errorProvider1.SetError(txtNomPersonne, "cette Information est Obligatoir");
+                                errorProvider1.SetError(txtNomPersonne, "cette Information est Obligatoire");
                             if (txtPrenomPresonne.Text == "")
-                                errorProvider1.SetError(txtPrenomPresonne, "cette Information est Obligatoir");
+                                errorProvider1.SetError(txtPrenomPresonne, "cette Information est Obligatoire");
                         }
                     }
                 }
                 else
                 {
-                    errorProvider1.SetError(txtCinPersonne, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtCinPersonne, "cette information est Obligatoire");
                 }
             }
             else if (radioButton4.Checked == true)
@@ -1372,38 +1374,42 @@ namespace GestionAffaire
                         errorProvider1.SetError(txtNumeroCompte, "Compte n'est pas Existant");
                     else
                     {
-                        if (txtBanque.Text != "")
+                        if (txtAgenceBanque.Text != "")
                         {
-                            if (IsBanqueExists(txtBanque.Text))
+                            if (txtBanque.Text != "")
                             {
-                                con.Open();
-                                cmd.CommandText = "update Compte set banque='" + txtBanque.Text + "' where numero='" + txtNumeroCompte.Text + "'";
-                                cmd.ExecuteNonQuery();
-                                con.Close();
-                            }
-                            else
-                            {
-                                con.Open();
-                                cmd.CommandText = "insert into Banque values('" + txtBanque.Text + "')";
-                                cmd.ExecuteNonQuery();
-                                cmd.Parameters.Clear();
-                                cmd.CommandText = "update Compte set banque='" + txtBanque.Text + "' where numero='" + txtNumeroCompte.Text + "'";
-                                cmd.ExecuteNonQuery();
-                                con.Close();
-
+                                if (IsBanqueExists(txtBanque.Text))
+                                {
+                                    con.Open();
+                                    cmd.CommandText = "update Compte set AgenceBanque='" + txtAgenceBanque.Text + "',Banque='"+ txtBanque.Text +"' where numero='" + txtNumeroCompte.Text + "'";
+                                    cmd.ExecuteNonQuery();
+                                    con.Close();
+                                }
+                                else
+                                {
+                                    con.Open();
+                                    cmd.CommandText = "insert into Banque values('" + txtBanque.Text + "')";
+                                    cmd.ExecuteNonQuery();
+                                    cmd.Parameters.Clear();
+                                    cmd.CommandText = "update Compte set AgenceBanque='" + txtAgenceBanque.Text + "', Banque='"+ txtBanque.Text +"' where numero='" + txtNumeroCompte.Text + "'";
+                                    cmd.ExecuteNonQuery();
+                                    con.Close();
+                                }
                                 MessageBox.Show("Modification Avec Succès");
 
-                                txtNumeroCompte.Text = txtBanque.Text = "";
+                                txtNumeroCompte.Text = txtAgenceBanque.Text = txtBanque.Text = "";
                                 remplirNumeroCompte();
                                 remplirListCompte();
                             }
+                            else
+                                errorProvider1.SetError(txtBanque, "cette Information est Obligatoire");
                         }
                         else
-                            errorProvider1.SetError(txtBanque, "cette Information est Obligatoir");
+                            errorProvider1.SetError(txtAgenceBanque, "cette Information est Obligatoire");
                     }
                 }
                 else
-                    errorProvider1.SetError(txtNumeroCompte, "cette Information est Obligatoir");
+                    errorProvider1.SetError(txtNumeroCompte, "cette Information est Obligatoire");
             }
 
         }
@@ -1476,7 +1482,7 @@ namespace GestionAffaire
             dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select Numero,banque as 'Banque Agence' from Compte where numero='"+ txtNumeroCompte.Text +"'";
+            cmd.CommandText = "select Numero,AgenceBanque as 'Agence',Banque from Compte where numero='"+ txtNumeroCompte.Text +"'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -1484,8 +1490,8 @@ namespace GestionAffaire
             ListComptes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListComptes.DataSource = dt;
 
-            txtBanque.Text = dt.Rows[0][1].ToString();
-                        
+            txtAgenceBanque.Text = dt.Rows[0][1].ToString();
+            txtBanque.Text = dt.Rows[0][2].ToString();
         }
         private void btnSupprimerCR_Click(object sender, EventArgs e)
         {
@@ -1525,7 +1531,7 @@ namespace GestionAffaire
                 }
                 else
                 {
-                    errorProvider1.SetError(txtICEClient, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtICEClient, "cette information est Obligatoire");
                 }
             }
             else if (radioButton2.Checked == true)
@@ -1553,7 +1559,7 @@ namespace GestionAffaire
                 }
                 else
                 {
-                    errorProvider1.SetError(txtNomRespo, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtNomRespo, "cette information est Obligatoire");
                 }
             }
             else if (radioButton1.Checked == true)
@@ -1581,7 +1587,7 @@ namespace GestionAffaire
                 }
                 else
                 {
-                    errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoire");
                 }
             }
             else if (radioButton4.Checked == true)
@@ -1599,19 +1605,37 @@ namespace GestionAffaire
                             cmd.ExecuteNonQuery();
                             con.Close();
 
-                            txtNumeroCompte.Text = txtBanque.Text = "";
+                            txtNumeroCompte.Text = txtAgenceBanque.Text = txtBanque.Text = "";
                             remplirNumeroCompte();
                             remplirListCompte();
                         }
                     }
                 }
                 else
-                    errorProvider1.SetError(txtNumeroCompte, "cette information est Obligatoir");
+                    errorProvider1.SetError(txtNumeroCompte, "cette information est Obligatoire");
             }
 
         }
+        private void button8_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            txtNomRespo.Text = txtPrenomRespo.Text = "";
+            txtICEClient.Text = txtRaisonSocialClient.Text = "";
+            txtCinPersonne.Text = txtNomPersonne.Text = txtPrenomPresonne.Text = "";
+            txtNumeroCompte.Text = txtAgenceBanque.Text = txtBanque.Text = "";
 
 
+            RemplirIdClient();
+            remplirListClient();
+            RemplirNomRespo();
+            remplirListRespo();
+            remplirNomEmploye();
+            remplirListEmploye();
+            remplirListCompte();
+        }
+
+        
 
         // l'affaire
         private void cmbNumeroAff_SelectedIndexChanged(object sender, EventArgs e)
@@ -1636,6 +1660,26 @@ namespace GestionAffaire
             cmbClientAff.Text = dt.Rows[0][1].ToString();
             cmbResponsableAff.Text = dt.Rows[0][2].ToString();
             txtNbrJourAffaire.Value = decimal.Parse(dt.Rows[0][4].ToString());
+        }
+        private void ListAff_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note de Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE where Numero='" + ListAff.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+
+            cmbNumeroAff.Text = dt.Rows[0][0].ToString();
+            cmbClientAff.Text = dt.Rows[0][1].ToString();
+            cmbResponsableAff.Text = dt.Rows[0][2].ToString();
+            txtNbrJourAffaire.Value = decimal.Parse(dt.Rows[0][4].ToString());
+
+            remplirListAffaire();
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -1695,14 +1739,14 @@ namespace GestionAffaire
                                 errorProvider1.SetError(txtNbrJourAffaire, "Saisir Nombre de jours Valide");
                         }
                         else
-                            errorProvider1.SetError(txtNbrJourAffaire,"cette Information est Obligatoir");
+                            errorProvider1.SetError(txtNbrJourAffaire,"cette Information est Obligatoire");
                     }
                     else
                     {
                         if (cmbClientAff.Text == "")
-                            errorProvider1.SetError(cmbClientAff, "cette Information est Obligatoir");
+                            errorProvider1.SetError(cmbClientAff, "cette Information est Obligatoire");
                         if (cmbResponsableAff.Text == "")
-                            errorProvider1.SetError(cmbResponsableAff, "cette Information est Obligatoir");
+                            errorProvider1.SetError(cmbResponsableAff, "cette Information est Obligatoire");
                     }
                 }
                 else
@@ -1712,7 +1756,7 @@ namespace GestionAffaire
             }
             else
             {
-                errorProvider1.SetError(cmbNumeroAff,"cette Information est Obligatoir");
+                errorProvider1.SetError(cmbNumeroAff,"cette Information est Obligatoire");
             }
         }
         private void btnModifierAffaire_Click(object sender, EventArgs e)
@@ -1761,14 +1805,14 @@ namespace GestionAffaire
                                 errorProvider1.SetError(txtNbrJourAffaire, "Saisir Nombre de jours Valide");
                         }
                         else
-                            errorProvider1.SetError(txtNbrJourAffaire, "cette Information est Obligatoir");
+                            errorProvider1.SetError(txtNbrJourAffaire, "cette Information est Obligatoire");
                     }
                     else
                     {
                         if (cmbClientAff.Text == "")
-                            errorProvider1.SetError(cmbClientAff, "cette Information est Obligatoir");
+                            errorProvider1.SetError(cmbClientAff, "cette Information est Obligatoire");
                         if (cmbResponsableAff.Text == "")
-                            errorProvider1.SetError(cmbResponsableAff, "cette Information est Obligatoir");
+                            errorProvider1.SetError(cmbResponsableAff, "cette Information est Obligatoire");
                     }
                 }
                 else
@@ -2011,7 +2055,7 @@ namespace GestionAffaire
                                 remplirListFrais();
                             }
                             else
-                                errorProvider1.SetError(cmbRespoNote, "cette information est Obligatoir");
+                                errorProvider1.SetError(cmbRespoNote, "cette information est Obligatoire");
                         }
                         catch (Exception ex)
                         {
@@ -2256,6 +2300,90 @@ namespace GestionAffaire
 
 
         // mission
+        private void cmbNumeroMissionRech_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            DataTable dt = new DataTable();
+            DataTable dt2 = new DataTable();
+
+            dt.Rows.Clear();
+            dt2.Rows.Clear();
+
+            
+            con.Open();
+
+            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select personnel from DetailMission where mission='" + int.Parse(cmbNumeroMission.Text) + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt2);
+
+            con.Close();
+
+
+
+            cmbRespoMission.Text = dt.Rows[0][1].ToString();
+            txtDateDebutMission.Text = dt.Rows[0][2].ToString();
+            txtDateFinMission.Text = dt.Rows[0][3].ToString();
+            txtLieuDepartMission.Text = dt.Rows[0][5].ToString();
+            txtLieuArriveMission.Text = dt.Rows[0][6].ToString();
+            cmbNumAffMission.SelectedItem = dt.Rows[0][8].ToString();
+
+
+
+            ListMission.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ListMission.DataSource = dt;
+
+            listeEmployeOrdre.Items.Clear();
+            for (int i = 0; i < dt2.Rows.Count; i++)
+            {
+                listeEmployeOrdre.Items.Add(dt2.Rows[i][0].ToString());
+            }
+        }
+        private void ListMission_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            DataTable dt = new DataTable();
+            DataTable dt2 = new DataTable();
+
+            dt.Rows.Clear();
+            dt2.Rows.Clear();
+
+
+            con.Open();
+            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where numero='" + int.Parse(ListMission.Rows[e.RowIndex].Cells[0].Value.ToString()) + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select personnel,nom from DetailMission inner join Personnel on cin=personnel where mission='" + int.Parse(ListMission.Rows[e.RowIndex].Cells[0].Value.ToString()) + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt2);
+            con.Close();
+
+            cmbNumeroMission.Text = dt.Rows[0][0].ToString();
+            cmbRespoMission.Text = dt.Rows[0][1].ToString();
+            txtDateDebutMission.Text = dt.Rows[0][2].ToString();
+            txtDateFinMission.Text = dt.Rows[0][3].ToString();
+            txtLieuDepartMission.Text = dt.Rows[0][5].ToString();
+            txtLieuArriveMission.Text = dt.Rows[0][6].ToString();
+            cmbNumAffMission.SelectedItem = dt.Rows[0][8].ToString();
+
+            listeEmployeOrdre.Items.Clear();
+            for (int i = 0; i < dt2.Rows.Count; i++)
+            {
+                listeEmployeOrdre.Items.Add(dt2.Rows[i][1].ToString());
+            }
+
+            remplirListMission();
+        }
         private void btnValiderMission_Click_1(object sender, EventArgs e)
         {
             errorProvider1.Dispose();
@@ -2335,17 +2463,17 @@ namespace GestionAffaire
             else
             {
                 if (cmbRespoMission.Text == "")
-                    errorProvider1.SetError(cmbRespoMission, "cette Information est Obligatoir");
+                    errorProvider1.SetError(cmbRespoMission, "cette Information est Obligatoire");
                 if (txtDateDebutMission.Text == "")
-                    errorProvider1.SetError(txtDateDebutMission, "cette Information est Obligatoir");
+                    errorProvider1.SetError(txtDateDebutMission, "cette Information est Obligatoire");
                 if (txtDateFinMission.Text == "")
-                    errorProvider1.SetError(txtDateFinMission, "cette Information est Obligatoir");
+                    errorProvider1.SetError(txtDateFinMission, "cette Information est Obligatoire");
                 if (txtLieuDepartMission.Text == "")
-                    errorProvider1.SetError(txtLieuDepartMission, "cette Information est Obligatoir");
+                    errorProvider1.SetError(txtLieuDepartMission, "cette Information est Obligatoire");
                 if (txtLieuArriveMission.Text == "")
-                    errorProvider1.SetError(txtLieuArriveMission, "cette Information est Obligatoir");
+                    errorProvider1.SetError(txtLieuArriveMission, "cette Information est Obligatoire");
                 if (cmbNumAffMission.Text == "")
-                    errorProvider1.SetError(cmbNumAffMission, "cette Information est Obligatoir");
+                    errorProvider1.SetError(cmbNumAffMission, "cette Information est Obligatoire");
             }
         
         }
@@ -2428,17 +2556,17 @@ namespace GestionAffaire
                     else
                     {
                         if (cmbRespoMission.Text == "")
-                            errorProvider1.SetError(cmbRespoMission, "cette Information est Obligatoir");
+                            errorProvider1.SetError(cmbRespoMission, "cette Information est Obligatoire");
                         if (txtDateDebutMission.Text == "")
-                            errorProvider1.SetError(txtDateDebutMission, "cette Information est Obligatoir");
+                            errorProvider1.SetError(txtDateDebutMission, "cette Information est Obligatoire");
                         if (txtDateFinMission.Text == "")
-                            errorProvider1.SetError(txtDateFinMission, "cette Information est Obligatoir");
+                            errorProvider1.SetError(txtDateFinMission, "cette Information est Obligatoire");
                         if (txtLieuDepartMission.Text == "")
-                            errorProvider1.SetError(txtLieuDepartMission, "cette Information est Obligatoir");
+                            errorProvider1.SetError(txtLieuDepartMission, "cette Information est Obligatoire");
                         if (txtLieuArriveMission.Text == "")
-                            errorProvider1.SetError(txtLieuArriveMission, "cette Information est Obligatoir");
+                            errorProvider1.SetError(txtLieuArriveMission, "cette Information est Obligatoire");
                         if (cmbNumAffMission.Text == "")
-                            errorProvider1.SetError(cmbNumAffMission, "cette Information est Obligatoir");
+                            errorProvider1.SetError(cmbNumAffMission, "cette Information est Obligatoire");
                     }
 
                 }
@@ -2449,51 +2577,6 @@ namespace GestionAffaire
             }
             else
                 errorProvider1.SetError(cmbNumeroMission, "choisir une mission");
-        }
-        private void cmbNumeroMissionRech_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            errorProvider1.Dispose();
-
-            DataTable dt = new DataTable();
-            DataTable dt2 = new DataTable();
-
-            dt.Rows.Clear();
-            dt2.Rows.Clear();
-
-            
-            con.Open();
-
-            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-
-            cmd.Parameters.Clear();
-
-            cmd.CommandText = "select personnel from DetailMission where mission='" + int.Parse(cmbNumeroMission.Text) + "'";
-            da.SelectCommand = cmd;
-            da.Fill(dt2);
-
-            con.Close();
-
-
-
-            cmbRespoMission.Text = dt.Rows[0][1].ToString();
-            txtDateDebutMission.Text = dt.Rows[0][2].ToString();
-            txtDateFinMission.Text = dt.Rows[0][3].ToString();
-            txtLieuDepartMission.Text = dt.Rows[0][5].ToString();
-            txtLieuArriveMission.Text = dt.Rows[0][6].ToString();
-            cmbNumAffMission.SelectedItem = dt.Rows[0][8].ToString();
-
-
-
-            ListMission.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            ListMission.DataSource = dt;
-
-            listeEmployeOrdre.Items.Clear();
-            for (int i = 0; i < dt2.Rows.Count; i++)
-            {
-                listeEmployeOrdre.Items.Add(dt2.Rows[i][0].ToString());
-            }
         }
         private void btnSupprimerMission_Click(object sender, EventArgs e)
         {
@@ -2842,9 +2925,7 @@ namespace GestionAffaire
             RemplirNumeroAffaire();
             remplirListMission();
             txtDateDebutMissionReche.Text = txtDateFinMissionReche.Text = txtLieuDepartMissionReche.Text = txtLieuArriverMissionReche.Text ="";
-
         }
-        
 
 
 
@@ -2930,13 +3011,13 @@ namespace GestionAffaire
                 else
                 {
                     if (cmbTypeFrais.Text == "")
-                        errorProvider1.SetError(cmbTypeFrais, "cette information est Obligatoir");
+                        errorProvider1.SetError(cmbTypeFrais, "cette information est Obligatoire");
                     if (cmbPCFrais.Text == "")
-                        errorProvider1.SetError(cmbPCFrais, "cette information est Obligatoir");
+                        errorProvider1.SetError(cmbPCFrais, "cette information est Obligatoire");
                     if (txtFraisFrais.Text == "")
-                        errorProvider1.SetError(txtFraisFrais, "cette information est Obligatoir");
+                        errorProvider1.SetError(txtFraisFrais, "cette information est Obligatoire");
                     if (txtDateFrais.Text == "")
-                        errorProvider1.SetError(txtDateFrais, "cette information est Obligatoir");
+                        errorProvider1.SetError(txtDateFrais, "cette information est Obligatoire");
                 }
             }
             else
@@ -2970,13 +3051,13 @@ namespace GestionAffaire
                 else
                 {
                     if (cmbTypeFrais.Text == "")
-                        errorProvider1.SetError(cmbTypeFrais, "cette information est Obligatoir");
+                        errorProvider1.SetError(cmbTypeFrais, "cette information est Obligatoire");
                     if (cmbPCFrais.Text == "")
-                        errorProvider1.SetError(cmbPCFrais, "cette information est Obligatoir");
+                        errorProvider1.SetError(cmbPCFrais, "cette information est Obligatoire");
                     if (txtFraisFrais.Text == "")
-                        errorProvider1.SetError(txtFraisFrais, "cette information est Obligatoir");
+                        errorProvider1.SetError(txtFraisFrais, "cette information est Obligatoire");
                     if (txtDateFrais.Text == "")
-                        errorProvider1.SetError(txtDateFrais, "cette information est Obligatoir");
+                        errorProvider1.SetError(txtDateFrais, "cette information est Obligatoire");
                 }
             }
         }
@@ -3168,6 +3249,33 @@ namespace GestionAffaire
             txtMontantDisposition.Text = dt.Rows[0][2].ToString();
             cmbCompteDisposition.Text = dt.Rows[0][3].ToString();
         }
+        private void listDisposition_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            errorProvider1.Dispose();
+
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Numero,personne as 'Bénéficiaire',cast(Montant as nvarchar) as 'Montant',compte as 'Compte Bancaire' from MiseDisposition where numero='" + int.Parse(listDisposition.Rows[e.RowIndex].Cells[0].Value.ToString()) + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                cmd.Parameters.Clear();
+                cmd.CommandText = "select nom from Personnel where cin='" + dt.Rows[i][1].ToString() + "'";
+                listDisposition.Rows[i].Cells[1].Value = cmd.ExecuteScalar().ToString();
+            }
+            con.Close();
+
+            cmbNumeroDisposition.Text = dt.Rows[0][0].ToString();
+            cmbPersonneDisposition.Text = dt.Rows[0][1].ToString();
+            txtMontantDisposition.Text = dt.Rows[0][2].ToString();
+            cmbCompteDisposition.Text = dt.Rows[0][3].ToString();
+
+            remplirListDisposition();
+        }
         private void btnValiderDisposition_Click(object sender, EventArgs e)
         {
             errorProvider1.Dispose();
@@ -3200,11 +3308,11 @@ namespace GestionAffaire
             else
             {
                 if (cmbPersonneDisposition.Text == "")
-                    errorProvider1.SetError(cmbPersonneDisposition,"cetrte Information est Obligatoir");
+                    errorProvider1.SetError(cmbPersonneDisposition,"cetrte Information est Obligatoire");
                 if (txtMontantDisposition.Text == "")
-                    errorProvider1.SetError(txtMontantDisposition, "cette Information est Obligatoir");
+                    errorProvider1.SetError(txtMontantDisposition, "cette Information est Obligatoire");
                 if (cmbCompteDisposition.Text == "")
-                    errorProvider1.SetError(cmbCompteDisposition, "cette Information est Obligatoir");
+                    errorProvider1.SetError(cmbCompteDisposition, "cette Information est Obligatoire");
             }
         }
         private void btnModifierDisposition_Click(object sender, EventArgs e)
@@ -3236,15 +3344,15 @@ namespace GestionAffaire
                 else
                 {
                     if (cmbPersonneDisposition.Text == "")
-                        errorProvider1.SetError(cmbPersonneDisposition, "cette Information est Obligatoir");
+                        errorProvider1.SetError(cmbPersonneDisposition, "cette Information est Obligatoire");
                     if (txtMontantDisposition.Text == "")
-                        errorProvider1.SetError(txtMontantDisposition, "cette Information est Obligatoir");
+                        errorProvider1.SetError(txtMontantDisposition, "cette Information est Obligatoire");
                     if (cmbCompteDisposition.Text == "")
-                        errorProvider1.SetError(cmbCompteDisposition, "cette Information est Obligatoir");
+                        errorProvider1.SetError(cmbCompteDisposition, "cette Information est Obligatoire");
                 }
             }
             else
-                errorProvider1.SetError(cmbNumeroDisposition,"cette Information est Obligatoir");
+                errorProvider1.SetError(cmbNumeroDisposition,"cette Information est Obligatoire");
         }
         private void btnSupprimerDisposition_Click(object sender, EventArgs e)
         {
@@ -3267,7 +3375,7 @@ namespace GestionAffaire
                 
             }
             else
-                errorProvider1.SetError(cmbNumeroDisposition, "cette Information est Obligatoir");
+                errorProvider1.SetError(cmbNumeroDisposition, "cette Information est Obligatoire");
         }
         private void btnActualiserDisposition_Click(object sender, EventArgs e)
         {
@@ -3283,52 +3391,13 @@ namespace GestionAffaire
 
 
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            errorProvider1.Dispose();
-
-            RemplirIdClient();
-            RemplirNumeroAffaire();
-        }
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            errorProvider1.Dispose();
-
-            remplirListFraisNote();
-            remplirNumeroNote();
-            remplirTypeNote();
-            remplirPCNote();
-        }
-        private void button7_Click(object sender, EventArgs e)
-        {
-            errorProvider1.Dispose();
-
-            remplirNumeroNote();
-            remplirTypeNote();
-            remplirPCNote();
-            RemplirNumeroAffaire();
-        }
-        private void button8_Click(object sender, EventArgs e)
-        {
-            errorProvider1.Dispose();
-
-            txtNomRespo.Text = txtPrenomRespo.Text = "";
-            txtICEClient.Text = txtRaisonSocialClient.Text = "";
-            txtCinPersonne.Text = txtNomPersonne.Text = txtPrenomPresonne.Text = "";
-            txtNumeroCompte.Text = txtBanque.Text = "";
-            
-
-            RemplirIdClient();
-            remplirListClient();
-            RemplirNomRespo();
-            remplirListRespo();
-            remplirNomEmploye();
-            remplirListEmploye();
-            remplirListCompte();
-        }
 
 
 
+
+        private void button5_Click(object sender, EventArgs e){}
+        private void button2_Click_1(object sender, EventArgs e){}
+        private void button7_Click(object sender, EventArgs e){}
         private void btnSupprimerFrais_Click(object sender, EventArgs e){}
         private void button1_Click(object sender, EventArgs e){}
         private void cmbCinBeneRech_SelectedIndexChanged(object sender, EventArgs e){}
@@ -3355,7 +3424,6 @@ namespace GestionAffaire
         private void missionToolStripMenuItem_Click(object sender, EventArgs e){}
         private void txtNumeroNote_TextChanged(object sender, EventArgs e){}
         private void ListAff_CellContentClick(object sender, DataGridViewCellEventArgs e){}
-        private void ListAff_CellClick(object sender, DataGridViewCellEventArgs e){}
         private void ListAff_CellContentClick_1(object sender, DataGridViewCellEventArgs e){}
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e){}
         private void missionToolStripMenuItem2_Click(object sender, EventArgs e){}
@@ -3365,6 +3433,5 @@ namespace GestionAffaire
         private void BoxMissionReche_Enter(object sender, EventArgs e){}
         private void cmbNumeroNote_SelectedIndexChanged(object sender, EventArgs e){}
 
-        
     }
 }

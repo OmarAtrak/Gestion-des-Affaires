@@ -173,11 +173,13 @@ namespace GestionAffaire
             this.ListMission = new System.Windows.Forms.DataGridView();
             this.BoxPartiesInterecee = new System.Windows.Forms.GroupBox();
             this.BoxCompte = new System.Windows.Forms.GroupBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.txtBanque = new System.Windows.Forms.TextBox();
             this.txtNumeroCompte = new System.Windows.Forms.ComboBox();
             this.ListComptes = new System.Windows.Forms.DataGridView();
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.txtBanque = new System.Windows.Forms.TextBox();
+            this.txtAgenceBanque = new System.Windows.Forms.TextBox();
             this.BoxPersonnel = new System.Windows.Forms.GroupBox();
             this.txtCinPersonne = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
@@ -240,6 +242,7 @@ namespace GestionAffaire
             this.cmbAffMissionReche = new System.Windows.Forms.ComboBox();
             this.cmbRespoMissionReche = new System.Windows.Forms.ComboBox();
             this.BoxDisposition = new System.Windows.Forms.GroupBox();
+            this.btnActualiserDisposition = new System.Windows.Forms.Button();
             this.cmbNumeroDisposition = new System.Windows.Forms.ComboBox();
             this.btnSupprimerDisposition = new System.Windows.Forms.Button();
             this.cmbCompteDisposition = new System.Windows.Forms.ComboBox();
@@ -252,7 +255,6 @@ namespace GestionAffaire
             this.label46 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.cmbPersonneDisposition = new System.Windows.Forms.ComboBox();
-            this.btnActualiserDisposition = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -1407,6 +1409,7 @@ namespace GestionAffaire
             this.ListMission.RowsDefaultCellStyle = dataGridViewCellStyle40;
             this.ListMission.Size = new System.Drawing.Size(1334, 194);
             this.ListMission.TabIndex = 4;
+            this.ListMission.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListMission_CellClick);
             // 
             // BoxPartiesInterecee
             // 
@@ -1432,11 +1435,13 @@ namespace GestionAffaire
             // 
             // BoxCompte
             // 
+            this.BoxCompte.Controls.Add(this.label45);
+            this.BoxCompte.Controls.Add(this.txtBanque);
             this.BoxCompte.Controls.Add(this.txtNumeroCompte);
             this.BoxCompte.Controls.Add(this.ListComptes);
             this.BoxCompte.Controls.Add(this.label42);
             this.BoxCompte.Controls.Add(this.label43);
-            this.BoxCompte.Controls.Add(this.txtBanque);
+            this.BoxCompte.Controls.Add(this.txtAgenceBanque);
             this.BoxCompte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxCompte.Location = new System.Drawing.Point(304, 55);
             this.BoxCompte.Name = "BoxCompte";
@@ -1445,6 +1450,24 @@ namespace GestionAffaire
             this.BoxCompte.TabStop = false;
             this.BoxCompte.Text = "Compte :";
             this.BoxCompte.Visible = false;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(47, 137);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(73, 20);
+            this.label45.TabIndex = 17;
+            this.label45.Text = "Banque :";
+            // 
+            // txtBanque
+            // 
+            this.txtBanque.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBanque.Location = new System.Drawing.Point(182, 134);
+            this.txtBanque.Name = "txtBanque";
+            this.txtBanque.Size = new System.Drawing.Size(265, 26);
+            this.txtBanque.TabIndex = 18;
             // 
             // txtNumeroCompte
             // 
@@ -1511,17 +1534,17 @@ namespace GestionAffaire
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.Location = new System.Drawing.Point(47, 98);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(132, 20);
+            this.label43.Size = new System.Drawing.Size(72, 20);
             this.label43.TabIndex = 0;
-            this.label43.Text = "Banque Agence :";
+            this.label43.Text = "Agence :";
             // 
-            // txtBanque
+            // txtAgenceBanque
             // 
-            this.txtBanque.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBanque.Location = new System.Drawing.Point(182, 95);
-            this.txtBanque.Name = "txtBanque";
-            this.txtBanque.Size = new System.Drawing.Size(265, 26);
-            this.txtBanque.TabIndex = 13;
+            this.txtAgenceBanque.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgenceBanque.Location = new System.Drawing.Point(182, 95);
+            this.txtAgenceBanque.Name = "txtAgenceBanque";
+            this.txtAgenceBanque.Size = new System.Drawing.Size(265, 26);
+            this.txtAgenceBanque.TabIndex = 13;
             // 
             // BoxPersonnel
             // 
@@ -2378,6 +2401,16 @@ namespace GestionAffaire
             this.BoxDisposition.Text = "Mise à Disposition :";
             this.BoxDisposition.Visible = false;
             // 
+            // btnActualiserDisposition
+            // 
+            this.btnActualiserDisposition.Location = new System.Drawing.Point(789, 194);
+            this.btnActualiserDisposition.Name = "btnActualiserDisposition";
+            this.btnActualiserDisposition.Size = new System.Drawing.Size(215, 37);
+            this.btnActualiserDisposition.TabIndex = 37;
+            this.btnActualiserDisposition.Text = "Actualiser";
+            this.btnActualiserDisposition.UseVisualStyleBackColor = true;
+            this.btnActualiserDisposition.Click += new System.EventHandler(this.btnActualiserDisposition_Click);
+            // 
             // cmbNumeroDisposition
             // 
             this.cmbNumeroDisposition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2497,6 +2530,7 @@ namespace GestionAffaire
             this.listDisposition.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.listDisposition.Size = new System.Drawing.Size(1262, 287);
             this.listDisposition.TabIndex = 26;
+            this.listDisposition.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listDisposition_CellClick);
             // 
             // label46
             // 
@@ -2527,16 +2561,6 @@ namespace GestionAffaire
             this.cmbPersonneDisposition.Name = "cmbPersonneDisposition";
             this.cmbPersonneDisposition.Size = new System.Drawing.Size(415, 28);
             this.cmbPersonneDisposition.TabIndex = 0;
-            // 
-            // btnActualiserDisposition
-            // 
-            this.btnActualiserDisposition.Location = new System.Drawing.Point(789, 194);
-            this.btnActualiserDisposition.Name = "btnActualiserDisposition";
-            this.btnActualiserDisposition.Size = new System.Drawing.Size(215, 37);
-            this.btnActualiserDisposition.TabIndex = 37;
-            this.btnActualiserDisposition.Text = "Actualiser";
-            this.btnActualiserDisposition.UseVisualStyleBackColor = true;
-            this.btnActualiserDisposition.Click += new System.EventHandler(this.btnActualiserDisposition_Click);
             // 
             // Form1
             // 
@@ -2766,7 +2790,7 @@ namespace GestionAffaire
         private System.Windows.Forms.DataGridView ListComptes;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.TextBox txtBanque;
+        private System.Windows.Forms.TextBox txtAgenceBanque;
         private System.Windows.Forms.ToolStripMenuItem lesPartiesIntéresséesToolStripMenuItem1;
         private System.Windows.Forms.GroupBox BoxDisposition;
         private System.Windows.Forms.Button btnSupprimerDisposition;
@@ -2782,6 +2806,8 @@ namespace GestionAffaire
         private System.Windows.Forms.ComboBox cmbPersonneDisposition;
         private System.Windows.Forms.ComboBox cmbNumeroDisposition;
         private System.Windows.Forms.Button btnActualiserDisposition;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox txtBanque;
     }
 }
 
