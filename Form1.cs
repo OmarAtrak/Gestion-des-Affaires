@@ -3408,35 +3408,19 @@ namespace GestionAffaire
 
                 cmd.Parameters.Clear();
 
-                cmd.CommandText = "select * from Compte where numero='" + ds.Tables[0].Rows[0][1].ToString() + "'";
+                cmd.CommandText = "select * from Compte where numero='" + ds.Tables[0].Rows[0][3].ToString() + "'";
                 da.SelectCommand = cmd;
-                da.Fill(ds, "Personnel");
-
-                string ice = "";
-                if (cmd.ExecuteScalar().ToString() != "")
-                {
-                    ice = cmd.ExecuteScalar().ToString();
-                }
-
-                cmd.Parameters.Clear();
-
-                cmd.CommandText = "select * from Client where ICE='" + ice + "'";
-                da.SelectCommand = cmd;
-                da.Fill(ds, "Client");
-
-
+                da.Fill(ds, "Compte");
                 con.Close();
 
 
 
-                CrystalReport1 cr = new CrystalReport1();
-                cr.Database.Tables["Affaires"].SetDataSource(ds.Tables[0]);
-                cr.Database.Tables["NoteFrais"].SetDataSource(ds.Tables[1]);
-                cr.Database.Tables["Frais"].SetDataSource(ds.Tables[2]);
-                cr.Database.Tables["Mission"].SetDataSource(ds.Tables[3]);
-                cr.Database.Tables["Client"].SetDataSource(ds.Tables[4]);
+                Mise_a_Desposition_Report cr = new Mise_a_Desposition_Report();
+                cr.Database.Tables["MiseDisposition"].SetDataSource(ds.Tables[0]);
+                cr.Database.Tables["Personnel"].SetDataSource(ds.Tables[1]);
+                cr.Database.Tables["Compte"].SetDataSource(ds.Tables[2]);
 
-                Form2 f = new Form2();
+                Form3 f = new Form3();
                 f.crystalReportViewer1.ReportSource = null;
                 f.crystalReportViewer1.ReportSource = cr;
                 f.crystalReportViewer1.Refresh();
