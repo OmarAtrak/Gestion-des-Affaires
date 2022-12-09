@@ -3420,7 +3420,7 @@ namespace GestionAffaire
                 cr.Database.Tables["Personnel"].SetDataSource(ds.Tables[1]);
                 cr.Database.Tables["Compte"].SetDataSource(ds.Tables[2]);
 
-                Form3 f = new Form3();
+                FormImprimerMiseDisposition f = new FormImprimerMiseDisposition();
                 f.crystalReportViewer1.ReportSource = null;
                 f.crystalReportViewer1.ReportSource = cr;
                 f.crystalReportViewer1.Refresh();
