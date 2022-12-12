@@ -242,6 +242,7 @@ namespace GestionAffaire
             this.cmbAffMissionReche = new System.Windows.Forms.ComboBox();
             this.cmbRespoMissionReche = new System.Windows.Forms.ComboBox();
             this.BoxDisposition = new System.Windows.Forms.GroupBox();
+            this.brnImprimerDisposition = new System.Windows.Forms.Button();
             this.btnActualiserDisposition = new System.Windows.Forms.Button();
             this.cmbNumeroDisposition = new System.Windows.Forms.ComboBox();
             this.btnSupprimerDisposition = new System.Windows.Forms.Button();
@@ -255,7 +256,6 @@ namespace GestionAffaire
             this.label46 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.cmbPersonneDisposition = new System.Windows.Forms.ComboBox();
-            this.brnImprimerDisposition = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -1205,7 +1205,7 @@ namespace GestionAffaire
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(100, 20);
             this.label38.TabIndex = 33;
-            this.label38.Text = "Lieu Arriveé :";
+            this.label38.Text = "Lieu Arrivée :";
             // 
             // txtLieuArriveMission
             // 
@@ -2193,7 +2193,7 @@ namespace GestionAffaire
             this.BoxMissionReche.Controls.Add(this.cmbAffMissionReche);
             this.BoxMissionReche.Controls.Add(this.cmbRespoMissionReche);
             this.BoxMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMissionReche.Location = new System.Drawing.Point(12, 70);
+            this.BoxMissionReche.Location = new System.Drawing.Point(967, 0);
             this.BoxMissionReche.Name = "BoxMissionReche";
             this.BoxMissionReche.Size = new System.Drawing.Size(1346, 644);
             this.BoxMissionReche.TabIndex = 29;
@@ -2224,9 +2224,9 @@ namespace GestionAffaire
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(639, 162);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(113, 20);
+            this.label17.Size = new System.Drawing.Size(110, 20);
             this.label17.TabIndex = 30;
-            this.label17.Text = "Lieu de Arrivé :";
+            this.label17.Text = "Lieu d\'arrivée :";
             // 
             // label16
             // 
@@ -2395,13 +2395,23 @@ namespace GestionAffaire
             this.BoxDisposition.Controls.Add(this.label48);
             this.BoxDisposition.Controls.Add(this.cmbPersonneDisposition);
             this.BoxDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxDisposition.Location = new System.Drawing.Point(12, 70);
+            this.BoxDisposition.Location = new System.Drawing.Point(967, 23);
             this.BoxDisposition.Name = "BoxDisposition";
             this.BoxDisposition.Size = new System.Drawing.Size(1346, 644);
             this.BoxDisposition.TabIndex = 33;
             this.BoxDisposition.TabStop = false;
             this.BoxDisposition.Text = "Mise à Disposition :";
             this.BoxDisposition.Visible = false;
+            // 
+            // brnImprimerDisposition
+            // 
+            this.brnImprimerDisposition.Location = new System.Drawing.Point(789, 51);
+            this.brnImprimerDisposition.Name = "brnImprimerDisposition";
+            this.brnImprimerDisposition.Size = new System.Drawing.Size(215, 37);
+            this.brnImprimerDisposition.TabIndex = 38;
+            this.brnImprimerDisposition.Text = "Plus Informations";
+            this.brnImprimerDisposition.UseVisualStyleBackColor = true;
+            this.brnImprimerDisposition.Click += new System.EventHandler(this.brnImprimerDisposition_Click);
             // 
             // btnActualiserDisposition
             // 
@@ -2563,16 +2573,6 @@ namespace GestionAffaire
             this.cmbPersonneDisposition.Name = "cmbPersonneDisposition";
             this.cmbPersonneDisposition.Size = new System.Drawing.Size(415, 28);
             this.cmbPersonneDisposition.TabIndex = 0;
-            // 
-            // brnImprimerDisposition
-            // 
-            this.brnImprimerDisposition.Location = new System.Drawing.Point(789, 51);
-            this.brnImprimerDisposition.Name = "brnImprimerDisposition";
-            this.brnImprimerDisposition.Size = new System.Drawing.Size(215, 37);
-            this.brnImprimerDisposition.TabIndex = 38;
-            this.brnImprimerDisposition.Text = "Plus Informations";
-            this.brnImprimerDisposition.UseVisualStyleBackColor = true;
-            this.brnImprimerDisposition.Click += new System.EventHandler(this.brnImprimerDisposition_Click);
             // 
             // Form1
             // 

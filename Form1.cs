@@ -318,7 +318,7 @@ namespace GestionAffaire
             }
 
             con.Open();
-            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note de Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE";
+            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note de Frais',NbrJourEstimer as 'Nombre de jours Estimé',NbrJourConsommer as 'Nombre de jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -1649,7 +1649,7 @@ namespace GestionAffaire
             }
 
             con.Open();
-            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note de Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE where Numero='" + cmbNumeroAff.Text + "'";
+            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note de Frais',NbrJourEstimer as 'Nombre de jours Estimé',NbrJourConsommer as 'Nombre de jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE where Numero='" + cmbNumeroAff.Text + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -2424,7 +2424,7 @@ namespace GestionAffaire
                     {
                         for (int i = 0; i < listeEmployeOrdre.Items.Count; i++)
                         {
-                            cmd.CommandText = "insert into DetailMission values((select top(1) numero from Mission order by numero desc) ,'" + listeEmployeOrdre.Items[i].ToString() + "')";
+                            cmd.CommandText = "insert into DetailMission values((select top(1) numero from Mission order by numero desc) ,(select top (1) cin from Personnel where nom='" + listeEmployeOrdre.Items[i].ToString() + "'))";
                             cmd.ExecuteNonQuery();
                             cmd.Parameters.Clear();
                         }
@@ -2432,13 +2432,18 @@ namespace GestionAffaire
 
                     cmd.Parameters.Clear();
                     cmd.CommandText = "select NbrJourConsommer from Affaires where Numero='" + cmbNumAffMission.Text + "'";
-                    int nbrJour = int.Parse(cmd.ExecuteScalar().ToString());
+                    int nbrJourC = int.Parse(cmd.ExecuteScalar().ToString());
+
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "select NbrJourEstimer from Affaires where Numero='" + cmbNumAffMission.Text + "'";
+                    int nbrJourE = int.Parse(cmd.ExecuteScalar().ToString());
 
                     con.Close();
 
                     MessageBox.Show("Ajouter Avec Succès");
 
-                    if (nbrJour < 0)
+                    if (nbrJourC > nbrJourE)
                     {
                         MessageBox.Show("Nombre de Jours de Mission Dépasse le Nombre de Jours Estimé pour l'affaire", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);                    
                     }
@@ -2503,9 +2508,8 @@ namespace GestionAffaire
 
                             cmd.Parameters.Clear();
 
-                            cmd.CommandText = "update Affaires set NbrJourConsommer = NbrJourEstimer - abs((select SUM(NbrJour) from Mission where affaire='" + cmbNumAffMission.Text + "')) where Numero='" + cmbNumAffMission.Text + "'";
-                            cmd.ExecuteNonQuery();
-
+                            //cmd.CommandText = "update Affaires set NbrJourConsommer = NbrJourEstimer - abs((select SUM(NbrJour) from Mission where affaire='" + cmbNumAffMission.Text + "')) where Numero='" + cmbNumAffMission.Text + "'";
+                            //cmd.ExecuteNonQuery();
                             con.Close();
 
 
@@ -2513,11 +2517,16 @@ namespace GestionAffaire
                             {
                                 for (int i = 0; i < listeEmployeOrdre.Items.Count; i++)
                                 {
-                                    if (IsEmployeExistsInMission(listeEmployeOrdre.Items[i].ToString(), int.Parse(cmbNumeroMission.Text)) == false)
+                                    con.Open();
+                                    cmd.CommandText = "select top(1) cin from Personnel where nom='"+ listeEmployeOrdre.Items[i].ToString() +"'";
+                                    string cin = cmd.ExecuteScalar().ToString();
+                                    con.Close();
+
+                                    if (IsEmployeExistsInMission(cin, int.Parse(cmbNumeroMission.Text)) == false)
                                     {
                                         con.Open();
                                         cmd.Parameters.Clear();
-                                        cmd.CommandText = "insert into DetailMission values('" + int.Parse(cmbNumeroMission.Text) + "','" + listeEmployeOrdre.Items[i].ToString() + "')";
+                                        cmd.CommandText = "insert into DetailMission values('" + int.Parse(cmbNumeroMission.Text) + "',(select top(1) cin from Personnel where nom='" + listeEmployeOrdre.Items[i].ToString() + "'))";
                                         cmd.ExecuteNonQuery();
                                         con.Close();
                                     }
@@ -2528,10 +2537,15 @@ namespace GestionAffaire
 
                             con.Open();
                             cmd.CommandText = "select NbrJourConsommer from Affaires where Numero='" + cmbNumAffMission.Text + "'";
-                            int nbrJour = int.Parse(cmd.ExecuteScalar().ToString());
+                            int nbrJourC = int.Parse(cmd.ExecuteScalar().ToString());
+
+                            cmd.Parameters.Clear();
+
+                            cmd.CommandText = "select NbrJourEstimer from Affaires where Numero='" + cmbNumAffMission.Text + "'";
+                            int nbrJourE = int.Parse(cmd.ExecuteScalar().ToString());
                             con.Close();
 
-                            if (nbrJour < 0)
+                            if (nbrJourC > nbrJourE)
                             {
                                 MessageBox.Show("Nombre de Jours de Mission Dépasse le Nombre de Jours Estimé pour l'affaire", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
