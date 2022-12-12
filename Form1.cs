@@ -2319,7 +2319,7 @@ namespace GestionAffaire
 
             cmd.Parameters.Clear();
 
-            cmd.CommandText = "select personnel from DetailMission where mission='" + int.Parse(cmbNumeroMission.Text) + "'";
+            cmd.CommandText = "select personnel,nom from DetailMission inner join Personnel on personnel=cin where mission='" + int.Parse(cmbNumeroMission.Text) + "'";
             da.SelectCommand = cmd;
             da.Fill(dt2);
 
@@ -2342,7 +2342,7 @@ namespace GestionAffaire
             listeEmployeOrdre.Items.Clear();
             for (int i = 0; i < dt2.Rows.Count; i++)
             {
-                listeEmployeOrdre.Items.Add(dt2.Rows[i][0].ToString());
+                listeEmployeOrdre.Items.Add(dt2.Rows[i][1].ToString());
             }
         }
         private void ListMission_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -247,14 +247,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GestionAffaire.exe" size="958376">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GestionAffaire.exe" size="958888">
       <assemblyIdentity name="GestionAffaire" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pGCPa2dVQ8uCJokT9Gxxkr3TTyaY7sxUCWaMGBkLtIY=</dsig:DigestValue>
+        <dsig:DigestValue>044M8wFh9H4kTjraZaRpNNfqtJnWzmEwKKBw79L6q8w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
