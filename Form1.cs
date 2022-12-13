@@ -1122,11 +1122,11 @@ namespace GestionAffaire
                                 }
                                 catch (FormatException ex)
                                 {
-                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                                 }
                                 catch (Exception ex)
                                 {
-                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                                 }
                             }
                             else
@@ -1166,7 +1166,7 @@ namespace GestionAffaire
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                             }
                         }
                         else
@@ -1209,7 +1209,7 @@ namespace GestionAffaire
                                 }
                                 catch (Exception ex)
                                 {
-                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                                 }
                             }
                         }
@@ -1276,11 +1276,11 @@ namespace GestionAffaire
                     }
                     catch (FormatException ex)
                     {
-                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -1321,7 +1321,7 @@ namespace GestionAffaire
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -1352,7 +1352,7 @@ namespace GestionAffaire
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                             }
                         }
                         else
@@ -1391,7 +1391,7 @@ namespace GestionAffaire
                                 }
                                 catch (Exception ex)
                                 {
-                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                                 }
                             }
                         }
@@ -1450,7 +1450,7 @@ namespace GestionAffaire
                                 }
                                 catch (Exception ex)
                                 {
-                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                                 }
 
                             }
@@ -1558,7 +1558,8 @@ namespace GestionAffaire
                         {
                             if (IsClientExistsInAffaire(txtICEClient.Text))
                             {
-                                MessageBox.Show("le Client a une ou plusieur Affaire ");
+                                MessageBox.Show("le Client a une ou plusieur Affaire ", "Exception", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+
                             }
                             else
                             {
@@ -1577,7 +1578,7 @@ namespace GestionAffaire
                                 }
                                 catch (Exception ex)
                                 {
-                                    MessageBox.Show(btnSupprimerCR, "Erreur: " + ex.Message);
+                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                                 }
                             }
                         }
@@ -1613,7 +1614,7 @@ namespace GestionAffaire
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -1648,7 +1649,7 @@ namespace GestionAffaire
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -1681,7 +1682,7 @@ namespace GestionAffaire
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -1811,7 +1812,7 @@ namespace GestionAffaire
                                 }
                                 catch (Exception ex)
                                 {
-                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                                 }
                             }
                             else
@@ -1879,7 +1880,7 @@ namespace GestionAffaire
                                 }
                                 catch (Exception ex)
                                 {
-                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                                 }
                             }
                             else
@@ -1934,7 +1935,7 @@ namespace GestionAffaire
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -2024,7 +2025,7 @@ namespace GestionAffaire
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }                    
                 }
                 else
@@ -2105,14 +2106,13 @@ namespace GestionAffaire
                                 con.Open();
                                 for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
                                 {
-
                                     cmd.CommandText = "insert into Frais(numero,Type,PiecesComptables,date,frais,noteFrais) values('" +
                                                                                                             int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) + "','" +
                                                                                                             listFraisNote.Rows[i].Cells[1].Value.ToString() + "','" +
                                                                                                             listFraisNote.Rows[i].Cells[2].Value.ToString() + "','" +
                                                                                                             DateTime.Parse(listFraisNote.Rows[i].Cells[3].Value.ToString()) + "','" +
                                                                                                             double.Parse(listFraisNote.Rows[i].Cells[4].Value.ToString()) + "','" +
-                                                                                                            txtNumeroNote.Text + "')";
+                                                                                                            int.Parse(txtNumeroNote.Text) + "')";
                                     cmd.ExecuteNonQuery();
                                     cmd.Parameters.Clear();
                                 }
@@ -2139,12 +2139,12 @@ namespace GestionAffaire
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Pour Valider une Note de Frais il doit Remplir au minimum un Frais", "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show("Pour Valider une Note de Frais il doit Remplir au minimum un Frais", "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -2161,12 +2161,18 @@ namespace GestionAffaire
                             if (IsFraisExists(int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()), int.Parse(cmbNumeroNote.Text)) == false)
                             {
                                 con.Open();
+                                cmd.CommandText = "delete Frais where numero='" +
+                                        int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) +
+                                        "' and noteFrais='" +
+                                        int.Parse(txtNumeroNote.Text) + "'";
+                                cmd.ExecuteNonQuery();
+                                cmd.Parameters.Clear();
                                 cmd.CommandText = "insert into Frais(numero,Type,PiecesComptables,frais,date,noteFrais) values('" +
-                                                            int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) + "','"+
-                                                            listFraisNote.Rows[i].Cells[1].Value.ToString() + "','"+
-                                                            listFraisNote.Rows[i].Cells[2].Value.ToString() + "','"+
-                                                            double.Parse(listFraisNote.Rows[i].Cells[4].Value.ToString()) + "','"+
-                                                            DateTime.Parse(listFraisNote.Rows[i].Cells[3].Value.ToString()) + "','"+
+                                                            int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) + "','" +
+                                                            listFraisNote.Rows[i].Cells[1].Value.ToString() + "','" +
+                                                            listFraisNote.Rows[i].Cells[2].Value.ToString() + "','" +
+                                                            double.Parse(listFraisNote.Rows[i].Cells[4].Value.ToString()).ToString() + "','" +
+                                                            DateTime.Parse(listFraisNote.Rows[i].Cells[3].Value.ToString()) + "','" +
                                                             int.Parse(cmbNumeroNote.Text) + "')";
                                 cmd.ExecuteNonQuery();
                                 con.Close();
@@ -2192,11 +2198,11 @@ namespace GestionAffaire
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                 }
                 else
-                    MessageBox.Show("Pour Valider une Note de Frais il doit Remplir au minimum un Frais", "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                    MessageBox.Show("Pour Valider une Note de Frais il doit Remplir au minimum un Frais", "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
         private void btnSupprimerNoteFrais_Click(object sender, EventArgs e)
@@ -2253,7 +2259,7 @@ namespace GestionAffaire
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                         }
                     }
 
@@ -2330,7 +2336,7 @@ namespace GestionAffaire
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -2383,7 +2389,7 @@ namespace GestionAffaire
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
 
@@ -2545,7 +2551,7 @@ namespace GestionAffaire
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -2647,7 +2653,7 @@ namespace GestionAffaire
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                             }
                         }
                         else
@@ -2716,7 +2722,7 @@ namespace GestionAffaire
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -2771,7 +2777,7 @@ namespace GestionAffaire
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -3021,7 +3027,7 @@ namespace GestionAffaire
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
         private void button2_Click_2(object sender, EventArgs e)
@@ -3148,15 +3154,12 @@ namespace GestionAffaire
                                 txtFraisFrais.Enabled = true;
                                 cmbTypeFrais.DropDownStyle = ComboBoxStyle.DropDownList;
                                 numeroFrais();
-
                             }
                             else
                                 errorProvider1.SetError(txtDateFrais, "Date de Frais il doit inférieur ou egale la Date date actuelle");
                         }
                         else
-                        {
                             errorProvider1.SetError(txtFraisFrais, "Saisir Frais Valide");
-                        }
                     }
                     else
                     {
@@ -3174,13 +3177,11 @@ namespace GestionAffaire
             catch (FormatException ex)
             {
                 if (ex.Message == "Input string was not in a correct format.")
-                {
-                    MessageBox.Show("Saisir un Montant Valide", "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
-                }
+                    MessageBox.Show("Saisir un Montant Valide", "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
         private void listFraisNote_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -3199,16 +3200,37 @@ namespace GestionAffaire
                             con.Open();
                             cmd.CommandText = "delete Frais where Numero='" + num + "' and noteFrais='" + int.Parse(cmbNumeroNote.Text) + "'";
                             cmd.ExecuteNonQuery();
-                            con.Close();
-
                             listFraisNote.Rows.RemoveAt(e.RowIndex);
-
-                            remplirListFrais();
+                            for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
+                            {
+                                cmd.Parameters.Clear();
+                                cmd.CommandText = "delete Frais where numero='"+ int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) +
+                                                                    "' and noteFrais='"+ int.Parse(cmbNumeroNote.Text) +"'";
+                                cmd.ExecuteNonQuery();
+                            }
+                            con.Close();
                             numeroFrais();
+                            con.Open();
+                            for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
+                            {
+                                cmd.Parameters.Clear();
+                                cmd.CommandText = "insert into Frais(numero,Type,PiecesComptables,frais,date,noteFrais) values('" +
+                                                            int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) + "','" +
+                                                            listFraisNote.Rows[i].Cells[1].Value.ToString() + "','" +
+                                                            listFraisNote.Rows[i].Cells[2].Value.ToString() + "','" +
+                                                            double.Parse(listFraisNote.Rows[i].Cells[4].Value.ToString()).ToString() + "','" +
+                                                            DateTime.Parse(listFraisNote.Rows[i].Cells[3].Value.ToString()) + "','" +
+                                                            int.Parse(cmbNumeroNote.Text) + "')";
+                                cmd.ExecuteNonQuery();
+                            }
+                            con.Close();
+                            remplirListFrais();
+
+
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -3216,9 +3238,7 @@ namespace GestionAffaire
             else
             {
                 if (listFraisNote.CurrentCell.Value.ToString() == "Supprimer")
-                {
                     listFraisNote.Rows.RemoveAt(e.RowIndex);
-                }
             }
         }
 
@@ -3316,7 +3336,6 @@ namespace GestionAffaire
 
             cmbTypeFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPCFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDownList;
-
         }
         private void cmbTypeFraisRecheNote_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -3326,9 +3345,7 @@ namespace GestionAffaire
                 cmbTypeFraisRecheNote.Text = "";
             }
             else
-            {
                 cmbTypeFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDownList;
-            }
         }
         private void cmbPCFraisRecheNote_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -3338,9 +3355,7 @@ namespace GestionAffaire
                 cmbPCFraisRecheNote.Text = "";
             }
             else
-            {
                 cmbPCFraisRecheNote.DropDownStyle = ComboBoxStyle.DropDownList;
-            }
         }
 
 
@@ -3441,13 +3456,11 @@ namespace GestionAffaire
                 catch (FormatException ex)
                 {
                     if (ex.Message == "Input string was not in a correct format.")
-                    {
-                        MessageBox.Show("Saisir un Montant Valide", "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
-                    }
+                        MessageBox.Show("Saisir un Montant Valide", "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 }
             }
             else
@@ -3496,13 +3509,11 @@ namespace GestionAffaire
                     catch (FormatException ex)
                     {
                         if (ex.Message == "Input string was not in a correct format.")
-                        {
-                            MessageBox.Show("Saisir un Montant Valide", "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
-                        }
+                            MessageBox.Show("Saisir un Montant Valide", "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -3541,9 +3552,8 @@ namespace GestionAffaire
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 }
-                
             }
             else
                 errorProvider1.SetError(cmbNumeroDisposition, "cette Information est Obligatoire");
@@ -3603,17 +3613,12 @@ namespace GestionAffaire
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 }
             }
             else
                 errorProvider1.SetError(cmbNumeroDisposition, "cette Information est Obligatoire");
         }
-
-
-
-
-
 
 
         private void button5_Click(object sender, EventArgs e){}
@@ -3653,7 +3658,5 @@ namespace GestionAffaire
         private void noteDeFraisToolStripMenuItem1_Click(object sender, EventArgs e){}
         private void BoxMissionReche_Enter(object sender, EventArgs e){}
         private void cmbNumeroNote_SelectedIndexChanged(object sender, EventArgs e){}
-
-        
     }
 }

@@ -291,6 +291,7 @@ namespace GestionAffaire
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ajouterToolStripMenuItem,
@@ -300,16 +301,17 @@ namespace GestionAffaire
             this.lesPartiesIntéresséesToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(10);
-            this.menuStrip1.Size = new System.Drawing.Size(1370, 54);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
+            this.menuStrip1.Size = new System.Drawing.Size(190, 735);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // ajouterToolStripMenuItem
             // 
-            this.ajouterToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ajouterToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ajouterToolStripMenuItem.Name = "ajouterToolStripMenuItem";
-            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(92, 34);
+            this.ajouterToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 10, 4, 10);
+            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(189, 45);
             this.ajouterToolStripMenuItem.Text = "Affaire";
             this.ajouterToolStripMenuItem.Click += new System.EventHandler(this.ajouterToolStripMenuItem_Click);
             // 
@@ -317,9 +319,10 @@ namespace GestionAffaire
             // 
             this.rechercheToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rechercheDansLesFraisToolStripMenuItem});
-            this.rechercheToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rechercheToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rechercheToolStripMenuItem.Name = "rechercheToolStripMenuItem";
-            this.rechercheToolStripMenuItem.Size = new System.Drawing.Size(155, 34);
+            this.rechercheToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 10, 4, 10);
+            this.rechercheToolStripMenuItem.Size = new System.Drawing.Size(189, 45);
             this.rechercheToolStripMenuItem.Text = "Note de Frais";
             this.rechercheToolStripMenuItem.Click += new System.EventHandler(this.rechercheToolStripMenuItem_Click);
             // 
@@ -327,7 +330,7 @@ namespace GestionAffaire
             // 
             this.rechercheDansLesFraisToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rechercheDansLesFraisToolStripMenuItem.Name = "rechercheDansLesFraisToolStripMenuItem";
-            this.rechercheDansLesFraisToolStripMenuItem.Size = new System.Drawing.Size(234, 24);
+            this.rechercheDansLesFraisToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.rechercheDansLesFraisToolStripMenuItem.Text = "Rechercher Les Frais";
             this.rechercheDansLesFraisToolStripMenuItem.Click += new System.EventHandler(this.rechercheDansLesFraisToolStripMenuItem_Click);
             // 
@@ -335,9 +338,10 @@ namespace GestionAffaire
             // 
             this.lesPartiesIntereceeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rechercherToolStripMenuItem});
-            this.lesPartiesIntereceeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lesPartiesIntereceeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lesPartiesIntereceeToolStripMenuItem.Name = "lesPartiesIntereceeToolStripMenuItem";
-            this.lesPartiesIntereceeToolStripMenuItem.Size = new System.Drawing.Size(193, 34);
+            this.lesPartiesIntereceeToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 10, 4, 10);
+            this.lesPartiesIntereceeToolStripMenuItem.Size = new System.Drawing.Size(189, 45);
             this.lesPartiesIntereceeToolStripMenuItem.Text = "Ordre de Mission";
             this.lesPartiesIntereceeToolStripMenuItem.Click += new System.EventHandler(this.lesPartiesIntereceeToolStripMenuItem_Click);
             // 
@@ -345,23 +349,25 @@ namespace GestionAffaire
             // 
             this.rechercherToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rechercherToolStripMenuItem.Name = "rechercherToolStripMenuItem";
-            this.rechercherToolStripMenuItem.Size = new System.Drawing.Size(342, 24);
+            this.rechercherToolStripMenuItem.Size = new System.Drawing.Size(339, 24);
             this.rechercherToolStripMenuItem.Text = "Rechercher Les Ordres des Missions";
             this.rechercherToolStripMenuItem.Click += new System.EventHandler(this.rechercherToolStripMenuItem_Click);
             // 
             // lesPartiesIntéresséesToolStripMenuItem
             // 
-            this.lesPartiesIntéresséesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lesPartiesIntéresséesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lesPartiesIntéresséesToolStripMenuItem.Name = "lesPartiesIntéresséesToolStripMenuItem";
-            this.lesPartiesIntéresséesToolStripMenuItem.Size = new System.Drawing.Size(205, 34);
+            this.lesPartiesIntéresséesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 10, 4, 10);
+            this.lesPartiesIntéresséesToolStripMenuItem.Size = new System.Drawing.Size(189, 45);
             this.lesPartiesIntéresséesToolStripMenuItem.Text = "Mise à Disposition";
             this.lesPartiesIntéresséesToolStripMenuItem.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem_Click);
             // 
             // lesPartiesIntéresséesToolStripMenuItem1
             // 
-            this.lesPartiesIntéresséesToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lesPartiesIntéresséesToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lesPartiesIntéresséesToolStripMenuItem1.Name = "lesPartiesIntéresséesToolStripMenuItem1";
-            this.lesPartiesIntéresséesToolStripMenuItem1.Size = new System.Drawing.Size(241, 34);
+            this.lesPartiesIntéresséesToolStripMenuItem1.Padding = new System.Windows.Forms.Padding(4, 10, 4, 10);
+            this.lesPartiesIntéresséesToolStripMenuItem1.Size = new System.Drawing.Size(189, 45);
             this.lesPartiesIntéresséesToolStripMenuItem1.Text = "Les Parties Intéressées";
             this.lesPartiesIntéresséesToolStripMenuItem1.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem1_Click);
             // 
@@ -392,10 +398,10 @@ namespace GestionAffaire
             this.BoxNoteAjouter.Controls.Add(this.btnActualiserNote);
             this.BoxNoteAjouter.Controls.Add(this.btnValiderNote);
             this.BoxNoteAjouter.Controls.Add(this.label9);
-            this.BoxNoteAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxNoteAjouter.Location = new System.Drawing.Point(12, 70);
+            this.BoxNoteAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxNoteAjouter.Location = new System.Drawing.Point(195, 0);
             this.BoxNoteAjouter.Name = "BoxNoteAjouter";
-            this.BoxNoteAjouter.Size = new System.Drawing.Size(1346, 644);
+            this.BoxNoteAjouter.Size = new System.Drawing.Size(1181, 735);
             this.BoxNoteAjouter.TabIndex = 9;
             this.BoxNoteAjouter.TabStop = false;
             this.BoxNoteAjouter.Text = "Note des Frais :";
@@ -675,7 +681,7 @@ namespace GestionAffaire
             this.listFraisNote.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -691,18 +697,18 @@ namespace GestionAffaire
             this.DeleteButtonColumn});
             dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.listFraisNote.DefaultCellStyle = dataGridViewCellStyle49;
-            this.listFraisNote.Location = new System.Drawing.Point(128, 408);
+            this.listFraisNote.Location = new System.Drawing.Point(10, 408);
             this.listFraisNote.Name = "listFraisNote";
             this.listFraisNote.ReadOnly = true;
             dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -711,7 +717,7 @@ namespace GestionAffaire
             dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listFraisNote.RowsDefaultCellStyle = dataGridViewCellStyle51;
-            this.listFraisNote.Size = new System.Drawing.Size(1193, 143);
+            this.listFraisNote.Size = new System.Drawing.Size(1134, 143);
             this.listFraisNote.TabIndex = 25;
             this.listFraisNote.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listFraisNote_CellClick);
             // 
@@ -772,7 +778,7 @@ namespace GestionAffaire
             // 
             this.btnImrimerPdfNote.BackColor = System.Drawing.SystemColors.Control;
             this.btnImrimerPdfNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImrimerPdfNote.Location = new System.Drawing.Point(845, 35);
+            this.btnImrimerPdfNote.Location = new System.Drawing.Point(839, 36);
             this.btnImrimerPdfNote.Name = "btnImrimerPdfNote";
             this.btnImrimerPdfNote.Size = new System.Drawing.Size(159, 38);
             this.btnImrimerPdfNote.TabIndex = 24;
@@ -785,7 +791,7 @@ namespace GestionAffaire
             // 
             this.btnSupprimerNoteFrais.BackColor = System.Drawing.SystemColors.Control;
             this.btnSupprimerNoteFrais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupprimerNoteFrais.Location = new System.Drawing.Point(1022, 35);
+            this.btnSupprimerNoteFrais.Location = new System.Drawing.Point(1012, 36);
             this.btnSupprimerNoteFrais.Name = "btnSupprimerNoteFrais";
             this.btnSupprimerNoteFrais.Size = new System.Drawing.Size(159, 38);
             this.btnSupprimerNoteFrais.TabIndex = 23;
@@ -865,10 +871,10 @@ namespace GestionAffaire
             this.BoxAff.Controls.Add(this.cmbNumeroAff);
             this.BoxAff.Controls.Add(this.btnSupprimerAff);
             this.BoxAff.Controls.Add(this.label24);
-            this.BoxAff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxAff.Location = new System.Drawing.Point(12, 70);
+            this.BoxAff.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxAff.Location = new System.Drawing.Point(195, 0);
             this.BoxAff.Name = "BoxAff";
-            this.BoxAff.Size = new System.Drawing.Size(1346, 644);
+            this.BoxAff.Size = new System.Drawing.Size(1181, 735);
             this.BoxAff.TabIndex = 17;
             this.BoxAff.TabStop = false;
             this.BoxAff.Text = "Affaires :";
@@ -1004,7 +1010,7 @@ namespace GestionAffaire
             this.ListAff.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1013,18 +1019,18 @@ namespace GestionAffaire
             this.ListAff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ListAff.DefaultCellStyle = dataGridViewCellStyle43;
-            this.ListAff.Location = new System.Drawing.Point(82, 277);
+            this.ListAff.Location = new System.Drawing.Point(10, 277);
             this.ListAff.Name = "ListAff";
             this.ListAff.ReadOnly = true;
             dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1033,7 +1039,7 @@ namespace GestionAffaire
             dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListAff.RowsDefaultCellStyle = dataGridViewCellStyle45;
-            this.ListAff.Size = new System.Drawing.Size(1067, 237);
+            this.ListAff.Size = new System.Drawing.Size(1134, 237);
             this.ListAff.TabIndex = 4;
             this.ListAff.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListAff_CellClick);
             this.ListAff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListAff_CellContentClick_1);
@@ -1095,10 +1101,10 @@ namespace GestionAffaire
             this.BoxMission.Controls.Add(this.btnModifierMission);
             this.BoxMission.Controls.Add(this.label30);
             this.BoxMission.Controls.Add(this.ListMission);
-            this.BoxMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMission.Location = new System.Drawing.Point(12, 70);
+            this.BoxMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxMission.Location = new System.Drawing.Point(195, 0);
             this.BoxMission.Name = "BoxMission";
-            this.BoxMission.Size = new System.Drawing.Size(1346, 644);
+            this.BoxMission.Size = new System.Drawing.Size(1181, 735);
             this.BoxMission.TabIndex = 18;
             this.BoxMission.TabStop = false;
             this.BoxMission.Text = "Ordre de Mission :";
@@ -1380,7 +1386,7 @@ namespace GestionAffaire
             this.ListMission.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1389,17 +1395,17 @@ namespace GestionAffaire
             this.ListMission.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ListMission.DefaultCellStyle = dataGridViewCellStyle38;
-            this.ListMission.Location = new System.Drawing.Point(6, 393);
+            this.ListMission.Location = new System.Drawing.Point(10, 392);
             this.ListMission.Name = "ListMission";
             dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1408,7 +1414,7 @@ namespace GestionAffaire
             dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListMission.RowsDefaultCellStyle = dataGridViewCellStyle40;
-            this.ListMission.Size = new System.Drawing.Size(1334, 194);
+            this.ListMission.Size = new System.Drawing.Size(1134, 194);
             this.ListMission.TabIndex = 4;
             this.ListMission.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListMission_CellClick);
             // 
@@ -1424,10 +1430,10 @@ namespace GestionAffaire
             this.BoxPartiesInterecee.Controls.Add(this.groupBox1);
             this.BoxPartiesInterecee.Controls.Add(this.button8);
             this.BoxPartiesInterecee.Controls.Add(this.btnValiderClient);
-            this.BoxPartiesInterecee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxPartiesInterecee.Location = new System.Drawing.Point(12, 70);
+            this.BoxPartiesInterecee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxPartiesInterecee.Location = new System.Drawing.Point(195, 0);
             this.BoxPartiesInterecee.Name = "BoxPartiesInterecee";
-            this.BoxPartiesInterecee.Size = new System.Drawing.Size(1346, 644);
+            this.BoxPartiesInterecee.Size = new System.Drawing.Size(1181, 735);
             this.BoxPartiesInterecee.TabIndex = 13;
             this.BoxPartiesInterecee.TabStop = false;
             this.BoxPartiesInterecee.Text = "Les Parties Intéressées :";
@@ -1446,7 +1452,7 @@ namespace GestionAffaire
             this.BoxCompte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxCompte.Location = new System.Drawing.Point(304, 55);
             this.BoxCompte.Name = "BoxCompte";
-            this.BoxCompte.Size = new System.Drawing.Size(540, 374);
+            this.BoxCompte.Size = new System.Drawing.Size(601, 374);
             this.BoxCompte.TabIndex = 26;
             this.BoxCompte.TabStop = false;
             this.BoxCompte.Text = "Compte :";
@@ -1467,7 +1473,7 @@ namespace GestionAffaire
             this.txtBanque.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBanque.Location = new System.Drawing.Point(182, 134);
             this.txtBanque.Name = "txtBanque";
-            this.txtBanque.Size = new System.Drawing.Size(265, 26);
+            this.txtBanque.Size = new System.Drawing.Size(389, 26);
             this.txtBanque.TabIndex = 18;
             // 
             // txtNumeroCompte
@@ -1475,7 +1481,7 @@ namespace GestionAffaire
             this.txtNumeroCompte.FormattingEnabled = true;
             this.txtNumeroCompte.Location = new System.Drawing.Point(182, 58);
             this.txtNumeroCompte.Name = "txtNumeroCompte";
-            this.txtNumeroCompte.Size = new System.Drawing.Size(265, 28);
+            this.txtNumeroCompte.Size = new System.Drawing.Size(389, 28);
             this.txtNumeroCompte.TabIndex = 16;
             this.txtNumeroCompte.SelectedIndexChanged += new System.EventHandler(this.txtNumeroCompte_SelectedIndexChanged);
             // 
@@ -1516,7 +1522,7 @@ namespace GestionAffaire
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListComptes.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.ListComptes.Size = new System.Drawing.Size(396, 156);
+            this.ListComptes.Size = new System.Drawing.Size(522, 156);
             this.ListComptes.TabIndex = 15;
             // 
             // label42
@@ -1544,7 +1550,7 @@ namespace GestionAffaire
             this.txtAgenceBanque.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAgenceBanque.Location = new System.Drawing.Point(182, 95);
             this.txtAgenceBanque.Name = "txtAgenceBanque";
-            this.txtAgenceBanque.Size = new System.Drawing.Size(265, 26);
+            this.txtAgenceBanque.Size = new System.Drawing.Size(389, 26);
             this.txtAgenceBanque.TabIndex = 13;
             // 
             // BoxPersonnel
@@ -1670,7 +1676,7 @@ namespace GestionAffaire
             this.BoxClientAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxClientAjouter.Location = new System.Drawing.Point(304, 55);
             this.BoxClientAjouter.Name = "BoxClientAjouter";
-            this.BoxClientAjouter.Size = new System.Drawing.Size(540, 374);
+            this.BoxClientAjouter.Size = new System.Drawing.Size(601, 374);
             this.BoxClientAjouter.TabIndex = 25;
             this.BoxClientAjouter.TabStop = false;
             this.BoxClientAjouter.Text = "Client :";
@@ -1681,7 +1687,7 @@ namespace GestionAffaire
             this.txtICEClient.FormattingEnabled = true;
             this.txtICEClient.Location = new System.Drawing.Point(180, 50);
             this.txtICEClient.Name = "txtICEClient";
-            this.txtICEClient.Size = new System.Drawing.Size(265, 28);
+            this.txtICEClient.Size = new System.Drawing.Size(391, 28);
             this.txtICEClient.TabIndex = 15;
             this.txtICEClient.SelectedIndexChanged += new System.EventHandler(this.txtICEClient_SelectedIndexChanged);
             // 
@@ -1723,7 +1729,7 @@ namespace GestionAffaire
             dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListClient.RowsDefaultCellStyle = dataGridViewCellStyle30;
-            this.ListClient.Size = new System.Drawing.Size(396, 156);
+            this.ListClient.Size = new System.Drawing.Size(522, 156);
             this.ListClient.TabIndex = 14;
             // 
             // label34
@@ -1751,7 +1757,7 @@ namespace GestionAffaire
             this.txtRaisonSocialClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRaisonSocialClient.Location = new System.Drawing.Point(180, 87);
             this.txtRaisonSocialClient.Name = "txtRaisonSocialClient";
-            this.txtRaisonSocialClient.Size = new System.Drawing.Size(265, 26);
+            this.txtRaisonSocialClient.Size = new System.Drawing.Size(391, 26);
             this.txtRaisonSocialClient.TabIndex = 13;
             // 
             // btnSupprimerCR
@@ -1973,10 +1979,10 @@ namespace GestionAffaire
             this.BoxRecherchFraisdeNote.Controls.Add(this.label5);
             this.BoxRecherchFraisdeNote.Controls.Add(this.cmbPCFraisRecheNote);
             this.BoxRecherchFraisdeNote.Controls.Add(this.cmbTypeFraisRecheNote);
-            this.BoxRecherchFraisdeNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxRecherchFraisdeNote.Location = new System.Drawing.Point(12, 70);
+            this.BoxRecherchFraisdeNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxRecherchFraisdeNote.Location = new System.Drawing.Point(195, 0);
             this.BoxRecherchFraisdeNote.Name = "BoxRecherchFraisdeNote";
-            this.BoxRecherchFraisdeNote.Size = new System.Drawing.Size(1346, 644);
+            this.BoxRecherchFraisdeNote.Size = new System.Drawing.Size(1181, 735);
             this.BoxRecherchFraisdeNote.TabIndex = 28;
             this.BoxRecherchFraisdeNote.TabStop = false;
             this.BoxRecherchFraisdeNote.Text = "Rechercher les Frais :";
@@ -1984,7 +1990,7 @@ namespace GestionAffaire
             // 
             // btnActualiserFraisNoteReche
             // 
-            this.btnActualiserFraisNoteReche.Location = new System.Drawing.Point(1151, 100);
+            this.btnActualiserFraisNoteReche.Location = new System.Drawing.Point(950, 100);
             this.btnActualiserFraisNoteReche.Name = "btnActualiserFraisNoteReche";
             this.btnActualiserFraisNoteReche.Size = new System.Drawing.Size(170, 28);
             this.btnActualiserFraisNoteReche.TabIndex = 28;
@@ -1994,7 +2000,7 @@ namespace GestionAffaire
             // 
             // btnRechercheFraisNote
             // 
-            this.btnRechercheFraisNote.Location = new System.Drawing.Point(1151, 57);
+            this.btnRechercheFraisNote.Location = new System.Drawing.Point(950, 57);
             this.btnRechercheFraisNote.Name = "btnRechercheFraisNote";
             this.btnRechercheFraisNote.Size = new System.Drawing.Size(170, 28);
             this.btnRechercheFraisNote.TabIndex = 27;
@@ -2011,7 +2017,7 @@ namespace GestionAffaire
             this.ListRechercheFraisNote.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -2020,18 +2026,18 @@ namespace GestionAffaire
             this.ListRechercheFraisNote.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ListRechercheFraisNote.DefaultCellStyle = dataGridViewCellStyle13;
-            this.ListRechercheFraisNote.Location = new System.Drawing.Point(43, 264);
+            this.ListRechercheFraisNote.Location = new System.Drawing.Point(19, 264);
             this.ListRechercheFraisNote.Name = "ListRechercheFraisNote";
             this.ListRechercheFraisNote.ReadOnly = true;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -2040,14 +2046,14 @@ namespace GestionAffaire
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListRechercheFraisNote.RowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.ListRechercheFraisNote.Size = new System.Drawing.Size(1262, 287);
+            this.ListRechercheFraisNote.Size = new System.Drawing.Size(1125, 287);
             this.ListRechercheFraisNote.TabIndex = 26;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(629, 139);
+            this.label14.Location = new System.Drawing.Point(506, 142);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(123, 20);
             this.label14.TabIndex = 11;
@@ -2066,14 +2072,14 @@ namespace GestionAffaire
             // txtMaxFraisFraisRecheNote
             // 
             this.txtMaxFraisFraisRecheNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaxFraisFraisRecheNote.Location = new System.Drawing.Point(758, 137);
+            this.txtMaxFraisFraisRecheNote.Location = new System.Drawing.Point(635, 140);
             this.txtMaxFraisFraisRecheNote.Maximum = new decimal(new int[] {
             -727379968,
             232,
             0,
             0});
             this.txtMaxFraisFraisRecheNote.Name = "txtMaxFraisFraisRecheNote";
-            this.txtMaxFraisFraisRecheNote.Size = new System.Drawing.Size(308, 26);
+            this.txtMaxFraisFraisRecheNote.Size = new System.Drawing.Size(282, 26);
             this.txtMaxFraisFraisRecheNote.TabIndex = 9;
             this.txtMaxFraisFraisRecheNote.Value = new decimal(new int[] {
             10000,
@@ -2091,16 +2097,16 @@ namespace GestionAffaire
             0,
             0});
             this.txtMinFraisFraisRecheNote.Name = "txtMinFraisFraisRecheNote";
-            this.txtMinFraisFraisRecheNote.Size = new System.Drawing.Size(415, 26);
+            this.txtMinFraisFraisRecheNote.Size = new System.Drawing.Size(275, 26);
             this.txtMinFraisFraisRecheNote.TabIndex = 8;
             // 
             // txtDateFinFraisRecheNote
             // 
             this.txtDateFinFraisRecheNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateFinFraisRecheNote.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDateFinFraisRecheNote.Location = new System.Drawing.Point(758, 96);
+            this.txtDateFinFraisRecheNote.Location = new System.Drawing.Point(635, 99);
             this.txtDateFinFraisRecheNote.Name = "txtDateFinFraisRecheNote";
-            this.txtDateFinFraisRecheNote.Size = new System.Drawing.Size(308, 26);
+            this.txtDateFinFraisRecheNote.Size = new System.Drawing.Size(282, 26);
             this.txtDateFinFraisRecheNote.TabIndex = 7;
             // 
             // txtDateDebutFraisRecheNote
@@ -2109,14 +2115,14 @@ namespace GestionAffaire
             this.txtDateDebutFraisRecheNote.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtDateDebutFraisRecheNote.Location = new System.Drawing.Point(185, 99);
             this.txtDateDebutFraisRecheNote.Name = "txtDateDebutFraisRecheNote";
-            this.txtDateDebutFraisRecheNote.Size = new System.Drawing.Size(415, 26);
+            this.txtDateDebutFraisRecheNote.Size = new System.Drawing.Size(275, 26);
             this.txtDateDebutFraisRecheNote.TabIndex = 6;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(726, 101);
+            this.label12.Location = new System.Drawing.Point(603, 104);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(26, 20);
             this.label12.TabIndex = 5;
@@ -2136,7 +2142,7 @@ namespace GestionAffaire
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(615, 57);
+            this.label10.Location = new System.Drawing.Point(492, 60);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(137, 20);
             this.label10.TabIndex = 3;
@@ -2157,9 +2163,9 @@ namespace GestionAffaire
             this.cmbPCFraisRecheNote.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPCFraisRecheNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPCFraisRecheNote.FormattingEnabled = true;
-            this.cmbPCFraisRecheNote.Location = new System.Drawing.Point(758, 54);
+            this.cmbPCFraisRecheNote.Location = new System.Drawing.Point(635, 57);
             this.cmbPCFraisRecheNote.Name = "cmbPCFraisRecheNote";
-            this.cmbPCFraisRecheNote.Size = new System.Drawing.Size(308, 28);
+            this.cmbPCFraisRecheNote.Size = new System.Drawing.Size(282, 28);
             this.cmbPCFraisRecheNote.TabIndex = 1;
             this.cmbPCFraisRecheNote.SelectedIndexChanged += new System.EventHandler(this.cmbPCFraisRecheNote_SelectedIndexChanged);
             // 
@@ -2170,7 +2176,7 @@ namespace GestionAffaire
             this.cmbTypeFraisRecheNote.FormattingEnabled = true;
             this.cmbTypeFraisRecheNote.Location = new System.Drawing.Point(185, 57);
             this.cmbTypeFraisRecheNote.Name = "cmbTypeFraisRecheNote";
-            this.cmbTypeFraisRecheNote.Size = new System.Drawing.Size(415, 28);
+            this.cmbTypeFraisRecheNote.Size = new System.Drawing.Size(275, 28);
             this.cmbTypeFraisRecheNote.TabIndex = 0;
             this.cmbTypeFraisRecheNote.SelectedIndexChanged += new System.EventHandler(this.cmbTypeFraisRecheNote_SelectedIndexChanged);
             // 
@@ -2192,10 +2198,10 @@ namespace GestionAffaire
             this.BoxMissionReche.Controls.Add(this.label21);
             this.BoxMissionReche.Controls.Add(this.cmbAffMissionReche);
             this.BoxMissionReche.Controls.Add(this.cmbRespoMissionReche);
-            this.BoxMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMissionReche.Location = new System.Drawing.Point(12, 70);
+            this.BoxMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxMissionReche.Location = new System.Drawing.Point(195, 0);
             this.BoxMissionReche.Name = "BoxMissionReche";
-            this.BoxMissionReche.Size = new System.Drawing.Size(1346, 644);
+            this.BoxMissionReche.Size = new System.Drawing.Size(1181, 735);
             this.BoxMissionReche.TabIndex = 29;
             this.BoxMissionReche.TabStop = false;
             this.BoxMissionReche.Text = "Rechercher Ordre de Missions:";
@@ -2205,7 +2211,7 @@ namespace GestionAffaire
             // txtLieuArriverMissionReche
             // 
             this.txtLieuArriverMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLieuArriverMissionReche.Location = new System.Drawing.Point(758, 159);
+            this.txtLieuArriverMissionReche.Location = new System.Drawing.Point(609, 159);
             this.txtLieuArriverMissionReche.Name = "txtLieuArriverMissionReche";
             this.txtLieuArriverMissionReche.Size = new System.Drawing.Size(308, 26);
             this.txtLieuArriverMissionReche.TabIndex = 32;
@@ -2215,14 +2221,14 @@ namespace GestionAffaire
             this.txtLieuDepartMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLieuDepartMissionReche.Location = new System.Drawing.Point(185, 159);
             this.txtLieuDepartMissionReche.Name = "txtLieuDepartMissionReche";
-            this.txtLieuDepartMissionReche.Size = new System.Drawing.Size(415, 26);
+            this.txtLieuDepartMissionReche.Size = new System.Drawing.Size(275, 26);
             this.txtLieuDepartMissionReche.TabIndex = 31;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(639, 162);
+            this.label17.Location = new System.Drawing.Point(490, 162);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(110, 20);
             this.label17.TabIndex = 30;
@@ -2240,7 +2246,7 @@ namespace GestionAffaire
             // 
             // btnActualiserMissionReche
             // 
-            this.btnActualiserMissionReche.Location = new System.Drawing.Point(1135, 108);
+            this.btnActualiserMissionReche.Location = new System.Drawing.Point(950, 107);
             this.btnActualiserMissionReche.Name = "btnActualiserMissionReche";
             this.btnActualiserMissionReche.Size = new System.Drawing.Size(170, 28);
             this.btnActualiserMissionReche.TabIndex = 28;
@@ -2250,7 +2256,7 @@ namespace GestionAffaire
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1135, 65);
+            this.button4.Location = new System.Drawing.Point(950, 64);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(170, 28);
             this.button4.TabIndex = 27;
@@ -2262,12 +2268,12 @@ namespace GestionAffaire
             // 
             this.ListMissionReche.AllowUserToOrderColumns = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListMissionReche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.ListMissionReche.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -2276,18 +2282,18 @@ namespace GestionAffaire
             this.ListMissionReche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ListMissionReche.DefaultCellStyle = dataGridViewCellStyle8;
-            this.ListMissionReche.Location = new System.Drawing.Point(43, 264);
+            this.ListMissionReche.Location = new System.Drawing.Point(20, 259);
             this.ListMissionReche.Name = "ListMissionReche";
             this.ListMissionReche.ReadOnly = true;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -2296,14 +2302,14 @@ namespace GestionAffaire
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListMissionReche.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.ListMissionReche.Size = new System.Drawing.Size(1262, 287);
+            this.ListMissionReche.Size = new System.Drawing.Size(1124, 287);
             this.ListMissionReche.TabIndex = 26;
             // 
             // txtDateFinMissionReche
             // 
             this.txtDateFinMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateFinMissionReche.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDateFinMissionReche.Location = new System.Drawing.Point(758, 109);
+            this.txtDateFinMissionReche.Location = new System.Drawing.Point(609, 109);
             this.txtDateFinMissionReche.Name = "txtDateFinMissionReche";
             this.txtDateFinMissionReche.Size = new System.Drawing.Size(308, 26);
             this.txtDateFinMissionReche.TabIndex = 7;
@@ -2314,14 +2320,14 @@ namespace GestionAffaire
             this.txtDateDebutMissionReche.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtDateDebutMissionReche.Location = new System.Drawing.Point(185, 112);
             this.txtDateDebutMissionReche.Name = "txtDateDebutMissionReche";
-            this.txtDateDebutMissionReche.Size = new System.Drawing.Size(415, 26);
+            this.txtDateDebutMissionReche.Size = new System.Drawing.Size(275, 26);
             this.txtDateDebutMissionReche.TabIndex = 6;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(726, 114);
+            this.label18.Location = new System.Drawing.Point(577, 114);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(26, 20);
             this.label18.TabIndex = 5;
@@ -2341,7 +2347,7 @@ namespace GestionAffaire
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(688, 68);
+            this.label20.Location = new System.Drawing.Point(539, 68);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(64, 20);
             this.label20.TabIndex = 3;
@@ -2362,7 +2368,7 @@ namespace GestionAffaire
             this.cmbAffMissionReche.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAffMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAffMissionReche.FormattingEnabled = true;
-            this.cmbAffMissionReche.Location = new System.Drawing.Point(758, 65);
+            this.cmbAffMissionReche.Location = new System.Drawing.Point(609, 65);
             this.cmbAffMissionReche.Name = "cmbAffMissionReche";
             this.cmbAffMissionReche.Size = new System.Drawing.Size(308, 28);
             this.cmbAffMissionReche.TabIndex = 1;
@@ -2374,7 +2380,7 @@ namespace GestionAffaire
             this.cmbRespoMissionReche.FormattingEnabled = true;
             this.cmbRespoMissionReche.Location = new System.Drawing.Point(185, 65);
             this.cmbRespoMissionReche.Name = "cmbRespoMissionReche";
-            this.cmbRespoMissionReche.Size = new System.Drawing.Size(415, 28);
+            this.cmbRespoMissionReche.Size = new System.Drawing.Size(275, 28);
             this.cmbRespoMissionReche.TabIndex = 0;
             // 
             // BoxDisposition
@@ -2394,10 +2400,10 @@ namespace GestionAffaire
             this.BoxDisposition.Controls.Add(this.label46);
             this.BoxDisposition.Controls.Add(this.label48);
             this.BoxDisposition.Controls.Add(this.cmbPersonneDisposition);
-            this.BoxDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxDisposition.Location = new System.Drawing.Point(12, 70);
+            this.BoxDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxDisposition.Location = new System.Drawing.Point(195, 0);
             this.BoxDisposition.Name = "BoxDisposition";
-            this.BoxDisposition.Size = new System.Drawing.Size(1346, 644);
+            this.BoxDisposition.Size = new System.Drawing.Size(1181, 735);
             this.BoxDisposition.TabIndex = 33;
             this.BoxDisposition.TabStop = false;
             this.BoxDisposition.Text = "Mise à Disposition :";
@@ -2506,12 +2512,12 @@ namespace GestionAffaire
             // 
             this.listDisposition.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listDisposition.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.listDisposition.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -2520,18 +2526,18 @@ namespace GestionAffaire
             this.listDisposition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.listDisposition.DefaultCellStyle = dataGridViewCellStyle3;
-            this.listDisposition.Location = new System.Drawing.Point(43, 264);
+            this.listDisposition.Location = new System.Drawing.Point(10, 264);
             this.listDisposition.Name = "listDisposition";
             this.listDisposition.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -2540,7 +2546,7 @@ namespace GestionAffaire
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listDisposition.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.listDisposition.Size = new System.Drawing.Size(1262, 287);
+            this.listDisposition.Size = new System.Drawing.Size(1134, 287);
             this.listDisposition.TabIndex = 26;
             this.listDisposition.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listDisposition_CellClick);
             // 
