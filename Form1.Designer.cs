@@ -2193,7 +2193,7 @@ namespace GestionAffaire
             this.BoxMissionReche.Controls.Add(this.cmbAffMissionReche);
             this.BoxMissionReche.Controls.Add(this.cmbRespoMissionReche);
             this.BoxMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMissionReche.Location = new System.Drawing.Point(967, 0);
+            this.BoxMissionReche.Location = new System.Drawing.Point(12, 70);
             this.BoxMissionReche.Name = "BoxMissionReche";
             this.BoxMissionReche.Size = new System.Drawing.Size(1346, 644);
             this.BoxMissionReche.TabIndex = 29;
@@ -2395,7 +2395,7 @@ namespace GestionAffaire
             this.BoxDisposition.Controls.Add(this.label48);
             this.BoxDisposition.Controls.Add(this.cmbPersonneDisposition);
             this.BoxDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxDisposition.Location = new System.Drawing.Point(967, 23);
+            this.BoxDisposition.Location = new System.Drawing.Point(12, 70);
             this.BoxDisposition.Name = "BoxDisposition";
             this.BoxDisposition.Size = new System.Drawing.Size(1346, 644);
             this.BoxDisposition.TabIndex = 33;
