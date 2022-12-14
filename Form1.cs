@@ -1735,26 +1735,35 @@ namespace GestionAffaire
             cmbResponsableAff.Text = dt.Rows[0][2].ToString();
             txtNbrJourAffaire.Value = decimal.Parse(dt.Rows[0][4].ToString());
         }
-        //erreur
         private void ListAff_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            errorProvider1.Dispose();
+            try
+            {
+                errorProvider1.Dispose();
 
-            DataTable dt = new DataTable();
-            dt.Rows.Clear();
+                if(e.RowIndex >= 0 && e.RowIndex < ListAff.Rows.Count - 1)
+                {
+                    DataTable dt = new DataTable();
+                    dt.Rows.Clear();
 
-            con.Open();
-            cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note de Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE where Numero='" + ListAff.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-            con.Close();
+                    con.Open();
+                    cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note de Frais',NbrJourEstimer as 'Nombre de Jours Estimé',NbrJourConsommer as 'Nombre de Jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE where Numero='" + ListAff.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
+                    da.SelectCommand = cmd;
+                    da.Fill(dt);
+                    con.Close();
 
-            cmbNumeroAff.Text = dt.Rows[0][0].ToString();
-            cmbClientAff.Text = dt.Rows[0][1].ToString();
-            cmbResponsableAff.Text = dt.Rows[0][2].ToString();
-            txtNbrJourAffaire.Value = decimal.Parse(dt.Rows[0][4].ToString());
+                    cmbNumeroAff.Text = dt.Rows[0][0].ToString();
+                    cmbClientAff.Text = dt.Rows[0][1].ToString();
+                    cmbResponsableAff.Text = dt.Rows[0][2].ToString();
+                    txtNbrJourAffaire.Value = decimal.Parse(dt.Rows[0][4].ToString());
 
-            remplirListAffaire();
+                    remplirListAffaire();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -2438,45 +2447,53 @@ namespace GestionAffaire
                 listeEmployeOrdre.Items.Add(dt2.Rows[i][1].ToString());
             }
         }
-        //erreur
         private void ListMission_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            errorProvider1.Dispose();
-
-            DataTable dt = new DataTable();
-            DataTable dt2 = new DataTable();
-
-            dt.Rows.Clear();
-            dt2.Rows.Clear();
-
-
-            con.Open();
-            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where numero='" + int.Parse(ListMission.Rows[e.RowIndex].Cells[0].Value.ToString()) + "'";
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-
-            cmd.Parameters.Clear();
-
-            cmd.CommandText = "select personnel,nom from DetailMission inner join Personnel on cin=personnel where mission='" + int.Parse(ListMission.Rows[e.RowIndex].Cells[0].Value.ToString()) + "'";
-            da.SelectCommand = cmd;
-            da.Fill(dt2);
-            con.Close();
-
-            cmbNumeroMission.Text = dt.Rows[0][0].ToString();
-            cmbRespoMission.Text = dt.Rows[0][1].ToString();
-            txtDateDebutMission.Text = dt.Rows[0][2].ToString();
-            txtDateFinMission.Text = dt.Rows[0][3].ToString();
-            txtLieuDepartMission.Text = dt.Rows[0][5].ToString();
-            txtLieuArriveMission.Text = dt.Rows[0][6].ToString();
-            cmbNumAffMission.SelectedItem = dt.Rows[0][8].ToString();
-
-            listeEmployeOrdre.Items.Clear();
-            for (int i = 0; i < dt2.Rows.Count; i++)
+            try
             {
-                listeEmployeOrdre.Items.Add(dt2.Rows[i][1].ToString());
-            }
+                errorProvider1.Dispose();
 
-            remplirListMission();
+                if (e.RowIndex >= 0 && e.RowIndex < ListMission.Rows.Count - 1)
+                {
+                    DataTable dt = new DataTable();
+                    DataTable dt2 = new DataTable();
+
+                    dt.Rows.Clear();
+                    dt2.Rows.Clear();
+
+                    con.Open();
+                    cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where numero='" + int.Parse(ListMission.Rows[e.RowIndex].Cells[0].Value.ToString()) + "'";
+                    da.SelectCommand = cmd;
+                    da.Fill(dt);
+
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "select personnel,nom from DetailMission inner join Personnel on cin=personnel where mission='" + int.Parse(ListMission.Rows[e.RowIndex].Cells[0].Value.ToString()) + "'";
+                    da.SelectCommand = cmd;
+                    da.Fill(dt2);
+                    con.Close();
+
+                    cmbNumeroMission.Text = dt.Rows[0][0].ToString();
+                    cmbRespoMission.Text = dt.Rows[0][1].ToString();
+                    txtDateDebutMission.Text = dt.Rows[0][2].ToString();
+                    txtDateFinMission.Text = dt.Rows[0][3].ToString();
+                    txtLieuDepartMission.Text = dt.Rows[0][5].ToString();
+                    txtLieuArriveMission.Text = dt.Rows[0][6].ToString();
+                    cmbNumAffMission.SelectedItem = dt.Rows[0][8].ToString();
+
+                    listeEmployeOrdre.Items.Clear();
+                    for (int i = 0; i < dt2.Rows.Count; i++)
+                    {
+                        listeEmployeOrdre.Items.Add(dt2.Rows[i][1].ToString());
+                    }
+
+                    remplirListMission();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
         private void btnValiderMission_Click_1(object sender, EventArgs e)
         {
@@ -3190,55 +3207,60 @@ namespace GestionAffaire
 
             if (rbModifierSupprimerNote.Checked == true)
             {
-                if (listFraisNote.CurrentCell.Value.ToString() == "Supprimer")
+                if (e.RowIndex >= 0 && e.RowIndex < listFraisNote.Rows.Count - 1)
                 {
-                    if (MessageBox.Show("voulez-vous supprimer Frais?", "Supprimer Frais", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (listFraisNote.CurrentCell.Value.ToString() == "Supprimer")
                     {
-                        try
+                        if (MessageBox.Show("voulez-vous supprimer Frais?", "Supprimer Frais", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            int num = int.Parse(listFraisNote.Rows[e.RowIndex].Cells[0].Value.ToString());
-                            con.Open();
-                            cmd.CommandText = "delete Frais where Numero='" + num + "' and noteFrais='" + int.Parse(cmbNumeroNote.Text) + "'";
-                            cmd.ExecuteNonQuery();
-                            listFraisNote.Rows.RemoveAt(e.RowIndex);
-                            for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
+                            try
                             {
-                                cmd.Parameters.Clear();
-                                cmd.CommandText = "delete Frais where numero='"+ int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) +
-                                                                    "' and noteFrais='"+ int.Parse(cmbNumeroNote.Text) +"'";
+                                int num = int.Parse(listFraisNote.Rows[e.RowIndex].Cells[0].Value.ToString());
+                                con.Open();
+                                cmd.CommandText = "delete Frais where Numero='" + num + "' and noteFrais='" + int.Parse(cmbNumeroNote.Text) + "'";
                                 cmd.ExecuteNonQuery();
+                                listFraisNote.Rows.RemoveAt(e.RowIndex);
+                                for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
+                                {
+                                    cmd.Parameters.Clear();
+                                    cmd.CommandText = "delete Frais where numero='" + int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) +
+                                                                        "' and noteFrais='" + int.Parse(cmbNumeroNote.Text) + "'";
+                                    cmd.ExecuteNonQuery();
+                                }
+                                con.Close();
+                                numeroFrais();
+                                con.Open();
+                                for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
+                                {
+                                    cmd.Parameters.Clear();
+                                    cmd.CommandText = "insert into Frais(numero,Type,PiecesComptables,frais,date,noteFrais) values('" +
+                                                                int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) + "','" +
+                                                                listFraisNote.Rows[i].Cells[1].Value.ToString() + "','" +
+                                                                listFraisNote.Rows[i].Cells[2].Value.ToString() + "','" +
+                                                                double.Parse(listFraisNote.Rows[i].Cells[4].Value.ToString()).ToString() + "','" +
+                                                                DateTime.Parse(listFraisNote.Rows[i].Cells[3].Value.ToString()) + "','" +
+                                                                int.Parse(cmbNumeroNote.Text) + "')";
+                                    cmd.ExecuteNonQuery();
+                                }
+                                con.Close();
+                                remplirListFrais();
+
                             }
-                            con.Close();
-                            numeroFrais();
-                            con.Open();
-                            for (int i = 0; i < listFraisNote.Rows.Count - 1; i++)
+                            catch (Exception ex)
                             {
-                                cmd.Parameters.Clear();
-                                cmd.CommandText = "insert into Frais(numero,Type,PiecesComptables,frais,date,noteFrais) values('" +
-                                                            int.Parse(listFraisNote.Rows[i].Cells[0].Value.ToString()) + "','" +
-                                                            listFraisNote.Rows[i].Cells[1].Value.ToString() + "','" +
-                                                            listFraisNote.Rows[i].Cells[2].Value.ToString() + "','" +
-                                                            double.Parse(listFraisNote.Rows[i].Cells[4].Value.ToString()).ToString() + "','" +
-                                                            DateTime.Parse(listFraisNote.Rows[i].Cells[3].Value.ToString()) + "','" +
-                                                            int.Parse(cmbNumeroNote.Text) + "')";
-                                cmd.ExecuteNonQuery();
+                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                             }
-                            con.Close();
-                            remplirListFrais();
-
-
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             else
             {
-                if (listFraisNote.CurrentCell.Value.ToString() == "Supprimer")
-                    listFraisNote.Rows.RemoveAt(e.RowIndex);
+                if (e.RowIndex >= 0 && e.RowIndex < listFraisNote.Rows.Count - 1)
+                {
+                    if (listFraisNote.CurrentCell.Value.ToString() == "Supprimer")
+                        listFraisNote.Rows.RemoveAt(e.RowIndex);
+                }
             }
         }
 
@@ -3389,33 +3411,42 @@ namespace GestionAffaire
             txtMontantDisposition.Text = dt.Rows[0][2].ToString();
             cmbCompteDisposition.Text = dt.Rows[0][3].ToString();
         }
-        //erreur
         private void listDisposition_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            errorProvider1.Dispose();
-
-            DataTable dt = new DataTable();
-            dt.Rows.Clear();
-
-            con.Open();
-            cmd.CommandText = "select Numero,personne as 'Bénéficiaire',cast(Montant as nvarchar) as 'Montant',compte as 'Compte Bancaire' from MiseDisposition where numero='" + int.Parse(listDisposition.Rows[e.RowIndex].Cells[0].Value.ToString()) + "'";
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-
-            for (int i = 0; i < dt.Rows.Count; i++)
+            try
             {
-                cmd.Parameters.Clear();
-                cmd.CommandText = "select nom from Personnel where cin='" + dt.Rows[i][1].ToString() + "'";
-                listDisposition.Rows[i].Cells[1].Value = cmd.ExecuteScalar().ToString();
+                errorProvider1.Dispose();
+
+                if (e.RowIndex >= 0 && e.RowIndex < listDisposition.Rows.Count - 1)
+                {
+                    DataTable dt = new DataTable();
+                    dt.Rows.Clear();
+
+                    con.Open();
+                    cmd.CommandText = "select Numero,personne as 'Bénéficiaire',cast(Montant as nvarchar) as 'Montant',compte as 'Compte Bancaire' from MiseDisposition where numero='" + int.Parse(listDisposition.Rows[e.RowIndex].Cells[0].Value.ToString()) + "'";
+                    da.SelectCommand = cmd;
+                    da.Fill(dt);
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.CommandText = "select nom from Personnel where cin='" + dt.Rows[i][1].ToString() + "'";
+                        listDisposition.Rows[i].Cells[1].Value = cmd.ExecuteScalar().ToString();
+                    }
+                    con.Close();
+
+                    cmbNumeroDisposition.Text = dt.Rows[0][0].ToString();
+                    cmbPersonneDisposition.Text = dt.Rows[0][1].ToString();
+                    txtMontantDisposition.Text = dt.Rows[0][2].ToString();
+                    cmbCompteDisposition.Text = dt.Rows[0][3].ToString();
+
+                    remplirListDisposition();
+                }
             }
-            con.Close();
-
-            cmbNumeroDisposition.Text = dt.Rows[0][0].ToString();
-            cmbPersonneDisposition.Text = dt.Rows[0][1].ToString();
-            txtMontantDisposition.Text = dt.Rows[0][2].ToString();
-            cmbCompteDisposition.Text = dt.Rows[0][3].ToString();
-
-            remplirListDisposition();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
         private void btnValiderDisposition_Click(object sender, EventArgs e)
         {

@@ -201,6 +201,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="DB_AffaireDataSet.xsc">
       <DependentUpon>DB_AffaireDataSet.xsd</DependentUpon>
@@ -247,6 +248,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aqua_smooth_folder_documents.ico" />
+    <None Include="bfi_partnerlogos_sothcom.jpg" />
     <Content Include="DB_Affaire.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
