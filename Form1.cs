@@ -224,13 +224,30 @@ namespace GestionAffaire
             ListRespo.DataSource = dt;
         }
 
-        //methode pour remplir le nom et la list des employes
+        //methode pour remplir le cin le nom et la list des employes
+        public void remplirCinEmploye()
+        {
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            txtCinPersonne.Items.Clear();
+
+            con.Open();
+            cmd.CommandText = "select cin from Personnel";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                txtCinPersonne.Items.Add(dt.Rows[i][0].ToString());
+            }
+        }
         public void remplirNomEmploye()
         {
             DataTable dt = new DataTable();
             dt.Rows.Clear();
 
-            txtNomPersonne.Items.Clear();
             cmbEmployeOrdre.Items.Clear();
             cmbPersonneDisposition.Items.Clear();
 
@@ -241,7 +258,6 @@ namespace GestionAffaire
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                txtNomPersonne.Items.Add(dt.Rows[i][0].ToString());
                 cmbEmployeOrdre.Items.Add(dt.Rows[i][0].ToString());
                 cmbPersonneDisposition.Items.Add(dt.Rows[i][0].ToString());
                 
@@ -313,9 +329,7 @@ namespace GestionAffaire
         {
             DataTable dt = new DataTable();
             if (dt != null)
-            {
-                dt.Rows.Clear();
-            }
+            dt.Rows.Clear();
 
             con.Open();
             cmd.CommandText = "select Numero,raisonSociale as 'Client',Responsable as 'Chargé d''affaire',NoteFrais as 'Note de Frais',NbrJourEstimer as 'Nombre de jours Estimé',NbrJourConsommer as 'Nombre de jours Consommés' from Affaires inner join Client on Affaires.Client=Client.ICE";
@@ -323,8 +337,15 @@ namespace GestionAffaire
             da.Fill(dt);
             con.Close();
 
+
             ListAff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListAff.DataSource = dt;
+
+            for (int i = 0; i < ListAff.Rows.Count - 1; i++)
+            {
+                if (ListAff.Rows[i].Cells[5].Value.ToString() == "")
+                ListAff.Rows[i].Cells[5].Value = 0;
+            }
         }
 
         //methode pour remplir les numero et la liste des Frais de note
@@ -597,7 +618,6 @@ namespace GestionAffaire
 
 
 
-
         //methode pour verifier si l'affaire est deja existe dans la base
         public Boolean IsAffExists(string affaire)
         {
@@ -786,29 +806,6 @@ namespace GestionAffaire
             return numeroNote;
         }
 
-        //methode pour verifier si le client a une affaire
-        public Boolean IsClientExistsInAffaire(string ICE)
-        {
-            DataTable dt = new DataTable();
-
-            if (dt != null)
-            {
-                dt.Rows.Clear();
-            }
-
-            Boolean isThere = false;
-            con.Open();
-            cmd.CommandText = "select Client from Affaires where Client='" + ICE + "'";
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-            con.Close();
-            if (dt.Rows.Count != 0)
-            {
-                isThere = true;
-            }
-            return isThere;
-        }
-
         //methode pour verifier si le responsable a une affaire
         public Boolean IsRespoExistsInAffaire(string nom)
         {
@@ -911,7 +908,7 @@ namespace GestionAffaire
 
             Boolean isThere = false;
             con.Open();
-            cmd.CommandText = "select cin from Personnel where nom='" + nom + "'";
+            cmd.CommandText = "select top (1) cin from Personnel where nom='" + nom + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -992,8 +989,53 @@ namespace GestionAffaire
             return isThere;
         }
 
+        //methode pour voir si l'affaire a des notes de frais ou des ordres des missions
+        public Boolean OnPeutSupprimerAffaire(string affaire)
+        {
+            Boolean etat = false;
 
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt1.Rows.Clear();
+            dt2.Rows.Clear();
 
+            con.Open();
+            cmd.CommandText = "select affaire from NoteFrais where affaire='" + affaire + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt1);
+            cmd.Parameters.Clear();
+            cmd.CommandText = "select affaire from Mission where affaire='" + affaire + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt2);
+            con.Close();
+
+            if (dt1.Rows.Count == 0 && dt2.Rows.Count == 0)
+                etat = true;
+
+            return etat;
+        }
+
+        //methode pour voir si le client a des affaires 
+        public Boolean OnPeutSupprimerClient(string ICE)
+        {
+            Boolean etat = false;
+
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select Client from Affaires where Client='" + ICE + "'";
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            con.Close();
+
+            if (dt.Rows.Count == 0)
+                etat = true;
+
+            return etat;
+        }
+
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -1011,6 +1053,7 @@ namespace GestionAffaire
             remplirListRespo();
             NumeroNote();
             remplirListFrais();
+            remplirCinEmploye();
             remplirNomEmploye();
             remplirListEmploye();
             remplirNumeroCompte();
@@ -1181,17 +1224,13 @@ namespace GestionAffaire
                 if (txtCinPersonne.Text != "")
                 {
                     if (IsEmployeCinExists(txtCinPersonne.Text) == true)
-                    {
                         errorProvider1.SetError(txtCinPersonne, "Personne est déjà Existant avec cette CIN");
-                    }
                     else
                     {
                         if (txtPrenomPresonne.Text != "" && txtNomPersonne.Text != "")
                         {
                             if (IsEmployeNomExists(txtNomPersonne.Text) == true)
-                            {
                                 errorProvider1.SetError(txtNomPersonne, "Personne est déjà Existant avec ce Nom");
-                            }
                             else
                             {
                                 try
@@ -1203,7 +1242,8 @@ namespace GestionAffaire
 
                                     MessageBox.Show("Personne Ajouter Avec Succès");
 
-                                    txtNomPersonne.Text = txtCinPersonne.Text = txtPrenomPresonne.Text = "";
+                                    txtCinPersonne.Text = txtNomPersonne.Text = txtPrenomPresonne.Text = "";
+                                    remplirCinEmploye();
                                     remplirNomEmploye();
                                     remplirListEmploye();
                                 }
@@ -1215,15 +1255,15 @@ namespace GestionAffaire
                         }
                         else
                         {
-                            if (txtCinPersonne.Text == "")
-                                errorProvider1.SetError(txtCinPersonne, "cette Information est Obligatoire");
+                            if (txtNomPersonne.Text == "")
+                                errorProvider1.SetError(txtNomPersonne, "cette Information est Obligatoire");
                             if (txtPrenomPresonne.Text == "")
                                 errorProvider1.SetError(txtPrenomPresonne, "cette Information est Obligatoire");
                         }
                     }
                 }
                 else
-                    errorProvider1.SetError(txtCinPersonne, "cette information est Obligatoire");
+                    errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoire");
             }
             else if (radioButton4.Checked == true)
             {
@@ -1231,7 +1271,7 @@ namespace GestionAffaire
                 {
                     try
                     {
-                        int t = int.Parse(txtNumeroCompte.Text);
+                        Int64 t = Int64.Parse(txtNumeroCompte.Text);
 
                         if (IsCompteExists(txtNumeroCompte.Text) == false)
                         {
@@ -1239,6 +1279,10 @@ namespace GestionAffaire
                             {
                                 if (txtBanque.Text != "")
                                 {
+                                    if (txtAgenceBanque.Text.Contains("'"))
+                                    {
+                                        txtAgenceBanque.Text.Replace("'", "''");
+                                    }
                                     if (IsBanqueExists(txtBanque.Text))
                                     {
                                         con.Open();
@@ -1366,13 +1410,13 @@ namespace GestionAffaire
             {
                 if (txtCinPersonne.Text != "")
                 {
-                    if (IsEmployeCinExists(txtCinPersonne.Text) == true)
+                    if (IsEmployeCinExists(txtCinPersonne.Text) == false)
                         errorProvider1.SetError(txtCinPersonne, "Personne n'est pas Existant avec cette CIN");
                     else
                     {
                         if (txtPrenomPresonne.Text != "" && txtNomPersonne.Text != "")
                         {
-                            if (IsEmployeNomExists(txtNomPersonne.Text) == false)
+                            if (IsEmployeNomExists(txtNomPersonne.Text) == true)
                                 errorProvider1.SetError(txtNomPersonne, "Personne est déjà Existant avec ce Nom");
                             else
                             {
@@ -1385,7 +1429,8 @@ namespace GestionAffaire
 
                                     MessageBox.Show("Modification Avec Succès");
 
-                                    txtNomPersonne.Text = txtCinPersonne.Text = txtPrenomPresonne.Text = "";
+                                    txtCinPersonne.Text = txtNomPersonne.Text = txtPrenomPresonne.Text = "";
+                                    remplirCinEmploye();
                                     remplirNomEmploye();
                                     remplirListEmploye();
                                 }
@@ -1405,7 +1450,7 @@ namespace GestionAffaire
                     }
                 }
                 else
-                    errorProvider1.SetError(txtCinPersonne, "cette information est Obligatoire");
+                    errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoire");
             }
             else if (radioButton4.Checked == true)
             {
@@ -1512,7 +1557,7 @@ namespace GestionAffaire
             dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select CIN, Nom, Prenom from Personnel where nom='" + txtNomPersonne.Text + "'";
+            cmd.CommandText = "select CIN, Nom, Prenom from Personnel where cin='" + txtCinPersonne.Text + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
@@ -1520,7 +1565,7 @@ namespace GestionAffaire
             listPersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             listPersonnel.DataSource = dt;
 
-            txtCinPersonne.Text = dt.Rows[0][0].ToString();
+            txtNomPersonne.Text = dt.Rows[0][1].ToString();
             txtPrenomPresonne.Text = dt.Rows[0][2].ToString();
         }
         private void txtNumeroCompte_SelectedIndexChanged(object sender, EventArgs e)
@@ -1554,14 +1599,11 @@ namespace GestionAffaire
                         errorProvider1.SetError(txtICEClient, "Client n'est pas Existant");
                     else
                     {
-                        if (MessageBox.Show("voulez-vous supprimer Client?", "Supprimer Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (OnPeutSupprimerClient(txtICEClient.Text) == false)
+                            MessageBox.Show("Vous ne pouvez pas supprimer ce Client car il contient une ou plusieur Affaire ", "Exception", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                        else
                         {
-                            if (IsClientExistsInAffaire(txtICEClient.Text))
-                            {
-                                MessageBox.Show("le Client a une ou plusieur Affaire ", "Exception", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-
-                            }
-                            else
+                            if (MessageBox.Show("voulez-vous supprimer Client?", "Supprimer Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 try
                                 {
@@ -1585,112 +1627,14 @@ namespace GestionAffaire
                     }
                 }
                 else
-                {
-                    errorProvider1.SetError(txtICEClient, "cette information est Obligatoire");
-                }
+                    errorProvider1.SetError(txtICEClient, "cette Information est Obligatoire");
             }
             else if (radioButton2.Checked == true)
-            {
-                if (txtNomRespo.Text != "")
-                {
-                    if (IsRespoExists(txtNomRespo.Text) == false)
-                    {
-                        errorProvider1.SetError(txtNomRespo, "Chargé d'affaire n'est pas Existant");
-                    }
-                    else
-                    {
-                        if (MessageBox.Show("voulez-vous supprimer Chargé d'affaire?", "Supprimer Chargé d'affaire", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            try
-                            {
-                                con.Open();
-                                cmd.CommandText = "delete Responsable where nom='" + txtNomRespo.Text + "'";
-                                cmd.ExecuteNonQuery();
-                                con.Close();
-
-                                txtNomRespo.Text = txtPrenomRespo.Text = "";
-                                RemplirNomRespo();
-                                remplirListRespo();
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    errorProvider1.SetError(txtNomRespo, "cette information est Obligatoire");
-                }
-            }
+                MessageBox.Show("Vous ne pouvez pas supprimer Chargé d'affaire mais vous pouvez changé son activation", "Exception", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             else if (radioButton1.Checked == true)
-            {
-                if (txtCinPersonne.Text != "")
-                {
-                    if (IsEmployeCinExists(txtCinPersonne.Text) == false)
-                    {
-                        errorProvider1.SetError(txtNomPersonne, "Personne n'est pas Existant");
-                    }
-                    else
-                    {
-                        if (MessageBox.Show("voulez-vous supprimer Personne?", "Supprimer Personne", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            try
-                            {
-                                con.Open();
-                                cmd.CommandText = "delete Personnel where cin='" + txtCinPersonne.Text + "'";
-                                cmd.ExecuteNonQuery();
-                                con.Close();
-
-                                txtCinPersonne.Text = txtNomPersonne.Text = txtPrenomPresonne.Text = "";
-                                remplirNomEmploye();
-                                remplirListEmploye();
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    errorProvider1.SetError(txtNomPersonne, "cette information est Obligatoire");
-                }
-            }
+                MessageBox.Show("Vous ne pouvez pas supprimer Personnel mais vous pouvez changé son activation", "Exception", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             else if (radioButton4.Checked == true)
-            {
-                if (txtNumeroCompte.Text != "")
-                {
-                    if (IsCompteExists(txtNumeroCompte.Text) == false)
-                        errorProvider1.SetError(txtNumeroCompte, "Compte n'est pas Existant");
-                    else
-                    {
-                        if (MessageBox.Show("voulez-vous supprimer Compte?", "Supprimer Compte", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            try
-                            {
-                                con.Open();
-                                cmd.CommandText = "delete Compte where numero='" + txtNumeroCompte.Text + "'";
-                                cmd.ExecuteNonQuery();
-                                con.Close();
-
-                                txtNumeroCompte.Text = txtAgenceBanque.Text = txtBanque.Text = "";
-                                remplirNumeroCompte();
-                                remplirListCompte();
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                }
-                else
-                    errorProvider1.SetError(txtNumeroCompte, "cette information est Obligatoire");
-            }
-
+                MessageBox.Show("Vous ne pouvez pas supprimer Compte Bancaire mais vous pouvez changé son activation", "Exception", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
         }
         private void button8_Click(object sender, EventArgs e)
         {
@@ -1698,7 +1642,7 @@ namespace GestionAffaire
 
             txtNomRespo.Text = txtPrenomRespo.Text = "";
             txtICEClient.Text = txtRaisonSocialClient.Text = "";
-            txtCinPersonne.Text = txtNomPersonne.Text = txtPrenomPresonne.Text = "";
+            txtNomPersonne.Text = txtCinPersonne.Text = txtPrenomPresonne.Text = "";
             txtNumeroCompte.Text = txtAgenceBanque.Text = txtBanque.Text = "";
 
 
@@ -1730,6 +1674,11 @@ namespace GestionAffaire
 
             ListAff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListAff.DataSource = dt;
+            for (int i = 0; i < ListAff.Rows.Count - 1; i++)
+            {
+                if (ListAff.Rows[i].Cells[5].Value.ToString() == "")
+                    ListAff.Rows[i].Cells[5].Value = 0;
+            }
 
             cmbClientAff.Text = dt.Rows[0][1].ToString();
             cmbResponsableAff.Text = dt.Rows[0][2].ToString();
@@ -1920,31 +1869,38 @@ namespace GestionAffaire
             {
                 if (IsAffExists(cmbNumeroAff.Text) == true)
                 {
-                    if (MessageBox.Show("voulez-vous supprimer cette Affaire?", "Supprimer Affaire", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (OnPeutSupprimerAffaire(cmbNumeroAff.Text) == false)
                     {
-                        try
+                        MessageBox.Show("Vous ne pouvez pas Supprimer cette Affaire car il contient une Note de Frais ou des Ordres de Mission", "Exception", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("voulez-vous supprimer cette Affaire?", "Supprimer Affaire", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            con.Open();
-                            cmd.CommandText = "delete Affaires where Numero='" + cmbNumeroAff.Text + "'";
-                            cmd.ExecuteNonQuery();
-                            con.Close();
+                            try
+                            {
+                                con.Open();
+                                cmd.CommandText = "delete Affaires where Numero='" + cmbNumeroAff.Text + "'";
+                                cmd.ExecuteNonQuery();
+                                con.Close();
 
 
-                            //afficher message Succès
-                            MessageBox.Show("Suppression Avec Succès");
+                                //afficher message Succès
+                                MessageBox.Show("Suppression Avec Succès");
 
-                            //faire mis a jour
-                            cmbNumeroAff.Text = "";
+                                //faire mis a jour
+                                cmbNumeroAff.Text = "";
 
-                            RemplirNumeroAffaire();
-                            remplirListAffaire();
-                            RemplirNomRespo();
-                            RemplirIdClient();
+                                RemplirNumeroAffaire();
+                                remplirListAffaire();
+                                RemplirNomRespo();
+                                RemplirIdClient();
 
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Erreur", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -2710,7 +2666,21 @@ namespace GestionAffaire
                     {
                         try
                         {
+                            DataTable dt = new DataTable();
+                            dt.Rows.Clear();
+
                             con.Open();
+                            cmd.CommandText = "select personnel from DetailMission where mission='" + int.Parse(cmbNumeroMission.Text) + "'";
+                            da.SelectCommand = cmd;
+                            da.Fill(dt);
+
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                cmd.CommandText = "delete DetailMission where personnel='"+ dt.Rows[i][0].ToString() +
+                                                                        "' and mission='"+ int.Parse(cmbNumeroMission.Text) +"'";
+                                cmd.ExecuteNonQuery();
+                                cmd.Parameters.Clear();
+                            }
                             cmd.CommandText = "delete Mission where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
                             cmd.ExecuteNonQuery();
                             con.Close();

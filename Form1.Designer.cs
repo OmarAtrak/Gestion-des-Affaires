@@ -181,9 +181,9 @@ namespace GestionAffaire
             this.label43 = new System.Windows.Forms.Label();
             this.txtAgenceBanque = new System.Windows.Forms.TextBox();
             this.BoxPersonnel = new System.Windows.Forms.GroupBox();
-            this.txtCinPersonne = new System.Windows.Forms.TextBox();
+            this.txtNomPersonne = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.txtNomPersonne = new System.Windows.Forms.ComboBox();
+            this.txtCinPersonne = new System.Windows.Forms.ComboBox();
             this.listPersonnel = new System.Windows.Forms.DataGridView();
             this.label23 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -245,7 +245,6 @@ namespace GestionAffaire
             this.brnImprimerDisposition = new System.Windows.Forms.Button();
             this.btnActualiserDisposition = new System.Windows.Forms.Button();
             this.cmbNumeroDisposition = new System.Windows.Forms.ComboBox();
-            this.btnSupprimerDisposition = new System.Windows.Forms.Button();
             this.cmbCompteDisposition = new System.Windows.Forms.ComboBox();
             this.txtMontantDisposition = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
@@ -1555,9 +1554,9 @@ namespace GestionAffaire
             // 
             // BoxPersonnel
             // 
-            this.BoxPersonnel.Controls.Add(this.txtCinPersonne);
-            this.BoxPersonnel.Controls.Add(this.label33);
             this.BoxPersonnel.Controls.Add(this.txtNomPersonne);
+            this.BoxPersonnel.Controls.Add(this.label33);
+            this.BoxPersonnel.Controls.Add(this.txtCinPersonne);
             this.BoxPersonnel.Controls.Add(this.listPersonnel);
             this.BoxPersonnel.Controls.Add(this.label23);
             this.BoxPersonnel.Controls.Add(this.label31);
@@ -1571,13 +1570,13 @@ namespace GestionAffaire
             this.BoxPersonnel.Text = "Personnel :";
             this.BoxPersonnel.Visible = false;
             // 
-            // txtCinPersonne
+            // txtNomPersonne
             // 
-            this.txtCinPersonne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCinPersonne.Location = new System.Drawing.Point(182, 54);
-            this.txtCinPersonne.Name = "txtCinPersonne";
-            this.txtCinPersonne.Size = new System.Drawing.Size(265, 26);
-            this.txtCinPersonne.TabIndex = 18;
+            this.txtNomPersonne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomPersonne.Location = new System.Drawing.Point(180, 86);
+            this.txtNomPersonne.Name = "txtNomPersonne";
+            this.txtNomPersonne.Size = new System.Drawing.Size(265, 26);
+            this.txtNomPersonne.TabIndex = 18;
             // 
             // label33
             // 
@@ -1589,14 +1588,14 @@ namespace GestionAffaire
             this.label33.TabIndex = 17;
             this.label33.Text = "CIN :";
             // 
-            // txtNomPersonne
+            // txtCinPersonne
             // 
-            this.txtNomPersonne.FormattingEnabled = true;
-            this.txtNomPersonne.Location = new System.Drawing.Point(182, 86);
-            this.txtNomPersonne.Name = "txtNomPersonne";
-            this.txtNomPersonne.Size = new System.Drawing.Size(265, 28);
-            this.txtNomPersonne.TabIndex = 16;
-            this.txtNomPersonne.SelectedIndexChanged += new System.EventHandler(this.txtNomPersonne_SelectedIndexChanged);
+            this.txtCinPersonne.FormattingEnabled = true;
+            this.txtCinPersonne.Location = new System.Drawing.Point(180, 54);
+            this.txtCinPersonne.Name = "txtCinPersonne";
+            this.txtCinPersonne.Size = new System.Drawing.Size(265, 28);
+            this.txtCinPersonne.TabIndex = 16;
+            this.txtCinPersonne.SelectedIndexChanged += new System.EventHandler(this.txtNomPersonne_SelectedIndexChanged);
             // 
             // listPersonnel
             // 
@@ -1661,7 +1660,7 @@ namespace GestionAffaire
             // txtPrenomPresonne
             // 
             this.txtPrenomPresonne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrenomPresonne.Location = new System.Drawing.Point(182, 123);
+            this.txtPrenomPresonne.Location = new System.Drawing.Point(180, 123);
             this.txtPrenomPresonne.Name = "txtPrenomPresonne";
             this.txtPrenomPresonne.Size = new System.Drawing.Size(265, 26);
             this.txtPrenomPresonne.TabIndex = 13;
@@ -2389,7 +2388,6 @@ namespace GestionAffaire
             this.BoxDisposition.Controls.Add(this.brnImprimerDisposition);
             this.BoxDisposition.Controls.Add(this.btnActualiserDisposition);
             this.BoxDisposition.Controls.Add(this.cmbNumeroDisposition);
-            this.BoxDisposition.Controls.Add(this.btnSupprimerDisposition);
             this.BoxDisposition.Controls.Add(this.cmbCompteDisposition);
             this.BoxDisposition.Controls.Add(this.txtMontantDisposition);
             this.BoxDisposition.Controls.Add(this.label39);
@@ -2421,7 +2419,7 @@ namespace GestionAffaire
             // 
             // btnActualiserDisposition
             // 
-            this.btnActualiserDisposition.Location = new System.Drawing.Point(789, 220);
+            this.btnActualiserDisposition.Location = new System.Drawing.Point(789, 177);
             this.btnActualiserDisposition.Name = "btnActualiserDisposition";
             this.btnActualiserDisposition.Size = new System.Drawing.Size(215, 37);
             this.btnActualiserDisposition.TabIndex = 37;
@@ -2439,16 +2437,6 @@ namespace GestionAffaire
             this.cmbNumeroDisposition.Size = new System.Drawing.Size(415, 28);
             this.cmbNumeroDisposition.TabIndex = 36;
             this.cmbNumeroDisposition.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // btnSupprimerDisposition
-            // 
-            this.btnSupprimerDisposition.Location = new System.Drawing.Point(789, 176);
-            this.btnSupprimerDisposition.Name = "btnSupprimerDisposition";
-            this.btnSupprimerDisposition.Size = new System.Drawing.Size(215, 37);
-            this.btnSupprimerDisposition.TabIndex = 35;
-            this.btnSupprimerDisposition.Text = "Supprimer";
-            this.btnSupprimerDisposition.UseVisualStyleBackColor = true;
-            this.btnSupprimerDisposition.Click += new System.EventHandler(this.btnSupprimerDisposition_Click);
             // 
             // cmbCompteDisposition
             // 
@@ -2788,7 +2776,7 @@ namespace GestionAffaire
         private System.Windows.Forms.TextBox txtLieuDepartMissionReche;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox BoxPersonnel;
-        private System.Windows.Forms.ComboBox txtNomPersonne;
+        private System.Windows.Forms.ComboBox txtCinPersonne;
         private System.Windows.Forms.DataGridView listPersonnel;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label31;
@@ -2800,7 +2788,7 @@ namespace GestionAffaire
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.NumericUpDown txtNbrJourAffaire;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txtCinPersonne;
+        private System.Windows.Forms.TextBox txtNomPersonne;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.GroupBox BoxCompte;
@@ -2811,7 +2799,6 @@ namespace GestionAffaire
         private System.Windows.Forms.TextBox txtAgenceBanque;
         private System.Windows.Forms.ToolStripMenuItem lesPartiesIntéresséesToolStripMenuItem1;
         private System.Windows.Forms.GroupBox BoxDisposition;
-        private System.Windows.Forms.Button btnSupprimerDisposition;
         private System.Windows.Forms.ComboBox cmbCompteDisposition;
         private System.Windows.Forms.TextBox txtMontantDisposition;
         private System.Windows.Forms.Label label39;
