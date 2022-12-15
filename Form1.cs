@@ -23,7 +23,7 @@ namespace GestionAffaire
             InitializeComponent();
         }
 
-
+        public static Boolean etat;
 
         /************************************ le menu ************************************/
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -120,6 +120,78 @@ namespace GestionAffaire
             BoxMission.Visible = false;
             BoxAff.Visible = false;
             BoxNoteAjouter.Visible = false;
+        }
+
+
+        private void btnAff_Click(object sender, EventArgs e)
+        {
+            BoxAff.Visible = true;
+            BoxNoteAjouter.Visible = false;
+            BoxMission.Visible = false;
+            BoxPartiesInterecee.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
+            BoxDisposition.Visible = false;
+        }
+        private void btnNote_Click(object sender, EventArgs e)
+        {
+            BoxNoteAjouter.Visible = true;
+            BoxAff.Visible = false;
+            BoxMission.Visible = false;
+            BoxPartiesInterecee.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
+            BoxDisposition.Visible = false;
+
+            if (etat)
+            {
+                flowLayoutPanel2.Height += 70;
+                etat = false;
+            }
+            else
+            {
+                flowLayoutPanel2.Height -= 70;
+                etat = true;
+            }
+        }
+        private void btnOrdreMission_Click(object sender, EventArgs e)
+        {
+            BoxMission.Visible = true;
+            BoxPartiesInterecee.Visible = false;
+            BoxAff.Visible = false;
+            BoxNoteAjouter.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
+            BoxDisposition.Visible = false;
+        }
+        private void btnDisposition_Click(object sender, EventArgs e)
+        {
+            BoxDisposition.Visible = true;
+            BoxPartiesInterecee.Visible = false;
+            BoxMission.Visible = false;
+            BoxAff.Visible = false;
+            BoxNoteAjouter.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
+        }
+        private void btnPI_Click(object sender, EventArgs e)
+        {
+            BoxPartiesInterecee.Visible = true;
+            BoxMission.Visible = false;
+            BoxAff.Visible = false;
+            BoxNoteAjouter.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
+            BoxDisposition.Visible = false;
+        }
+        private void button9_Click(object sender, EventArgs e)
+        {
+            BoxRecherchFraisdeNote.Visible = true;
+            BoxPartiesInterecee.Visible = false;
+            BoxMission.Visible = false;
+            BoxAff.Visible = false;
+            BoxNoteAjouter.Visible = false;
+            BoxMissionReche.Visible = false;
         }
 
 
@@ -326,8 +398,6 @@ namespace GestionAffaire
             da.Fill(dt);
             con.Close();
 
-
-            ListAff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListAff.DataSource = dt;
 
             for (int i = 0; i < ListAff.Rows.Count - 1; i++)
@@ -423,21 +493,18 @@ namespace GestionAffaire
         public void remplirListMission()
         {
             DataTable dt = new DataTable();
-            if (dt != null)
-            {
-                dt.Rows.Clear();
-            }
+            dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission";
+            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Nombre de Personne',affaire as 'Affaire' from Mission";
             da.SelectCommand = cmd;
             da.Fill(dt);
-
             con.Close();
 
-            ListMissionReche.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            ListMission.DataSource = dt;
             ListMission.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ListMission.DataSource = dt;
+
+            ListMissionReche.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListMissionReche.DataSource = dt;
         }
 
@@ -2444,7 +2511,7 @@ namespace GestionAffaire
 
             
             con.Open();
-            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Number de Personne',affaire as 'Affaire' from Mission where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
+            cmd.CommandText = "select numero as 'Numero', respo as 'Chargé d''affaire',dateDebut as 'Date Debut',dateFin as 'Date Fin',NbrJour as 'Nombre de Jours',lieuDepart as 'Lieu Départ',lieuArriver as 'Lieu Arrivé',nbrPersonne as 'Nombre de Personne',affaire as 'Affaire' from Mission where numero='" + int.Parse(cmbNumeroMission.Text) + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
 
@@ -3074,7 +3141,14 @@ namespace GestionAffaire
 
                     if (dt.Rows != null)
                     {
-                        ListMissionReche.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        ListMissionReche.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        ListMissionReche.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        ListMissionReche.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        ListMissionReche.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        ListMissionReche.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        ListMissionReche.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        ListMissionReche.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        ListMissionReche.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                         ListMissionReche.DataSource = dt;
                     }
                     else
@@ -3731,5 +3805,7 @@ namespace GestionAffaire
         private void noteDeFraisToolStripMenuItem1_Click(object sender, EventArgs e){}
         private void BoxMissionReche_Enter(object sender, EventArgs e){}
         private void cmbNumeroNote_SelectedIndexChanged(object sender, EventArgs e){}
+
+        
     }
 }

@@ -141,6 +141,12 @@ namespace GestionAffaire
             this.btnModifierAffaire = new System.Windows.Forms.Button();
             this.label32 = new System.Windows.Forms.Label();
             this.ListAff = new System.Windows.Forms.DataGridView();
+            this.NumAff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientAff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RespoAff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noteAff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nbrJourEstimer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nbrjourConsommer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbNumeroAff = new System.Windows.Forms.ComboBox();
             this.btnSupprimerAff = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
@@ -177,6 +183,10 @@ namespace GestionAffaire
             this.txtBanque = new System.Windows.Forms.TextBox();
             this.txtNumeroCompte = new System.Windows.Forms.ComboBox();
             this.ListComptes = new System.Windows.Forms.DataGridView();
+            this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Banque = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.txtAgenceBanque = new System.Windows.Forms.TextBox();
@@ -185,6 +195,10 @@ namespace GestionAffaire
             this.label33 = new System.Windows.Forms.Label();
             this.txtCinPersonne = new System.Windows.Forms.ComboBox();
             this.listPersonnel = new System.Windows.Forms.DataGridView();
+            this.CIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomPersonnel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrenomPersonnel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ActivePersonnel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label23 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.txtPrenomPresonne = new System.Windows.Forms.TextBox();
@@ -199,6 +213,9 @@ namespace GestionAffaire
             this.BoxRespoAjouter = new System.Windows.Forms.GroupBox();
             this.txtNomRespo = new System.Windows.Forms.ComboBox();
             this.ListRespo = new System.Windows.Forms.DataGridView();
+            this.NomRespo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrenomRespo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ActiveRespo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.txtPrenomRespo = new System.Windows.Forms.TextBox();
@@ -255,17 +272,14 @@ namespace GestionAffaire
             this.label46 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.cmbPersonneDisposition = new System.Windows.Forms.ComboBox();
-            this.NomRespo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrenomRespo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ActiveRespo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.CIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomPersonnel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrenomPersonnel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ActivePersonnel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Banque = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAff = new System.Windows.Forms.Button();
+            this.btnNote = new System.Windows.Forms.Button();
+            this.btnOrdreMission = new System.Windows.Forms.Button();
+            this.btnDisposition = new System.Windows.Forms.Button();
+            this.btnPI = new System.Windows.Forms.Button();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button9 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -296,6 +310,8 @@ namespace GestionAffaire
             ((System.ComponentModel.ISupportInitialize)(this.ListMissionReche)).BeginInit();
             this.BoxDisposition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listDisposition)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -320,8 +336,8 @@ namespace GestionAffaire
             // 
             this.ajouterToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ajouterToolStripMenuItem.Name = "ajouterToolStripMenuItem";
-            this.ajouterToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 10, 4, 10);
-            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(189, 45);
+            this.ajouterToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
+            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(189, 65);
             this.ajouterToolStripMenuItem.Text = "Affaire";
             this.ajouterToolStripMenuItem.Click += new System.EventHandler(this.ajouterToolStripMenuItem_Click);
             // 
@@ -331,8 +347,8 @@ namespace GestionAffaire
             this.rechercheDansLesFraisToolStripMenuItem});
             this.rechercheToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rechercheToolStripMenuItem.Name = "rechercheToolStripMenuItem";
-            this.rechercheToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 10, 4, 10);
-            this.rechercheToolStripMenuItem.Size = new System.Drawing.Size(189, 45);
+            this.rechercheToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
+            this.rechercheToolStripMenuItem.Size = new System.Drawing.Size(189, 65);
             this.rechercheToolStripMenuItem.Text = "Note de Frais";
             this.rechercheToolStripMenuItem.Click += new System.EventHandler(this.rechercheToolStripMenuItem_Click);
             // 
@@ -350,8 +366,8 @@ namespace GestionAffaire
             this.rechercherToolStripMenuItem});
             this.lesPartiesIntereceeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lesPartiesIntereceeToolStripMenuItem.Name = "lesPartiesIntereceeToolStripMenuItem";
-            this.lesPartiesIntereceeToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 10, 4, 10);
-            this.lesPartiesIntereceeToolStripMenuItem.Size = new System.Drawing.Size(189, 45);
+            this.lesPartiesIntereceeToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
+            this.lesPartiesIntereceeToolStripMenuItem.Size = new System.Drawing.Size(189, 65);
             this.lesPartiesIntereceeToolStripMenuItem.Text = "Ordre de Mission";
             this.lesPartiesIntereceeToolStripMenuItem.Click += new System.EventHandler(this.lesPartiesIntereceeToolStripMenuItem_Click);
             // 
@@ -367,8 +383,8 @@ namespace GestionAffaire
             // 
             this.lesPartiesIntéresséesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lesPartiesIntéresséesToolStripMenuItem.Name = "lesPartiesIntéresséesToolStripMenuItem";
-            this.lesPartiesIntéresséesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 10, 4, 10);
-            this.lesPartiesIntéresséesToolStripMenuItem.Size = new System.Drawing.Size(189, 45);
+            this.lesPartiesIntéresséesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
+            this.lesPartiesIntéresséesToolStripMenuItem.Size = new System.Drawing.Size(189, 65);
             this.lesPartiesIntéresséesToolStripMenuItem.Text = "Mise à Disposition";
             this.lesPartiesIntéresséesToolStripMenuItem.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem_Click);
             // 
@@ -376,8 +392,8 @@ namespace GestionAffaire
             // 
             this.lesPartiesIntéresséesToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lesPartiesIntéresséesToolStripMenuItem1.Name = "lesPartiesIntéresséesToolStripMenuItem1";
-            this.lesPartiesIntéresséesToolStripMenuItem1.Padding = new System.Windows.Forms.Padding(4, 10, 4, 10);
-            this.lesPartiesIntéresséesToolStripMenuItem1.Size = new System.Drawing.Size(189, 45);
+            this.lesPartiesIntéresséesToolStripMenuItem1.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
+            this.lesPartiesIntéresséesToolStripMenuItem1.Size = new System.Drawing.Size(189, 65);
             this.lesPartiesIntéresséesToolStripMenuItem1.Text = "Les Parties Intéressées";
             this.lesPartiesIntéresséesToolStripMenuItem1.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem1_Click);
             // 
@@ -409,9 +425,9 @@ namespace GestionAffaire
             this.BoxNoteAjouter.Controls.Add(this.btnValiderNote);
             this.BoxNoteAjouter.Controls.Add(this.label9);
             this.BoxNoteAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxNoteAjouter.Location = new System.Drawing.Point(187, 0);
+            this.BoxNoteAjouter.Location = new System.Drawing.Point(193, 0);
             this.BoxNoteAjouter.Name = "BoxNoteAjouter";
-            this.BoxNoteAjouter.Size = new System.Drawing.Size(1189, 735);
+            this.BoxNoteAjouter.Size = new System.Drawing.Size(1183, 735);
             this.BoxNoteAjouter.TabIndex = 9;
             this.BoxNoteAjouter.TabStop = false;
             this.BoxNoteAjouter.Text = "Note des Frais :";
@@ -733,11 +749,11 @@ namespace GestionAffaire
             // 
             // Numero
             // 
-            this.Numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Numero.DataPropertyName = "numero";
             this.Numero.HeaderText = "Numero";
             this.Numero.Name = "Numero";
             this.Numero.ReadOnly = true;
+            this.Numero.Width = 198;
             // 
             // Type
             // 
@@ -757,7 +773,6 @@ namespace GestionAffaire
             // 
             // date
             // 
-            this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.date.DataPropertyName = "date";
             dataGridViewCellStyle48.Format = "d";
             dataGridViewCellStyle48.NullValue = null;
@@ -765,14 +780,15 @@ namespace GestionAffaire
             this.date.HeaderText = "Date";
             this.date.Name = "date";
             this.date.ReadOnly = true;
+            this.date.Width = 198;
             // 
             // frais
             // 
-            this.frais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.frais.DataPropertyName = "frais";
             this.frais.HeaderText = "Frais";
             this.frais.Name = "frais";
             this.frais.ReadOnly = true;
+            this.frais.Width = 198;
             // 
             // DeleteButtonColumn
             // 
@@ -882,9 +898,9 @@ namespace GestionAffaire
             this.BoxAff.Controls.Add(this.btnSupprimerAff);
             this.BoxAff.Controls.Add(this.label24);
             this.BoxAff.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxAff.Location = new System.Drawing.Point(187, 0);
+            this.BoxAff.Location = new System.Drawing.Point(193, 0);
             this.BoxAff.Name = "BoxAff";
-            this.BoxAff.Size = new System.Drawing.Size(1189, 735);
+            this.BoxAff.Size = new System.Drawing.Size(1183, 735);
             this.BoxAff.TabIndex = 17;
             this.BoxAff.TabStop = false;
             this.BoxAff.Text = "Affaires :";
@@ -1027,6 +1043,13 @@ namespace GestionAffaire
             dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ListAff.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle42;
             this.ListAff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListAff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NumAff,
+            this.clientAff,
+            this.RespoAff,
+            this.noteAff,
+            this.nbrJourEstimer,
+            this.nbrjourConsommer});
             dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1053,6 +1076,54 @@ namespace GestionAffaire
             this.ListAff.TabIndex = 4;
             this.ListAff.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListAff_CellClick);
             this.ListAff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListAff_CellContentClick_1);
+            // 
+            // NumAff
+            // 
+            this.NumAff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NumAff.DataPropertyName = "Numero";
+            this.NumAff.HeaderText = "Numero";
+            this.NumAff.Name = "NumAff";
+            this.NumAff.ReadOnly = true;
+            // 
+            // clientAff
+            // 
+            this.clientAff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clientAff.DataPropertyName = "Client";
+            this.clientAff.HeaderText = "Client";
+            this.clientAff.Name = "clientAff";
+            this.clientAff.ReadOnly = true;
+            // 
+            // RespoAff
+            // 
+            this.RespoAff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RespoAff.DataPropertyName = "Chargé d\'affaire";
+            this.RespoAff.HeaderText = "Chargé d\'affaire";
+            this.RespoAff.Name = "RespoAff";
+            this.RespoAff.ReadOnly = true;
+            // 
+            // noteAff
+            // 
+            this.noteAff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.noteAff.DataPropertyName = "Note de Frais";
+            this.noteAff.HeaderText = "Note de Frais";
+            this.noteAff.Name = "noteAff";
+            this.noteAff.ReadOnly = true;
+            // 
+            // nbrJourEstimer
+            // 
+            this.nbrJourEstimer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nbrJourEstimer.DataPropertyName = "Nombre de jours Estimé";
+            this.nbrJourEstimer.HeaderText = "Nombre de jours Estimé";
+            this.nbrJourEstimer.Name = "nbrJourEstimer";
+            this.nbrJourEstimer.ReadOnly = true;
+            // 
+            // nbrjourConsommer
+            // 
+            this.nbrjourConsommer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nbrjourConsommer.DataPropertyName = "Nombre de jours Consommés";
+            this.nbrjourConsommer.HeaderText = "Nombre de jours Consommés";
+            this.nbrjourConsommer.Name = "nbrjourConsommer";
+            this.nbrjourConsommer.ReadOnly = true;
             // 
             // cmbNumeroAff
             // 
@@ -1112,9 +1183,9 @@ namespace GestionAffaire
             this.BoxMission.Controls.Add(this.label30);
             this.BoxMission.Controls.Add(this.ListMission);
             this.BoxMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMission.Location = new System.Drawing.Point(187, 0);
+            this.BoxMission.Location = new System.Drawing.Point(193, 0);
             this.BoxMission.Name = "BoxMission";
-            this.BoxMission.Size = new System.Drawing.Size(1189, 735);
+            this.BoxMission.Size = new System.Drawing.Size(1183, 735);
             this.BoxMission.TabIndex = 18;
             this.BoxMission.TabStop = false;
             this.BoxMission.Text = "Ordre de Mission :";
@@ -1441,9 +1512,9 @@ namespace GestionAffaire
             this.BoxPartiesInterecee.Controls.Add(this.button8);
             this.BoxPartiesInterecee.Controls.Add(this.btnValiderClient);
             this.BoxPartiesInterecee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxPartiesInterecee.Location = new System.Drawing.Point(187, 0);
+            this.BoxPartiesInterecee.Location = new System.Drawing.Point(193, 0);
             this.BoxPartiesInterecee.Name = "BoxPartiesInterecee";
-            this.BoxPartiesInterecee.Size = new System.Drawing.Size(1189, 735);
+            this.BoxPartiesInterecee.Size = new System.Drawing.Size(1183, 735);
             this.BoxPartiesInterecee.TabIndex = 13;
             this.BoxPartiesInterecee.TabStop = false;
             this.BoxPartiesInterecee.Text = "Les Parties Intéressées :";
@@ -1539,6 +1610,41 @@ namespace GestionAffaire
             this.ListComptes.Size = new System.Drawing.Size(586, 156);
             this.ListComptes.TabIndex = 15;
             this.ListComptes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListComptes_CellClick);
+            // 
+            // Nom
+            // 
+            this.Nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nom.DataPropertyName = "Numero";
+            this.Nom.HeaderText = "Numero";
+            this.Nom.Name = "Nom";
+            this.Nom.ReadOnly = true;
+            this.Nom.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Prenom
+            // 
+            this.Prenom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Prenom.DataPropertyName = "Agence";
+            this.Prenom.HeaderText = "Agence";
+            this.Prenom.Name = "Prenom";
+            this.Prenom.ReadOnly = true;
+            // 
+            // Banque
+            // 
+            this.Banque.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Banque.DataPropertyName = "Banque";
+            this.Banque.HeaderText = "Banque";
+            this.Banque.Name = "Banque";
+            this.Banque.ReadOnly = true;
+            // 
+            // Active
+            // 
+            this.Active.DataPropertyName = "active";
+            this.Active.FalseValue = "0";
+            this.Active.HeaderText = "Active";
+            this.Active.Name = "Active";
+            this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Active.TrueValue = "1";
             // 
             // label42
             // 
@@ -1657,6 +1763,40 @@ namespace GestionAffaire
             this.listPersonnel.Size = new System.Drawing.Size(586, 156);
             this.listPersonnel.TabIndex = 15;
             this.listPersonnel.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listPersonnel_CellClick);
+            // 
+            // CIN
+            // 
+            this.CIN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CIN.DataPropertyName = "cin";
+            this.CIN.HeaderText = "CIN";
+            this.CIN.Name = "CIN";
+            this.CIN.ReadOnly = true;
+            // 
+            // NomPersonnel
+            // 
+            this.NomPersonnel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NomPersonnel.DataPropertyName = "nom";
+            this.NomPersonnel.HeaderText = "Nom";
+            this.NomPersonnel.Name = "NomPersonnel";
+            this.NomPersonnel.ReadOnly = true;
+            // 
+            // PrenomPersonnel
+            // 
+            this.PrenomPersonnel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PrenomPersonnel.DataPropertyName = "prenom";
+            this.PrenomPersonnel.HeaderText = "Prenom";
+            this.PrenomPersonnel.Name = "PrenomPersonnel";
+            this.PrenomPersonnel.ReadOnly = true;
+            // 
+            // ActivePersonnel
+            // 
+            this.ActivePersonnel.DataPropertyName = "active";
+            this.ActivePersonnel.FalseValue = "0";
+            this.ActivePersonnel.HeaderText = "Active";
+            this.ActivePersonnel.Name = "ActivePersonnel";
+            this.ActivePersonnel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ActivePersonnel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ActivePersonnel.TrueValue = "1";
             // 
             // label23
             // 
@@ -1871,6 +2011,32 @@ namespace GestionAffaire
             this.ListRespo.TabIndex = 15;
             this.ListRespo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListRespo_CellClick);
             // 
+            // NomRespo
+            // 
+            this.NomRespo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NomRespo.DataPropertyName = "nom";
+            this.NomRespo.HeaderText = "Nom";
+            this.NomRespo.Name = "NomRespo";
+            this.NomRespo.ReadOnly = true;
+            // 
+            // PrenomRespo
+            // 
+            this.PrenomRespo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PrenomRespo.DataPropertyName = "prenom";
+            this.PrenomRespo.HeaderText = "Prenom";
+            this.PrenomRespo.Name = "PrenomRespo";
+            this.PrenomRespo.ReadOnly = true;
+            // 
+            // ActiveRespo
+            // 
+            this.ActiveRespo.DataPropertyName = "active";
+            this.ActiveRespo.FalseValue = "0";
+            this.ActiveRespo.HeaderText = "Active";
+            this.ActiveRespo.Name = "ActiveRespo";
+            this.ActiveRespo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ActiveRespo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ActiveRespo.TrueValue = "1";
+            // 
             // label35
             // 
             this.label35.AutoSize = true;
@@ -2004,9 +2170,9 @@ namespace GestionAffaire
             this.BoxRecherchFraisdeNote.Controls.Add(this.cmbPCFraisRecheNote);
             this.BoxRecherchFraisdeNote.Controls.Add(this.cmbTypeFraisRecheNote);
             this.BoxRecherchFraisdeNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxRecherchFraisdeNote.Location = new System.Drawing.Point(187, 0);
+            this.BoxRecherchFraisdeNote.Location = new System.Drawing.Point(193, 0);
             this.BoxRecherchFraisdeNote.Name = "BoxRecherchFraisdeNote";
-            this.BoxRecherchFraisdeNote.Size = new System.Drawing.Size(1189, 735);
+            this.BoxRecherchFraisdeNote.Size = new System.Drawing.Size(1183, 735);
             this.BoxRecherchFraisdeNote.TabIndex = 28;
             this.BoxRecherchFraisdeNote.TabStop = false;
             this.BoxRecherchFraisdeNote.Text = "Rechercher les Frais :";
@@ -2223,9 +2389,9 @@ namespace GestionAffaire
             this.BoxMissionReche.Controls.Add(this.cmbAffMissionReche);
             this.BoxMissionReche.Controls.Add(this.cmbRespoMissionReche);
             this.BoxMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMissionReche.Location = new System.Drawing.Point(187, 0);
+            this.BoxMissionReche.Location = new System.Drawing.Point(193, 0);
             this.BoxMissionReche.Name = "BoxMissionReche";
-            this.BoxMissionReche.Size = new System.Drawing.Size(1189, 735);
+            this.BoxMissionReche.Size = new System.Drawing.Size(1183, 735);
             this.BoxMissionReche.TabIndex = 29;
             this.BoxMissionReche.TabStop = false;
             this.BoxMissionReche.Text = "Rechercher Ordre de Missions:";
@@ -2312,7 +2478,7 @@ namespace GestionAffaire
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ListMissionReche.DefaultCellStyle = dataGridViewCellStyle8;
-            this.ListMissionReche.Location = new System.Drawing.Point(20, 259);
+            this.ListMissionReche.Location = new System.Drawing.Point(11, 259);
             this.ListMissionReche.Name = "ListMissionReche";
             this.ListMissionReche.ReadOnly = true;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -2326,7 +2492,7 @@ namespace GestionAffaire
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListMissionReche.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.ListMissionReche.Size = new System.Drawing.Size(1124, 287);
+            this.ListMissionReche.Size = new System.Drawing.Size(1160, 287);
             this.ListMissionReche.TabIndex = 26;
             // 
             // txtDateFinMissionReche
@@ -2424,9 +2590,9 @@ namespace GestionAffaire
             this.BoxDisposition.Controls.Add(this.label48);
             this.BoxDisposition.Controls.Add(this.cmbPersonneDisposition);
             this.BoxDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxDisposition.Location = new System.Drawing.Point(187, 0);
+            this.BoxDisposition.Location = new System.Drawing.Point(193, 0);
             this.BoxDisposition.Name = "BoxDisposition";
-            this.BoxDisposition.Size = new System.Drawing.Size(1189, 735);
+            this.BoxDisposition.Size = new System.Drawing.Size(1183, 735);
             this.BoxDisposition.TabIndex = 33;
             this.BoxDisposition.TabStop = false;
             this.BoxDisposition.Text = "Mise à Disposition :";
@@ -2593,100 +2759,93 @@ namespace GestionAffaire
             this.cmbPersonneDisposition.Size = new System.Drawing.Size(415, 28);
             this.cmbPersonneDisposition.TabIndex = 0;
             // 
-            // NomRespo
+            // flowLayoutPanel1
             // 
-            this.NomRespo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NomRespo.DataPropertyName = "nom";
-            this.NomRespo.HeaderText = "Nom";
-            this.NomRespo.Name = "NomRespo";
-            this.NomRespo.ReadOnly = true;
+            this.flowLayoutPanel1.Controls.Add(this.btnAff);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel1.Controls.Add(this.btnOrdreMission);
+            this.flowLayoutPanel1.Controls.Add(this.btnDisposition);
+            this.flowLayoutPanel1.Controls.Add(this.btnPI);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 336);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(203, 551);
+            this.flowLayoutPanel1.TabIndex = 34;
+            this.flowLayoutPanel1.Visible = false;
             // 
-            // PrenomRespo
+            // btnAff
             // 
-            this.PrenomRespo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.PrenomRespo.DataPropertyName = "prenom";
-            this.PrenomRespo.HeaderText = "Prenom";
-            this.PrenomRespo.Name = "PrenomRespo";
-            this.PrenomRespo.ReadOnly = true;
+            this.btnAff.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAff.Location = new System.Drawing.Point(3, 3);
+            this.btnAff.Name = "btnAff";
+            this.btnAff.Size = new System.Drawing.Size(196, 69);
+            this.btnAff.TabIndex = 0;
+            this.btnAff.Text = "Affaire";
+            this.btnAff.UseVisualStyleBackColor = true;
+            this.btnAff.Click += new System.EventHandler(this.btnAff_Click);
             // 
-            // ActiveRespo
+            // btnNote
             // 
-            this.ActiveRespo.DataPropertyName = "active";
-            this.ActiveRespo.FalseValue = "0";
-            this.ActiveRespo.HeaderText = "Active";
-            this.ActiveRespo.Name = "ActiveRespo";
-            this.ActiveRespo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ActiveRespo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ActiveRespo.TrueValue = "1";
+            this.btnNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNote.Location = new System.Drawing.Point(3, 3);
+            this.btnNote.Name = "btnNote";
+            this.btnNote.Size = new System.Drawing.Size(196, 69);
+            this.btnNote.TabIndex = 1;
+            this.btnNote.Text = "Note de Frais";
+            this.btnNote.UseVisualStyleBackColor = true;
+            this.btnNote.Click += new System.EventHandler(this.btnNote_Click);
             // 
-            // CIN
+            // btnOrdreMission
             // 
-            this.CIN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CIN.DataPropertyName = "cin";
-            this.CIN.HeaderText = "CIN";
-            this.CIN.Name = "CIN";
-            this.CIN.ReadOnly = true;
+            this.btnOrdreMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrdreMission.Location = new System.Drawing.Point(3, 158);
+            this.btnOrdreMission.Name = "btnOrdreMission";
+            this.btnOrdreMission.Size = new System.Drawing.Size(196, 69);
+            this.btnOrdreMission.TabIndex = 2;
+            this.btnOrdreMission.Text = "Ordre de Mission";
+            this.btnOrdreMission.UseVisualStyleBackColor = true;
+            this.btnOrdreMission.Click += new System.EventHandler(this.btnOrdreMission_Click);
             // 
-            // NomPersonnel
+            // btnDisposition
             // 
-            this.NomPersonnel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NomPersonnel.DataPropertyName = "nom";
-            this.NomPersonnel.HeaderText = "Nom";
-            this.NomPersonnel.Name = "NomPersonnel";
-            this.NomPersonnel.ReadOnly = true;
+            this.btnDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDisposition.Location = new System.Drawing.Point(3, 233);
+            this.btnDisposition.Name = "btnDisposition";
+            this.btnDisposition.Size = new System.Drawing.Size(196, 69);
+            this.btnDisposition.TabIndex = 3;
+            this.btnDisposition.Text = "Mise à Disposition";
+            this.btnDisposition.UseVisualStyleBackColor = true;
+            this.btnDisposition.Click += new System.EventHandler(this.btnDisposition_Click);
             // 
-            // PrenomPersonnel
+            // btnPI
             // 
-            this.PrenomPersonnel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.PrenomPersonnel.DataPropertyName = "prenom";
-            this.PrenomPersonnel.HeaderText = "Prenom";
-            this.PrenomPersonnel.Name = "PrenomPersonnel";
-            this.PrenomPersonnel.ReadOnly = true;
+            this.btnPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPI.Location = new System.Drawing.Point(3, 308);
+            this.btnPI.Name = "btnPI";
+            this.btnPI.Size = new System.Drawing.Size(196, 69);
+            this.btnPI.TabIndex = 4;
+            this.btnPI.Text = "Les Parties Intéressées";
+            this.btnPI.UseVisualStyleBackColor = true;
+            this.btnPI.Click += new System.EventHandler(this.btnPI_Click);
             // 
-            // ActivePersonnel
+            // flowLayoutPanel2
             // 
-            this.ActivePersonnel.DataPropertyName = "active";
-            this.ActivePersonnel.FalseValue = "0";
-            this.ActivePersonnel.HeaderText = "Active";
-            this.ActivePersonnel.Name = "ActivePersonnel";
-            this.ActivePersonnel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ActivePersonnel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ActivePersonnel.TrueValue = "1";
+            this.flowLayoutPanel2.Controls.Add(this.btnNote);
+            this.flowLayoutPanel2.Controls.Add(this.button9);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 78);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(203, 74);
+            this.flowLayoutPanel2.TabIndex = 35;
             // 
-            // Nom
+            // button9
             // 
-            this.Nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nom.DataPropertyName = "Numero";
-            this.Nom.HeaderText = "Numero";
-            this.Nom.Name = "Nom";
-            this.Nom.ReadOnly = true;
-            this.Nom.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Prenom
-            // 
-            this.Prenom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Prenom.DataPropertyName = "Agence";
-            this.Prenom.HeaderText = "Agence";
-            this.Prenom.Name = "Prenom";
-            this.Prenom.ReadOnly = true;
-            // 
-            // Banque
-            // 
-            this.Banque.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Banque.DataPropertyName = "Banque";
-            this.Banque.HeaderText = "Banque";
-            this.Banque.Name = "Banque";
-            this.Banque.ReadOnly = true;
-            // 
-            // Active
-            // 
-            this.Active.DataPropertyName = "active";
-            this.Active.FalseValue = "0";
-            this.Active.HeaderText = "Active";
-            this.Active.Name = "Active";
-            this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Active.TrueValue = "1";
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(3, 78);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(196, 69);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "Rechercher les Frais";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // Form1
             // 
@@ -2694,6 +2853,7 @@ namespace GestionAffaire
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1370, 735);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.BoxDisposition);
             this.Controls.Add(this.BoxMissionReche);
             this.Controls.Add(this.BoxRecherchFraisdeNote);
@@ -2754,6 +2914,8 @@ namespace GestionAffaire
             this.BoxDisposition.ResumeLayout(false);
             this.BoxDisposition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listDisposition)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2850,12 +3012,6 @@ namespace GestionAffaire
         public System.Windows.Forms.TextBox txtTotalFraisNote;
         private System.Windows.Forms.DateTimePicker txtDateNote;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PieceComptable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn frais;
-        private System.Windows.Forms.DataGridViewButtonColumn DeleteButtonColumn;
         public System.Windows.Forms.TextBox txtRespoNote;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbRespoNote;
@@ -2945,6 +3101,26 @@ namespace GestionAffaire
         private System.Windows.Forms.DataGridViewTextBoxColumn Prenom;
         private System.Windows.Forms.DataGridViewTextBoxColumn Banque;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Active;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PieceComptable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn frais;
+        private System.Windows.Forms.DataGridViewButtonColumn DeleteButtonColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumAff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientAff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RespoAff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteAff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nbrJourEstimer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nbrjourConsommer;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnAff;
+        private System.Windows.Forms.Button btnNote;
+        private System.Windows.Forms.Button btnOrdreMission;
+        private System.Windows.Forms.Button btnDisposition;
+        private System.Windows.Forms.Button btnPI;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Button button9;
     }
 }
 
