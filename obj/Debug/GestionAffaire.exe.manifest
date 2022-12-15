@@ -254,7 +254,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gkuz9aLCV7JNzAr6prNDbdMOlAfHWcjDTB22ZXBTiRk=</dsig:DigestValue>
+        <dsig:DigestValue>ABDYMtqlbx52e+sQ13Tnc7rwH5V/oFhZPlCt48gcBLQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -309,7 +309,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>+OinNTHSokiSO5jitz7vtOp3BwVX6pxx5nzMmCBbrh4=</dsig:DigestValue>
+      <dsig:DigestValue>UYvIOFzC520H99mzF3fYSRnp+rEGng3TR1/w+rEpvQM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="DB_Affaire_log.ldf" size="8388608" writeableType="applicationData">
@@ -318,7 +318,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>tpHnLNapAHE6INKzSKYIJ97D2ghBVjNRlpyigsBhDNE=</dsig:DigestValue>
+      <dsig:DigestValue>t3TeGYC5p/S6hiY4eWcehNlEDpHNq7d1LnfYReGHy9Y=</dsig:DigestValue>
     </hash>
   </file>
   <file name="GestionAffaire.exe.config" size="423">

@@ -1507,7 +1507,7 @@ namespace GestionAffaire
             dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ListComptes.DefaultCellStyle = dataGridViewCellStyle18;
-            this.ListComptes.Location = new System.Drawing.Point(49, 189);
+            this.ListComptes.Location = new System.Drawing.Point(9, 189);
             this.ListComptes.Name = "ListComptes";
             this.ListComptes.ReadOnly = true;
             dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1521,7 +1521,7 @@ namespace GestionAffaire
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListComptes.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.ListComptes.Size = new System.Drawing.Size(522, 156);
+            this.ListComptes.Size = new System.Drawing.Size(586, 156);
             this.ListComptes.TabIndex = 15;
             // 
             // label42
@@ -1564,7 +1564,7 @@ namespace GestionAffaire
             this.BoxPersonnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxPersonnel.Location = new System.Drawing.Point(304, 55);
             this.BoxPersonnel.Name = "BoxPersonnel";
-            this.BoxPersonnel.Size = new System.Drawing.Size(540, 374);
+            this.BoxPersonnel.Size = new System.Drawing.Size(601, 374);
             this.BoxPersonnel.TabIndex = 25;
             this.BoxPersonnel.TabStop = false;
             this.BoxPersonnel.Text = "Personnel :";
@@ -1620,7 +1620,7 @@ namespace GestionAffaire
             dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.listPersonnel.DefaultCellStyle = dataGridViewCellStyle23;
-            this.listPersonnel.Location = new System.Drawing.Point(49, 189);
+            this.listPersonnel.Location = new System.Drawing.Point(9, 189);
             this.listPersonnel.Name = "listPersonnel";
             this.listPersonnel.ReadOnly = true;
             dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1634,7 +1634,7 @@ namespace GestionAffaire
             dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listPersonnel.RowsDefaultCellStyle = dataGridViewCellStyle25;
-            this.listPersonnel.Size = new System.Drawing.Size(396, 156);
+            this.listPersonnel.Size = new System.Drawing.Size(586, 156);
             this.listPersonnel.TabIndex = 15;
             // 
             // label23
@@ -1791,7 +1791,7 @@ namespace GestionAffaire
             this.BoxRespoAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxRespoAjouter.Location = new System.Drawing.Point(304, 55);
             this.BoxRespoAjouter.Name = "BoxRespoAjouter";
-            this.BoxRespoAjouter.Size = new System.Drawing.Size(540, 374);
+            this.BoxRespoAjouter.Size = new System.Drawing.Size(601, 374);
             this.BoxRespoAjouter.TabIndex = 24;
             this.BoxRespoAjouter.TabStop = false;
             this.BoxRespoAjouter.Text = "Chargé d\'affaire :";
@@ -1843,7 +1843,7 @@ namespace GestionAffaire
             dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListRespo.RowsDefaultCellStyle = dataGridViewCellStyle35;
-            this.ListRespo.Size = new System.Drawing.Size(396, 156);
+            this.ListRespo.Size = new System.Drawing.Size(546, 156);
             this.ListRespo.TabIndex = 15;
             // 
             // label35

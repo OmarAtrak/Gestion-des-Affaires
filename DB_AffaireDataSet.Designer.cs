@@ -721,6 +721,10 @@ namespace GestionAffaire {
             
             private global::System.Data.DataColumn columnNoteFrais;
             
+            private global::System.Data.DataColumn columnNbrJourEstimer;
+            
+            private global::System.Data.DataColumn columnNbrJourConsommer;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public AffairesDataTable() {
@@ -788,6 +792,22 @@ namespace GestionAffaire {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NbrJourEstimerColumn {
+                get {
+                    return this.columnNbrJourEstimer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NbrJourConsommerColumn {
+                get {
+                    return this.columnNbrJourConsommer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -823,13 +843,15 @@ namespace GestionAffaire {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public AffairesRow AddAffairesRow(string Numero, ClientRow parentClientRowByFK_Affaires_Client, ResponsableRow parentResponsableRowByFK_Affaires_Responsable, NoteFraisRow parentNoteFraisRowByFK_Affaires_NoteFrais) {
+            public AffairesRow AddAffairesRow(string Numero, ClientRow parentClientRowByFK_Affaires_Client, ResponsableRow parentResponsableRowByFK_Affaires_Responsable, NoteFraisRow parentNoteFraisRowByFK_Affaires_NoteFrais, int NbrJourEstimer, int NbrJourConsommer) {
                 AffairesRow rowAffairesRow = ((AffairesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Numero,
                         null,
                         null,
-                        null};
+                        null,
+                        NbrJourEstimer,
+                        NbrJourConsommer};
                 if ((parentClientRowByFK_Affaires_Client != null)) {
                     columnValuesArray[1] = parentClientRowByFK_Affaires_Client[0];
                 }
@@ -872,6 +894,8 @@ namespace GestionAffaire {
                 this.columnClient = base.Columns["Client"];
                 this.columnResponsable = base.Columns["Responsable"];
                 this.columnNoteFrais = base.Columns["NoteFrais"];
+                this.columnNbrJourEstimer = base.Columns["NbrJourEstimer"];
+                this.columnNbrJourConsommer = base.Columns["NbrJourConsommer"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -885,6 +909,10 @@ namespace GestionAffaire {
                 base.Columns.Add(this.columnResponsable);
                 this.columnNoteFrais = new global::System.Data.DataColumn("NoteFrais", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNoteFrais);
+                this.columnNbrJourEstimer = new global::System.Data.DataColumn("NbrJourEstimer", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNbrJourEstimer);
+                this.columnNbrJourConsommer = new global::System.Data.DataColumn("NbrJourConsommer", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNbrJourConsommer);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnNumero}, true));
                 this.columnNumero.AllowDBNull = false;
@@ -2862,6 +2890,8 @@ namespace GestionAffaire {
             
             private global::System.Data.DataColumn columnBanque;
             
+            private global::System.Data.DataColumn columnactive;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CompteDataTable() {
@@ -2921,6 +2951,14 @@ namespace GestionAffaire {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn activeColumn {
+                get {
+                    return this.columnactive;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2956,12 +2994,13 @@ namespace GestionAffaire {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CompteRow AddCompteRow(string numero, string AgenceBanque, BanqueRow parentBanqueRowByFK_Compte_AgenceBanque) {
+            public CompteRow AddCompteRow(string numero, string AgenceBanque, BanqueRow parentBanqueRowByFK_Compte_AgenceBanque, int active) {
                 CompteRow rowCompteRow = ((CompteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         numero,
                         AgenceBanque,
-                        null};
+                        null,
+                        active};
                 if ((parentBanqueRowByFK_Compte_AgenceBanque != null)) {
                     columnValuesArray[2] = parentBanqueRowByFK_Compte_AgenceBanque[0];
                 }
@@ -2997,6 +3036,7 @@ namespace GestionAffaire {
                 this.columnnumero = base.Columns["numero"];
                 this.columnAgenceBanque = base.Columns["AgenceBanque"];
                 this.columnBanque = base.Columns["Banque"];
+                this.columnactive = base.Columns["active"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3008,6 +3048,8 @@ namespace GestionAffaire {
                 base.Columns.Add(this.columnAgenceBanque);
                 this.columnBanque = new global::System.Data.DataColumn("Banque", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBanque);
+                this.columnactive = new global::System.Data.DataColumn("active", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnactive);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnnumero}, true));
                 this.columnnumero.AllowDBNull = false;
@@ -4100,6 +4142,38 @@ namespace GestionAffaire {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int NbrJourEstimer {
+                get {
+                    try {
+                        return ((int)(this[this.tableAffaires.NbrJourEstimerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NbrJourEstimer\' in table \'Affaires\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAffaires.NbrJourEstimerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int NbrJourConsommer {
+                get {
+                    try {
+                        return ((int)(this[this.tableAffaires.NbrJourConsommerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NbrJourConsommer\' in table \'Affaires\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAffaires.NbrJourConsommerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ClientRow ClientRow {
                 get {
                     return ((ClientRow)(this.GetParentRow(this.Table.ParentRelations["FK_Affaires_Client"])));
@@ -4165,6 +4239,30 @@ namespace GestionAffaire {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNoteFraisNull() {
                 this[this.tableAffaires.NoteFraisColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNbrJourEstimerNull() {
+                return this.IsNull(this.tableAffaires.NbrJourEstimerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNbrJourEstimerNull() {
+                this[this.tableAffaires.NbrJourEstimerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNbrJourConsommerNull() {
+                return this.IsNull(this.tableAffaires.NbrJourConsommerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNbrJourConsommerNull() {
+                this[this.tableAffaires.NbrJourConsommerColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5008,6 +5106,22 @@ namespace GestionAffaire {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int active {
+                get {
+                    try {
+                        return ((int)(this[this.tableCompte.activeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'active\' in table \'Compte\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompte.activeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public BanqueRow BanqueRow {
                 get {
                     return ((BanqueRow)(this.GetParentRow(this.Table.ParentRelations["FK_Compte_AgenceBanque"])));
@@ -5027,6 +5141,18 @@ namespace GestionAffaire {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetBanqueNull() {
                 this[this.tableCompte.BanqueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsactiveNull() {
+                return this.IsNull(this.tableCompte.activeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetactiveNull() {
+                this[this.tableCompte.activeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5822,10 +5948,12 @@ namespace GestionAffaire.DB_AffaireDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Client", "Client");
             tableMapping.ColumnMappings.Add("Responsable", "Responsable");
             tableMapping.ColumnMappings.Add("NoteFrais", "NoteFrais");
+            tableMapping.ColumnMappings.Add("NbrJourEstimer", "NbrJourEstimer");
+            tableMapping.ColumnMappings.Add("NbrJourConsommer", "NbrJourConsommer");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Affaires] WHERE (([Numero] = @Original_Numero) AND ((@IsNull_Client = 1 AND [Client] IS NULL) OR ([Client] = @Original_Client)) AND ((@IsNull_Responsable = 1 AND [Responsable] IS NULL) OR ([Responsable] = @Original_Responsable)) AND ((@IsNull_NoteFrais = 1 AND [NoteFrais] IS NULL) OR ([NoteFrais] = @Original_NoteFrais)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Affaires] WHERE (([Numero] = @Original_Numero) AND ((@IsNull_Client = 1 AND [Client] IS NULL) OR ([Client] = @Original_Client)) AND ((@IsNull_Responsable = 1 AND [Responsable] IS NULL) OR ([Responsable] = @Original_Responsable)) AND ((@IsNull_NoteFrais = 1 AND [NoteFrais] IS NULL) OR ([NoteFrais] = @Original_NoteFrais)) AND ((@IsNull_NbrJourConsommer = 1 AND [NbrJourConsommer] IS NULL) OR ([NbrJourConsommer] = @Original_NbrJourConsommer)) AND ((@IsNull_NbrJourEstimer = 1 AND [NbrJourEstimer] IS NULL) OR ([NbrJourEstimer] = @Original_NbrJourEstimer)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Numero", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Numero", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Client", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -5834,25 +5962,32 @@ namespace GestionAffaire.DB_AffaireDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Responsable", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Responsable", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NoteFrais", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoteFrais", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NoteFrais", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoteFrais", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NbrJourConsommer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourConsommer", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NbrJourConsommer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourConsommer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NbrJourEstimer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourEstimer", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NbrJourEstimer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourEstimer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Affaires] ([Numero], [Client], [Responsable], [NoteFrais]) VAL" +
-                "UES (@Numero, @Client, @Responsable, @NoteFrais);\r\nSELECT Numero, Client, Respon" +
-                "sable, NoteFrais FROM Affaires WHERE (Numero = @Numero)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Affaires] ([Numero], [Client], [Responsable], [NoteFrais], [NbrJourConsommer], [NbrJourEstimer]) VALUES (@Numero, @Client, @Responsable, @NoteFrais, @NbrJourConsommer, @NbrJourEstimer);
+SELECT Numero, Client, Responsable, NoteFrais, NbrJourConsommer, NbrJourEstimer FROM Affaires WHERE (Numero = @Numero)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Numero", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Numero", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Responsable", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Responsable", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NoteFrais", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoteFrais", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NbrJourConsommer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourConsommer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NbrJourEstimer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourEstimer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Affaires] SET [Numero] = @Numero, [Client] = @Client, [Responsable] = @Responsable, [NoteFrais] = @NoteFrais WHERE (([Numero] = @Original_Numero) AND ((@IsNull_Client = 1 AND [Client] IS NULL) OR ([Client] = @Original_Client)) AND ((@IsNull_Responsable = 1 AND [Responsable] IS NULL) OR ([Responsable] = @Original_Responsable)) AND ((@IsNull_NoteFrais = 1 AND [NoteFrais] IS NULL) OR ([NoteFrais] = @Original_NoteFrais)));
-SELECT Numero, Client, Responsable, NoteFrais FROM Affaires WHERE (Numero = @Numero)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Affaires] SET [Numero] = @Numero, [Client] = @Client, [Responsable] = @Responsable, [NoteFrais] = @NoteFrais, [NbrJourConsommer] = @NbrJourConsommer, [NbrJourEstimer] = @NbrJourEstimer WHERE (([Numero] = @Original_Numero) AND ((@IsNull_Client = 1 AND [Client] IS NULL) OR ([Client] = @Original_Client)) AND ((@IsNull_Responsable = 1 AND [Responsable] IS NULL) OR ([Responsable] = @Original_Responsable)) AND ((@IsNull_NoteFrais = 1 AND [NoteFrais] IS NULL) OR ([NoteFrais] = @Original_NoteFrais)) AND ((@IsNull_NbrJourConsommer = 1 AND [NbrJourConsommer] IS NULL) OR ([NbrJourConsommer] = @Original_NbrJourConsommer)) AND ((@IsNull_NbrJourEstimer = 1 AND [NbrJourEstimer] IS NULL) OR ([NbrJourEstimer] = @Original_NbrJourEstimer)));
+SELECT Numero, Client, Responsable, NoteFrais, NbrJourConsommer, NbrJourEstimer FROM Affaires WHERE (Numero = @Numero)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Numero", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Numero", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Responsable", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Responsable", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NoteFrais", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoteFrais", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NbrJourConsommer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourConsommer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NbrJourEstimer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourEstimer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Numero", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Numero", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Client", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -5860,6 +5995,10 @@ SELECT Numero, Client, Responsable, NoteFrais FROM Affaires WHERE (Numero = @Num
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Responsable", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Responsable", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NoteFrais", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoteFrais", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NoteFrais", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoteFrais", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NbrJourConsommer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourConsommer", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NbrJourConsommer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourConsommer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NbrJourEstimer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourEstimer", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NbrJourEstimer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NbrJourEstimer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5875,7 +6014,8 @@ SELECT Numero, Client, Responsable, NoteFrais FROM Affaires WHERE (Numero = @Num
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Numero, Client, Responsable, NoteFrais FROM dbo.Affaires";
+            this._commandCollection[0].CommandText = "SELECT Numero, Client, Responsable, NoteFrais, NbrJourConsommer, NbrJourEstimer F" +
+                "ROM Affaires";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5936,7 +6076,7 @@ SELECT Numero, Client, Responsable, NoteFrais FROM Affaires WHERE (Numero = @Num
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_Numero, string Original_Client, string Original_Responsable, global::System.Nullable<int> Original_NoteFrais) {
+        public virtual int Delete(string Original_Numero, string Original_Client, string Original_Responsable, global::System.Nullable<int> Original_NoteFrais, global::System.Nullable<int> Original_NbrJourConsommer, global::System.Nullable<int> Original_NbrJourEstimer) {
             if ((Original_Numero == null)) {
                 throw new global::System.ArgumentNullException("Original_Numero");
             }
@@ -5967,6 +6107,22 @@ SELECT Numero, Client, Responsable, NoteFrais FROM Affaires WHERE (Numero = @Num
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
+            if ((Original_NbrJourConsommer.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_NbrJourConsommer.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((Original_NbrJourEstimer.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_NbrJourEstimer.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5987,7 +6143,7 @@ SELECT Numero, Client, Responsable, NoteFrais FROM Affaires WHERE (Numero = @Num
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Numero, string Client, string Responsable, global::System.Nullable<int> NoteFrais) {
+        public virtual int Insert(string Numero, string Client, string Responsable, global::System.Nullable<int> NoteFrais, global::System.Nullable<int> NbrJourConsommer, global::System.Nullable<int> NbrJourEstimer) {
             if ((Numero == null)) {
                 throw new global::System.ArgumentNullException("Numero");
             }
@@ -6012,6 +6168,18 @@ SELECT Numero, Client, Responsable, NoteFrais FROM Affaires WHERE (Numero = @Num
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
+            if ((NbrJourConsommer.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(NbrJourConsommer.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((NbrJourEstimer.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(NbrJourEstimer.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6032,7 +6200,7 @@ SELECT Numero, Client, Responsable, NoteFrais FROM Affaires WHERE (Numero = @Num
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Numero, string Client, string Responsable, global::System.Nullable<int> NoteFrais, string Original_Numero, string Original_Client, string Original_Responsable, global::System.Nullable<int> Original_NoteFrais) {
+        public virtual int Update(string Numero, string Client, string Responsable, global::System.Nullable<int> NoteFrais, global::System.Nullable<int> NbrJourConsommer, global::System.Nullable<int> NbrJourEstimer, string Original_Numero, string Original_Client, string Original_Responsable, global::System.Nullable<int> Original_NoteFrais, global::System.Nullable<int> Original_NbrJourConsommer, global::System.Nullable<int> Original_NbrJourEstimer) {
             if ((Numero == null)) {
                 throw new global::System.ArgumentNullException("Numero");
             }
@@ -6057,35 +6225,63 @@ SELECT Numero, Client, Responsable, NoteFrais FROM Affaires WHERE (Numero = @Num
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
+            if ((NbrJourConsommer.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(NbrJourConsommer.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((NbrJourEstimer.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(NbrJourEstimer.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
             if ((Original_Numero == null)) {
                 throw new global::System.ArgumentNullException("Original_Numero");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Numero));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Numero));
             }
             if ((Original_Client == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Client));
-            }
-            if ((Original_Responsable == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Responsable));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Client));
             }
-            if ((Original_NoteFrais.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_NoteFrais.Value));
-            }
-            else {
+            if ((Original_Responsable == null)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Responsable));
+            }
+            if ((Original_NoteFrais.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_NoteFrais.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_NbrJourConsommer.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_NbrJourConsommer.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_NbrJourEstimer.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_NbrJourEstimer.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6107,8 +6303,8 @@ SELECT Numero, Client, Responsable, NoteFrais FROM Affaires WHERE (Numero = @Num
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Client, string Responsable, global::System.Nullable<int> NoteFrais, string Original_Numero, string Original_Client, string Original_Responsable, global::System.Nullable<int> Original_NoteFrais) {
-            return this.Update(Original_Numero, Client, Responsable, NoteFrais, Original_Numero, Original_Client, Original_Responsable, Original_NoteFrais);
+        public virtual int Update(string Client, string Responsable, global::System.Nullable<int> NoteFrais, global::System.Nullable<int> NbrJourConsommer, global::System.Nullable<int> NbrJourEstimer, string Original_Numero, string Original_Client, string Original_Responsable, global::System.Nullable<int> Original_NoteFrais, global::System.Nullable<int> Original_NbrJourConsommer, global::System.Nullable<int> Original_NbrJourEstimer) {
+            return this.Update(Original_Numero, Client, Responsable, NoteFrais, NbrJourConsommer, NbrJourEstimer, Original_Numero, Original_Client, Original_Responsable, Original_NoteFrais, Original_NbrJourConsommer, Original_NbrJourEstimer);
         }
     }
     
@@ -8654,38 +8850,43 @@ SELECT Numero, affaire, totalFrais, date, respo FROM NoteFrais WHERE (Numero = @
             tableMapping.ColumnMappings.Add("numero", "numero");
             tableMapping.ColumnMappings.Add("AgenceBanque", "AgenceBanque");
             tableMapping.ColumnMappings.Add("Banque", "Banque");
+            tableMapping.ColumnMappings.Add("active", "active");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Compte] WHERE (([numero] = @Original_numero) AND ([AgenceBanqu" +
-                "e] = @Original_AgenceBanque) AND ((@IsNull_Banque = 1 AND [Banque] IS NULL) OR (" +
-                "[Banque] = @Original_Banque)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Compte] WHERE (([numero] = @Original_numero) AND ([AgenceBanque] = @Original_AgenceBanque) AND ((@IsNull_Banque = 1 AND [Banque] IS NULL) OR ([Banque] = @Original_Banque)) AND ((@IsNull_active = 1 AND [active] IS NULL) OR ([active] = @Original_active)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_numero", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "numero", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AgenceBanque", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgenceBanque", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Banque", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Banque", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Banque", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Banque", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_active", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "active", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_active", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "active", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Compte] ([numero], [AgenceBanque], [Banque]) VALUES (@numero, " +
-                "@AgenceBanque, @Banque);\r\nSELECT numero, AgenceBanque, Banque FROM Compte WHERE " +
-                "(numero = @numero)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Compte] ([numero], [AgenceBanque], [Banque], [active]) VALUES (@nume" +
+                "ro, @AgenceBanque, @Banque, @active);\r\nSELECT numero, AgenceBanque, Banque, acti" +
+                "ve FROM Compte WHERE (numero = @numero)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numero", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "numero", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AgenceBanque", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgenceBanque", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Banque", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Banque", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@active", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "active", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Compte] SET [numero] = @numero, [AgenceBanque] = @AgenceBanque, [Banque] = @Banque WHERE (([numero] = @Original_numero) AND ([AgenceBanque] = @Original_AgenceBanque) AND ((@IsNull_Banque = 1 AND [Banque] IS NULL) OR ([Banque] = @Original_Banque)));
-SELECT numero, AgenceBanque, Banque FROM Compte WHERE (numero = @numero)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Compte] SET [numero] = @numero, [AgenceBanque] = @AgenceBanque, [Banque] = @Banque, [active] = @active WHERE (([numero] = @Original_numero) AND ([AgenceBanque] = @Original_AgenceBanque) AND ((@IsNull_Banque = 1 AND [Banque] IS NULL) OR ([Banque] = @Original_Banque)) AND ((@IsNull_active = 1 AND [active] IS NULL) OR ([active] = @Original_active)));
+SELECT numero, AgenceBanque, Banque, active FROM Compte WHERE (numero = @numero)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numero", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "numero", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AgenceBanque", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgenceBanque", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Banque", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Banque", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@active", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "active", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_numero", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "numero", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AgenceBanque", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AgenceBanque", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Banque", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Banque", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Banque", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Banque", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_active", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "active", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_active", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "active", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8701,7 +8902,7 @@ SELECT numero, AgenceBanque, Banque FROM Compte WHERE (numero = @numero)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT numero, AgenceBanque, Banque FROM dbo.Compte";
+            this._commandCollection[0].CommandText = "SELECT numero, AgenceBanque, Banque, active FROM Compte";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8762,7 +8963,7 @@ SELECT numero, AgenceBanque, Banque FROM Compte WHERE (numero = @numero)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_numero, string Original_AgenceBanque, string Original_Banque) {
+        public virtual int Delete(string Original_numero, string Original_AgenceBanque, string Original_Banque, global::System.Nullable<int> Original_active) {
             if ((Original_numero == null)) {
                 throw new global::System.ArgumentNullException("Original_numero");
             }
@@ -8782,6 +8983,14 @@ SELECT numero, AgenceBanque, Banque FROM Compte WHERE (numero = @numero)";
             else {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Banque));
+            }
+            if ((Original_active.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_active.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8803,7 +9012,7 @@ SELECT numero, AgenceBanque, Banque FROM Compte WHERE (numero = @numero)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string numero, string AgenceBanque, string Banque) {
+        public virtual int Insert(string numero, string AgenceBanque, string Banque, global::System.Nullable<int> active) {
             if ((numero == null)) {
                 throw new global::System.ArgumentNullException("numero");
             }
@@ -8821,6 +9030,12 @@ SELECT numero, AgenceBanque, Banque FROM Compte WHERE (numero = @numero)";
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Banque));
+            }
+            if ((active.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(active.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8842,7 +9057,7 @@ SELECT numero, AgenceBanque, Banque FROM Compte WHERE (numero = @numero)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string numero, string AgenceBanque, string Banque, string Original_numero, string Original_AgenceBanque, string Original_Banque) {
+        public virtual int Update(string numero, string AgenceBanque, string Banque, global::System.Nullable<int> active, string Original_numero, string Original_AgenceBanque, string Original_Banque, global::System.Nullable<int> Original_active) {
             if ((numero == null)) {
                 throw new global::System.ArgumentNullException("numero");
             }
@@ -8861,25 +9076,39 @@ SELECT numero, AgenceBanque, Banque FROM Compte WHERE (numero = @numero)";
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Banque));
             }
+            if ((active.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(active.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
             if ((Original_numero == null)) {
                 throw new global::System.ArgumentNullException("Original_numero");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_numero));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_numero));
             }
             if ((Original_AgenceBanque == null)) {
                 throw new global::System.ArgumentNullException("Original_AgenceBanque");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_AgenceBanque));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_AgenceBanque));
             }
             if ((Original_Banque == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Banque));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Banque));
+            }
+            if ((Original_active.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_active.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8901,8 +9130,8 @@ SELECT numero, AgenceBanque, Banque FROM Compte WHERE (numero = @numero)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string AgenceBanque, string Banque, string Original_numero, string Original_AgenceBanque, string Original_Banque) {
-            return this.Update(Original_numero, AgenceBanque, Banque, Original_numero, Original_AgenceBanque, Original_Banque);
+        public virtual int Update(string AgenceBanque, string Banque, global::System.Nullable<int> active, string Original_numero, string Original_AgenceBanque, string Original_Banque, global::System.Nullable<int> Original_active) {
+            return this.Update(Original_numero, AgenceBanque, Banque, active, Original_numero, Original_AgenceBanque, Original_Banque, Original_active);
         }
     }
     
