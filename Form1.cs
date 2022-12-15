@@ -129,15 +129,10 @@ namespace GestionAffaire
         public void RemplirIdClient()
         {
             DataTable dt = new DataTable();
+            dt.Rows.Clear();
 
             cmbClientAff.Items.Clear();
             txtICEClient.Items.Clear();
-
-            if (dt != null)
-            {
-                dt.Rows.Clear();
-            }
-
 
             con.Open();
             cmd.CommandText = "select * from Client";
@@ -149,16 +144,12 @@ namespace GestionAffaire
                 txtICEClient.Items.Add(dt.Rows[i][0].ToString());
                 cmbClientAff.Items.Add(dt.Rows[i][1].ToString());
             }
-
             con.Close();
         }
         public void remplirListClient()
         {
             DataTable dt = new DataTable();
-            if (dt != null)
-            {
-                dt.Rows.Clear();
-            }
+            dt.Rows.Clear();
 
             con.Open();
             cmd.CommandText = "select ICE, raisonSociale as 'Raison Sociale' from Client";
@@ -174,7 +165,10 @@ namespace GestionAffaire
         // methode pour remplir le nom et la liste de charge d'affaire
         public void RemplirNomRespo()
         {
-            DataTable dt = new DataTable();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt1.Rows.Clear();
+            dt2.Rows.Clear();
 
             txtNomRespo.Items.Clear();
             cmbResponsableAff.Items.Clear();
@@ -182,45 +176,43 @@ namespace GestionAffaire
             cmbRespoNote.Items.Clear();
             cmbRespoMissionReche.Items.Clear();
 
-            if (dt != null)
-            {
-                dt.Rows.Clear();
-            }
-
-
             con.Open();
             cmd.CommandText = "select nom from Responsable";
             da.SelectCommand = cmd;
-            da.Fill(dt);
+            da.Fill(dt1);
 
-            cmbRespoMissionReche.Items.Add("");
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dt1.Rows.Count; i++)
             {
-                txtNomRespo.Items.Add(dt.Rows[i][0].ToString());
-                cmbResponsableAff.Items.Add(dt.Rows[i][0].ToString());
-                cmbRespoMission.Items.Add(dt.Rows[i][0].ToString());
-                cmbRespoNote.Items.Add(dt.Rows[i][0].ToString());
-                cmbRespoMissionReche.Items.Add(dt.Rows[i][0].ToString());
+                txtNomRespo.Items.Add(dt1.Rows[i][0].ToString());
             }
 
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select nom from Responsable where active=1";
+            da.SelectCommand = cmd;
+            da.Fill(dt2);
+
+            cmbRespoMissionReche.Items.Add("");
+            for (int i = 0; i < dt2.Rows.Count; i++)
+            {
+                cmbResponsableAff.Items.Add(dt2.Rows[i][0].ToString());
+                cmbRespoMission.Items.Add(dt2.Rows[i][0].ToString());
+                cmbRespoNote.Items.Add(dt2.Rows[i][0].ToString());
+                cmbRespoMissionReche.Items.Add(dt2.Rows[i][0].ToString());
+            }
             con.Close();
         }
         public void remplirListRespo()
         {
             DataTable dt = new DataTable();
-            if (dt != null)
-            {
-                dt.Rows.Clear();
-            }
+            dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select Nom, Prenom from Responsable";
+            cmd.CommandText = "select Nom, Prenom, active from Responsable";
             da.SelectCommand = cmd;
             da.Fill(dt);
-
             con.Close();
 
-            ListRespo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListRespo.DataSource = dt;
         }
 
@@ -252,7 +244,7 @@ namespace GestionAffaire
             cmbPersonneDisposition.Items.Clear();
 
             con.Open();
-            cmd.CommandText = "select nom from Personnel";
+            cmd.CommandText = "select nom from Personnel where active=1";
             da.SelectCommand = cmd;
             da.Fill(dt);
 
@@ -262,7 +254,6 @@ namespace GestionAffaire
                 cmbPersonneDisposition.Items.Add(dt.Rows[i][0].ToString());
                 
             }
-
             con.Close();
         }
         public void remplirListEmploye()
@@ -271,13 +262,11 @@ namespace GestionAffaire
             dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select CIN, Nom, Prenom from Personnel";
+            cmd.CommandText = "select CIN, Nom, Prenom, active from Personnel";
             da.SelectCommand = cmd;
             da.Fill(dt);
-
             con.Close();
 
-            listPersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             listPersonnel.DataSource = dt;
         }
 
@@ -540,8 +529,10 @@ namespace GestionAffaire
         //methode pour remplir le numero et la list des frais
         public void remplirNumeroCompte()
         {
-            DataTable dt = new DataTable();
-            dt.Rows.Clear();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt1.Rows.Clear();
+            dt2.Rows.Clear();
 
             txtNumeroCompte.Items.Clear();
             cmbCompteDisposition.Items.Clear();
@@ -550,13 +541,22 @@ namespace GestionAffaire
             con.Open();
             cmd.CommandText = "select Numero from Compte";
             da.SelectCommand = cmd;
-            da.Fill(dt);
+            da.Fill(dt1);
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select Numero from Compte where active=1";
+            da.SelectCommand = cmd;
+            da.Fill(dt2);
             con.Close();
 
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dt1.Rows.Count; i++)
             {
-                txtNumeroCompte.Items.Add(dt.Rows[i][0].ToString());
-                cmbCompteDisposition.Items.Add(dt.Rows[i][0].ToString());
+                txtNumeroCompte.Items.Add(dt1.Rows[i][0].ToString());
+            }
+            for (int i = 0; i < dt2.Rows.Count; i++)
+            {
+                cmbCompteDisposition.Items.Add(dt2.Rows[i][0].ToString());
             }
         }
         public void remplirListCompte()
@@ -565,13 +565,13 @@ namespace GestionAffaire
             dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select Numero,AgenceBanque as 'Agence',Banque from Compte";
+            cmd.CommandText = "select Numero,AgenceBanque as 'Agence',Banque, active from Compte";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
 
-            ListComptes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListComptes.DataSource = dt;
+
         }
 
         //methode pour remplir le numero et la liste de mise à disposition
@@ -707,7 +707,6 @@ namespace GestionAffaire
             }
             return isThere;
         }
-
 
         //methode pour verifier si la note des frais est deja existe dans la base
         public Boolean IsNoteExists(int numero)
@@ -918,7 +917,6 @@ namespace GestionAffaire
             }
             return isThere;
         }
-
 
         //methode pour verifier si le Employe dans une Ordre de Mission
         public Boolean IsEmployeExistsInMission(string cinPersonne, int mission)
@@ -1197,7 +1195,7 @@ namespace GestionAffaire
                             try
                             {
                                 con.Open();
-                                cmd.CommandText = "insert into Responsable values('" + txtNomRespo.Text + "','" + txtPrenomRespo.Text + "')";
+                                cmd.CommandText = "insert into Responsable values('" + txtNomRespo.Text + "','" + txtPrenomRespo.Text + "',1)";
                                 cmd.ExecuteNonQuery();
                                 con.Close();
 
@@ -1236,7 +1234,7 @@ namespace GestionAffaire
                                 try
                                 {
                                     con.Open();
-                                    cmd.CommandText = "insert into Personnel values('" + txtCinPersonne.Text + "','" + txtNomPersonne.Text + "','" + txtPrenomPresonne.Text + "')";
+                                    cmd.CommandText = "insert into Personnel values('" + txtCinPersonne.Text + "','" + txtNomPersonne.Text + "','" + txtPrenomPresonne.Text + "',1)";
                                     cmd.ExecuteNonQuery();
                                     con.Close();
 
@@ -1286,7 +1284,7 @@ namespace GestionAffaire
                                     if (IsBanqueExists(txtBanque.Text))
                                     {
                                         con.Open();
-                                        cmd.CommandText = "insert into Compte values('" + txtNumeroCompte.Text + "','" + txtAgenceBanque.Text + "','" + txtBanque + "')";
+                                        cmd.CommandText = "insert into Compte values('" + txtNumeroCompte.Text + "','" + txtAgenceBanque.Text + "','" + txtBanque + "',1)";
                                         cmd.ExecuteNonQuery();
                                         con.Close();
 
@@ -1297,7 +1295,7 @@ namespace GestionAffaire
                                         cmd.CommandText = "insert into Banque values('" + txtBanque.Text + "')";
                                         cmd.ExecuteNonQuery();
                                         cmd.Parameters.Clear();
-                                        cmd.CommandText = "insert into Compte values('" + txtNumeroCompte.Text + "','" + txtAgenceBanque.Text + "','" + txtBanque.Text + "')";
+                                        cmd.CommandText = "insert into Compte values('" + txtNumeroCompte.Text + "','" + txtAgenceBanque.Text + "','" + txtBanque.Text + "',1)";
                                         cmd.ExecuteNonQuery();
                                         con.Close();
 
@@ -1539,12 +1537,11 @@ namespace GestionAffaire
             
 
             con.Open();
-            cmd.CommandText = "select Nom, Prenom from Responsable where nom='"+ txtNomRespo.Text +"'";
+            cmd.CommandText = "select Nom, Prenom, active from Responsable where nom='"+ txtNomRespo.Text +"'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
 
-            ListRespo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListRespo.DataSource = dt;
 
             txtPrenomRespo.Text = dt.Rows[0][1].ToString();
@@ -1557,12 +1554,11 @@ namespace GestionAffaire
             dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select CIN, Nom, Prenom from Personnel where cin='" + txtCinPersonne.Text + "'";
+            cmd.CommandText = "select CIN, Nom, Prenom, active from Personnel where cin='" + txtCinPersonne.Text + "'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
 
-            listPersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             listPersonnel.DataSource = dt;
 
             txtNomPersonne.Text = dt.Rows[0][1].ToString();
@@ -1576,12 +1572,11 @@ namespace GestionAffaire
             dt.Rows.Clear();
 
             con.Open();
-            cmd.CommandText = "select Numero,AgenceBanque as 'Agence',Banque from Compte where numero='"+ txtNumeroCompte.Text +"'";
+            cmd.CommandText = "select Numero,AgenceBanque as 'Agence',Banque, active from Compte where numero='"+ txtNumeroCompte.Text +"'";
             da.SelectCommand = cmd;
             da.Fill(dt);
             con.Close();
 
-            ListComptes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ListComptes.DataSource = dt;
 
             txtAgenceBanque.Text = dt.Rows[0][1].ToString();
@@ -1654,8 +1649,84 @@ namespace GestionAffaire
             remplirListEmploye();
             remplirListCompte();
         }
+        // liste responsable
+        private void ListRespo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < ListRespo.Rows.Count - 1)
+            {
+                if (e.ColumnIndex == 2)
+                {
+                    errorProvider1.Dispose();
 
-        
+                    con.Open();
+                    if (Convert.ToBoolean(ListRespo.Rows[e.RowIndex].Cells[2].Value) == false)
+                    {
+                        cmd.CommandText = "update Responsable set active=1 where nom='" + ListRespo.Rows[e.RowIndex].Cells[0].Value + "'";
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        cmd.CommandText = "update Responsable set active=0 where nom='" + ListRespo.Rows[e.RowIndex].Cells[0].Value + "'";
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+
+                    RemplirNomRespo();
+                }
+            }
+        }
+        private void listPersonnel_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < listPersonnel.Rows.Count - 1)
+            {
+                if (e.ColumnIndex == 3)
+                {
+                    errorProvider1.Dispose();
+
+                    con.Open();
+                    if (Convert.ToBoolean(listPersonnel.Rows[e.RowIndex].Cells[3].Value) == false)
+                    {
+                        cmd.CommandText = "update Personnel set active=1 where cin='" + listPersonnel.Rows[e.RowIndex].Cells[0].Value + "'";
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        cmd.CommandText = "update Personnel set active=0 where cin='" + listPersonnel.Rows[e.RowIndex].Cells[0].Value + "'";
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+
+                    remplirNomEmploye();
+                }
+            }
+        }
+        private void ListComptes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < ListComptes.Rows.Count - 1)
+            {
+                if (e.ColumnIndex == 3)
+                {
+                    errorProvider1.Dispose();
+
+                    con.Open();
+                    if (Convert.ToBoolean(ListComptes.Rows[e.RowIndex].Cells[3].Value) == false)
+                    {
+                        cmd.CommandText = "update Compte set active=1 where numero='" + ListComptes.Rows[e.RowIndex].Cells[0].Value + "'";
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        cmd.CommandText = "update Compte set active=0 where numero='" + ListComptes.Rows[e.RowIndex].Cells[0].Value + "'";
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+
+                    remplirNumeroCompte();
+                }
+            }
+        }
+
+
 
         // l'affaire
         private void cmbNumeroAff_SelectedIndexChanged(object sender, EventArgs e)
