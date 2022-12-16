@@ -442,7 +442,7 @@ namespace GestionAffaire
             this.cmbRespoNote.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRespoNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRespoNote.FormattingEnabled = true;
-            this.cmbRespoNote.Location = new System.Drawing.Point(410, 104);
+            this.cmbRespoNote.Location = new System.Drawing.Point(482, 104);
             this.cmbRespoNote.Name = "cmbRespoNote";
             this.cmbRespoNote.Size = new System.Drawing.Size(255, 28);
             this.cmbRespoNote.TabIndex = 42;
@@ -452,7 +452,7 @@ namespace GestionAffaire
             this.txtRespoNote.BackColor = System.Drawing.SystemColors.Control;
             this.txtRespoNote.Enabled = false;
             this.txtRespoNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRespoNote.Location = new System.Drawing.Point(410, 104);
+            this.txtRespoNote.Location = new System.Drawing.Point(482, 104);
             this.txtRespoNote.Multiline = true;
             this.txtRespoNote.Name = "txtRespoNote";
             this.txtRespoNote.Size = new System.Drawing.Size(255, 29);
@@ -463,7 +463,7 @@ namespace GestionAffaire
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(300, 110);
+            this.label4.Location = new System.Drawing.Point(372, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 20);
             this.label4.TabIndex = 39;
@@ -473,7 +473,7 @@ namespace GestionAffaire
             // 
             this.txtDateNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateNote.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDateNote.Location = new System.Drawing.Point(410, 139);
+            this.txtDateNote.Location = new System.Drawing.Point(482, 139);
             this.txtDateNote.Name = "txtDateNote";
             this.txtDateNote.Size = new System.Drawing.Size(255, 26);
             this.txtDateNote.TabIndex = 19;
@@ -483,7 +483,7 @@ namespace GestionAffaire
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(348, 146);
+            this.label3.Location = new System.Drawing.Point(420, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 20);
             this.label3.TabIndex = 38;
@@ -493,7 +493,7 @@ namespace GestionAffaire
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(309, 177);
+            this.label2.Location = new System.Drawing.Point(381, 177);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 20);
             this.label2.TabIndex = 36;
@@ -505,7 +505,7 @@ namespace GestionAffaire
             this.txtTotalFraisNote.BackColor = System.Drawing.SystemColors.Control;
             this.txtTotalFraisNote.Enabled = false;
             this.txtTotalFraisNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalFraisNote.Location = new System.Drawing.Point(410, 171);
+            this.txtTotalFraisNote.Location = new System.Drawing.Point(482, 171);
             this.txtTotalFraisNote.Multiline = true;
             this.txtTotalFraisNote.Name = "txtTotalFraisNote";
             this.txtTotalFraisNote.Size = new System.Drawing.Size(255, 28);
@@ -517,7 +517,7 @@ namespace GestionAffaire
             this.txtNumAff.BackColor = System.Drawing.SystemColors.Control;
             this.txtNumAff.Enabled = false;
             this.txtNumAff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumAff.Location = new System.Drawing.Point(410, 70);
+            this.txtNumAff.Location = new System.Drawing.Point(482, 70);
             this.txtNumAff.Multiline = true;
             this.txtNumAff.Name = "txtNumAff";
             this.txtNumAff.Size = new System.Drawing.Size(255, 28);
@@ -529,7 +529,7 @@ namespace GestionAffaire
             this.txtNumeroNote.BackColor = System.Drawing.SystemColors.Control;
             this.txtNumeroNote.Enabled = false;
             this.txtNumeroNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroNote.Location = new System.Drawing.Point(410, 36);
+            this.txtNumeroNote.Location = new System.Drawing.Point(482, 36);
             this.txtNumeroNote.Multiline = true;
             this.txtNumeroNote.Name = "txtNumeroNote";
             this.txtNumeroNote.Size = new System.Drawing.Size(255, 28);
@@ -540,7 +540,7 @@ namespace GestionAffaire
             this.cmbNumeroNote.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNumeroNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbNumeroNote.FormattingEnabled = true;
-            this.cmbNumeroNote.Location = new System.Drawing.Point(410, 36);
+            this.cmbNumeroNote.Location = new System.Drawing.Point(482, 36);
             this.cmbNumeroNote.Name = "cmbNumeroNote";
             this.cmbNumeroNote.Size = new System.Drawing.Size(255, 28);
             this.cmbNumeroNote.TabIndex = 32;
@@ -808,7 +808,7 @@ namespace GestionAffaire
             // 
             this.btnImrimerPdfNote.BackColor = System.Drawing.SystemColors.Control;
             this.btnImrimerPdfNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImrimerPdfNote.Location = new System.Drawing.Point(711, 33);
+            this.btnImrimerPdfNote.Location = new System.Drawing.Point(783, 33);
             this.btnImrimerPdfNote.Name = "btnImrimerPdfNote";
             this.btnImrimerPdfNote.Size = new System.Drawing.Size(159, 38);
             this.btnImrimerPdfNote.TabIndex = 24;
@@ -821,7 +821,7 @@ namespace GestionAffaire
             // 
             this.btnSupprimerNoteFrais.BackColor = System.Drawing.SystemColors.Control;
             this.btnSupprimerNoteFrais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupprimerNoteFrais.Location = new System.Drawing.Point(884, 33);
+            this.btnSupprimerNoteFrais.Location = new System.Drawing.Point(956, 33);
             this.btnSupprimerNoteFrais.Name = "btnSupprimerNoteFrais";
             this.btnSupprimerNoteFrais.Size = new System.Drawing.Size(159, 38);
             this.btnSupprimerNoteFrais.TabIndex = 23;
@@ -835,7 +835,7 @@ namespace GestionAffaire
             this.cmbNumAffaireNote.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNumAffaireNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbNumAffaireNote.FormattingEnabled = true;
-            this.cmbNumAffaireNote.Location = new System.Drawing.Point(410, 70);
+            this.cmbNumAffaireNote.Location = new System.Drawing.Point(482, 70);
             this.cmbNumAffaireNote.Name = "cmbNumAffaireNote";
             this.cmbNumAffaireNote.Size = new System.Drawing.Size(255, 28);
             this.cmbNumAffaireNote.TabIndex = 9;
@@ -844,7 +844,7 @@ namespace GestionAffaire
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(220, 42);
+            this.label1.Location = new System.Drawing.Point(292, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(180, 20);
             this.label1.TabIndex = 18;
@@ -854,7 +854,7 @@ namespace GestionAffaire
             // 
             this.btnActualiserNote.BackColor = System.Drawing.SystemColors.Control;
             this.btnActualiserNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualiserNote.Location = new System.Drawing.Point(635, 559);
+            this.btnActualiserNote.Location = new System.Drawing.Point(639, 569);
             this.btnActualiserNote.Name = "btnActualiserNote";
             this.btnActualiserNote.Size = new System.Drawing.Size(159, 38);
             this.btnActualiserNote.TabIndex = 13;
@@ -866,7 +866,7 @@ namespace GestionAffaire
             // 
             this.btnValiderNote.BackColor = System.Drawing.SystemColors.Control;
             this.btnValiderNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValiderNote.Location = new System.Drawing.Point(450, 559);
+            this.btnValiderNote.Location = new System.Drawing.Point(454, 569);
             this.btnValiderNote.Name = "btnValiderNote";
             this.btnValiderNote.Size = new System.Drawing.Size(159, 38);
             this.btnValiderNote.TabIndex = 2;
@@ -878,7 +878,7 @@ namespace GestionAffaire
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(266, 76);
+            this.label9.Location = new System.Drawing.Point(338, 76);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(134, 20);
             this.label9.TabIndex = 0;
@@ -2856,7 +2856,7 @@ namespace GestionAffaire
             this.radioButton5.AutoSize = true;
             this.radioButton5.Checked = true;
             this.radioButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(678, 108);
+            this.radioButton5.Location = new System.Drawing.Point(750, 108);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(140, 24);
             this.radioButton5.TabIndex = 45;
@@ -2869,7 +2869,7 @@ namespace GestionAffaire
             // 
             this.radioButton6.AutoSize = true;
             this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(824, 108);
+            this.radioButton6.Location = new System.Drawing.Point(896, 108);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(98, 24);
             this.radioButton6.TabIndex = 46;
