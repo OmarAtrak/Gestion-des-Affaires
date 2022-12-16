@@ -3194,7 +3194,9 @@ namespace GestionAffaire
                 txtTotalFraisNote.Visible = false;
                 btnSupprimerNoteFrais.Visible = false;
                 btnImrimerPdfNote.Visible = false;
-                
+
+                radioButton5.Visible = true;
+                radioButton6.Visible = true;
 
 
                 RemplirNumeroAffaire();
@@ -3221,6 +3223,9 @@ namespace GestionAffaire
                 btnImrimerPdfNote.Visible = true;
 
                 txtDateNote.Enabled = false;
+
+                radioButton5.Visible = false;
+                radioButton6.Visible = false;
 
                 remplirNumeroNote();
                 txtNumAff.Text = txtTotalFraisNote.Text = "";
@@ -3806,6 +3811,30 @@ namespace GestionAffaire
         private void BoxMissionReche_Enter(object sender, EventArgs e){}
         private void cmbNumeroNote_SelectedIndexChanged(object sender, EventArgs e){}
 
-        
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton5.Checked == true)
+            {
+                radioButton6.Checked = false;
+            }
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton6.Checked == true)
+            {
+                radioButton5.Checked = false;
+            }
+        }
     }
 }
