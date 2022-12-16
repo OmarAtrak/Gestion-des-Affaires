@@ -85,9 +85,7 @@ namespace GestionAffaire
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ajouterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rechercheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rechercheDansLesFraisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lesPartiesIntereceeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rechercherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lesPartiesIntéresséesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lesPartiesIntéresséesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -282,6 +280,8 @@ namespace GestionAffaire
             this.btnPI = new System.Windows.Forms.Button();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.miseAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lesPartiesIntéresséesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -326,11 +326,13 @@ namespace GestionAffaire
             this.rechercheToolStripMenuItem,
             this.lesPartiesIntereceeToolStripMenuItem,
             this.lesPartiesIntéresséesToolStripMenuItem,
-            this.lesPartiesIntéresséesToolStripMenuItem1});
+            this.lesPartiesIntéresséesToolStripMenuItem1,
+            this.miseAToolStripMenuItem,
+            this.lesPartiesIntéresséesToolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.menuStrip1.Size = new System.Drawing.Size(190, 735);
+            this.menuStrip1.Size = new System.Drawing.Size(211, 735);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -339,64 +341,44 @@ namespace GestionAffaire
             this.ajouterToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ajouterToolStripMenuItem.Name = "ajouterToolStripMenuItem";
             this.ajouterToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
-            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(189, 65);
+            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(210, 65);
             this.ajouterToolStripMenuItem.Text = "Affaire";
             this.ajouterToolStripMenuItem.Click += new System.EventHandler(this.ajouterToolStripMenuItem_Click);
             // 
             // rechercheToolStripMenuItem
             // 
-            this.rechercheToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rechercheDansLesFraisToolStripMenuItem});
             this.rechercheToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rechercheToolStripMenuItem.Name = "rechercheToolStripMenuItem";
-            this.rechercheToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
-            this.rechercheToolStripMenuItem.Size = new System.Drawing.Size(189, 65);
+            this.rechercheToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 0);
+            this.rechercheToolStripMenuItem.Size = new System.Drawing.Size(210, 45);
             this.rechercheToolStripMenuItem.Text = "Note de Frais";
             this.rechercheToolStripMenuItem.Click += new System.EventHandler(this.rechercheToolStripMenuItem_Click);
             // 
-            // rechercheDansLesFraisToolStripMenuItem
-            // 
-            this.rechercheDansLesFraisToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rechercheDansLesFraisToolStripMenuItem.Name = "rechercheDansLesFraisToolStripMenuItem";
-            this.rechercheDansLesFraisToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
-            this.rechercheDansLesFraisToolStripMenuItem.Text = "Rechercher Les Frais";
-            this.rechercheDansLesFraisToolStripMenuItem.Click += new System.EventHandler(this.rechercheDansLesFraisToolStripMenuItem_Click);
-            // 
             // lesPartiesIntereceeToolStripMenuItem
             // 
-            this.lesPartiesIntereceeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rechercherToolStripMenuItem});
-            this.lesPartiesIntereceeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lesPartiesIntereceeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lesPartiesIntereceeToolStripMenuItem.Name = "lesPartiesIntereceeToolStripMenuItem";
-            this.lesPartiesIntereceeToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
-            this.lesPartiesIntereceeToolStripMenuItem.Size = new System.Drawing.Size(189, 65);
-            this.lesPartiesIntereceeToolStripMenuItem.Text = "Ordre de Mission";
+            this.lesPartiesIntereceeToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 0, 4, 10);
+            this.lesPartiesIntereceeToolStripMenuItem.Size = new System.Drawing.Size(210, 34);
+            this.lesPartiesIntereceeToolStripMenuItem.Text = "Rechercher Les Frais";
             this.lesPartiesIntereceeToolStripMenuItem.Click += new System.EventHandler(this.lesPartiesIntereceeToolStripMenuItem_Click);
-            // 
-            // rechercherToolStripMenuItem
-            // 
-            this.rechercherToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rechercherToolStripMenuItem.Name = "rechercherToolStripMenuItem";
-            this.rechercherToolStripMenuItem.Size = new System.Drawing.Size(339, 24);
-            this.rechercherToolStripMenuItem.Text = "Rechercher Les Ordres des Missions";
-            this.rechercherToolStripMenuItem.Click += new System.EventHandler(this.rechercherToolStripMenuItem_Click);
             // 
             // lesPartiesIntéresséesToolStripMenuItem
             // 
             this.lesPartiesIntéresséesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lesPartiesIntéresséesToolStripMenuItem.Name = "lesPartiesIntéresséesToolStripMenuItem";
-            this.lesPartiesIntéresséesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
-            this.lesPartiesIntéresséesToolStripMenuItem.Size = new System.Drawing.Size(189, 65);
-            this.lesPartiesIntéresséesToolStripMenuItem.Text = "Mise à Disposition";
+            this.lesPartiesIntéresséesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 0);
+            this.lesPartiesIntéresséesToolStripMenuItem.Size = new System.Drawing.Size(210, 45);
+            this.lesPartiesIntéresséesToolStripMenuItem.Text = "Ordre de Mission";
             this.lesPartiesIntéresséesToolStripMenuItem.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem_Click);
             // 
             // lesPartiesIntéresséesToolStripMenuItem1
             // 
-            this.lesPartiesIntéresséesToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lesPartiesIntéresséesToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lesPartiesIntéresséesToolStripMenuItem1.Name = "lesPartiesIntéresséesToolStripMenuItem1";
-            this.lesPartiesIntéresséesToolStripMenuItem1.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
-            this.lesPartiesIntéresséesToolStripMenuItem1.Size = new System.Drawing.Size(189, 65);
-            this.lesPartiesIntéresséesToolStripMenuItem1.Text = "Les Parties Intéressées";
+            this.lesPartiesIntéresséesToolStripMenuItem1.Padding = new System.Windows.Forms.Padding(4, 0, 4, 10);
+            this.lesPartiesIntéresséesToolStripMenuItem1.Size = new System.Drawing.Size(210, 34);
+            this.lesPartiesIntéresséesToolStripMenuItem1.Text = "Rechercher Ordre de Mission";
             this.lesPartiesIntéresséesToolStripMenuItem1.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem1_Click);
             // 
             // errorProvider1
@@ -429,9 +411,9 @@ namespace GestionAffaire
             this.BoxNoteAjouter.Controls.Add(this.btnValiderNote);
             this.BoxNoteAjouter.Controls.Add(this.label9);
             this.BoxNoteAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxNoteAjouter.Location = new System.Drawing.Point(193, 0);
+            this.BoxNoteAjouter.Location = new System.Drawing.Point(214, 0);
             this.BoxNoteAjouter.Name = "BoxNoteAjouter";
-            this.BoxNoteAjouter.Size = new System.Drawing.Size(1183, 735);
+            this.BoxNoteAjouter.Size = new System.Drawing.Size(1162, 735);
             this.BoxNoteAjouter.TabIndex = 9;
             this.BoxNoteAjouter.TabStop = false;
             this.BoxNoteAjouter.Text = "Note des Frais :";
@@ -902,9 +884,9 @@ namespace GestionAffaire
             this.BoxAff.Controls.Add(this.btnSupprimerAff);
             this.BoxAff.Controls.Add(this.label24);
             this.BoxAff.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxAff.Location = new System.Drawing.Point(193, 0);
+            this.BoxAff.Location = new System.Drawing.Point(214, 0);
             this.BoxAff.Name = "BoxAff";
-            this.BoxAff.Size = new System.Drawing.Size(1183, 735);
+            this.BoxAff.Size = new System.Drawing.Size(1162, 735);
             this.BoxAff.TabIndex = 17;
             this.BoxAff.TabStop = false;
             this.BoxAff.Text = "Affaires :";
@@ -1187,9 +1169,9 @@ namespace GestionAffaire
             this.BoxMission.Controls.Add(this.label30);
             this.BoxMission.Controls.Add(this.ListMission);
             this.BoxMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMission.Location = new System.Drawing.Point(193, 0);
+            this.BoxMission.Location = new System.Drawing.Point(214, 0);
             this.BoxMission.Name = "BoxMission";
-            this.BoxMission.Size = new System.Drawing.Size(1183, 735);
+            this.BoxMission.Size = new System.Drawing.Size(1162, 735);
             this.BoxMission.TabIndex = 18;
             this.BoxMission.TabStop = false;
             this.BoxMission.Text = "Ordre de Mission :";
@@ -1516,9 +1498,9 @@ namespace GestionAffaire
             this.BoxPartiesInterecee.Controls.Add(this.button8);
             this.BoxPartiesInterecee.Controls.Add(this.btnValiderClient);
             this.BoxPartiesInterecee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxPartiesInterecee.Location = new System.Drawing.Point(193, 0);
+            this.BoxPartiesInterecee.Location = new System.Drawing.Point(214, 0);
             this.BoxPartiesInterecee.Name = "BoxPartiesInterecee";
-            this.BoxPartiesInterecee.Size = new System.Drawing.Size(1183, 735);
+            this.BoxPartiesInterecee.Size = new System.Drawing.Size(1162, 735);
             this.BoxPartiesInterecee.TabIndex = 13;
             this.BoxPartiesInterecee.TabStop = false;
             this.BoxPartiesInterecee.Text = "Les Parties Intéressées :";
@@ -2174,9 +2156,9 @@ namespace GestionAffaire
             this.BoxRecherchFraisdeNote.Controls.Add(this.cmbPCFraisRecheNote);
             this.BoxRecherchFraisdeNote.Controls.Add(this.cmbTypeFraisRecheNote);
             this.BoxRecherchFraisdeNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxRecherchFraisdeNote.Location = new System.Drawing.Point(193, 0);
+            this.BoxRecherchFraisdeNote.Location = new System.Drawing.Point(214, 0);
             this.BoxRecherchFraisdeNote.Name = "BoxRecherchFraisdeNote";
-            this.BoxRecherchFraisdeNote.Size = new System.Drawing.Size(1183, 735);
+            this.BoxRecherchFraisdeNote.Size = new System.Drawing.Size(1162, 735);
             this.BoxRecherchFraisdeNote.TabIndex = 28;
             this.BoxRecherchFraisdeNote.TabStop = false;
             this.BoxRecherchFraisdeNote.Text = "Rechercher les Frais :";
@@ -2393,9 +2375,9 @@ namespace GestionAffaire
             this.BoxMissionReche.Controls.Add(this.cmbAffMissionReche);
             this.BoxMissionReche.Controls.Add(this.cmbRespoMissionReche);
             this.BoxMissionReche.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxMissionReche.Location = new System.Drawing.Point(193, 0);
+            this.BoxMissionReche.Location = new System.Drawing.Point(214, 0);
             this.BoxMissionReche.Name = "BoxMissionReche";
-            this.BoxMissionReche.Size = new System.Drawing.Size(1183, 735);
+            this.BoxMissionReche.Size = new System.Drawing.Size(1162, 735);
             this.BoxMissionReche.TabIndex = 29;
             this.BoxMissionReche.TabStop = false;
             this.BoxMissionReche.Text = "Rechercher Ordre de Missions:";
@@ -2594,9 +2576,9 @@ namespace GestionAffaire
             this.BoxDisposition.Controls.Add(this.label48);
             this.BoxDisposition.Controls.Add(this.cmbPersonneDisposition);
             this.BoxDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxDisposition.Location = new System.Drawing.Point(193, 0);
+            this.BoxDisposition.Location = new System.Drawing.Point(214, 0);
             this.BoxDisposition.Name = "BoxDisposition";
-            this.BoxDisposition.Size = new System.Drawing.Size(1183, 735);
+            this.BoxDisposition.Size = new System.Drawing.Size(1162, 735);
             this.BoxDisposition.TabIndex = 33;
             this.BoxDisposition.TabStop = false;
             this.BoxDisposition.Text = "Mise à Disposition :";
@@ -2770,9 +2752,9 @@ namespace GestionAffaire
             this.flowLayoutPanel1.Controls.Add(this.btnOrdreMission);
             this.flowLayoutPanel1.Controls.Add(this.btnDisposition);
             this.flowLayoutPanel1.Controls.Add(this.btnPI);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 336);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 638);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(203, 551);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(203, 295);
             this.flowLayoutPanel1.TabIndex = 34;
             this.flowLayoutPanel1.Visible = false;
             // 
@@ -2876,6 +2858,24 @@ namespace GestionAffaire
             this.radioButton6.Text = "Personnel";
             this.radioButton6.UseVisualStyleBackColor = true;
             this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            // 
+            // miseAToolStripMenuItem
+            // 
+            this.miseAToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.miseAToolStripMenuItem.Name = "miseAToolStripMenuItem";
+            this.miseAToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
+            this.miseAToolStripMenuItem.Size = new System.Drawing.Size(210, 65);
+            this.miseAToolStripMenuItem.Text = "Mise à Disposition";
+            this.miseAToolStripMenuItem.Click += new System.EventHandler(this.miseAToolStripMenuItem_Click);
+            // 
+            // lesPartiesIntéresséesToolStripMenuItem2
+            // 
+            this.lesPartiesIntéresséesToolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lesPartiesIntéresséesToolStripMenuItem2.Name = "lesPartiesIntéresséesToolStripMenuItem2";
+            this.lesPartiesIntéresséesToolStripMenuItem2.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
+            this.lesPartiesIntéresséesToolStripMenuItem2.Size = new System.Drawing.Size(210, 65);
+            this.lesPartiesIntéresséesToolStripMenuItem2.Text = "Les Parties Intéressées";
+            this.lesPartiesIntéresséesToolStripMenuItem2.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem2_Click);
             // 
             // Form1
             // 
@@ -3045,7 +3045,6 @@ namespace GestionAffaire
         public System.Windows.Forms.TextBox txtRespoNote;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbRespoNote;
-        private System.Windows.Forms.ToolStripMenuItem rechercheDansLesFraisToolStripMenuItem;
         private System.Windows.Forms.GroupBox BoxRecherchFraisdeNote;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
@@ -3075,7 +3074,6 @@ namespace GestionAffaire
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cmbAffMissionReche;
         private System.Windows.Forms.ComboBox cmbRespoMissionReche;
-        private System.Windows.Forms.ToolStripMenuItem rechercherToolStripMenuItem;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtLieuArriverMissionReche;
@@ -3153,6 +3151,8 @@ namespace GestionAffaire
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.ToolStripMenuItem miseAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lesPartiesIntéresséesToolStripMenuItem2;
     }
 }
 
