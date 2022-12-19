@@ -247,14 +247,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GestionAffaire.exe" size="1005992">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GestionAffaire.exe" size="1012136">
       <assemblyIdentity name="GestionAffaire" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>y83jbh2pt6M/0STNornAzapA91ihFC4EDfbIOqIGAQ8=</dsig:DigestValue>
+        <dsig:DigestValue>yXzKNahX+d6BmSDWb9FCHZ/0v3dgvo+mSpSKw0Jetn0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -309,7 +309,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>U8ibtPIcShbHYU2m/91zeFo/lyebKH6mWLBpFUSUZo4=</dsig:DigestValue>
+      <dsig:DigestValue>n4nz6O77kARoyYCyojBw404ROiXqZJRcFjPvcyNPJ8o=</dsig:DigestValue>
     </hash>
   </file>
   <file name="DB_Affaire_log.ldf" size="8388608" writeableType="applicationData">
@@ -318,7 +318,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>befHlrt0NBn8sg+4OvKUhxJs5/pA4Nlh61BdGigWEA8=</dsig:DigestValue>
+      <dsig:DigestValue>a1gixe3hFEe7Undspp/ebftRkcjLG8YInL21NpIMLyY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="GestionAffaire.exe.config" size="423">

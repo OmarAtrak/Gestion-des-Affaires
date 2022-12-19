@@ -248,6 +248,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aqua_smooth_folder_documents.ico" />
+    <None Include="Icons\icons8-expand-arrow-25.png" />
+    <None Include="Icons\icons8-expand-arrow-50.png" />
     <None Include="Icons\icons8-home-50.png" />
     <None Include="Icons\icons8-receipt-50.png" />
     <None Include="Icons\icons8-folder-100.png" />

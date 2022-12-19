@@ -743,6 +743,56 @@ namespace GestionAffaire
             }
         }
 
+        //methode pour remplir solde actual
+        public void remplirAcceuil()
+        {
+            DataTable dt = new DataTable();
+            dt.Rows.Clear();
+
+            con.Open();
+            cmd.CommandText = "select cast(sum(montant) as nvarchar) from MiseDisposition";
+            if (cmd.ExecuteScalar().ToString() != "")
+                lblTotalDisposition.Text = cmd.ExecuteScalar().ToString();
+            else
+                lblTotalDisposition.Text = "0.00";
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select cast(sum(totalFrais) as nvarchar) from NoteFrais";
+            if (cmd.ExecuteScalar().ToString() != "")
+                lblTotalFrais.Text = cmd.ExecuteScalar().ToString();
+            else
+                lblTotalFrais.Text = "0.00";
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select count(*) from Client";
+            if (cmd.ExecuteScalar().ToString() != "")
+                nbrClient.Text = cmd.ExecuteScalar().ToString();
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select count(*) from Responsable where active=1";
+            if (cmd.ExecuteScalar().ToString() != "")
+                nbrCA.Text = cmd.ExecuteScalar().ToString();
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select count(*) from Personnel where active=1";
+            if (cmd.ExecuteScalar().ToString() != "")
+                nbrP.Text = cmd.ExecuteScalar().ToString();
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandText = "select count(*) from Compte where active=1";
+            if (cmd.ExecuteScalar().ToString() != "")
+                nbrC.Text = cmd.ExecuteScalar().ToString();
+            con.Close();
+
+            double s = double.Parse(lblTotalDisposition.Text) - double.Parse(lblTotalFrais.Text);
+            lblSolde.Text = s.ToString();
+        }
+
 
 
         //methode pour verifier si l'affaire est deja existe dans la base
@@ -1164,6 +1214,7 @@ namespace GestionAffaire
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            BoxAff.Visible = false;
             RemplirNumeroAffaire();
             remplirListAffaire();
             RemplirIdClient();
@@ -1186,6 +1237,7 @@ namespace GestionAffaire
             remplirNumeroDisposition();
             remplirListDisposition();
             remplirBeneficaireNote();
+            remplirAcceuil();
         }
 
 
@@ -1287,6 +1339,7 @@ namespace GestionAffaire
                                     txtICEClient.Text = txtRaisonSocialClient.Text = "";
                                     remplirListClient();
                                     RemplirIdClient();
+                                    remplirAcceuil();
 
                                 }
                                 catch (FormatException ex)
@@ -1333,6 +1386,7 @@ namespace GestionAffaire
                                 RemplirNomRespo();
                                 remplirBeneficaireNote();
                                 remplirListRespo();
+                                remplirAcceuil();
                             }
                             catch (Exception ex)
                             {
@@ -1374,6 +1428,7 @@ namespace GestionAffaire
                                     remplirNomEmploye();
                                     remplirBeneficaireNote();
                                     remplirListEmploye();
+                                    remplirAcceuil();
                                 }
                                 catch (Exception ex)
                                 {
@@ -1436,6 +1491,7 @@ namespace GestionAffaire
                                     txtNumeroCompte.Text = txtAgenceBanque.Text = txtBanque.Text = "";
                                     remplirNumeroCompte();
                                     remplirListCompte();
+                                    remplirAcceuil();
                                 }
                                 else
                                     errorProvider1.SetError(txtBanque,"cette Information est Obligatoire");
@@ -1742,6 +1798,7 @@ namespace GestionAffaire
                                     txtICEClient.Text = txtRaisonSocialClient.Text = "";
                                     remplirListClient();
                                     RemplirIdClient();
+                                    remplirAcceuil();
                                 }
                                 catch (Exception ex)
                                 {
@@ -1803,6 +1860,7 @@ namespace GestionAffaire
 
                     RemplirNomRespo();
                     remplirBeneficaireNote();
+                    remplirAcceuil();
                 }
             }
         }
@@ -1829,6 +1887,7 @@ namespace GestionAffaire
 
                     remplirNomEmploye();
                     remplirBeneficaireNote();
+                    remplirAcceuil();
                 }
             }
         }
@@ -1854,6 +1913,7 @@ namespace GestionAffaire
                     con.Close();
 
                     remplirNumeroCompte();
+                    remplirAcceuil();
                 }
             }
         }
@@ -2376,6 +2436,7 @@ namespace GestionAffaire
 
                                 remplirNumeroNote();
                                 remplirListFrais();
+                                remplirAcceuil();
                             }
                             else
                                 errorProvider1.SetError(cmbRespoNote, "cette information est Obligatoire");
@@ -2439,6 +2500,7 @@ namespace GestionAffaire
 
                         remplirNumeroNote();
                         remplirListFrais();
+                        remplirAcceuil();
                     }
                     catch (Exception ex)
                     {
@@ -2493,6 +2555,7 @@ namespace GestionAffaire
                             remplirTypeNote();
                             NumeroNote();
                             remplirListFrais();
+                            remplirAcceuil();
 
                             listFraisNote.Rows.Clear();
 
@@ -2813,6 +2876,7 @@ namespace GestionAffaire
                                 }
                                 con.Close();
                                 remplirListFrais();
+                                remplirAcceuil();
 
                             }
                             catch (Exception ex)
@@ -3759,6 +3823,7 @@ namespace GestionAffaire
                         remplirNomEmploye();
                         remplirNumeroCompte();
                         remplirListDisposition();
+                        remplirAcceuil();
                         txtMontantDisposition.Text = "";
                     }
                     else
@@ -3812,6 +3877,7 @@ namespace GestionAffaire
                             remplirNomEmploye();
                             remplirNumeroCompte();
                             remplirListDisposition();
+                            remplirAcceuil();
                             txtMontantDisposition.Text = "";
                         }
                         else
@@ -3861,6 +3927,7 @@ namespace GestionAffaire
                         remplirNomEmploye();
                         remplirNumeroCompte();
                         remplirListDisposition();
+                        remplirAcceuil();
                         txtMontantDisposition.Text = "";
                     }
                 }
@@ -3976,7 +4043,5 @@ namespace GestionAffaire
         private void checkBox1_CheckedChanged_1(object sender, EventArgs e){}
         private void checkBox2_CheckedChanged_1(object sender, EventArgs e){}
         private void btnSupprimerDisposition_Click(object sender, EventArgs e){}
-
-        
     }
 }
