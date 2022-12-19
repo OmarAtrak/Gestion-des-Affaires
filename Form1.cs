@@ -133,6 +133,17 @@ namespace GestionAffaire
 
 
 
+        private void button6_Click_2(object sender, EventArgs e)
+        {
+            BoxAcceuil.Visible = true;
+            BoxAff.Visible = false;
+            BoxNoteAjouter.Visible = false;
+            BoxMission.Visible = false;
+            BoxPartiesInterecee.Visible = false;
+            BoxRecherchFraisdeNote.Visible = false;
+            BoxMissionReche.Visible = false;
+            BoxDisposition.Visible = false;
+        }
         private void btnAff_Click(object sender, EventArgs e)
         {
             BoxAff.Visible = true;
@@ -142,6 +153,7 @@ namespace GestionAffaire
             BoxRecherchFraisdeNote.Visible = false;
             BoxMissionReche.Visible = false;
             BoxDisposition.Visible = false;
+            BoxAcceuil.Visible = false;
         }
         private void btnNote_Click(object sender, EventArgs e)
         {
@@ -152,6 +164,7 @@ namespace GestionAffaire
             BoxRecherchFraisdeNote.Visible = false;
             BoxMissionReche.Visible = false;
             BoxDisposition.Visible = false;
+            BoxAcceuil.Visible = false;
 
             if (etatNote == true)
             {
@@ -173,6 +186,7 @@ namespace GestionAffaire
             BoxRecherchFraisdeNote.Visible = false;
             BoxMissionReche.Visible = false;
             BoxDisposition.Visible = false;
+            BoxAcceuil.Visible = false;
 
             if (etatOrdre == true)
             {
@@ -194,6 +208,7 @@ namespace GestionAffaire
             BoxNoteAjouter.Visible = false;
             BoxRecherchFraisdeNote.Visible = false;
             BoxMissionReche.Visible = false;
+            BoxAcceuil.Visible = false;
         }
         private void btnPI_Click(object sender, EventArgs e)
         {
@@ -204,6 +219,7 @@ namespace GestionAffaire
             BoxRecherchFraisdeNote.Visible = false;
             BoxMissionReche.Visible = false;
             BoxDisposition.Visible = false;
+            BoxAcceuil.Visible = false;
         }
         private void button9_Click(object sender, EventArgs e)
         {
@@ -213,6 +229,7 @@ namespace GestionAffaire
             BoxAff.Visible = false;
             BoxNoteAjouter.Visible = false;
             BoxMissionReche.Visible = false;
+            BoxAcceuil.Visible = false;
         }
 
 
@@ -3823,7 +3840,7 @@ namespace GestionAffaire
             else
                 errorProvider1.SetError(cmbNumeroDisposition,"cette Information est Obligatoire");
         }
-        private void btnSupprimerDisposition_Click(object sender, EventArgs e)
+        private void bynSupprimerDesposition_Click(object sender, EventArgs e)
         {
             errorProvider1.Dispose();
 
@@ -3831,18 +3848,21 @@ namespace GestionAffaire
             {
                 try
                 {
-                    con.Open();
-                    cmd.CommandText = "delete MiseDisposition where numero='" + int.Parse(cmbNumeroDisposition.Text) + "'";
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                    if (MessageBox.Show("voulez-vous supprimer Mise à Disposition?", "Supprimer Mise à Disposition", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        con.Open();
+                        cmd.CommandText = "delete MiseDisposition where numero='" + int.Parse(cmbNumeroDisposition.Text) + "'";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
 
-                    MessageBox.Show("Suppression Avec Succès");
+                        MessageBox.Show("Suppression Avec Succès");
 
-                    remplirNumeroDisposition();
-                    remplirNomEmploye();
-                    remplirNumeroCompte();
-                    remplirListDisposition();
-                    txtMontantDisposition.Text = "";
+                        remplirNumeroDisposition();
+                        remplirNomEmploye();
+                        remplirNumeroCompte();
+                        remplirListDisposition();
+                        txtMontantDisposition.Text = "";
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -3955,5 +3975,8 @@ namespace GestionAffaire
         private void cmbNumeroNote_SelectedIndexChanged(object sender, EventArgs e){}
         private void checkBox1_CheckedChanged_1(object sender, EventArgs e){}
         private void checkBox2_CheckedChanged_1(object sender, EventArgs e){}
+        private void btnSupprimerDisposition_Click(object sender, EventArgs e){}
+
+        
     }
 }

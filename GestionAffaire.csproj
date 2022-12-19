@@ -248,6 +248,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aqua_smooth_folder_documents.ico" />
+    <None Include="Icons\icons8-home-50.png" />
+    <None Include="Icons\icons8-receipt-50.png" />
+    <None Include="Icons\icons8-folder-100.png" />
     <None Include="bfi_partnerlogos_sothcom.jpg" />
     <Content Include="DB_Affaire.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

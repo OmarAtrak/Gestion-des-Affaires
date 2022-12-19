@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="GestionAffaire.exe.manifest" size="19429">
+    <dependentAssembly dependencyType="install" codebase="GestionAffaire.exe.manifest" size="19430">
       <assemblyIdentity name="GestionAffaire.exe" version="1.0.0.31" publicKeyToken="0000000000000000" language="fr-FR" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BTfp8K+nLCA2taikoMOMtRuV8bgxQU0SZRlWnfFJobU=</dsig:DigestValue>
+        <dsig:DigestValue>W5Yp5k1U+jFd/9HIv8D+l1qQPL7kRzoniW8k2SPNvEM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
