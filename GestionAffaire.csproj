@@ -74,7 +74,9 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlClient, Version=4.6.1.5, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.SqlClient.4.8.5\lib\net461\System.Data.SqlClient.dll</HintPath>
@@ -248,6 +250,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aqua_smooth_folder_documents.ico" />
+    <None Include="Resources\icons8-save-48.png" />
+    <None Include="Resources\icons8-remove-48.png" />
+    <None Include="Resources\icons8-receipt-50.png" />
+    <None Include="Resources\icons8-collapse-arrow-25.png" />
+    <None Include="Resources\icons8-business-buildings-30.png" />
+    <None Include="Resources\icons8-add-48.png" />
+    <None Include="Resources\icons8-update-left-rotation-40.png" />
+    <None Include="Resources\icons8-home-50.png" />
+    <None Include="Resources\icons8-folder-50.png" />
+    <None Include="Resources\icons8-expand-arrow-25.png" />
     <None Include="Icons\icons8-expand-arrow-25.png" />
     <None Include="Icons\icons8-expand-arrow-50.png" />
     <None Include="Icons\icons8-home-50.png" />

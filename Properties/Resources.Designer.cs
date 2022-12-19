@@ -73,9 +73,9 @@ namespace GestionAffaire.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_expand_arrow_25 {
+        internal static System.Drawing.Bitmap icons8_add_48 {
             get {
-                object obj = ResourceManager.GetObject("icons8-expand-arrow-25", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_add_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace GestionAffaire.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_expand_arrow_50 {
+        internal static System.Drawing.Bitmap icons8_business_buildings_30 {
             get {
-                object obj = ResourceManager.GetObject("icons8-expand-arrow-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_business_buildings_30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,39 +93,9 @@ namespace GestionAffaire.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_expand_arrow_501 {
+        internal static System.Drawing.Bitmap icons8_collapse_arrow_25 {
             get {
-                object obj = ResourceManager.GetObject("icons8-expand-arrow-501", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_expand_arrow_502 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-expand-arrow-502", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_folder_100 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-folder-100", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_home_50 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-home-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_collapse_arrow_25", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -135,7 +105,27 @@ namespace GestionAffaire.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_receipt_50 {
             get {
-                object obj = ResourceManager.GetObject("icons8-receipt-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_receipt_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_remove_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_remove_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_save_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_save_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
