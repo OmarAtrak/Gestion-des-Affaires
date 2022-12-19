@@ -23,7 +23,8 @@ namespace GestionAffaire
             InitializeComponent();
         }
 
-        public static Boolean etat;
+        public static Boolean etatNote = true;
+        public static Boolean etatOrdre = true;
 
         /************************************ le menu ************************************/
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -152,15 +153,15 @@ namespace GestionAffaire
             BoxMissionReche.Visible = false;
             BoxDisposition.Visible = false;
 
-            if (etat)
+            if (etatNote == true)
             {
-                flowLayoutPanel2.Height += 70;
-                etat = false;
+                panel1.Height += 70;
+                etatNote = false;
             }
             else
             {
-                flowLayoutPanel2.Height -= 70;
-                etat = true;
+                panel1.Height -= 70;
+                etatNote = true;
             }
         }
         private void btnOrdreMission_Click(object sender, EventArgs e)
@@ -172,6 +173,17 @@ namespace GestionAffaire
             BoxRecherchFraisdeNote.Visible = false;
             BoxMissionReche.Visible = false;
             BoxDisposition.Visible = false;
+
+            if (etatOrdre == true)
+            {
+                panel2.Height += 70;
+                etatOrdre = false;
+            }
+            else
+            {
+                panel2.Height -= 70;
+                etatOrdre = true;
+            }
         }
         private void btnDisposition_Click(object sender, EventArgs e)
         {

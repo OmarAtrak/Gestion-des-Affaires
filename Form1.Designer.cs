@@ -88,8 +88,12 @@ namespace GestionAffaire
             this.lesPartiesIntereceeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lesPartiesIntéresséesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lesPartiesIntéresséesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.miseAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lesPartiesIntéresséesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.BoxNoteAjouter = new System.Windows.Forms.GroupBox();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.cmbRespoNote = new System.Windows.Forms.ComboBox();
             this.txtRespoNote = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -272,16 +276,14 @@ namespace GestionAffaire
             this.cmbPersonneDisposition = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAff = new System.Windows.Forms.Button();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnNote = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.btnOrdreMission = new System.Windows.Forms.Button();
             this.btnDisposition = new System.Windows.Forms.Button();
             this.btnPI = new System.Windows.Forms.Button();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.miseAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lesPartiesIntéresséesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.BoxNoteAjouter.SuspendLayout();
@@ -313,7 +315,8 @@ namespace GestionAffaire
             this.BoxDisposition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listDisposition)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -335,6 +338,7 @@ namespace GestionAffaire
             this.menuStrip1.Size = new System.Drawing.Size(211, 735);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
             // 
             // ajouterToolStripMenuItem
             // 
@@ -381,6 +385,24 @@ namespace GestionAffaire
             this.lesPartiesIntéresséesToolStripMenuItem1.Text = "Rechercher Ordre de Mission";
             this.lesPartiesIntéresséesToolStripMenuItem1.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem1_Click);
             // 
+            // miseAToolStripMenuItem
+            // 
+            this.miseAToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.miseAToolStripMenuItem.Name = "miseAToolStripMenuItem";
+            this.miseAToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
+            this.miseAToolStripMenuItem.Size = new System.Drawing.Size(210, 65);
+            this.miseAToolStripMenuItem.Text = "Mise à Disposition";
+            this.miseAToolStripMenuItem.Click += new System.EventHandler(this.miseAToolStripMenuItem_Click);
+            // 
+            // lesPartiesIntéresséesToolStripMenuItem2
+            // 
+            this.lesPartiesIntéresséesToolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lesPartiesIntéresséesToolStripMenuItem2.Name = "lesPartiesIntéresséesToolStripMenuItem2";
+            this.lesPartiesIntéresséesToolStripMenuItem2.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
+            this.lesPartiesIntéresséesToolStripMenuItem2.Size = new System.Drawing.Size(210, 65);
+            this.lesPartiesIntéresséesToolStripMenuItem2.Text = "Les Parties Intéressées";
+            this.lesPartiesIntéresséesToolStripMenuItem2.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem2_Click);
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -418,6 +440,32 @@ namespace GestionAffaire
             this.BoxNoteAjouter.TabStop = false;
             this.BoxNoteAjouter.Text = "Note des Frais :";
             this.BoxNoteAjouter.Visible = false;
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton6.Location = new System.Drawing.Point(896, 108);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(98, 24);
+            this.radioButton6.TabIndex = 46;
+            this.radioButton6.Text = "Personnel";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Checked = true;
+            this.radioButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton5.Location = new System.Drawing.Point(750, 108);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(140, 24);
+            this.radioButton5.TabIndex = 45;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "Chargé d\'affaire";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // cmbRespoNote
             // 
@@ -2677,7 +2725,7 @@ namespace GestionAffaire
             // 
             this.listDisposition.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listDisposition.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.listDisposition.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -2748,134 +2796,126 @@ namespace GestionAffaire
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnAff);
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel1.Controls.Add(this.btnOrdreMission);
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Controls.Add(this.btnDisposition);
             this.flowLayoutPanel1.Controls.Add(this.btnPI);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 638);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(203, 295);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(205, 563);
             this.flowLayoutPanel1.TabIndex = 34;
-            this.flowLayoutPanel1.Visible = false;
             // 
             // btnAff
             // 
+            this.btnAff.BackColor = System.Drawing.Color.Chocolate;
             this.btnAff.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAff.ForeColor = System.Drawing.SystemColors.Control;
             this.btnAff.Location = new System.Drawing.Point(3, 3);
             this.btnAff.Name = "btnAff";
-            this.btnAff.Size = new System.Drawing.Size(196, 69);
+            this.btnAff.Size = new System.Drawing.Size(197, 69);
             this.btnAff.TabIndex = 0;
             this.btnAff.Text = "Affaire";
-            this.btnAff.UseVisualStyleBackColor = true;
+            this.btnAff.UseVisualStyleBackColor = false;
             this.btnAff.Click += new System.EventHandler(this.btnAff_Click);
             // 
-            // flowLayoutPanel2
+            // panel1
             // 
-            this.flowLayoutPanel2.Controls.Add(this.btnNote);
-            this.flowLayoutPanel2.Controls.Add(this.button9);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 78);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(203, 74);
-            this.flowLayoutPanel2.TabIndex = 35;
+            this.panel1.Controls.Add(this.btnNote);
+            this.panel1.Controls.Add(this.button9);
+            this.panel1.Location = new System.Drawing.Point(3, 78);
+            this.panel1.MaximumSize = new System.Drawing.Size(200, 140);
+            this.panel1.MinimumSize = new System.Drawing.Size(200, 72);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 72);
+            this.panel1.TabIndex = 39;
             // 
             // btnNote
             // 
+            this.btnNote.BackColor = System.Drawing.Color.Chocolate;
             this.btnNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNote.Location = new System.Drawing.Point(3, 3);
+            this.btnNote.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnNote.Location = new System.Drawing.Point(1, 3);
             this.btnNote.Name = "btnNote";
             this.btnNote.Size = new System.Drawing.Size(196, 69);
             this.btnNote.TabIndex = 1;
             this.btnNote.Text = "Note de Frais";
-            this.btnNote.UseVisualStyleBackColor = true;
+            this.btnNote.UseVisualStyleBackColor = false;
             this.btnNote.Click += new System.EventHandler(this.btnNote_Click);
             // 
             // button9
             // 
+            this.button9.BackColor = System.Drawing.Color.Peru;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(3, 78);
+            this.button9.ForeColor = System.Drawing.SystemColors.Control;
+            this.button9.Location = new System.Drawing.Point(1, 69);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(196, 69);
             this.button9.TabIndex = 2;
             this.button9.Text = "Rechercher les Frais";
-            this.button9.UseVisualStyleBackColor = true;
+            this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button7);
+            this.panel2.Controls.Add(this.btnOrdreMission);
+            this.panel2.Location = new System.Drawing.Point(3, 156);
+            this.panel2.MaximumSize = new System.Drawing.Size(200, 146);
+            this.panel2.MinimumSize = new System.Drawing.Size(200, 74);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 74);
+            this.panel2.TabIndex = 40;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Peru;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.SystemColors.Control;
+            this.button7.Location = new System.Drawing.Point(1, 71);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(196, 69);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "Rechercher les Ordres de Mission";
+            this.button7.UseVisualStyleBackColor = false;
             // 
             // btnOrdreMission
             // 
+            this.btnOrdreMission.BackColor = System.Drawing.Color.Chocolate;
             this.btnOrdreMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrdreMission.Location = new System.Drawing.Point(3, 158);
+            this.btnOrdreMission.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnOrdreMission.Location = new System.Drawing.Point(1, 3);
             this.btnOrdreMission.Name = "btnOrdreMission";
             this.btnOrdreMission.Size = new System.Drawing.Size(196, 69);
             this.btnOrdreMission.TabIndex = 2;
             this.btnOrdreMission.Text = "Ordre de Mission";
-            this.btnOrdreMission.UseVisualStyleBackColor = true;
+            this.btnOrdreMission.UseVisualStyleBackColor = false;
             this.btnOrdreMission.Click += new System.EventHandler(this.btnOrdreMission_Click);
             // 
             // btnDisposition
             // 
+            this.btnDisposition.BackColor = System.Drawing.Color.Chocolate;
             this.btnDisposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisposition.Location = new System.Drawing.Point(3, 233);
+            this.btnDisposition.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnDisposition.Location = new System.Drawing.Point(3, 236);
             this.btnDisposition.Name = "btnDisposition";
-            this.btnDisposition.Size = new System.Drawing.Size(196, 69);
+            this.btnDisposition.Size = new System.Drawing.Size(199, 69);
             this.btnDisposition.TabIndex = 3;
             this.btnDisposition.Text = "Mise à Disposition";
-            this.btnDisposition.UseVisualStyleBackColor = true;
+            this.btnDisposition.UseVisualStyleBackColor = false;
             this.btnDisposition.Click += new System.EventHandler(this.btnDisposition_Click);
             // 
             // btnPI
             // 
+            this.btnPI.BackColor = System.Drawing.Color.Chocolate;
             this.btnPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPI.Location = new System.Drawing.Point(3, 308);
+            this.btnPI.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnPI.Location = new System.Drawing.Point(3, 311);
             this.btnPI.Name = "btnPI";
-            this.btnPI.Size = new System.Drawing.Size(196, 69);
+            this.btnPI.Size = new System.Drawing.Size(197, 69);
             this.btnPI.TabIndex = 4;
             this.btnPI.Text = "Les Parties Intéressées";
-            this.btnPI.UseVisualStyleBackColor = true;
+            this.btnPI.UseVisualStyleBackColor = false;
             this.btnPI.Click += new System.EventHandler(this.btnPI_Click);
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Checked = true;
-            this.radioButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(750, 108);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(140, 24);
-            this.radioButton5.TabIndex = 45;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Chargé d\'affaire";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(896, 108);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(98, 24);
-            this.radioButton6.TabIndex = 46;
-            this.radioButton6.Text = "Personnel";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
-            // 
-            // miseAToolStripMenuItem
-            // 
-            this.miseAToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.miseAToolStripMenuItem.Name = "miseAToolStripMenuItem";
-            this.miseAToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
-            this.miseAToolStripMenuItem.Size = new System.Drawing.Size(210, 65);
-            this.miseAToolStripMenuItem.Text = "Mise à Disposition";
-            this.miseAToolStripMenuItem.Click += new System.EventHandler(this.miseAToolStripMenuItem_Click);
-            // 
-            // lesPartiesIntéresséesToolStripMenuItem2
-            // 
-            this.lesPartiesIntéresséesToolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lesPartiesIntéresséesToolStripMenuItem2.Name = "lesPartiesIntéresséesToolStripMenuItem2";
-            this.lesPartiesIntéresséesToolStripMenuItem2.Padding = new System.Windows.Forms.Padding(4, 20, 4, 20);
-            this.lesPartiesIntéresséesToolStripMenuItem2.Size = new System.Drawing.Size(210, 65);
-            this.lesPartiesIntéresséesToolStripMenuItem2.Text = "Les Parties Intéressées";
-            this.lesPartiesIntéresséesToolStripMenuItem2.Click += new System.EventHandler(this.lesPartiesIntéresséesToolStripMenuItem2_Click);
             // 
             // Form1
             // 
@@ -2945,7 +2985,8 @@ namespace GestionAffaire
             this.BoxDisposition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listDisposition)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3147,12 +3188,14 @@ namespace GestionAffaire
         private System.Windows.Forms.Button btnOrdreMission;
         private System.Windows.Forms.Button btnDisposition;
         private System.Windows.Forms.Button btnPI;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.ToolStripMenuItem miseAToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lesPartiesIntéresséesToolStripMenuItem2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button7;
     }
 }
 
